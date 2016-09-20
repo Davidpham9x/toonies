@@ -1,0 +1,9 @@
+/*
+** ICON
+** Please use icon- as your CSS class prefix
+*/
+.icon {
+	@extend .ir;
+    text-decoration: none;
+    display: block;
+}

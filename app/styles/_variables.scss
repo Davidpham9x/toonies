@@ -1,0 +1,193 @@
+$font-standard: HelveticaNeue, Helvetica, Arial, sans-serif;
+$font-iCPL: "iCielPanton-Light", HelveticaNeue, Helvetica, Arial, sans-serif;
+$font-iCPB: "iCielPanton-Black", HelveticaNeue, Helvetica, Arial, sans-serif;
+
+$font-size: 16px;
+
+$base-color: #6a6060;
+
+$color-hover: #ffdf16;
+$color-link: #ffffff;
+$color-error: #f91059;
+
+$page-width: 1280px;
+$grid: 30px;
+
+@mixin spritePos($x, $y, $w, $h) {
+    background-image: url(../images/ui.png);
+    background-position: #{-($x * $grid)} #{-($y * $grid)};
+    background-repeat: none;
+    width: $w;
+    height: $h;
+}
+
+@mixin ab($t, $l, $b, $r) {
+    position: absolute;
+    display: block;
+    @if $t !=n {
+        top: $t;
+    }
+    @if $r !=n {
+        right: $r;
+    }
+    @if $b !=n {
+        bottom: $b;
+    }
+    @if $l !=n {
+        left: $l;
+    }
+}
+
+@mixin border-radius($tl, $tr:null, $br:null, $bl:null) {
+    @if ($tr and $br and $bl) {
+        border-radius: $tl $tr $br $bl;
+        -moz-border-radius: $tl $tr $br $bl;
+        -webkit-border-radius: $tl $tr $br $bl;
+    }
+    @else {
+        border-radius: $tl;
+        -moz-border-radius: $tl;
+        -webkit-border-radius: $tl;
+    }
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow: inset $top $left $blur $color;
+        -moz-box-shadow: inset $top $left $blur $color;
+        box-shadow: inset $top $left $blur $color;
+    }
+    @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
+
+@mixin opacity ( $value: 0.5) {
+    opacity: $value;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" $value * 100 ")";
+    filter: alpha(opacity=$value * 100);
+    zoom: 1;
+}
+
+@mixin CSSanimate($type, $duration, $ease) {
+    -moz-transition: $type $duration $ease;
+    -webkit-transition: $type $duration $ease;
+    -ms-transition: $type $duration $ease;
+    -o-transition: $type $duration $ease;
+    transition: $type $duration $ease;
+}
+
+@mixin transition($args) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+@mixin CSSkeyframes($name) {
+    @-o-keyframes #{$name} {
+        @content
+    };
+    @-moz-keyframes #{$name} {
+        @content
+    };
+    @-webkit-keyframes #{$name} {
+        @content
+    };
+    @keyframes #{$name} {
+        @content
+    };
+}
+
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin font-size($size: 16) {
+    font-size: $size + px;
+    font-size: ($size / 16) * 1rem;
+}
+
+@mixin line-height($size: 16) {
+    line-height: $size + px;
+    line-height: ($size / 16) * 1rem;
+}
+
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* instead of indent -9999px */
+
+@mixin clear-text() {
+    border: 0;
+    color: transparent;
+    font: 0/0 a;
+    text-shadow: none;
+}
+
+@mixin respond-to($media) {
+    @if $media==mobile {
+        @media only screen and (max-width: 767px) {
+            @content;
+        }
+    }
+    @else if $media==ipad {
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            @content;
+        }
+    }
+    @else if $media==ipadPortrait {
+        @media only screen and (min-width: 768px) and (max-width: 1023px) {
+            @content;
+        }
+    }
+    @else if $media==ipadLandscape {
+        @media only screen and (width: 1024px) {
+            @content;
+        }
+    }
+    @else if $media==normalScreen {
+        @media only screen and (min-width: 1200px) {
+            @content;
+        }
+    }
+    @else if $media==largeScreen {
+        @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+            @content;
+        }
+    }
+    @else if $media==wideScreen {
+        @media only screen and (min-width: 1441px) {
+            @content;
+        }
+    }
+    @else if $media==desktop {
+        @media only screen and (min-width: 1024px) {
+            @content;
+        }
+    }
+}
+
+// MEDIA QUERIES
+$breakpoints: ( xs: 340px, small: 480px, medium: 767px, ipadPortrait: 768px, ipad: 1024px, large: 1280px, big: 1366px, );
+@mixin screen($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+            @content;
+        }
+    }
+    @else {
+        @content;
+    }
+}

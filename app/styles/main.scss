@@ -1,31 +1,116 @@
-// bower:scss
-// endbower
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
 
 body {
-  background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
+    font-size: 1em;
+    line-height: 1.4;
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 300px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
-  h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
 }
 
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
 }
+
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+// put your webfont declare here
+@import "webfont.scss";
+// SASS Variable & Mixin goes here
+@import "variables.scss";
+@import "global/helper.scss";
+// all code for button goes here
+@import "global/icon.scss";
+// all code for button goes here
+@import "global/button.scss";
+// all code for form element goes here
+@import "global/form.scss";
+// all code for dialog (popup) goes here
+@import "global/modal.scss";
+// all code for the global page header goes here
+@import "global/header.scss";
+// all code for the global page footer goes here
+@import "global/footer.scss";
+// all code for dialog (popup) goes here
+@import "global/global.scss";
+// all code for specific page goes here, create as many file as you like
+@import "page/home.scss";
+// all code for specific component goes here, create as many file as you like
+// For responsive project, please uncomment the following line and create that file to work with
+// @import "global/media-queries.scss";
+@import "global/print.scss";
