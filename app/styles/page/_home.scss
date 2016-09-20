@@ -1,13 +1,4 @@
-.page-home {
-	background: url('../images/global/main-bg--mobile.jpg') center center no-repeat;
-	background-size: 100% 100%;
-	width: 100vw;
-	height: 100vh;
-	@include screen ( ipadPortrait ) {
-		background: url('../images/global/main-bg.jpg') center center no-repeat;
-		background-size: 100% 100%;
-	}
-
+.page--home {
 	.coming-soon {
 		width: 100%;
 		@include ab ( 50%, 50%, n, n );

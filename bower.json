@@ -4,7 +4,10 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "modernizr": "~2.8.1",
-    "jquery-placeholder": "^2.3.1"
+    "jquery-placeholder": "^2.3.1",
+    "jquery-ui-touch-punch": "*",
+    "magnific-popup": "^1.1.0",
+    "cropper": "^2.3.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
