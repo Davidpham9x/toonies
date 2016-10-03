@@ -8,26 +8,106 @@ header {
 	}
 	@include screen ( ipad ) {
 		padding: 0;
+		padding-top: 43px;
+	}
+
+	.outer {
+		margin: 0 auto;
+		position: relative;
+		@include screen ( ipadPortrait ) {
+			max-width: 768px;
+		}
+		@include screen ( ipad ) {
+			max-width: 917px;
+		}
+		&:before, &:after {
+			content: '';
+			background: url('../images/header/rope.png') no-repeat;
+			width: 22px;
+			height: 80px;
+
+			top: -43px;
+			position: absolute;
+			z-index: 1;
+			left: 70px;
+		}
+		&:after {
+			left: auto;
+			right: 70px;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			z-index: 2;
+			top: -32px;
+			right: 40px;
+			position: absolute;
+
+			li {
+				margin: 0 -10px;
+				display: inline-block;
+				vertical-align: middle;
+				@include transition ( all .2s ease-in-out );
+				&:hover {
+					margin-top: -10px;
+				}
+
+				a {
+					display: block;
+					text-indent: -9999px;
+					&.menu-1 {
+						background: url('../images/header/menu-1.png') no-repeat;
+						width: 168px;
+						height: 64px;
+					}
+					&.menu-2 {
+						background: url('../images/header/menu-2.png') no-repeat;
+						width: 133px;
+						height: 64px;
+					}
+					&.menu-3 {
+						background: url('../images/header/menu-3.png') no-repeat;
+						width: 173px;
+						height: 64px;
+					}
+					&.menu-4 {
+						background: url('../images/header/menu-4.png') no-repeat;
+						width: 150px;
+						height: 64px;
+					}
+					&.menu-5 {
+						background: url('../images/header/menu-5.png') no-repeat;
+						width: 160px;
+						height: 64px;
+					}
+				}
+			}
+		}
 	}
 	.inner {
-		background: url('../images/global/header--mobile.png') center center no-repeat;
+		background: url('../images/header/header--mobile.png') center center no-repeat;
 		background-size: 100% 100%;
 		width: 100%;
 		height: 48px;
 		margin: 0 auto;
+
+		z-index: 3;
 		position: relative;
 		@include screen ( small ) {
 			height: 96px;
 		}
 		@include screen ( ipadPortrait ) {
-			background: url('../images/global/header.png') center center no-repeat;
+			background: url('../images/header/header.png') center center no-repeat;
 			background-size: 100% 100%;
 			height: 95px;
 			max-width: 768px;
 		}
 		@include screen ( ipad ) {
-			height: 114px;
-			max-width: 916px;
+			height: 71px;
+			max-width: 917px;
 		}
 	}
 
@@ -38,7 +118,7 @@ header {
 		@include transform( translateY(-50%) ); */
 	}
 	.logo--toonies {
-		background: url('../images/global/logo-toonies.png') center center no-repeat;
+		background: url('../images/header/logo-toonies.png') center center no-repeat;
 		background-size: 100% 100%;
 		width: 100%;
 		height: 59px;
@@ -54,7 +134,7 @@ header {
 		}
 	}
 	.logo--orion {
-		background: url('../images/global/logo-orion.png') no-repeat;
+		background: url('../images/header/logo-orion.png') no-repeat;
 		width: 110px;
 		height: 25px;
 		margin-top: -7px;
@@ -75,7 +155,7 @@ header {
 	.hot-line {
 		display: block;
 		text-indent: -9999px;
-		background: url('../images/global/hot-line.png') no-repeat;
+		background: url('../images/header/hot-line.png') no-repeat;
 		background-position: center center;
 		background-size: 100% 100%;
 		width: 100%;
@@ -83,7 +163,7 @@ header {
 		max-width: 195px;
 		@include ab( n, 170px, 15px, n );
 		&:hover {
-			background: url('../images/global/hot-line--hover.png') no-repeat;
+			background: url('../images/header/hot-line--hover.png') no-repeat;
 		}
 		@include screen ( ipad ) {
 			height: 48px;
