@@ -1,4 +1,13 @@
 .page--home {
+	overflow: hidden;
+	background: url('../images/home/main-bg--mobile.jpg') center center no-repeat;
+    background-size: 100% 100%;
+    width: 100vw;
+    height: 100vh;
+    @include screen ( ipadPortrait ) {
+        background: url('../images/home/main-background.jpg') center center no-repeat;
+        background-size: 100% 100%;
+    }
 	/* .coming-soon {
 		width: 100%;
 		@include ab ( 50%, 50%, n, n );
@@ -35,11 +44,101 @@
 		}
 	} */
 
-	.tvc {
+	/** CTA Content **/
+	.cta {
+		z-index: 4;
+		@include ab ( 20%, 50%, n, n );
+		@include transform ( translateX(-50%) );
 
+		.button__wrapper {
+			.button {
+				font-size: 13px;
+			    font-family: $font-iCPB;
+
+			    line-height: 46px;
+			    text-align: center;
+			    text-transform: uppercase;
+
+			    background: url('../images/buttons/button-yellow.png') no-repeat;
+			    width: 202px;
+			    height: 46px;
+			    &:hover {
+			    	background: url('../images/buttons/button-grey.png') no-repeat;
+			    }
+			}
+		}
 	}
+
+	/** Group Characters **/
+	.characters {
+		z-index: 3;
+	}
+	.characters-left {
+		margin-left: -15%;
+		@include ab ( 20%, 50%, n, n );
+		@include transform ( translateX(-50%) );
+	}
+	.characters-right {
+		margin-left: 15%;
+		@include ab ( 5%, 50%, n, n );
+		@include transform ( translateX(-50%) );
+	}
+
+	/** Group Coins **/
+	.group-coins {
+		position: absolute;
+		&.group-coins-1 {
+			top: 35%;
+			left: 2%;
+		}
+		&.group-coins-2 {
+			top: 15%;
+			left: -2%;
+		}
+		&.group-coins-3 {
+			top: 12%;
+			left: 50%;
+			margin-left: -10%;
+			@include transform ( translateX(-50%) );
+		}
+		&.group-coins-4 {
+			top: 0;
+			right: 0;
+		}
+		&.group-coins-5 {
+			top: 7%;
+			right: 25%;
+		}
+		&.group-coins-6 {
+			right: 0;
+			bottom: 0;
+		}
+		/* &.group-coins-7 {
+			top: 0;
+			right: 0;
+		} */
+	}
+
+	/** Toonies Snack **/
+	.toonies-snack {
+		z-index: 1;
+		@include ab ( n, 5%, -4%, n );
+	}
+
+	/** Gold Chest **/
+	.gold-chest {
+		z-index: 1;
+		margin-left: -5%;
+		@include ab ( n, 50%, -7%, n );
+		@include transform ( translateX(-50%) );
+	}
+
+	/** TVC Content **/
+	.tvc {}
 	.tvc-introduction {
 		max-width: 265px;
+		@include ab ( 50%, n, n, 5% );
+		@include transform ( translateY(-50%) );
 
 		h3 {
 			width: 174px;
@@ -53,6 +152,8 @@
 			width: 261px;
 			height: 175px;
 			background: url('../images/home/bgd-video.png') no-repeat;
+
+			margin-top: -5px;
 
 			.inner {
 				width: 100%;

@@ -1,0 +1,213 @@
+.page--user-action {
+	overflow: hidden;
+	background: url('../images/user_action/main-bg--mobile.jpg') center center no-repeat;
+    background-size: 100% 100%;
+    width: 100vw;
+    height: 100vh;
+    @include screen ( ipadPortrait ) {
+        background: url('../images/user_action/main-background.jpg') center center no-repeat;
+        background-size: 100% 100%;
+    }
+
+    /** Register Content **/
+    .register {
+    	width: 100%;
+    	margin: 0 auto;
+    	max-width: 759px;
+    	position: relative;
+    	&:before {
+    		content: '';
+    		background: url('../images/modal/snack.png') no-repeat;
+    		width: 265px;
+    		height: 406px;
+    		z-index: 0;
+    		@include ab ( 25%, -20%, n, n );
+    	}
+    	&:after {
+    		content: '';
+    		background: url('../images/modal/sanji-characters.png') no-repeat;
+    		width: 187px;
+    		height: 548px;
+    		z-index: 0;
+    		@include ab ( 20%, n, n, -10% );
+    	}
+
+    	.outer {
+    		width: 100%;
+	    	height: 631px;
+	    	background: url('../images/modal/background-modal-register.png') no-repeat;
+
+	    	z-index: 3;
+	    	padding-top: 20px;
+	    	position: relative;
+    	}
+
+    	.heading {
+    		width: 100%;
+    		max-width: 240px;
+    		height: 72px;
+    		margin: 0 auto;
+    		background: url('../images/modal/heading-modal-register.png') no-repeat;
+
+    		text-indent: -9999px;
+    	}
+    	.close {
+    		width: 100%;
+    		max-width: 54px;
+    		height: 50px;
+    		background: url('../images/icons/close.png') no-repeat;
+    		@include ab ( 25px, n, n, 5px );
+
+    		text-indent: -9999px;
+    	}
+    	.inner {
+    		padding: 0 55px;
+    		position: relative;
+
+    		.form {
+    			padding-top: 20px;
+
+    			.form_field {
+    				margin: 25px 0 0;
+    				&:first-child {
+    					margin-top: 0;
+    				}
+    				&.two-col {
+    					margin: 25px -15px 0;
+    					&:first-child {
+	    					margin-top: 0;
+	    				}
+    				}
+    				&.form_field--tnc {
+    					label {
+    						float: left;
+    						display: block;
+    						cursor: pointer;
+    						margin-top: 3px;
+    						line-height: 30px;
+    						font-size: 12px;
+    						font-family: $font-iCPB;
+
+    						a {
+    							color: #a45d2e;
+    							text-decoration: underline;
+    						}
+    					}
+    				}
+
+    				.col {
+    					width: 50%;
+    					float: left;
+    					padding: 0 15px;
+
+    					.two-col {
+    						margin-top: 0;
+    					}
+    				}
+    				label {
+    					color: #4f2d23;
+    					font-size: 15px;
+    					font-family: $font-iCPL;
+    					text-transform: uppercase;
+    					&.star {
+    						position: relative;
+    						padding-left: 20px;
+    						&:before {
+    							content: '';
+    							background: url('../images/icons/star--label.png') no-repeat;
+    							width: 16px;
+    							height: 15px;
+    							@include ab ( -3px, 0, n, n );
+    						}
+    					}
+
+    					strong {
+    						font-family: $font-iCPB;
+
+    						margin-right: 5px;
+    					}
+    				}
+    				.input-text, .input-file {
+    					margin-top: 5px;
+    				}
+    			}
+    		}
+    		.button__wrapper {
+    			.button {
+    				font-size: 18px;
+
+				    line-height: 77px;
+				    text-align: center;
+				    text-transform: uppercase;
+
+				    background: url('../images/buttons/button-yellow--register.png') no-repeat;
+				    width: 302px;
+				    height: 77px;
+				    /* &:hover {
+				    	background: url('../images/buttons/button-grey.png') no-repeat;
+				    } */
+    			}
+    		}
+    	}
+    }
+
+    /** Hot Line **/
+    .hot-line {
+    	margin: 20px 0 0;
+    	text-align: center;
+
+    	span {
+	    	color: #ffc35d;
+	    	font-size: 13px;
+	    	font-family: $font-iCPB;
+	    	text-transform: uppercase;
+	    	line-height: 20px;
+
+    		margin-top: 4px;
+    		padding-left: 25px;
+    		display: inline-block;
+    		vertical-align: middle;
+    		background: url('../images/icons/star.png') 3px 0 no-repeat;
+    	}
+    	img {
+    		margin-left: 5px;
+    		display: inline-block;
+    		vertical-align: middle;
+    	}
+    }
+
+    /** Group Coins **/
+	.group-coins {
+		position: absolute;
+		&.group-coins-1 {
+			top: 35%;
+			left: 2%;
+		}
+		&.group-coins-2 {
+			top: 15%;
+			left: -2%;
+		}
+		&.group-coins-3 {
+			top: 12%;
+			left: 50%;
+			margin-left: -10%;
+			@include transform ( translateX(-50%) );
+		}
+		&.group-coins-4 {
+			top: 0;
+			right: 0;
+		}
+		&.group-coins-5 {
+			top: 7%;
+			right: 25%;
+		}
+		&.group-coins-6 {
+			right: 0;
+			bottom: 0;
+		}
+		&.group-coins-7 {
+			top: 0;
+			right: 0;
+		}
+	}
+}
