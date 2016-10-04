@@ -7,11 +7,25 @@
     border: none;
     display: inline-block;
     text-decoration: none;
-    color: #fff;
-    font-size: 14px;
-    &:hover {}
+
+    color: #101010;
+    font-size: 13px;
+    font-family: $font-iCPB;
+
+    line-height: 46px;
+    text-align: center;
+    text-transform: uppercase;
+
+    background: url('../images/buttons/button-yellow.png') no-repeat;
+    width: 202px;
+    height: 46px;
+    &:hover {
+    	background: url('../images/buttons/button-grey.png') no-repeat;
+    }
 }
 
 .button--full {}
 
-.button__wrapper {}
+.button__wrapper {
+	margin-top: 10px;
+}

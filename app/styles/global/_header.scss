@@ -40,6 +40,11 @@ header {
 			margin: 0;
 			padding: 0;
 			list-style: none;
+		}
+		.main-menu {
+			margin: 0;
+			padding: 0;
+			list-style: none;
 
 			z-index: 2;
 			top: -32px;
@@ -86,6 +91,68 @@ header {
 				}
 			}
 		}
+		.action-menu {
+			margin: -3px -10px 0;
+			@include ab( 50%, 170px, n, n );
+			@include transform ( translateY(-50%) );
+
+			li {
+				padding: 0 10px;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.hot-line {
+				display: block;
+				text-indent: -9999px;
+				background: url('../images/header/hot-line.png') no-repeat;
+				background-position: center center;
+				background-size: 100% 100%;
+				width: 100%;
+				height: 36px;
+				width: 195px;
+				&:hover {
+					background: url('../images/header/hot-line--hover.png') no-repeat;
+				}
+				@include screen ( ipad ) {
+					height: 48px;
+					width: 259px;
+				}
+			}
+			.login {
+				display: block;
+				text-indent: -9999px;
+				background: url('../images/header/login.png') no-repeat;
+				background-position: center center;
+				background-size: 100% 100%;
+				width: 100%;
+				height: 36px;
+				width: 195px;
+				&:hover {
+					background: url('../images/header/login--hover.png') no-repeat;
+				}
+				@include screen ( ipad ) {
+					height: 48px;
+					width: 154px;
+				}
+			}
+			.register {
+				display: block;
+				text-indent: -9999px;
+				background: url('../images/header/register.png') no-repeat;
+				background-position: center center;
+				background-size: 100% 100%;
+				width: 100%;
+				height: 36px;
+				width: 195px;
+				&:hover {
+					background: url('../images/header/register--hover.png') no-repeat;
+				}
+				@include screen ( ipad ) {
+					height: 48px;
+					width: 131px;
+				}
+			}
+		}
 	}
 	.inner {
 		background: url('../images/header/header--mobile.png') center center no-repeat;
@@ -114,8 +181,7 @@ header {
 	.logo {
 		display: block;
 		position: absolute;
-		/* @include ab ( 50%, n, n, n );
-		@include transform( translateY(-50%) ); */
+		text-indent: -9999px;
 	}
 	.logo--toonies {
 		background: url('../images/header/logo-toonies.png') center center no-repeat;
@@ -150,25 +216,6 @@ header {
 		@include screen ( ipad ) {
 			bottom: 27px;
 			right: 27px;
-		}
-	}
-	.hot-line {
-		display: block;
-		text-indent: -9999px;
-		background: url('../images/header/hot-line.png') no-repeat;
-		background-position: center center;
-		background-size: 100% 100%;
-		width: 100%;
-		height: 36px;
-		max-width: 195px;
-		@include ab( n, 170px, 15px, n );
-		&:hover {
-			background: url('../images/header/hot-line--hover.png') no-repeat;
-		}
-		@include screen ( ipad ) {
-			height: 48px;
-			max-width: 259px;
-			left: 175px;
 		}
 	}
 	.bugger-menu {
