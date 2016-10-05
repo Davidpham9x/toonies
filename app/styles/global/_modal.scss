@@ -1,1 +1,93 @@
 .modal {}
+
+.modal--medium {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 759px;
+
+    z-index: 2;
+    position: relative;
+    &:before {
+        content: '';
+        width: 265px;
+        height: 406px;
+        background: url('../images/modal/snack.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 25%, -20%, n, n );
+    }
+    &:after {
+        content: '';
+        width: 187px;
+        height: 548px;
+        background: url('../images/modal/characters--sanji.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 20%, n, n, -10% );
+    }
+
+    .outer {
+		width: 100%;
+    	height: 631px;
+    	background: url('../images/modal/background-modal--medium.png') no-repeat;
+
+    	z-index: 3;
+    	padding-top: 20px;
+    	position: relative;
+	}
+	.close {
+		width: 100%;
+		height: 50px;
+		max-width: 54px;
+		background: url('../images/icons/close.png') no-repeat;
+		@include ab ( 25px, n, n, 5px );
+
+		text-indent: -9999px;
+	}
+}
+
+.modal--small {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 561px;
+
+    z-index: 2;
+    position: relative;
+    &:before {
+        content: '';
+        width: 265px;
+        height: 406px;
+        background: url('../images/modal/snack.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 30%, -27%, n, n );
+    }
+    &:after {
+        content: '';
+        width: 389px;
+        height: 556px;
+        background: url('../images/modal/characters--luffy.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 10%, n, n, -28% );
+    }
+
+    .outer {
+        width: 100%;
+        height: 609px;
+        background: url('../images/modal/background-modal--small.png') no-repeat;
+
+        z-index: 3;
+        padding-top: 115px;
+        position: relative;
+    }
+    .close {
+        width: 100%;
+        height: 50px;
+        max-width: 54px;
+        background: url('../images/icons/close.png') no-repeat;
+        @include ab ( 25px, n, n, 5px );
+
+        text-indent: -9999px;
+    }
+}

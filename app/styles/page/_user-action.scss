@@ -1,9 +1,6 @@
 .page--user-action {
-	/* overflow: hidden; */
 	background: url('../images/user_action/main-bg--mobile.jpg') center center no-repeat;
     background-size: 100% 100%;
-    width: 100%;
-    /* height: 100vh; */
     @include screen ( ipadPortrait ) {
         background: url('../images/user_action/main-background.jpg') center center no-repeat;
         background-size: 100% 100%;
@@ -15,53 +12,13 @@
     }
 
     /** Register Content **/
-    .register, .signin {
-    	width: 100%;
-    	margin: 0 auto;
-    	max-width: 759px;
-    	position: relative;
-    	&:before {
-    		content: '';
-    		background: url('../images/modal/snack.png') no-repeat;
-    		width: 265px;
-    		height: 406px;
-    		z-index: 0;
-    		@include ab ( 25%, -20%, n, n );
-    	}
-    	&:after {
-    		content: '';
-    		background: url('../images/modal/sanji-characters.png') no-repeat;
-    		width: 187px;
-    		height: 548px;
-    		z-index: 0;
-    		@include ab ( 20%, n, n, -10% );
-    	}
-
-    	.outer {
-    		width: 100%;
-	    	height: 631px;
-	    	background: url('../images/modal/background-modal-register.png') no-repeat;
-
-	    	z-index: 3;
-	    	padding-top: 20px;
-	    	position: relative;
-    	}
-
+    .register, .signin, .notification {
     	.heading {
     		width: 100%;
     		max-width: 240px;
     		height: 72px;
     		margin: 0 auto;
     		background: url('../images/modal/heading-modal-register.png') no-repeat;
-
-    		text-indent: -9999px;
-    	}
-    	.close {
-    		width: 100%;
-    		max-width: 54px;
-    		height: 50px;
-    		background: url('../images/icons/close.png') no-repeat;
-    		@include ab ( 25px, n, n, 5px );
 
     		text-indent: -9999px;
     	}
@@ -138,6 +95,8 @@
     			}
     		}
     		.button__wrapper {
+                margin-top: 0;
+
     			.button {
     				font-size: 18px;
 
@@ -158,60 +117,155 @@
 
     /** Signin Content **/
     .signin {
+        .heading {
+            width: 100%;
+            height: 72px;
+            margin: 0 auto;
+            max-width: 253px;
+            background: url('../images/modal/heading-modal-signin.png') no-repeat;
+
+            text-indent: -9999px;
+        }
         .inner {
+            .form {
+                .form_field {
+                    &.form_field--tnc {
+                        a {
+                            display: block;
+                            color: #a45d2e;
+                            line-height: 33px;
+                            text-align: right;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
             .button__wrapper {
                 .button {
                     background: url('../images/buttons/button-yellow--signin.png') no-repeat;
                     width: 164px;
                     height: 54px;
+
+                    font-size: 16px;
                     line-height: 54px;
                 }
             }
         }
         .content {
             margin: 15px -30px 0;
+
+            .account {
+                width: 50%;
+                float: left;
+                padding: 0 30px;
+
+                .title {
+                    color: #4e301c;
+                    font-size: 15px;
+                    font-family: $font-iCPB;
+                    text-transform: uppercase;
+                }
+                .desc {
+                    color: #4e301c;
+                    font-size: 12px;
+                    font-family: $font-standard;
+
+                    margin-bottom: 0;
+
+                    a {
+                        color: #4e301c;
+                        font-weight: bold;
+                        font-family: $font-iCPB;
+                        text-transform: uppercase;
+                        border-bottom: 1px solid #4e301c;
+                    }
+                }
+            }
+            /* .account--toonies {} */
+            .account--social {
+                .facebook-login {
+                    width: 278px;
+                    height: 45px;
+                    background: url('../images/buttons/button-facebook.png') no-repeat;
+
+                    display: block;
+                    margin-top: 10px;
+                    line-height: 45px;
+                    text-indent: -9999px;
+                }
+            }
         }
-        .account {
-            width: 50%;
-            float: left;
-            padding: 0 30px;
+    }
+
+    /** Notification Content **/
+    .notification, .forgot-password {
+        .heading {
+            width: 100%;
+            height: 72px;
+            margin: 0 auto;
+            max-width: 185px;
+            background: url('../images/modal/heading-modal-notification.png') no-repeat;
+
+            text-indent: -9999px;
+        }
+        .inner {
+            position: relative;
+            padding: 0 35px 0 25px;
+
+            .button__wrapper {
+                margin-top: 10px;
+
+                /* .button {} */
+                .button--yellow {
+                    background: url('../images/buttons/button-yellow--notification.png') no-repeat;
+                    width: 275px;
+                    height: 54px;
+
+                    font-size: 12px;
+                    line-height: 54px;
+                }
+                .button--grey {
+                    background: url('../images/buttons/button-grey--notification.png') no-repeat;
+                    width: 273px;
+                    height: 52px;
+
+                    font-size: 13px;
+                    line-height: 52px;
+                }
+            }
+        }
+        .content {
+            padding: 55px 0;
+            text-align: center;
 
             .title {
                 color: #4e301c;
-                font-size: 15px;
+                font-size: 20px;
                 font-family: $font-iCPB;
                 text-transform: uppercase;
             }
             .desc {
+                margin: 30px 0 0;
+
                 color: #4e301c;
                 font-size: 12px;
-                font-family: $font-standard;
-
-                margin-bottom: 0;
-
-                a {
-                    color: #4e301c;
-                    font-weight: bold;
-                    font-family: $font-iCPB;
-                    text-transform: uppercase;
-                    border-bottom: 1px solid #4e301c;
-                }
+                line-height: 22px;
+                font-family: $font-iCPB;
+                text-transform: uppercase;
             }
         }
-        .account--toonies {
+    }
 
+    /** Forgot Password Content **/
+    .forgot-password {
+        .inner {
+            padding: 0 70px;
         }
-        .account--social {
-            .facebook-login {
-                width: 278px;
-                height: 45px;
-                background: url('../images/buttons/button-facebook.png') no-repeat;
-
-                display: block;
-                margin-top: 10px;
-                line-height: 45px;
-                text-indent: -9999px;
-            }
+        .content {
+            padding: 40px 0 15px;
+        }
+        .form {
+            padding-bottom: 15px;
         }
     }
 
@@ -242,36 +296,36 @@
 
     /** Group Coins **/
 	.group-coins {
+        z-index: 1;
 		position: absolute;
 		&.group-coins-1 {
-			top: 35%;
-			left: 2%;
+			bottom: 20%;
+			left: 30%;
 		}
 		&.group-coins-2 {
-			top: 15%;
-			left: -2%;
+			bottom: 30%;
+			left: -1%;
 		}
 		&.group-coins-3 {
-			top: 12%;
-			left: 50%;
-			margin-left: -10%;
-			@include transform ( translateX(-50%) );
+			top: -5%;
+			left: 1%;
 		}
 		&.group-coins-4 {
-			top: 0;
-			right: 0;
+			top: 30%;
+			left: 30%;
 		}
 		&.group-coins-5 {
-			top: 7%;
-			right: 25%;
+			top: 0;
+			left: 50%;
+            @include transform ( translateX(-50%) );
 		}
 		&.group-coins-6 {
-			right: 0;
-			bottom: 0;
+			top: -5%;
+			right: 10%;
 		}
 		&.group-coins-7 {
-			top: 0;
-			right: 0;
+            right: 0;
+			bottom: 25%;
 		}
 	}
 }

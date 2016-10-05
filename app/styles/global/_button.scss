@@ -6,10 +6,12 @@
 .button {
     border: none;
     display: inline-block;
-    text-decoration: none;
 
     color: #101010;
     font-family: $font-iCPB;
+
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 .button--full {}

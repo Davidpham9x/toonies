@@ -180,7 +180,7 @@ $grid: 30px;
 }
 
 // MEDIA QUERIES
-$breakpoints: ( xs: 340px, small: 480px, medium: 767px, ipadPortrait: 768px, ipad: 1024px, large: 1280px, big: 1366px, );
+$breakpoints: ( xs: 340px, small: 480px, medium: 767px, ipadPortrait: 768px, ipad: 1024px, large: 1280px, big: 1366px );
 @mixin screen($breakpoint) {
     @if map-has-key($breakpoints, $breakpoint) {
         @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
