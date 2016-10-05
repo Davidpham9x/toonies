@@ -7,7 +7,8 @@
     "jquery-placeholder": "^2.3.1",
     "jquery-ui-touch-punch": "*",
     "magnific-popup": "^1.1.0",
-    "cropper": "^2.3.4"
+    "cropper": "^2.3.4",
+    "jquery-ui": "^1.12.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",

@@ -32,6 +32,13 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             $.support.cors = true;
             this.initFormElements();
 
+            $( "#txt-dob" ).datepicker({
+              showOn: "both",
+              buttonImage: "images/icons/calendar.png",
+              buttonImageOnly: true,
+              buttonText: "Select date"
+            });
+
             toonies.Global.initUploadImg('', $('#txt-file'));
         },
 
