@@ -1,0 +1,31 @@
+<!-- /* Head */ -->
+<include src="partials/head.html"></include>
+<main class="page page--coming-soon">
+    <!-- /* Header */ -->
+    <include src="partials/header.html"></include>
+    <!-- /* Coming Soon: Content */ -->
+    <section class="coming-soon">
+        <p class="open-date">Ngày 10/10/2016</p>
+        <p class="desc">Cuộc đua <span>TRUY NÃ 113+ HẢI TẶC cùng Toonies</span>
+            <br class="hide-for-small">sẽ chính thức bắt đầu
+        </p>
+        <div class="main-example">
+            <div id="countdown-container" class="countdown-container"></div>
+        </div>
+    </section>
+    <!-- /* Characters: Luffy */ -->
+    <img src="images/coming_soon/characters--luffy.png" class="characters" alt="One Piece: Luffy">
+    <!-- /* Footer */ -->
+    <include src="partials/footer.html"></include>
+</main>
+<script type="text/template" id="main-example-template">
+    <div class="time <%= label %>">
+        <span class="count curr top"><%= curr %></span>
+        <span class="count next top"><%= next %></span>
+        <span class="count next bottom"><%= next %></span>
+        <span class="count curr bottom"><%= curr %></span>
+        <span class="label"><%= label.length < 6 ? label : label.substr(0, 3)  %></span>
+    </div>
+</script>
+<!-- /* Footer Main */ -->
+<include src="partials/footer_main.html"></include>
