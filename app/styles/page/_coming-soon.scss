@@ -46,7 +46,7 @@
 
 	/** Characters **/
 	.characters {
-		@include ab ( n, n, 28px, 15% );
+		@include ab ( n, n, 28px, 10% );
 	}
 
 	/** Countdown Time **/
@@ -94,8 +94,8 @@
 	    color: #f8f8f8;
 	    display: block;
 	    font-family: $font-iCPB;
-	    font-size: 2em;
-	    line-height: 1.7em;
+	    font-size: 2.5em;
+	    line-height: 2.5em;
 	    overflow: hidden;
 	    position: absolute;
 	    text-align: center;
@@ -135,7 +135,7 @@
 	    border-top: 1px solid #000;
 	    border-bottom: 1px solid #000;
 	    border-radius: 0 0 5px 5px;
-	    line-height: 1.7em;
+	    line-height: 0.2em;
 	    height: 50%;
 	    top: 50%;
 	    -webkit-transform-origin: 50% 0;
