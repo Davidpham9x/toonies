@@ -8,5 +8,72 @@
     }
 
 	/** Scan Content **/
-	.scan {}
+	.scan {
+		width: 100%;
+		max-width: 500px;
+		margin: 35px auto 0;
+		text-align: center;
+
+		.heading {
+			background: url('../images/scan/heading.png');
+			width: 237px;
+			height: 69px;
+			margin: 0 auto;
+
+			text-indent: -9999px;
+		}
+		.scan_content {
+			background: url('../images/scan/scan-area.png') no-repeat;
+			width: 245px;
+			height: 244px;
+
+			display: table;
+			margin: 40px auto 0;
+
+			.inner {
+				display: table-cell;
+				vertical-align: middle;
+				height: 100%;
+			}
+			span {
+				display: block;
+				color: #d5af84;
+				font-size: 16px;
+
+				text-transform: uppercase;
+				text-shadow: -1px 2px 3px rgba(0, 0, 0, 0.56);
+			}
+		}
+		.button__wrapper {
+			margin: 35px 0 0;
+
+			.button {
+				font-size: 13px;
+			    font-family: $font-iCPB;
+
+			    line-height: 56px;
+			    text-align: center;
+			    text-transform: uppercase;
+
+			    background: url('../images/buttons/button-yellow--scan.png') no-repeat;
+			    width: 175px;
+			    height: 58px;
+			    &:hover {
+			    	background: url('../images/buttons/button-grey--scan.png') no-repeat;
+			    }
+			}
+		}
+		.desc {
+			color: #4e301c;
+			font-size: 13px;
+			line-height: 25px;
+			text-transform: uppercase;
+			margin: 35px 0 0;
+
+			a {
+				color: #d98248;
+				text-decoration: underline;
+			}
+		}
+	}
 }
