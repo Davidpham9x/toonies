@@ -31,7 +31,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         init: function() { //initialization code goes here
             $.support.cors = true;
             this.initFormElements();
-            this.initModalIntroScan();
+            this.initModalIntro();
 
             if ( $('#main-example-template').length ) {
                 var labels = ['ngày', 'giờ', 'phút', 'giây'],
@@ -169,10 +169,17 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }).trigger('resize');
         },
 
-        initModalIntroScan: function () {
-            $('.open-modal--intro-scan').magnificPopup({
+        initModalIntro: function () {
+            $('.open-modal--intro').magnificPopup({
                 type: 'inline',
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('.modal--intro').find('.close').off('click').on('click', function (e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
             });
         },
 

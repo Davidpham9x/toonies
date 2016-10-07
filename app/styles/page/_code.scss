@@ -1,0 +1,81 @@
+.page--code {
+	overflow: hidden;
+	background: url('../images/global/main-bg--mobile.jpg') center center no-repeat;
+    background-size: 100% 100%;
+    @include screen ( ipadPortrait ) {
+        background: url('../images/global/main-background.jpg') center center no-repeat;
+        background-size: 100% 100%;
+        min-height: 770px;
+        height: 100vh;
+    }
+
+	/** Code Content **/
+	.code {
+		width: 100%;
+		max-width: 500px;
+		margin: 35px auto 0;
+		text-align: center;
+
+		.heading {
+			background: url('../images/code/heading.png');
+			width: 237px;
+			height: 69px;
+			margin: 0 auto;
+
+			text-indent: -9999px;
+		}
+		.code_content {
+			margin-top: 15px;
+		}
+		.form {
+			.form_field {
+				.input-text {
+					margin-top: 0;
+				}
+			}
+		}
+		::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  color: #f0d4b4;
+		}
+		::-moz-placeholder { /* Firefox 19+ */
+		  color: #f0d4b4;
+		}
+		:-ms-input-placeholder { /* IE 10+ */
+		  color: #f0d4b4;
+		}
+		:-moz-placeholder { /* Firefox 18- */
+		  color: #f0d4b4;
+		}
+		.button__wrapper {
+			margin: 35px 0 0;
+
+			.button {
+				font-size: 13px;
+			    font-family: $font-iCPB;
+
+			    line-height: 47px;
+			    text-align: center;
+			    text-transform: uppercase;
+
+			    background: url('../images/buttons/button-yellow.png') no-repeat;
+			    width: 202px;
+			    height: 45px;
+			    &:hover {
+			    	background: url('../images/buttons/button-grey.png') no-repeat;
+			    }
+			}
+		}
+		.desc {
+			color: #4e301c;
+			font-size: 13px;
+			line-height: 25px;
+			text-transform: uppercase;
+			margin: 35px 0 0;
+
+			a {
+				color: #d98248;
+				text-decoration: underline;
+			}
+		}
+	}
+}

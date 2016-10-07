@@ -5,8 +5,8 @@
     @include screen ( ipadPortrait ) {
         background: url('../images/home/main-background.jpg') center center no-repeat;
         background-size: 100% 100%;
-        /* max-width: 1280px;
-        margin: 0 auto; */
+        height: 100vh;
+        min-height: 763px;
     }
 
 	/** CTA Content **/
