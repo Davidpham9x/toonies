@@ -5,11 +5,232 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>toonies</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
+
+    <style type='text/css'>
+        @-webkit-keyframes uil-ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                margin: 0 0 0 0;
+            }
+            33% {
+                width: 44%;
+                height: 44%;
+                margin: -22% 0 0 -22%;
+                opacity: 1;
+            }
+            100% {
+                width: 88%;
+                height: 88%;
+                margin: -44% 0 0 -44%;
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes uil-ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                margin: 0 0 0 0;
+            }
+            33% {
+                width: 44%;
+                height: 44%;
+                margin: -22% 0 0 -22%;
+                opacity: 1;
+            }
+            100% {
+                width: 88%;
+                height: 88%;
+                margin: -44% 0 0 -44%;
+                opacity: 0;
+            }
+        }
+
+        @-moz-keyframes uil-ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                margin: 0 0 0 0;
+            }
+            33% {
+                width: 44%;
+                height: 44%;
+                margin: -22% 0 0 -22%;
+                opacity: 1;
+            }
+            100% {
+                width: 88%;
+                height: 88%;
+                margin: -44% 0 0 -44%;
+                opacity: 0;
+            }
+        }
+
+        @-ms-keyframes uil-ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                margin: 0 0 0 0;
+            }
+            33% {
+                width: 44%;
+                height: 44%;
+                margin: -22% 0 0 -22%;
+                opacity: 1;
+            }
+            100% {
+                width: 88%;
+                height: 88%;
+                margin: -44% 0 0 -44%;
+                opacity: 0;
+            }
+        }
+
+        @-moz-keyframes uil-ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                margin: 0 0 0 0;
+            }
+            33% {
+                width: 44%;
+                height: 44%;
+                margin: -22% 0 0 -22%;
+                opacity: 1;
+            }
+            100% {
+                width: 88%;
+                height: 88%;
+                margin: -44% 0 0 -44%;
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes uil-ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                margin: 0 0 0 0;
+            }
+            33% {
+                width: 44%;
+                height: 44%;
+                margin: -22% 0 0 -22%;
+                opacity: 1;
+            }
+            100% {
+                width: 88%;
+                height: 88%;
+                margin: -44% 0 0 -44%;
+                opacity: 0;
+            }
+        }
+
+        @-o-keyframes uil-ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                margin: 0 0 0 0;
+            }
+            33% {
+                width: 44%;
+                height: 44%;
+                margin: -22% 0 0 -22%;
+                opacity: 1;
+            }
+            100% {
+                width: 88%;
+                height: 88%;
+                margin: -44% 0 0 -44%;
+                opacity: 0;
+            }
+        }
+
+        @keyframes uil-ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                margin: 0 0 0 0;
+            }
+            33% {
+                width: 44%;
+                height: 44%;
+                margin: -22% 0 0 -22%;
+                opacity: 1;
+            }
+            100% {
+                width: 88%;
+                height: 88%;
+                margin: -44% 0 0 -44%;
+                opacity: 0;
+            }
+        }
+
+        .loading {
+            z-index: 9999;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .uil-ripple-css {
+            background: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .uil-ripple-css div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: 0;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            border-radius: 50%;
+            border-width: 12px;
+            border-style: solid;
+            -ms-animation: uil-ripple 2s ease-out infinite;
+            -moz-animation: uil-ripple 2s ease-out infinite;
+            -webkit-animation: uil-ripple 2s ease-out infinite;
+            -o-animation: uil-ripple 2s ease-out infinite;
+            animation: uil-ripple 2s ease-out infinite;
+        }
+
+        .uil-ripple-css div:nth-of-type(1) {
+            border-color: #f6be1b;
+        }
+
+        .uil-ripple-css div:nth-of-type(2) {
+            border-color: #afafb7;
+            -ms-animation-delay: 1s;
+            -moz-animation-delay: 1s;
+            -webkit-animation-delay: 1s;
+            -o-animation-delay: 1s;
+            animation-delay: 1s;
+        }
+    </style>
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
@@ -17,9 +238,9 @@
     <link rel="stylesheet" href="/bower_components/cropper/dist/cropper.css" />
     <link rel="stylesheet" href="/bower_components/jquery-ui/themes/south-street/jquery-ui.css" />
     <link rel="stylesheet" href="/bower_components/jquery-ui/themes/south-street/theme.css" />
+
     <!-- endbower -->
     <!-- endbuild -->
-
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->

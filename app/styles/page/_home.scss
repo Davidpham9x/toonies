@@ -9,13 +9,36 @@
         min-height: 763px;
     }
 
+    .home {
+    	width: 100%;
+    	height: 100%;
+    	position: relative;
+    }
+
 	/** CTA Content **/
 	.cta {
 		z-index: 4;
-		@include ab ( 20%, 50%, n, n );
+		@include ab ( 10%, 50%, n, n );
 		@include transform ( translateX(-50%) );
 
+		.tagline {
+			opacity: 0;
+			@include transform ( scale(0.5) );
+			@include transition ( all .3s ease-in-out );
+			&.animate {
+				opacity: 1;
+				@include transform ( scale(1) );
+			}
+		}
 		.button__wrapper {
+			opacity: 0;
+			@include transform ( scale(0.5) );
+			@include transition ( all .3s ease-in-out );
+			&.animate {
+				opacity: 1;
+				@include transform ( scale(1) );
+			}
+
 			.button {
 				font-size: 13px;
 			    font-family: $font-iCPB;
@@ -39,14 +62,26 @@
 		z-index: 3;
 	}
 	.characters-left {
-		margin-left: -15%;
-		@include ab ( 20%, 50%, n, n );
-		@include transform ( translateX(-50%) );
-	}
-	.characters-right {
-		margin-left: 15%;
+		margin-left: -50%;
 		@include ab ( 5%, 50%, n, n );
 		@include transform ( translateX(-50%) );
+		opacity: 0;
+		@include transition ( all .3s ease-in-out );
+		&.animate {
+			opacity: 1;
+			margin-left: -20%;
+		}
+	}
+	.characters-right {
+		margin-left: 50%;
+		@include ab ( 0, 50%, n, n );
+		@include transform ( translateX(-50%) );
+		opacity: 0;
+		@include transition ( all .3s ease-in-out );
+		&.animate {
+			opacity: 1;
+			margin-left: 15%;
+		}
 	}
 
 	/** Group Coins **/
@@ -87,23 +122,45 @@
 	/** Toonies Snack **/
 	.toonies-snack {
 		z-index: 1;
-		@include ab ( n, 5%, -4%, n );
+		@include ab ( n, 0, -5%, n );
+		opacity: 0;
+		@include transform ( scale(0.5) );
+		@include transition ( all .3s ease-in-out );
+		&.animate {
+			opacity: 1;
+			@include transform ( scale(1) );
+		}
+		@include screen ( hd ) {
+			left: 5%;
+		}
 	}
 
 	/** Gold Chest **/
 	.gold-chest {
 		z-index: 1;
-		margin-left: -5%;
-		@include ab ( n, 50%, -7%, n );
-		@include transform ( translateX(-50%) );
+		margin-left: 35%;
+		@include ab ( n, 0, -10%, n );
+		opacity: 0;
+		@include transform ( scale(0.5) );
+		@include transition ( all .3s ease-in-out );
+		&.animate {
+			opacity: 1;
+			@include transform ( scale(1) );
+		}
 	}
 
 	/** TVC Content **/
 	.tvc {}
 	.tvc-introduction {
 		max-width: 265px;
-		@include ab ( 50%, n, n, 5% );
+		@include ab ( 50%, n, n, 0 );
 		@include transform ( translateY(-50%) );
+		opacity: 0;
+		@include transition ( all .3s ease-in-out );
+		&.animate {
+			opacity: 1;
+			right: 5%;
+		}
 
 		h3 {
 			width: 174px;

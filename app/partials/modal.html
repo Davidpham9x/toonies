@@ -1,7 +1,7 @@
 <!-- /* Box Modal */ -->
 
 <!-- /* Box Modal: Introduction Step Scan */ -->
-<div id="modal--intro-scan" class="mfp-hide modal--big modal--intro modal--intro-scan">
+<div id="modal--intro-scan" class="mfp-hide mfp-with-anim modal--big modal--intro modal--intro-scan">
 	<div class="outer">
 		<div class="inner">
 			<h3 class="heading">Các bước scan QR code</h3>
@@ -59,8 +59,43 @@
 	</div>
 </div>
 
-<!-- /* Box Modal: Introduction Step Scan */ -->
-<div id="modal--intro-code" class="mfp-hide modal--big modal--intro modal--intro-code">
+<!-- /* Box Modal: Scan Waiting */ -->
+<div id="modal--scan-waiting" class="mfp-hide mfp-with-anim modal--small modal--scan-waiting">
+    <div class="outer">
+        <div class="inner">
+            <h3 class="heading">Chờ tí nhé</h3>
+            <img src="images/icons/loading.png" alt="">
+            <div class="content">
+                <h4 class="title">Vui lòng đợi kiểm tra</h4>
+                <p class="desc">Hệ thống đang kiểm tra mã thẻ săn thưởng.
+                    <br>Bạn vui lòng đợi trong 10 giây nhé!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /* Box Modal: Scan Result */ -->
+<div id="modal--scan-result" class="mfp-hide mfp-with-anim modal--small modal--scan-result">
+    <div class="outer">
+        <div class="inner">
+            <h3 class="heading">Thông báo</h3>
+            <div class="content">
+                <h4 class="title">Hình như có sự cố!?</h4>
+                <p class="desc"><span>Bạn đã quét thẻ sai 1 lần</span>. để tiện cho quá trình cập nhật, bạn có muốn chuyển sang phần nhập mã xác nhận.</p>
+            </div>
+            <div class="button__wrapper">
+                <a href="" title="Chuyển sang nhập mã code" class="button">Chuyển sang nhập mã code</a>
+            </div>
+            <div class="button__wrapper">
+                <a href="" title="Quét lại lần nữa" class="button re-scan">Quét lại lần nữa</a>
+            </div>
+            <a href="" title="Đóng" class="close">Đóng</a>
+        </div>
+    </div>
+</div>
+
+<!-- /* Box Modal: Introduction Step Code */ -->
+<div id="modal--intro-code" class="mfp-hide mfp-with-anim modal--big modal--intro modal--intro-code">
 	<div class="outer">
 		<div class="inner">
 			<h3 class="heading">Các bước scan QR code</h3>

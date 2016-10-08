@@ -87,19 +87,30 @@ $grid: 30px;
     transition: $args;
 }
 
-@mixin CSSkeyframes($name) {
-    @-o-keyframes #{$name} {
-        @content
-    };
-    @-moz-keyframes #{$name} {
-        @content
-    };
-    @-webkit-keyframes #{$name} {
-        @content
-    };
-    @keyframes #{$name} {
-        @content
-    };
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
 }
 
 @mixin transform($transforms) {
@@ -180,7 +191,7 @@ $grid: 30px;
 }
 
 // MEDIA QUERIES
-$breakpoints: ( xs: 340px, small: 480px, medium: 767px, ipadPortrait: 768px, ipad: 1024px, large: 1280px, big: 1366px );
+$breakpoints: ( xs: 340px, small: 480px, medium: 767px, ipadPortrait: 768px, ipad: 1024px, large: 1280px, big: 1366px, hd: 1440px );
 @mixin screen($breakpoint) {
     @if map-has-key($breakpoints, $breakpoint) {
         @media (min-width: #{map-get($breakpoints, $breakpoint)}) {

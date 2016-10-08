@@ -33,6 +33,15 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initFormElements();
             this.initModalIntro();
 
+            // Call before ajax
+            /*this.initModalScanWaiting();*/
+
+            // Call when ajax show result scan not successful
+            /** Case defaul **/
+            /*this.initModalScanResult('Bạn đã quét thẻ sai 1 lần', '');*/
+            /** Case limit scan **/
+            /*this.initModalScanResult('Bạn đã quét thẻ sai 3 lần', true);*/
+
             if ( $('#main-example-template').length ) {
                 var labels = ['ngày', 'giờ', 'phút', 'giây'],
                     nextYear = '2016/10/10',
@@ -172,6 +181,13 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         initModalIntro: function () {
             $('.open-modal--intro').magnificPopup({
                 type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        /*console.log( this.st.el.attr('data-effect') );*/
+                        this.st.mainClass = this.st.el.attr('data-effect');
+                    }
+                },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
             });
 
@@ -181,6 +197,66 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 var magnificPopup = $.magnificPopup.instance;
                 magnificPopup.close(); // Close popup that is currently opened
             });
+        },
+
+        initModalScanWaiting: function () {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--scan-waiting'
+                },
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.mainClass = 'mfp-move-from-top';
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+        },
+
+        initModalScanResult: function ( mess, autoRedirect ) {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--scan-result'
+                },
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        $('#modal--scan-result').find('span').text(mess);
+                        this.st.mainClass = 'mfp-move-from-top';
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('#modal--scan-result').find('.close').off('click').on('click', function (e) {
+                e.preventDefault();
+
+                if ( typeof autoRedirect == 'boolean' ) {
+                    window.location.href = urlRedirect;
+                }
+                toonies.Global.initCloseAllModal();
+            });
+
+            if ( typeof autoRedirect == 'boolean' ) {
+                $('#modal--scan-result').find('.re-scan').parent().addClass('hidden');
+            }
+
+            $('#modal--scan-result').find('.re-scan').off('click').on('click', function (e) {
+                e.preventDefault();
+
+                if ( typeof autoRedirect == 'boolean' ) {
+                    window.location.href = urlRedirect;
+                }
+                toonies.Global.initCloseAllModal();
+            });
+        },
+
+        initCloseAllModal: function () {
+            var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
         },
 
         initUploadImg: function(tagUploadHTML4, tagUploadHTML5) {
@@ -606,5 +682,38 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 })(jQuery);
 
 $(document).ready(function() {
-    toonies.Global.init();
+    $('.page').imagesLoaded({
+        background: true
+    })
+    .always( function( instance ) {
+        /*console.log('all images loaded');*/
+    })
+    .done( function( instance ) {
+        /*console.log('all images successfully loaded');*/
+        $('.loading').css('display', 'none');
+
+        if ( $('.home').length ) {
+            $('.tagline').addClass('animate');
+            $('.button__wrapper').addClass('animate');
+            setTimeout(function () {
+                $('.characters-left').addClass('animate');
+                $('.characters-right').addClass('animate');
+                $('.tvc-introduction').addClass('animate');
+
+                setTimeout(function () {
+                    $('.toonies-snack').addClass('animate');
+                    $('.gold-chest').addClass('animate');
+                }, 600);
+            }, 600);
+        }
+
+        toonies.Global.init();
+    })
+    /*.fail( function() {
+        console.log('all images loaded, at least one is broken');
+    })
+    .progress( function( instance, image ) {
+        var result = image.isLoaded ? 'loaded' : 'broken';
+        console.log( 'image is ' + result + ' for ' + image.img.src );
+    })*/;
 });

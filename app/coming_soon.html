@@ -14,11 +14,18 @@
             <div id="countdown-container" class="countdown-container"></div>
         </div>
     </section>
+
     <!-- /* Characters: Luffy */ -->
     <img src="images/coming_soon/characters--luffy.png" class="characters" alt="One Piece: Luffy">
+
     <!-- /* Footer */ -->
     <include src="partials/footer.html"></include>
 </main>
+
+<!-- /* All Images */ -->
+<include src="partials/images.html"></include>
+
+<!-- /* Template Count Down */ -->
 <script type="text/template" id="main-example-template">
     <div class="time <%= label %>">
         <span class="count curr top"><%= curr %></span>
@@ -28,5 +35,6 @@
         <span class="label"><%= label.length < 6 ? label : label.substr(0, 3)  %></span>
     </div>
 </script>
+
 <!-- /* Footer Main */ -->
 <include src="partials/footer_main.html"></include>

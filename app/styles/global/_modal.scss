@@ -238,3 +238,124 @@
         text-indent: -9999px;
     }
 }
+
+.modal--scan-waiting {
+    .heading {
+        width: 100%;
+        height: 72px;
+        margin: 0 auto;
+        max-width: 185px;
+        background: url('../images/modal/heading-modal-scan-waiting.png') no-repeat;
+
+        text-indent: -9999px;
+    }
+    .inner {
+        padding: 0 70px;
+        text-align: center;
+        position: relative;
+
+        img {
+            margin-top: 60px;
+            @include animation('spin 2s linear infinite');
+        }
+        .button__wrapper {
+            margin-top: 10px;
+
+            .button {
+                font-size: 13px;
+                line-height: 54px;
+                width: 275px;
+                height: 54px;
+                background: url('../images/buttons/button-yellow--notification.png') no-repeat;
+                &:hover {
+                    background: url('../images/buttons/button-grey--notification.png') no-repeat;
+                }
+            }
+        }
+    }
+    .content {
+        padding: 40px 0 15px;
+
+        .title {
+            color: #4e301c;
+            font-size: 20px;
+            font-family: $font-iCPB;
+            text-transform: uppercase;
+        }
+        .desc {
+            margin: 30px 0 0;
+
+            color: #4e301c;
+            font-size: 13px;
+            line-height: 22px;
+            font-family: $font-iCPB;
+            text-transform: uppercase;
+
+            span {
+                color: #a0421f;
+            }
+        }
+    }
+}
+
+.modal--scan-result {
+    @extend .modal--scan-waiting;
+    .heading {
+        width: 100%;
+        height: 72px;
+        margin: 0 auto;
+        max-width: 185px;
+        background: url('../images/modal/heading-modal-notification.png') no-repeat;
+
+        text-indent: -9999px;
+    }
+}
+
+@include keyframes(spin) {
+    0% {
+        @include transform (rotate(0));
+    }
+    100% {
+        @include transform (rotate(360deg));
+    }
+}
+
+/*
+====== Move-from-top effect ======
+*/
+
+.mfp-move-from-top {
+    .mfp-content {
+        vertical-align: top;
+    }
+    /* start state */
+    .mfp-with-anim {
+        opacity: 0;
+        @include transition ( all .2s ease-in-out );
+        @include transform ( translateY(-100px) );
+    }
+    &.mfp-bg {
+        opacity: 0;
+        @include transition ( all .2s ease-in-out );
+    }
+    /* animate in */
+    &.mfp-ready {
+        .mfp-with-anim {
+            opacity: 1;
+            @include transform ( translateY(0) );
+        }
+        &.mfp-bg {
+            opacity: 1;
+        }
+    }
+    /* animate out */
+    &.mfp-removing {
+        .mfp-with-anim {
+            opacity: 0;
+            @include transform ( translateY(-50px) );
+        }
+        &.mfp-bg {
+            opacity: 0;
+        }
+    }
+}

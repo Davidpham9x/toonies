@@ -67,11 +67,17 @@ header {
 						background: url('../images/header/menu-1.png') no-repeat;
 						width: 168px;
 						height: 64px;
+						&:hover, .active {
+							background: url('../images/header/menu-1--hover.png') no-repeat;
+						}
 					}
 					&.menu-2 {
 						background: url('../images/header/menu-2.png') no-repeat;
 						width: 133px;
 						height: 64px;
+						&:hover, .active {
+							background: url('../images/header/menu-2--hover.png') no-repeat;
+						}
 					}
 					&.menu-3 {
 						background: url('../images/header/menu-3.png') no-repeat;
@@ -90,6 +96,9 @@ header {
 						background: url('../images/header/menu-5.png') no-repeat;
 						width: 160px;
 						height: 64px;
+						&:hover, .active {
+							background: url('../images/header/menu-5--hover.png') no-repeat;
+						}
 					}
 				}
 			}
