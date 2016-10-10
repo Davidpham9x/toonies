@@ -14,9 +14,19 @@
         		<span>camera <br>Khu vực quét <br>QR Code</span>
         	</div>
         </div>
+        <div class="scan_content scan_content--camera hidden">
+            <div class="inner">
+                <div id="camera" style="width:280px; height:280px;"></div>
+            </div>
+        </div>
+        <div id="count-time" class="count-time hidden">5</div>
         <div class="button__wrapper">
-			<a href="" title="Quét thẻ ngay!" class="button">Quét thẻ ngay!</a>
+			<a href="" title="Quét thẻ ngay!" class="button" id="open-scan">Quét thẻ ngay!</a>
 		</div>
+        <div class="button__wrapper button__wrapper--submit hidden">
+            <a href="" title="Gửi ảnh" class="button submit" id="">Gửi ảnh</a>
+        </div>
+        <input type="hidden" id="value-coin-card" class="value-coin-card">
 		<p class="desc">Xem <a href="#modal--intro-scan" title="hướng dẫn quét điểm thưởng" data-effect="mfp-move-from-top" class="open-modal--intro">hướng dẫn quét điểm thưởng</a> nếu bạn chưa rõ về cách quét điểm truy nã. ngoài ra, nếu gặp sự cố khi quét, bạn có thể nhập mã code trực tiếp <a href="" title="tại đây">tại đây</a>.</p>
     </section>
 

@@ -33,14 +33,21 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initFormElements();
             this.initModalIntro();
 
+            if ( $('.page--scan').length ) {
+                toonies.Global.initCameraScan();
+            }
+
             // Call before ajax
             /*this.initModalScanWaiting();*/
 
+            // Call for close popup
+            /*toonies.Global.initCloseAllModal();*/
+
             // Call when ajax show result scan not successful
             /** Case defaul **/
-            /*this.initModalScanResult('Bạn đã quét thẻ sai 1 lần', '');*/
+            /*toonies.Global.initModalScanResult('Bạn đã quét thẻ sai 1 lần', '');*/
             /** Case limit scan **/
-            /*this.initModalScanResult('Bạn đã quét thẻ sai 3 lần', true);*/
+            /*toonies.Global.initModalScanResult('Bạn đã quét thẻ sai 3 lần', true);*/
 
             if ( $('#main-example-template').length ) {
                 var labels = ['ngày', 'giờ', 'phút', 'giây'],
@@ -50,6 +57,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     nextDate = '00:00:00:00:00',
                     parser = /([0-9]{2})/gi,
                     $example = $('#countdown-container');
+
                 // Parse countdown string to an object
                 function strfobj(str) {
                     var parsed = str.match(parser),
@@ -59,6 +67,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     });
                     return obj;
                 }
+
                 // Return the time components that diffs
                 function diff(obj1, obj2) {
                     var diff = [];
@@ -69,6 +78,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     });
                     return diff;
                 }
+
                 // Build the layout
                 var initData = strfobj(currDate);
                 labels.forEach(function(label, i) {
@@ -78,6 +88,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                         label: label
                     }));
                 });
+
                 // Starts the countdown
                 $example.countdown(nextYear, function(event) {
                     var newDate = event.strftime('%d:%H:%M:%S'),
@@ -116,7 +127,33 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 });
             }
 
-            toonies.Global.initUploadImg('', $('#txt-file'));
+            /*var fullPath = document.getElementById('txt-avatar').value;
+            if (fullPath) {
+                var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                var filename = fullPath.substring(startIndex);
+                if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                    filename = filename.substring(1);
+                }
+                alert(filename);
+            }*/
+
+            $('#txt-avatar').change(function() {
+                var fullPath = $(this).val();
+
+                if (fullPath) {
+                    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                    var filename = fullPath.substring(startIndex);
+
+                    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                        filename = filename.substring(1);
+                    }
+
+                    $(this).parent().find('span').text( filename );
+                }
+                /*$('#select_file').html(filename);*/
+            });
+
+            /*toonies.Global.initUploadImg('', $('#txt-file'));*/
         },
 
         initFormElements: function() {
@@ -197,6 +234,13 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 var magnificPopup = $.magnificPopup.instance;
                 magnificPopup.close(); // Close popup that is currently opened
             });
+
+            $('.modal--intro').find('.button').off('click').on('click', function (e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
+            });
         },
 
         initModalScanWaiting: function () {
@@ -237,7 +281,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 if ( typeof autoRedirect == 'boolean' ) {
                     window.location.href = urlRedirect;
                 }
+
                 toonies.Global.initCloseAllModal();
+                toonies.Global.initResetCamera();
             });
 
             if ( typeof autoRedirect == 'boolean' ) {
@@ -250,13 +296,84 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 if ( typeof autoRedirect == 'boolean' ) {
                     window.location.href = urlRedirect;
                 }
+
                 toonies.Global.initCloseAllModal();
+                toonies.Global.initResetCamera();
             });
         },
 
         initCloseAllModal: function () {
             var magnificPopup = $.magnificPopup.instance;
                 magnificPopup.close(); // Close popup that is currently opened
+        },
+
+        initCameraScan: function () {
+            var contentScan = $('.scan'),
+                btnScan = $('#open-scan');
+
+                btnScan.off('click').on('click', function(e) {
+                    e.preventDefault();
+
+                    $('.scan_content').addClass('hidden');
+                    contentScan.find('.button__wrapper').addClass('hidden');
+                    $('.scan_content--camera').removeClass('hidden');
+                    $('#count-time').removeClass('hidden');
+
+                    Webcam.set({
+                        fps: 45,
+                        unfreeze_snap: false
+                    });
+
+                    Webcam.attach('#camera');
+
+                    toonies.Global.initCameraAction();
+                });
+        },
+
+        initCameraAction: function () {
+            var countTime = 5,
+                timer = 0;
+
+            setTimeout(function () {
+                // freeze camera so user can preview pic
+                Webcam.freeze();
+
+                take_snapshot();
+                $('.button__wrapper--submit').removeClass('hidden');
+            }, 5000);
+
+            timer = setInterval(function () {
+                if ( countTime == 1 ) {
+                    $('.scan_content--camera').addClass('result');
+                    $('#count-time').addClass('hidden');
+                    clearInterval( timer );
+                }
+
+                countTime = countTime - 1;
+                $('#count-time').text( countTime );
+            }, 1000);
+
+            function take_snapshot() {
+                Webcam.snap(function(data_uri) {
+                    $('#value-coin-card').val(data_uri);
+                });
+            }
+        },
+
+        initResetCamera: function () {
+            var contentScan = $('.scan');
+            // freeze camera so user can preview pic
+            Webcam.reset();
+
+            $('.scan_content').eq(0).removeClass('hidden');
+            $('.scan_content--camera').removeClass('result');
+            $('.scan_content--camera').addClass('hidden');
+
+            contentScan.find('.button__wrapper').eq(0).removeClass('hidden');
+            $('.button__wrapper--submit').addClass('hidden');
+
+            $('#count-time').text( 5 );
+            $('#count-time').addClass('hidden');
         },
 
         initUploadImg: function(tagUploadHTML4, tagUploadHTML5) {
@@ -693,17 +810,26 @@ $(document).ready(function() {
         $('.loading').css('display', 'none');
 
         if ( $('.home').length ) {
-            $('.tagline').addClass('animate');
-            $('.button__wrapper').addClass('animate');
             setTimeout(function () {
-                $('.characters-left').addClass('animate');
-                $('.characters-right').addClass('animate');
-                $('.tvc-introduction').addClass('animate');
+                $('.tagline').addClass('animate');
+                $('.button__wrapper').addClass('animate');
 
                 setTimeout(function () {
-                    $('.toonies-snack').addClass('animate');
-                    $('.gold-chest').addClass('animate');
-                }, 600);
+                    $('.characters-left').addClass('animate');
+                    $('.characters-right').addClass('animate');
+                    $('.tvc-introduction').addClass('animate');
+
+                    setTimeout(function () {
+                        $('.toonies-snack').addClass('animate');
+                        $('.gold-chest').addClass('animate');
+                    }, 500);
+                }, 400);
+            }, 300);
+        }
+
+        if ( $('.modal--medium').length ) {
+            setTimeout(function () {
+                $('.modal--medium').addClass('animate');
             }, 600);
         }
 

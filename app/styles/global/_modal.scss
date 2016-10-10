@@ -161,7 +161,8 @@
         background: url('../images/modal/snack.png') no-repeat;
 
         z-index: 0;
-        @include ab ( 25%, -20%, n, n );
+        @include ab ( 25%, 10%, n, n );
+        @include transition ( all .5s ease-in-out );
     }
     &:after {
         content: '';
@@ -170,7 +171,16 @@
         background: url('../images/modal/characters--sanji.png') no-repeat;
 
         z-index: 0;
-        @include ab ( 20%, n, n, -10% );
+        @include ab ( 20%, n, n, 10% );
+        @include transition ( all .5s ease-in-out );
+    }
+    &.animate {
+        &:before {
+            left: -20%;
+        }
+        &:after {
+            right: -10%;
+        }
     }
 
     .outer {
