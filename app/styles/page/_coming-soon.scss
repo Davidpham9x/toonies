@@ -2,9 +2,12 @@
 	overflow: hidden;
 	background: url('../images/coming_soon/main-bg--mobile.jpg') center center no-repeat;
     background-size: 100% 100%;
+    min-height: 842px;
+    height: 100vh;
     @include screen ( ipadPortrait ) {
         background: url('../images/coming_soon/main-background.jpg') center center no-repeat;
         background-size: 100% 100%;
+        min-height: 720px;
     }
 
     /** Coming Soon Content **/
@@ -46,7 +49,22 @@
 
 	/** Characters **/
 	.characters {
-		@include ab ( n, n, 28px, 10% );
+		width: 100%;
+		max-width: 160px;
+		@include ab ( n, n, 56px, 0 );
+		@include screen ( small ) {
+			right: 5%;
+			max-width: 200px;
+		}
+		@include screen ( medium ) {
+			bottom: 28px;
+			max-width: 250px;
+		}
+		/* @include screen ( ipad ) {} */
+		@include screen ( large ) {
+			right: 10%;
+			max-width: 344px;
+		}
 	}
 
 	/** Countdown Time **/

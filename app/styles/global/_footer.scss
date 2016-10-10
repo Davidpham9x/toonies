@@ -6,7 +6,7 @@ footer {
 	background: url('../images/footer/footer-bg--mobile.png') center center no-repeat;
 	background-size: 100% 100%;
 	width: 100%;
-	height: 66px;
+	height: 126px;
 	@include screen ( small ) {
 		background: url('../images/footer/footer-bg.png') center center no-repeat;
 		background-size: 100% 100%;
@@ -16,18 +16,28 @@ footer {
 
 	z-index: 4;
 	text-align: center;
-	@include ab ( n, 50%, 0, n );
-	@include transform( translateX(-50%) );
+	padding-top: 12px;
+	@include ab ( n, 0, 0, n );
+	@include screen ( small ) {
+		padding-top: 0;
+		@include ab ( n, 50%, 0, n );
+		@include transform( translateX(-50%) );
+	}
 
 	.inner {
+		width: 100%;
 		height: 100%;
-		display: table-cell;
-		vertical-align: middle;
+		/* @include screen ( small ) {
+			display: table-cell;
+			vertical-align: middle;
+		} */
 	}
 	.copyright {
 		text-indent: -9999px;
-		display: inline-block;
-		vertical-align: middle;
+		@include screen ( small ) {
+			display: inline-block;
+			vertical-align: middle;
+		}
 
 		margin: 0;
 	}
@@ -43,20 +53,27 @@ footer {
 		}
 	}
 	.copyright--toei {
-		height: 47px;
+		height: 27px;
 		background: url('../images/footer/copyright--toei.png') center center no-repeat;
+
+		display: none;
 
 		@include screen ( small ) {
 			margin-top: 15px;
 			width: 304px;
+			height: 47px;
 			height: auto;
+			display: inline-block;
 			/* background: url('../images/footer/text-copyright.png') center center no-repeat; */
 		}
 	}
 	img {
-		margin: 8px 5px 0;
+		margin: 0 5px;
 		display: inline-block;
 		vertical-align: middle;
+		@include screen ( small ) {
+			margin: 8px 5px 0;
+		}
 		&:first-child {
 			margin-top: 5px;
 		}

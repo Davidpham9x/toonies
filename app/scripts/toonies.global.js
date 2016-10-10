@@ -31,11 +31,16 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         init: function() { //initialization code goes here
             $.support.cors = true;
             this.initFormElements();
-            this.initModalIntro();
+            if ( $('.page--scan').length || $('.page--code').length ) {
+                toonies.Global.initModalIntro();
+            }
 
             if ( $('.page--scan').length ) {
                 toonies.Global.initCameraScan();
             }
+
+            /*$(document).on('qrcode_scanned', function(status, time, data) {
+            });*/
 
             // Call before ajax
             /*this.initModalScanWaiting();*/
@@ -51,7 +56,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             if ( $('#main-example-template').length ) {
                 var labels = ['ngày', 'giờ', 'phút', 'giây'],
-                    nextYear = '2016/10/10',
+                    nextYear = dateOpen,
                     template = _.template($('#main-example-template').html()),
                     currDate = '00:00:00:00:00',
                     nextDate = '00:00:00:00:00',
@@ -65,6 +70,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     labels.forEach(function(label, i) {
                         obj[label] = parsed[i]
                     });
+                    /*console.log(obj);*/
                     return obj;
                 }
 
@@ -76,6 +82,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                             diff.push(key);
                         }
                     });
+                    /*console.log(diff);*/
                     return diff;
                 }
 
@@ -91,8 +98,12 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                 // Starts the countdown
                 $example.countdown(nextYear, function(event) {
+                    /*console.log(event.offset.totalDays);*/
                     var newDate = event.strftime('%d:%H:%M:%S'),
                         data;
+                        /*console.log(event);*/
+                        /*console.log(newDate);*/
+                        /*console.log(nextDate);*/
                     if (newDate !== nextDate) {
                         currDate = nextDate;
                         nextDate = newDate;
@@ -356,6 +367,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             function take_snapshot() {
                 Webcam.snap(function(data_uri) {
                     $('#value-coin-card').val(data_uri);
+
+                    /*$.trigger( "qrcode_scanned", [ true, 1, 'url' ] );*/
                 });
             }
         },
