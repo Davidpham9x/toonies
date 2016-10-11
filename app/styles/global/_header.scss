@@ -43,13 +43,18 @@ header {
 		}
 		.main-menu {
 			margin: 0;
-			padding: 0;
+			padding: 0 0 0 64px;
 			list-style: none;
+			text-align: center;
 
 			z-index: 2;
-			top: -32px;
+			top: -25px;
 			right: 40px;
 			position: absolute;
+			@include screen ( ipad ) {
+				top: -32px;
+				padding: 0;
+			}
 
 			li {
 				margin: 0 -10px;
@@ -64,40 +69,69 @@ header {
 					display: block;
 					text-indent: -9999px;
 					&.menu-1 {
-						background: url('../images/header/menu-1.png') no-repeat;
-						width: 168px;
-						height: 64px;
+						background: url('../images/header/menu-1.png') center center no-repeat;
+						background-size: 100% 100%;
+						width: 131px;
+						height: 50px;
+						@include screen ( ipad ) {
+							width: 168px;
+							height: 64px;
+						}
 						&:hover, .active {
-							background: url('../images/header/menu-1--hover.png') no-repeat;
+							background: url('../images/header/menu-1--hover.png') center center no-repeat;
+							background-size: 100% 100%;
 						}
 					}
 					&.menu-2 {
-						background: url('../images/header/menu-2.png') no-repeat;
-						width: 133px;
-						height: 64px;
+						background: url('../images/header/menu-2.png') center center no-repeat;
+						background-size: 100% 100%;
+						width: 104px;
+						height: 50px;
+						@include screen ( ipad ) {
+							width: 133px;
+							height: 64px;
+						}
 						&:hover, .active {
-							background: url('../images/header/menu-2--hover.png') no-repeat;
+							background: url('../images/header/menu-2--hover.png') center center no-repeat;
+							background-size: 100% 100%;
 						}
 					}
 					&.menu-3 {
-						background: url('../images/header/menu-3.png') no-repeat;
-						width: 173px;
-						height: 64px;
+						background: url('../images/header/menu-3.png') center center no-repeat;
+						background-size: 100% 100%;
+						width: 135px;
+						height: 50px;
+						@include screen ( ipad ) {
+							width: 173px;
+							height: 64px;
+						}
 						&:hover, .active {
-							background: url('../images/header/menu-3--hover.png') no-repeat;
+							background: url('../images/header/menu-3--hover.png') center center no-repeat;
+							background-size: 100% 100%;
 						}
 					}
 					&.menu-4 {
-						background: url('../images/header/menu-4.png') no-repeat;
-						width: 150px;
-						height: 64px;
+						background: url('../images/header/menu-4.png') center center no-repeat;
+						background-size: 100% 100%;
+						width: 117px;
+						height: 50px;
+						@include screen ( ipad ) {
+							width: 150px;
+							height: 64px;
+						}
 					}
 					&.menu-5 {
-						background: url('../images/header/menu-5.png') no-repeat;
-						width: 160px;
-						height: 64px;
+						background: url('../images/header/menu-5.png') center center no-repeat;
+						background-size: 100% 100%;
+						width: 125px;
+						height: 50px;
+						@include screen ( ipad ) {
+							width: 160px;
+							height: 64px;
+						}
 						&:hover, .active {
-							background: url('../images/header/menu-5--hover.png') no-repeat;
+							background: url('../images/header/menu-5--hover.png') center center no-repeat;
+							background-size: 100% 100%;
 						}
 					}
 				}
@@ -109,9 +143,12 @@ header {
 			@include transform ( translateY(-50%) );
 
 			li {
-				padding: 0 10px;
+				padding: 0 5px;
 				display: inline-block;
 				vertical-align: middle;
+				@include screen ( ipad ) {
+					padding: 0 10px;
+				}
 			}
 			.hot-line {
 				display: block;
@@ -119,11 +156,12 @@ header {
 				background: url('../images/header/hot-line.png') no-repeat;
 				background-position: center center;
 				background-size: 100% 100%;
-				width: 100%;
 				height: 36px;
 				width: 195px;
 				&:hover {
 					background: url('../images/header/hot-line--hover.png') no-repeat;
+					background-position: center center;
+					background-size: 100% 100%;
 				}
 				@include screen ( ipad ) {
 					height: 48px;
@@ -136,11 +174,12 @@ header {
 				background: url('../images/header/login.png') no-repeat;
 				background-position: center center;
 				background-size: 100% 100%;
-				width: 100%;
-				height: 48px;
-				width: 154px;
+				height: 36px;
+				width: 116px;
 				&:hover {
 					background: url('../images/header/login--hover.png') no-repeat;
+					background-position: center center;
+					background-size: 100% 100%;
 				}
 				@include screen ( ipad ) {
 					height: 48px;
@@ -153,11 +192,12 @@ header {
 				background: url('../images/header/register.png') no-repeat;
 				background-position: center center;
 				background-size: 100% 100%;
-				width: 100%;
 				height: 36px;
-				width: 195px;
+				width: 98px;
 				&:hover {
 					background: url('../images/header/register--hover.png') no-repeat;
+					background-position: center center;
+					background-size: 100% 100%;
 				}
 				@include screen ( ipad ) {
 					height: 48px;
@@ -188,6 +228,48 @@ header {
 				}
 			}
 		}
+		.menu-mobile {
+			z-index: 5;
+			width: 100%;
+			padding: 60px 0;
+			background: url('../images/header/background-menu-mobile.png') center center no-repeat;
+			background-size: 100% 100%;
+			@include ab ( 0, 0, n, n );
+			display: none;
+
+			li {
+				padding: 10px 0;
+				text-align: center;
+
+				a {
+					display: block;
+					color: #4f2d23;
+					font-size: 15px;
+					text-transform: uppercase;
+				}
+				.hotline {
+					text-indent: -9999px;
+					width: 211px;
+					height: 56px;
+					margin: 0 auto;
+					background: url('../images/header/hot-line-mobile.png') no-repeat;
+				}
+				.login {
+					text-indent: -9999px;
+					width: 211px;
+					height: 56px;
+					margin: 0 auto;
+					background: url('../images/header/login-mobile.png') no-repeat;
+				}
+				.register {
+					text-indent: -9999px;
+					width: 211px;
+					height: 56px;
+					margin: 0 auto;
+					background: url('../images/header/register-mobile.png') no-repeat;
+				}
+			}
+		}
 	}
 	.inner {
 		background: url('../images/header/header--mobile.png') center center no-repeat;
@@ -196,7 +278,7 @@ header {
 		height: 48px;
 		margin: 0 auto;
 
-		z-index: 3;
+		z-index: 6;
 		position: relative;
 		@include screen ( small ) {
 			height: 96px;
@@ -206,10 +288,12 @@ header {
 			background-size: 100% 100%;
 			height: 59px;
 			max-width: 768px;
+			margin-top: 45px;
 		}
 		@include screen ( ipad ) {
 			height: 71px;
 			max-width: 917px;
+			margin-top: 0;
 		}
 	}
 
@@ -260,8 +344,11 @@ header {
 		margin-top: -3px;
 		@include ab( 50%, n, n, 25px );
 		@include transform (translateY(-50%));
-		&:hover {
+		/* &:hover {
 			background: url('../images/buttons/button-bugger--hover.png') no-repeat;
+		} */
+		&.active {
+			background: url('../images/buttons/button-bugger--active.png') no-repeat;
 		}
 	}
 }

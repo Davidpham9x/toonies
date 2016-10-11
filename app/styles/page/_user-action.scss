@@ -1,9 +1,10 @@
 .page--user-action {
-	background: url('../images/user_action/main-bg--mobile.jpg') center center no-repeat;
+	background: url('../images/user_action/main-background.jpg') center center no-repeat;
     background-size: 100% 100%;
+    height: auto;
     @include screen ( ipadPortrait ) {
-        background: url('../images/user_action/main-background.jpg') center center no-repeat;
-        background-size: 100% 100%;
+        min-height: 742px;
+        height: 100vh;
     }
 
     /** User Action Content **/
@@ -23,25 +24,45 @@
     		text-indent: -9999px;
     	}
     	.inner {
-    		padding: 0 55px;
-    		position: relative;
+            position: relative;
+    		padding: 0 30px 0 20px;
+            @include screen ( xs ) {
+                padding: 0 40px 0 30px;
+            }
+            @include screen ( medium ) {
+                padding: 0 55px;
+            }
 
     		.button__wrapper {
-                margin-top: 0;
+                margin-top: 15px;
+                @include screen ( medium ) {
+                    margin-top: 0;
+                }
 
     			.button {
-    				font-size: 18px;
+                    font-size: 15px;
 
-				    line-height: 77px;
-				    text-align: center;
-				    text-transform: uppercase;
+                    line-height: 50px;
+                    text-align: center;
+                    text-transform: uppercase;
 
-				    background: url('../images/buttons/button-yellow--register.png') no-repeat;
-				    width: 302px;
-				    height: 77px;
-				    /* &:hover {
-				    	background: url('../images/buttons/button-grey.png') no-repeat;
-				    } */
+                    background: url('../images/buttons/button-yellow.png') no-repeat;
+                    width: 202px;
+                    height: 46px;
+                    &:hover {
+                        background: url('../images/buttons/button-grey.png') no-repeat;
+                    }
+                    @include screen ( medium ) {
+                        font-size: 18px;
+
+                        line-height: 77px;
+                        text-align: center;
+                        text-transform: uppercase;
+
+                        background: url('../images/buttons/button-yellow--register.png') no-repeat;
+                        width: 302px;
+                        height: 77px;
+                    }
     			}
     		}
     	}
@@ -66,8 +87,10 @@
                             display: block;
                             color: #a45d2e;
                             line-height: 33px;
-                            text-align: right;
                             text-decoration: underline;
+                            @include screen ( medium ) {
+                                text-align: right;
+                            }
                         }
                     }
                 }
@@ -84,12 +107,21 @@
             }
         }
         .content {
-            margin: 15px -30px 0;
+            @include screen ( medium ) {
+                margin: 15px -30px 0;
+            }
 
             .account {
-                width: 50%;
-                float: left;
-                padding: 0 30px;
+                margin-top: 20px;
+                &:first-child {
+                    margin-top: 0;
+                }
+                @include screen ( medium ) {
+                    width: 50%;
+                    float: left;
+                    padding: 0 30px;
+                    margin-top: 0;
+                }
 
                 .title {
                     color: #4e301c;
@@ -101,6 +133,7 @@
                     color: #4e301c;
                     font-size: 12px;
                     font-family: $font-standard;
+                    line-height: 1.4em;
 
                     margin-bottom: 0;
 
@@ -116,9 +149,11 @@
             /* .account--toonies {} */
             .account--social {
                 .facebook-login {
-                    width: 278px;
+                    width: 100%;
+                    max-width: 278px;
+                    margin: 0 auto;
                     height: 45px;
-                    background: url('../images/buttons/button-facebook.png') no-repeat;
+                    background: url('../images/buttons/button-facebook.png') center center no-repeat;
 
                     display: block;
                     margin-top: 10px;
@@ -256,8 +291,11 @@
 
     /** Hot Line **/
     .hot-line {
-    	margin: 0;
+    	margin: 15px 0 0;
     	text-align: center;
+        @include screen ( medium ) {
+            margin: 0;
+        }
 
         z-index: 2;
         position: relative;
@@ -269,11 +307,13 @@
 	    	text-transform: uppercase;
 	    	line-height: 20px;
 
-    		margin-top: 4px;
     		padding-left: 25px;
     		display: inline-block;
     		vertical-align: middle;
     		background: url('../images/icons/star.png') 3px 0 no-repeat;
+            @include screen ( medium ) {
+                margin-top: 4px;
+            }
     	}
     	img {
     		margin-left: 5px;
