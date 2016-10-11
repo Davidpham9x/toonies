@@ -1,7 +1,7 @@
 .page--home {
 	overflow: hidden;
     height: 100vh;
-    min-height: 1251px;
+    min-height: 1490px;
 	background: url('../images/home/main-bg--mobile.jpg') top center no-repeat;
     background-size: 100% 100%;
     @include screen ( ipadPortrait ) {
@@ -12,8 +12,11 @@
 
     .home {
     	width: 100%;
-    	height: 100%;
+    	height: auto;
     	position: relative;
+    	@include screen ( medium ) {
+    		height: 100%;
+    	}
     }
 
 	/** CTA Content **/
@@ -74,7 +77,7 @@
 	}
 	.characters-left {
 		margin-left: -50%;
-		@include ab ( 5%, 50%, n, n );
+		@include ab ( 15%, 50%, n, n );
 		@include transform ( translateX(-50%) );
 		opacity: 0;
 		@include transition ( all .3s ease-in-out );
@@ -85,7 +88,7 @@
 	}
 	.characters-right {
 		margin-left: 50%;
-		@include ab ( 0, 50%, n, n );
+		@include ab ( 10%, 50%, n, n );
 		@include transform ( translateX(-50%) );
 		opacity: 0;
 		@include transition ( all .3s ease-in-out );
@@ -165,6 +168,9 @@
 		opacity: 0;
 		@include transform ( scale(0.5) );
 		@include transition ( all .5s ease-in-out );
+		@include screen ( large ) {
+			bottom: -5%
+		}
 		&.animate {
 			opacity: 1;
 			@include transform ( scale(1) );
@@ -178,15 +184,15 @@
 		opacity: 0;
 		max-width: 261px;
 		margin: 0 auto;
-		@include ab ( n, 50%, 20%, n );
-		@include transform ( translateX(-50%) );
+		/* @include ab ( n, 50%, 20%, n );
+		@include transform ( translateX(-50%) ); */
 		@include transition ( all .3s ease-in-out );
 		@include screen ( medium ) {
 			z-index: 2;
 			left: auto;
 			bottom: auto;
 			@include ab ( 50%, n, n, 0 );
-			@include transform ( translate(0,-50%) );
+			@include transform ( translateY(-50%) );
 		}
 		&.animate {
 			opacity: 1;

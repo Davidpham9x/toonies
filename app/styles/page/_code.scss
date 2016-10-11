@@ -1,20 +1,25 @@
 .page--code {
 	overflow: hidden;
-	background: url('../images/global/main-bg--mobile.jpg') center center no-repeat;
+	background: url('../images/coming_soon/main-bg--mobile.jpg') center center no-repeat;
     background-size: 100% 100%;
+    min-height: 842px;
+    height: 100vh;
     @include screen ( ipadPortrait ) {
-        background: url('../images/global/main-background.jpg') center center no-repeat;
+        background: url('../images/coming_soon/main-background.jpg') center center no-repeat;
         background-size: 100% 100%;
-        min-height: 770px;
-        height: 100vh;
+        min-height: 720px;
     }
 
 	/** Code Content **/
 	.code {
 		width: 100%;
 		max-width: 500px;
+		padding: 0 10px;
 		margin: 35px auto 0;
 		text-align: center;
+		@include screen ( medium ) {
+			padding: 0;
+		}
 
 		.heading {
 			background: url('../images/code/heading.png');

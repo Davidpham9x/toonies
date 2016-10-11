@@ -32,6 +32,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             $.support.cors = true;
             this.initFormElements();
             this.initShowMenuMobile();
+            this.initShowInfoUser();
+            this.initShowInfoUserMobile();
+            this.initHandleWebsiteResize();
 
             if ( $('.page--scan').length || $('.page--code').length ) {
                 toonies.Global.initModalIntro();
@@ -109,7 +112,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 // Starts the countdown
                 $example.countdown(nextYear, function(event) {
                     /*console.log(event.offset.totalDays);*/
-                    var newDate = event.strftime('%d:%H:%M:%S'),
+                    var newDate = event.strftime('%D:%H:%M:%S'),
                         data;
                         /*console.log(event);*/
                         /*console.log(newDate);*/
@@ -140,9 +143,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }
 
             if ( $('#register').length ) {
-                $("#txt-dob").datepicker({
+                $(".txt-dob").datepicker({
                     showOn: "both",
-                    buttonImage: "images/icons/calendar.png",
+                    buttonImage: "/themes/toonies/images/icons/calendar.png",
                     buttonImageOnly: true,
                     buttonText: "Select date"
                 });
@@ -228,7 +231,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
         initShowMenuMobile: function () {
             var aTags = $('.bugger-menu'),
-                menuContent = $('.menu-mobile');
+                menuContent = $('.menu-mobile').not('.menu-mobile--user-info');
+
                 aTags.off('click').on('click', function (e) {
                     e.preventDefault();
 
@@ -242,14 +246,117 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 });
         },
 
+        initShowInfoUser: function () {
+            var aTags = $('.user-info'),
+                userContent = $('.menu-user');
+            var timer = 0;
+            var inShow = false;
+
+                aTags.off('mouseenter').on('mouseenter', function (e) {
+                    e.preventDefault();
+
+                    /*if ( $(this).hasClass('active') ) {
+                        userContent.hide();
+                        $(this).removeClass('active');
+                    } else {
+                        $(this).addClass('active');
+                    }*/
+                    userContent.show();
+                });
+
+                aTags.off('mouseleave').on('mouseleave', function (e) {
+                    e.preventDefault();
+
+                    timer = setTimeout(function () {
+                        if ( !inShow ) {
+                            userContent.hide();
+                        }
+                    }, 100);
+
+                    /*if ( $(this).hasClass('active') ) {
+                        $(this).removeClass('active');
+                    } else {
+                        userContent.show();
+                        $(this).addClass('active');
+                    }*/
+                });
+
+                userContent.off('mouseenter').on('mouseenter', function (e) {
+                    inShow = true;
+                });
+
+                userContent.off('mouseleave').on('mouseleave', function (e) {
+                    inShow = false;
+                    userContent.hide();
+                    clearTimeout(timer);
+                });
+        },
+
+        initShowInfoUserMobile: function () {
+            var aTags = $('.account--mobile'),
+                userContent = $('.menu-mobile--user-info');
+
+                aTags.off('click').on('click', function (e) {
+                    e.preventDefault();
+
+                    if ( $(this).hasClass('active') ) {
+                        userContent.slideUp('normal');
+                        $(this).removeClass('active');
+                    } else {
+                        userContent.slideDown('normal');
+                        $(this).addClass('active');
+                    }
+                });
+        },
+
         initHandleWebsiteResize: function() {
             window.windowWidth = 0;
 
             $(window).resize(function() {
                 window.windowWidth = $(window).width();
 
-                if (window.windowWidth <= 640) {} else {}
+                if ( window.windowWidth < 767 ) {
+                    if ( !$('#slider-step-code').hasClass('slick-initialized') ) {
+                        toonies.Global.initSliderStepCode();
+                    }
+
+                    if ( !$('#slider-step-scan').hasClass('slick-initialized') ) {
+                        toonies.Global.initSliderStepScan();
+                    }
+                } else {
+                    if ( $('#slider-step-code').hasClass('slick-initialized') ) {
+                        $('#slider-step-code').slick('unslick');
+                    }
+
+                    if ( $('#slider-step-scan').hasClass('slick-initialized') ) {
+                        $('#slider-step-scan').slick('unslick');
+                    }
+                }
             }).trigger('resize');
+        },
+
+        initSliderStepCode: function () {
+            var slider = $('#slider-step-code');
+
+                slider.slick({
+                    dots: false,
+                    lazyLoad: 'ondemand',
+                    fade: true,
+                    prevArrow: '<button type="button" class="slick-prev"></button>',
+                    nextArrow: '<button type="button" class="slick-next"></button>'
+                });
+        },
+
+        initSliderStepScan: function () {
+            var slider = $('#slider-step-scan');
+
+                slider.slick({
+                    dots: false,
+                    lazyLoad: 'ondemand',
+                    fade: true,
+                    prevArrow: '<button type="button" class="slick-prev"></button>',
+                    nextArrow: '<button type="button" class="slick-next"></button>'
+                });
         },
 
         initModalIntro: function () {
@@ -260,6 +367,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     beforeOpen: function() {
                         /*console.log( this.st.el.attr('data-effect') );*/
                         this.st.mainClass = this.st.el.attr('data-effect');
+                    },
+                    open: function () {
+                        $(window).trigger('resize');
                     }
                 },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
@@ -279,7 +389,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 magnificPopup.close(); // Close popup that is currently opened
             });
 
-            if ( $('.page--code').length ) {
+            if ( $('.auto-load').length ) {
                 $('.open-modal--intro').trigger('click');
             }
         },

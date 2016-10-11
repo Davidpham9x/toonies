@@ -18,8 +18,14 @@
 
     .outer {
         width: 100%;
-        height: 682px;
-        background: url('../images/modal/background-modal--big.png') no-repeat;
+        background: url('../images/modal/background-modal--big-mobile.png') center center no-repeat;
+        background-size: 100% 100%;
+        height: 398px;
+        @include screen ( medium ) {
+            background: url('../images/modal/background-modal--big.png') center center no-repeat;
+            background-size: 100% 100%;
+            height: 682px;
+        }
 
         z-index: 3;
         padding-top: 25px;
@@ -52,45 +58,85 @@
         text-indent: -9999px;
     }
     .step-content {
-        margin: 0 -20px;
-        padding: 10px 50px 0;
+        padding: 25px 5px 0;
+        @include screen ( medium ) {
+            margin: 0 -10px;
+            padding: 10px 30px 0;
+        }
+        @include screen ( large ) {
+            margin: 0 -20px;
+            padding: 10px 50px 0;
+        }
 
-        .row {
-            .col {
+        .slick-arrow {
+            width: auto;
+            height: auto;
+            border: none;
+            outline: none;
+            text-align: center;
+            background: transparent;
+            width: 18px;
+            height: 33px;
+            z-index: 2;
+            top: 40%;
+            position: absolute;
+            @include transform ( translateY(-50%) );
+            &.slick-prev {
+                background: url('../images/icons/arrow-prev.png') no-repeat;
+                left: 15px;
+            }
+            &.slick-next {
+                background: url('../images/icons/arrow-next.png') no-repeat;
+                right: 15px;
+            }
+        }
+        /* .row {} */
+        .col {
+            width: 100%;
+            @include screen ( medium ) {
                 width: 50%;
                 float: left;
+                padding: 0 10px;
+            }
+            @include screen ( large ) {
                 padding: 0 20px;
+            }
+        }
+        .board {
+            width: 100%;
+            margin: 0 auto;
+            @include screen ( medium ) {
+                height: 196px;
+                max-width: 302px;
+                background: url('../images/modal/background-step.png') center center no-repeat;
+                background-size: 100% 100%;
+            }
 
-                .board {
-                    background: url('../images/modal/background-step.png') no-repeat;
+            .wrap-img {
+                width: 100%;
+                height: 100%;
+                @include screen ( medium ) {
+                    padding: 9px;
+                }
+
+                img {
                     width: 100%;
-                    height: 196px;
-                    margin: 0 auto;
-                    max-width: 302px;
-
-                    .wrap-img {
-                        width: 100%;
-                        height: 100%;
-                        padding: 9px;
-
-                        img {}
-                    }
                 }
-                .desc {
-                    color: #4e301c;
-                    font-size: 13px;
-                    font-family: $font-iCPL;
+            }
+        }
+        .desc {
+            color: #4e301c;
+            font-size: 13px;
+            font-family: $font-iCPL;
 
-                    text-align: center;
-                    line-height: normal;
+            text-align: center;
+            line-height: normal;
 
-                    margin: 10px 0;
+            margin: 10px 0;
 
-                    a {
-                        color: #4e301c;
-                        text-decoration: underline;
-                    }
-                }
+            a {
+                color: #4e301c;
+                text-decoration: underline;
             }
         }
     }
@@ -105,19 +151,35 @@
     }
     .button__wrapper {
         margin-top: 0;
-
         .button {
-            font-size: 16px;
+            font-size: 13px;
+            font-family: $font-iCPB;
 
-            line-height: 54px;
+            line-height: 46px;
             text-align: center;
             text-transform: uppercase;
 
-            background: url('../images/buttons/button-yellow--notification.png') no-repeat;
-            width: 275px;
-            height: 54px;
+            background: url('../images/buttons/button-yellow.png') no-repeat;
+            width: 202px;
+            height: 46px;
             &:hover {
-                background: url('../images/buttons/button-grey--notification.png') no-repeat;
+                background: url('../images/buttons/button-grey.png') no-repeat;
+            }
+        }
+        @include screen ( medium ) {
+            .button {
+                font-size: 16px;
+
+                line-height: 54px;
+                text-align: center;
+                text-transform: uppercase;
+
+                background: url('../images/buttons/button-yellow--notification.png') no-repeat;
+                width: 275px;
+                height: 54px;
+                &:hover {
+                    background: url('../images/buttons/button-grey--notification.png') no-repeat;
+                }
             }
         }
     }
@@ -126,24 +188,32 @@
 .modal--intro-scan {
     .heading {
         width: 100%;
-        height: 72px;
+        height: 51px;
         margin: 0 auto;
-        max-width: 280px;
-        background: url('../images/modal/heading-modal-scan.png') no-repeat;
-
+        max-width: 200px;
+        background: url('../images/modal/heading-modal-scan.png') center center no-repeat;
+        background-size: 100% 100%;
         text-indent: -9999px;
+        @include screen ( medium ) {
+            height: 72px;
+            max-width: 280px;
+        }
     }
 }
 
 .modal--intro-code {
     .heading {
         width: 100%;
-        height: 72px;
+        height: 51px;
         margin: 0 auto;
-        max-width: 280px;
-        background: url('../images/modal/heading-modal-code.png') no-repeat;
-
+        max-width: 200px;
+        background: url('../images/modal/heading-modal-code.png') center center no-repeat;
+        background-size: 100% 100%;
         text-indent: -9999px;
+        @include screen ( medium ) {
+            height: 72px;
+            max-width: 280px;
+        }
     }
 }
 
@@ -232,6 +302,10 @@
 
         z-index: 0;
         @include ab ( 30%, -27%, n, n );
+        display: none;
+        @include screen ( medium ) {
+            display: block;
+        }
     }
     &:after {
         content: '';
@@ -241,15 +315,26 @@
 
         z-index: 0;
         @include ab ( 10%, n, n, -28% );
+        display: none;
+        @include screen ( medium ) {
+            display: block;
+        }
     }
 
     .outer {
         width: 100%;
-        height: 609px;
-        background: url('../images/modal/background-modal--small.png') no-repeat;
+        background: url('../images/modal/background-modal--small-mobile.png') center center no-repeat;
+        background-size: 100% 100%;
+        height: 459px;
+        padding-top: 10px;
+        @include screen ( medium ) {
+            background: url('../images/modal/background-modal--small.png') center center no-repeat;
+            background-size: 100% 100%;
+            height: 609px;
+            padding-top: 115px;
+        }
 
         z-index: 3;
-        padding-top: 115px;
         position: relative;
     }
     .close {

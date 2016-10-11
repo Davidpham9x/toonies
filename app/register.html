@@ -2,6 +2,9 @@
 <include src="partials/head.html"></include>
 
 <main class="page page--user-action">
+    <!-- /* Header */ -->
+    <include src="partials/header.html"></include>
+
     <!-- /* User Action Content */ -->
     <section class="user-action">
 
@@ -84,11 +87,12 @@
                         </div>
                         <div class="form_field clearfix">
                             <label for="txt-address">
-                                <strong>Địa chỉ thường trú</strong>
+                                <strong>Địa chỉ thường trú</strong>(bắt buộc)
                             </label>
                             <div class="input-text">
                                 <input type="text" class="txt-address" id="txt-address" name="txt-address">
                             </div>
+                            <span class="error hidden">Vui lòng nhập địa chỉ thường trú</span>
                         </div>
                         <div class="form_field clearfix form_field--tnc">
                             <div class="radio-wrapper">
