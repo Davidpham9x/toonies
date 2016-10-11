@@ -41,6 +41,14 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 toonies.Global.initCameraScan();
             }
 
+            if ( $('.page--profile').length ) {
+                toonies.Global.initTab();
+                $('.upload .button').on('click', function(e){
+                    e.preventDefault()
+                    $('#img-avatar').trigger('click');
+                })
+            }
+
             /*$(document).on('qrcode_scanned', function(status, time, data) {
             });*/
 
@@ -487,6 +495,16 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     }
                 });
             }
+        },
+
+        initTab: function() {
+            $('.tablinks').on('click', function() {
+                var tabData = $(this).attr('data-tab');
+                $('.tabcontent.active').removeClass('active');
+                $('.tablinks.active').removeClass('active');
+                $(this).addClass('active');
+                $('#'+tabData).addClass('active');
+            });
         },
 
         resizeImg: function(img) {
