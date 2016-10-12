@@ -309,64 +309,64 @@
 				height: 13px;
 	    	}
 	    }
-	    .pager {
-	    	text-align: center;
-	    	margin-bottom: 30px;
-	    	li {
-	    		display: inline-block;
-	    		vertical-align: top;
-	    		margin:0;
-	    		@include opacity(0.8);
-		    	&.active {
-		    		@include opacity(1);
-		    	}
-	    	}
-	    	.number  {
-	    		@media (max-width: 767px){
-	    			display:none;
-	    		}
-		    	a{
-		    		background: url('../images/profile/num-bg.png') no-repeat;
-		    		background-size: 100% 100%;
-		    		width: 48px;
-		    		text-align: center;
-		    		padding-top: 10px;
-		    		font-size: 15px;
-		    		color: #fff;
-		    		height: 45px;
-		    		display: block;
-		    	}
-	    	}
-	    	.next,.prev {
-	    		padding-top: 12px;
-	    		margin:0 5px;
-	    		font-size: 0;
-	    		@media (max-width: 767px){
-	    			font-size:14px; 
-	    		}
-	    		a {
-	    			color: #4e301c;
-	    		}
-
-	    		.icon {
-		    		background: url('../images/profile/left.png') no-repeat;
-		    		background-size: 100% 100%;
-		    		width: 8px;
-		    		height: 18px;
-	    		}
-    			span {
-    				margin: 0 5px;
-    				display: inline-block;
-    				vertical-align: middle;
-    			}
-	    	}
-	    	.next .icon{
-	    		background: url('../images/profile/right.png') no-repeat;
-	    		background-size: 100% 100%;
-	    	}
-	    }
 
     }
+}
+.pager {
+	text-align: center;
+	margin-bottom: 30px;
+	li {
+		display: inline-block;
+		vertical-align: top;
+		margin:0;
+		@include opacity(0.8);
+    	&.active {
+    		@include opacity(1);
+    	}
+	}
+	.number  {
+		@media (max-width: 767px){
+			display:none;
+		}
+    	a{
+    		background: url('../images/profile/num-bg.png') no-repeat;
+    		background-size: 100% 100%;
+    		width: 48px;
+    		text-align: center;
+    		padding-top: 10px;
+    		font-size: 15px;
+    		color: #fff;
+    		height: 45px;
+    		display: block;
+    	}
+	}
+	.next,.prev {
+		padding-top: 12px;
+		margin:0 5px;
+		font-size: 0;
+		@media (max-width: 767px){
+			font-size:14px; 
+		}
+		a {
+			color: #4e301c;
+		}
+
+		.icon {
+    		background: url('../images/profile/left.png') no-repeat;
+    		background-size: 100% 100%;
+    		width: 8px;
+    		height: 18px;
+		}
+		span {
+			margin: 0 5px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+	.next .icon{
+		background: url('../images/profile/right.png') no-repeat;
+		background-size: 100% 100%;
+	}
 }
 @-webkit-keyframes fadeEffect {
     from {opacity: 0;}
