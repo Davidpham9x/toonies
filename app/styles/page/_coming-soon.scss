@@ -8,14 +8,14 @@
     @include screen ( ipadPortrait ) {
         background: url('../images/coming_soon/main-background.jpg') center center no-repeat;
         background-size: 100% 100%;
-        min-height: 720px;
+        min-height: 770px;
     }
     &:before {
     	content: '';
     	width: 100%;
     	height: 100%;
-    	z-index: 7;
-    	background: rgba( 0, 0, 0, 0.5 );
+    	/* z-index: 7; */
+    	background: rgba( 0, 0, 0, 0.9 );
     	@include ab ( 0, 0, n, n );
     }
 
@@ -58,15 +58,16 @@
 
 	/** Welcome Content **/
 	.welcome {
-		z-index: 8;
+		/* z-index: 8; */
 		width: 100%;
 		max-width: 817px;
 		padding: 0 10px;
-		margin-top: -3%;
+		/* margin-top: -3%; */
 		@include ab ( 50%, 50%, n, n );
 		@include transform ( translate(-50%,-50%) );
 		@include screen ( ipad ) {
 			padding: 0;
+			margin-top: 3%;
 		}
 		/* margin-top: -310px;
 		margin-left: -408px; */
@@ -74,9 +75,14 @@
 		.outer {
 			opacity: 0;
 			width: 100%;
-			height: 554px;
-			background: url('../images/coming_soon/background--welcome.png') center center no-repeat;
+			height: 480px;
+			background: url('../images/coming_soon/background--welcome-mobile.png') center center no-repeat;
 			background-size: 100% 100%;
+			@include responsive ( 640 ) {
+				height: 554px;
+				background: url('../images/coming_soon/background--welcome.png') center center no-repeat;
+				background-size: 100% 100%;
+			}
 			@include transform ( scale(0) );
 			@include transition ( all .3s linear );
 			&.animate {
@@ -87,12 +93,12 @@
 		.inner {
 			width: 100%;
 			height: 100%;
-			padding: 150px 55px 110px 90px;
+			padding: 100px 60px 90px 85px;
 			@include screen ( xs ) {
-				padding: 150px 65px 110px 135px;
+				padding: 100px 95px 90px 130px;
 			}
 			@include screen ( small ) {
-				padding: 150px 85px 110px 175px;
+				padding: 100px 130px 90px 175px;
 			}
 			@include responsive ( 640 ) {
 				padding: 150px 100px 110px 210px;
@@ -103,7 +109,7 @@
 		}
 		.heading {
 			display: block;
-			color: #ffd07d;
+			color: #4e301c;
 			text-align: center;
 			line-height: 1.4em;
 			font-size: 1em;
@@ -112,10 +118,11 @@
 			}
 		}
 		.text__warpper {
+			height: 200px;
 			color: #583620;
 			font-size: 16px;
+			font-family: $font-iCPL;
 			line-height: 1.4em;
-			height: 200px;
 			@include responsive ( 640 ) {
 				height: 190px;
 			}
@@ -136,7 +143,7 @@
 				}
 			}
 			span {
-				color: #ffd07d;
+				font-family: $font-iCPB;
 			}
 		}
 	}
