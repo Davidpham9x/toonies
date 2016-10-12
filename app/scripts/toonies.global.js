@@ -45,10 +45,17 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }
 
             if ( $('.page--profile').length ) {
-                toonies.Global.initTab();
-                $('.upload .button').on('click', function(e){
+                // toonies.Global.initTab();
+                $('.upload .button,.avatar').on('click', function(e){
                     e.preventDefault()
                     $('#img-avatar').trigger('click');
+                })
+                $('.edit').on('click', function(e){
+                    var searchInput = $(this).parent('.field').find('input');
+                    var strLength = searchInput.val().length * 2;
+
+                    searchInput.focus();
+                    searchInput[0].setSelectionRange(strLength, strLength);
                 })
             }
 

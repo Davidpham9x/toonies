@@ -1,58 +1,189 @@
 <!-- /* Head */ -->
 <include src="partials/head.html"></include>
 
-<main class="page page--home">
-    <!-- /* Header */ -->
-    <include src="partials/header.html"></include>
-
-    <!-- /* Home Content */ -->
-    <section class="home">
-    	<!-- /* Block Call To Action */ -->
-    	<div class="cta">
-    		<img src="images/home/tagline.png" class="tagline" alt="Truy nã 113 Hải Tặc">
-    		<div class="button__wrapper">
-    			<a href="" title="Quét thẻ toonies" class="button">Quét thẻ toonies</a>
-    		</div>
-    		<div class="button__wrapper">
-    			<a href="" title="Cùng xem quà tặng" class="button">Cùng xem quà tặng</a>
-    		</div>
-    	</div>
-
-    	<!-- /* Block TVC Introduction */ -->
-    	<div class="tvc tvc-introduction">
-    		<h3>Giới thiệu cuộc đua</h3>
-    		<div class="video">
-    			<div class="inner">
-	    			<div class='embed-container'>
-	    				<iframe src='http://www.youtube.com/embed/YJ-JXyKM9nQ' frameborder='0' allowfullscreen></iframe>
-	    			</div>
-    			</div>
-    		</div>
-    	</div>
-
-    	<!-- /* All Block Characters */ -->
-    	<img src="images/home/group-characters--left.png" alt="One Piece - Zoro & Sanji" class="characters characters-left">
-    	<img src="images/home/group-characters--right.png" alt="One Piece - Luffy & Nami & Usop" class="characters characters-right">
+<main class="page page--profile">
+    <!-- /* User Action Content */ -->
+    <section class="content-profile row">
+        <div class="side-bar col">
+            <h3>Nguyễn vũ hải hà</h3>
+            <div class="mark"><span class="icon"></span><span>thợ săn đồng</span> </div>
+            <ul class="tab">
+                <li>
+                    tiền thưởng hiện có<br />
+                    <span>12,000,00</span>
+                </li>
+                <li><a href="#" class="tablinks " data-tab='private-info'>thông tin cá nhân</a></li>
+                <li><a href="#" class="tablinks active" data-tab='update-act'>CẬP NHẬT HOẠT ĐỘNG</a></li>
+                <li><a href="#" class="tablinks" data-tab='income'>THẺ ĐÃ THU THẬP</a></li>
+            </ul>
+        </div>
+        <!-- <div id="private-info" class="tabcontent col ">
+            <div class="row">
+                <div class="avatar col">
+                    <img src="images/profile/avatar.png" />
+                </div>
+                <div class="upload col">
+                    <h3>ẢNH ĐẠI DIỆN CỦA BẠN</h3>
+                    <p>(Thay đổi ảnh đại diện bằng cách đưa ảnh vào ô dưới đây nhé)</p>
+                    <form action="" class="form">
+                        <div class="input-file">
+                            <input type="file" class="img-avatar" id="img-avatar" name="img-avatar">
+                            <span class="text">Tải ảnh lên từ máy tính của bạn...</span>
+                        </div>
+                    </form>
+                    <div class="button__wrapper">
+                        <a href="" title="Tải  ảnh lên ngay" class="button">Tải  ảnh lên ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-info">
+                <h3>THÔNG TIN CÁ NHÂN CỦA BẠN</h3>
+                <div class="field">
+                    <div class="label">Ngày sinh nhật</div>
+                    <div class="content">
+                        <input type="text" name="" value="04 tháng 10 năm 1999">
+                    </div>
+                    <div class="edit"><span class="icon"></span></div>
+                </div>
+                <div class="field">
+                    <div class="label">Họ và tên</div>
+                    <div class="content">
+                        <input type="text" name="" value="VŨ HẢI HÀ">
+                    </div>
+                    <div class="edit"><span class="icon"></span></div>
+                </div>
+                <div class="field">
+                    <div class="label">Mật khẩu</div>
+                    <div class="content">
+                        <input type="password" name="" value="VŨ HẢI HÀ">
+                    </div>
+                    <div class="edit"><span class="icon"></span></div>
+                </div>
+                <div class="field">
+                    <div class="label">Địa chỉ thường trú</div>
+                    <div class="content">
+                        <input type="text" name="" value="87 NGUYỄN HUỆ">
+                    </div>
+                    <div class="edit"><span class="icon"></span></div>
+                </div>
+                <div class="field">
+                    <div class="label">Số điện thoại</div>
+                    <div class="content">
+                        <input type="text" name="" value="52123456">
+                    </div>
+                    <div class="edit"><span class="icon"></span></div>
+                </div>
+                <div class="field">
+                    <div class="label">Địa chỉ email</div>
+                    <div class="content">
+                        <input type="text" name="" value="nguyenminhtam@gmail.com">
+                    </div>
+                    <div class="edit"><span class="icon"></span></div>
+                </div>
+                <div class="button__wrapper">
+                    <a href="" title="Nhận điểm thưởng" class="button">cập nhật ngay</a>
+                </div>
+            </div>
+        </div> -->
+        <div id="update-act" class="tabcontent col active">
+            <div class="block-top">
+                <div class="select-wrapper show-for-small">
+                    <span>CẬP NHẬT HOẠT ĐỘNG</span>
+                    <select>
+                        <option>THÔNG TIN CÁ NHÂN</option>
+                        <option>CẬP NHẬT HOẠT ĐỘNG</option>
+                        <option>THẺ ĐÃ THU THẬP</option>
+                    </select>
+                </div>
+            </div>
+            <div class="box-act">
+                <h3>HOẠT ĐỘNG CỦA BẠN</h3>
+                <div class="field">
+                    <div class="time">22/08/2016 | 1:30PM </div>
+                    <div class="note">Quét thẻ Mokey D. Luffy - Đạt được 9,000,000 TC</div>
+                </div>
+                <div class="field">
+                    <div class="time">22/08/2016 | 1:30PM </div>
+                    <div class="note">Quét thẻ Mokey D. Luffy - Đạt được 9,000,000 TC</div>
+                </div>
+                <div class="field">
+                    <div class="time">22/08/2016 | 1:30PM </div>
+                    <div class="note">Quét thẻ Mokey D. Luffy - Đạt được 9,000,000 TC</div>
+                </div>
+                <div class="field">
+                    <div class="time">22/08/2016 | 1:30PM </div>
+                    <div class="note">Quét thẻ Mokey D. Luffy - Đạt được 9,000,000 TC</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="income" class="tabcontent col">
+            <div class="row wrap-income">
+                <div class="col item active">
+                    <div class="wrap-item">
+                        <img src="images/profile/img-medal.png">
+                    </div>
+                    <div class="price-tag"> 4,700</div>
+                </div>
+                <div class="col item">
+                    <div class="wrap-item">
+                        <img src="images/profile/img-medal.png">
+                    </div>
+                    <div class="price-tag"> 4,700</div>
+                </div>
+                <div class="col item">
+                    <div class="wrap-item">
+                        <img src="images/profile/img-medal.png">
+                    </div>
+                    <div class="price-tag"> 4,700</div>
+                </div>
+                <div class="col item">
+                    <div class="wrap-item">
+                        <img src="images/profile/img-medal.png">
+                    </div>
+                    <div class="price-tag"> 4,700</div>
+                </div>
+                <div class="col item">
+                    <div class="wrap-item">
+                        <img src="images/profile/img-medal.png">
+                    </div>
+                    <div class="price-tag"> 4,700</div>
+                </div>
+                <div class="col item">
+                    <div class="wrap-item">
+                        <img src="images/profile/img-medal.png">
+                    </div>
+                    <div class="price-tag"> 4,700</div>
+                </div>
+                <div class="col item">
+                    <div class="wrap-item">
+                        <img src="images/profile/img-medal.png">
+                    </div>
+                    <div class="price-tag"> 4,700</div>
+                </div>
+                <div class="col item">
+                    <div class="wrap-item">
+                        <img src="images/profile/img-medal.png">
+                    </div>
+                    <div class="price-tag"> 4,700</div>
+                </div>
+                <div class="col item">
+                    <div class="wrap-item">
+                        <img src="images/profile/img-medal.png">
+                    </div>
+                    <div class="price-tag"> 4,700</div>
+                </div>
+            </div>
+        </div> -->
+            
+        <ul class="pager">
+            <li class="prev"><a href="#"><span class="icon"></span><span>Trở lại</span></a></li>
+            <li class="number"><a href="#">1</a></li>
+            <li class="number active"><a href="#">2</a></li>
+            <li class="number"><a href="#">3</a></li>
+            <li class="number"><a href="#">4</a></li>
+            <li class="next active"><a href="#"><span>xem tiếp</span><span class="icon"></span></a></li>
+        </ul>
     </section>
-
-    <!-- /* All Images */ -->
-    <include src="partials/images.html"></include>
-
-    <!-- /* All Group Coins */ -->
-    <img src="images/home/group-coins-1.png" alt="" class="group-coins group-coins-1">
-    <img src="images/home/group-coins-2.png" alt="" class="group-coins group-coins-2">
-    <img src="images/home/group-coins-3.png" alt="" class="group-coins group-coins-3">
-    <img src="images/home/group-coins-4.png" alt="" class="group-coins group-coins-4">
-    <img src="images/home/group-coins-5.png" alt="" class="group-coins group-coins-5">
-    <img src="images/home/group-coins-6.png" alt="" class="group-coins group-coins-6">
-    <!-- <img src="images/home/group-coins-7.png" alt="" class="group-coins group-coins-7"> -->
-
-	<!-- /* Toonies Snack */ -->
-	<img src="images/home/toonies-snack.png" class="toonies-snack" alt="Bánh Snack Orion - Toonies">
-
-	<!-- /* Gold Chest */ -->
-	<img src="images/home/gold-chest.png" class="gold-chest" alt="Rương vàng">
-
     <!-- /* Footer */ -->
     <include src="partials/footer.html"></include>
 </main>

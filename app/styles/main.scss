@@ -6,7 +6,7 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
-
+ 
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -116,6 +116,7 @@ textarea {
 @import "page/scan.scss";
 @import "page/code.scss";
 @import "page/profile.scss";
+@import "page/about.scss";
 
 // all code for specific component goes here, create as many file as you like
 // For responsive project, please uncomment the following line and create that file to work with
