@@ -202,3 +202,9 @@ $breakpoints: ( xs: 340px, small: 480px, medium: 767px, ipadPortrait: 768px, ipa
         @content;
     }
 }
+
+@mixin responsive($min-width) {
+    @media screen and (min-width: #{$min-width}px) {
+        @content;
+    }
+}

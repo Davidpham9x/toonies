@@ -996,6 +996,12 @@ $(document).ready(function() {
             }, 600);
         }
 
+        if ( $('.page--coming-soon').length ) {
+            setTimeout(function () {
+                $('.welcome').find('.outer').addClass('animate');
+            }, 600);
+        }
+
         toonies.Global.init();
     })
     /*.fail( function() {

@@ -4,10 +4,19 @@
     background-size: 100% 100%;
     min-height: 842px;
     height: 100vh;
+    position: relative;
     @include screen ( ipadPortrait ) {
         background: url('../images/coming_soon/main-background.jpg') center center no-repeat;
         background-size: 100% 100%;
         min-height: 720px;
+    }
+    &:before {
+    	content: '';
+    	width: 100%;
+    	height: 100%;
+    	z-index: 7;
+    	background: rgba( 0, 0, 0, 0.5 );
+    	@include ab ( 0, 0, n, n );
     }
 
     /** Coming Soon Content **/
@@ -43,6 +52,91 @@
 
 			span {
 				color: #d98248;
+			}
+		}
+	}
+
+	/** Welcome Content **/
+	.welcome {
+		z-index: 8;
+		width: 100%;
+		max-width: 817px;
+		padding: 0 10px;
+		margin-top: -3%;
+		@include ab ( 50%, 50%, n, n );
+		@include transform ( translate(-50%,-50%) );
+		@include screen ( ipad ) {
+			padding: 0;
+		}
+		/* margin-top: -310px;
+		margin-left: -408px; */
+
+		.outer {
+			opacity: 0;
+			width: 100%;
+			height: 554px;
+			background: url('../images/coming_soon/background--welcome.png') center center no-repeat;
+			background-size: 100% 100%;
+			@include transform ( scale(0) );
+			@include transition ( all .3s linear );
+			&.animate {
+				opacity: 1;
+				@include transform ( scale(1) );
+			}
+		}
+		.inner {
+			width: 100%;
+			height: 100%;
+			padding: 150px 55px 110px 90px;
+			@include screen ( xs ) {
+				padding: 150px 65px 110px 135px;
+			}
+			@include screen ( small ) {
+				padding: 150px 85px 110px 175px;
+			}
+			@include responsive ( 640 ) {
+				padding: 150px 100px 110px 210px;
+			}
+			@include screen ( medium ) {
+				padding: 150px 115px 110px 230px;
+			}
+		}
+		.heading {
+			display: block;
+			color: #ffd07d;
+			text-align: center;
+			line-height: 1.4em;
+			font-size: 1em;
+			@include responsive ( 640 ) {
+				font-size: 1.5em;
+			}
+		}
+		.text__warpper {
+			color: #583620;
+			font-size: 16px;
+			line-height: 1.4em;
+			height: 200px;
+			@include responsive ( 640 ) {
+				height: 190px;
+			}
+			@include screen ( medium ) {
+				height: 210px;
+			}
+
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+
+				li {
+					margin-top: 1em;
+					&:first-child {
+						margin-top: 0;
+					}
+				}
+			}
+			span {
+				color: #ffd07d;
 			}
 		}
 	}
@@ -163,7 +257,7 @@
 	    transform-origin: 50% 0;
 	}
 
-	.main-example .count.next {}
+	/* .main-example .count.next {} */
 
 	.main-example .label {
 	    font-size: normal;
@@ -174,9 +268,7 @@
 	    width: 100%;
 	}
 
-
 	/* Animation start */
-
 	.main-example .count.curr.top {
 	    -webkit-transform: rotateX(0deg);
 	    -moz-transform: rotateX(0deg);
@@ -195,9 +287,7 @@
 	    z-index: 2;
 	}
 
-
 	/* Animation end */
-
 	.main-example .flip .count.curr.top {
 	    -webkit-transition: all 250ms ease-in-out;
 	    -moz-transition: all 250ms ease-in-out;
