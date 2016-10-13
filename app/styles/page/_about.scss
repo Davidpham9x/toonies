@@ -73,54 +73,7 @@
         width: 800px;
         float: right;
     }
-    .coin {
-        position: absolute;
-    }
-    .coin1 {
-        left: -10%;
-        bottom: 25px;
-        z-index: 10;
-    }
-    .coin2 {
-        right: -30%;
-        top: 50%;
-    }
-    .coin3 {
-        right: -10%;
-        top: 45%;
-    }
-    .coin4 {
-        left: -15%;
-        top: 30%;
-    }
-    .coin5 {
-        right: -15%;
-        top: -200px;
-    }
-    .coin6 {
-        left: 0;
-        top: 10%;
-    }
-    .coin7 {
-        left: -20%;
-        top: 60%;
-    }
-    .coin8 {
-        right: -30%;
-        top: 50%;
-    }
-    .coin9 {
-        right: -10%;
-        top: 10%;
-    }
-    .coin10 {
-        left: -10%;
-        top: -120px;
-    }
-    .coin11 {
-        left: 0%;
-        bottom: 30%;
-    }
+    
     .gold-coin {
         position: absolute;
         bottom: 45px;
@@ -187,4 +140,52 @@
         top: 0;
         left: 0;
     }
+}
+.coin {
+    position: absolute;
+}
+.coin1 {
+    left: -10%;
+    bottom: 25px;
+    z-index: 10;
+}
+.coin2 {
+    right: -30%;
+    top: 50%;
+}
+.coin3 {
+    right: -10%;
+    top: 45%;
+}
+.coin4 {
+    left: -15%;
+    top: 30%;
+}
+.coin5 {
+    right: -15%;
+    top: -200px;
+}
+.coin6 {
+    left: 0;
+    top: 10%;
+}
+.coin7 {
+    left: -20%;
+    top: 60%;
+}
+.coin8 {
+    right: -30%;
+    top: 50%;
+}
+.coin9 {
+    right: -10%;
+    top: 10%;
+}
+.coin10 {
+    left: -10%;
+    top: -120px;
+}
+.coin11 {
+    left: 0%;
+    bottom: 30%;
 }
