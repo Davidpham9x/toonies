@@ -3,11 +3,14 @@
 	background: url('../images/coming_soon/main-bg--mobile.jpg') center center no-repeat;
     background-size: 100% 100%;
     min-height: 842px;
-    height: 100vh;
+    height: 100%;
     @include screen ( ipadPortrait ) {
         background: url('../images/coming_soon/main-background.jpg') center center no-repeat;
         background-size: 100% 100%;
         min-height: 720px;
+    }
+    @include screen ( hd ) {
+        height: 100vh;
     }
 
 	/** Scan Content **/
