@@ -11,6 +11,7 @@
         position: relative;
         @media ( max-width: 767px ) {
             text-align:center; 
+            padding: 30px 10px;
         }
         h2 {
             max-width: 100%;
@@ -23,6 +24,7 @@
                 background: url('../images/about/tit-how.png') center no-repeat;
                 width: 322px;
                 min-height: 34px;
+                background-size: 100%;
                 
             }
             .col  {
@@ -41,6 +43,7 @@
                 background: url('../images/about/tit-bigprize.png') center no-repeat;
                 width: 321px;
                 min-height: 37px;
+                background-size: 100%;
             }
             .wrap-content {
                  min-height: 540px; 
@@ -51,6 +54,7 @@
             	background: url('../images/about/tit-rule.png') center no-repeat;
                 width: 290x;
                 min-height: 42px;
+                background-size: 100%;
             }
             .wrap-content {
                 color: #000;
@@ -66,35 +70,40 @@
     .wrap-content {
         background: url(../images/about/bg.png) no-repeat;
         background-size: 100% 100%;
-        padding: 50px 10% 45px; 
+        padding: 195px 5% 45px;
         max-width: 100%; 
         position: relative;
         z-index: 5;
         width: 800px;
         float: right;
+        @include screen(medium){
+            padding: 50px 10% 45px; 
+        }
     }
     
-    .gold-coin {
-        position: absolute;
-        bottom: 45px;
-        right: -150px;
-        z-index: 10;
-    }
-    .big-prize {
-        position: absolute;
-        bottom: -20px;
-        right: 50px;
-    }
     .tab-about{
         position: absolute;
-        top: 20%;
         left: 0;
+        top: 65px;
+        text-align: center;
+        width: 100%;
+        @include screen(medium) { 
+            width:auto; 
+            top: 20%;
+        }
         ul {
             position: relative;
             z-index: 10;
+            @media (max-width: 767px){
+                width:100%;
+                text-align: center;
+            }
         }
         li {
             list-style: none;
+            @media (max-width: 767px){
+                display:inline-block;
+            }
             a {
                 font-size: 0;
                 width: 190px;
@@ -129,6 +138,17 @@
             }
         }
     }
+    .gold-coin {
+        position: absolute;
+        bottom: 45px;
+        right: -150px;
+        z-index: 10;
+    }
+    .big-prize {
+        position: absolute;
+        bottom: -20px;
+        right: 50px;
+    }
     .product{
         position: absolute;
         left: -50px;
@@ -139,6 +159,10 @@
         position: absolute;
         top: 0;
         left: 0;
+        display: none;
+        @include screen(medium){
+            display: block;
+        }
     }
 }
 .coin {

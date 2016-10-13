@@ -66,11 +66,30 @@
                 line-height: 18px;
             }
         }
+        .first {
+            .avatar:after {
+                background:url(../images/icons/medal-first.png) no-repeat;
+            }
+        }
+        .second {
+            .avatar:after {
+                background:url(../images/icons/medal-second.png) no-repeat;
+                width: 60px;
+                height: 57px;
+            }
+        }
+        .third {
+            .avatar:after {
+                background:url(../images/icons/medal-third.png) no-repeat;
+                width: 57px;
+                height: 54px;
+            }
+        }
         .avatar {
             background: url(../images/global/avatar.png) center top no-repeat;
             background-size: 100%;
             max-width: 170px;
-            margin: 0 0 10px 5%;
+            margin: 0 0 15px 5%;
             position: relative;
             min-height: 170px;
             img {
@@ -79,6 +98,14 @@
                 max-width: 84%;
                 position: absolute;
                 @include border-radius(50%);
+            }
+            &:after {
+                content:'';
+                position: absolute;
+                width: 62px;
+                height: 58px;
+                left: 34%;
+                top: 73%;
             }
         }
     }
