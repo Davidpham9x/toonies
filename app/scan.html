@@ -14,19 +14,43 @@
         		<span>camera <br>Khu vực quét <br>QR Code</span>
         	</div>
         </div>
+
         <div class="scan_content scan_content--camera hidden">
             <div class="inner">
-                <div id="camera" style="width:280px; height:280px;"></div>
+                <video id="video" autoplay style="width:280px; height:280px;"></video>
+                <!-- <div id="camera" style="width:280px; height:280px;"></div> -->
             </div>
         </div>
-        <div id="count-time" class="count-time hidden">5</div>
-        <div class="button__wrapper">
-			<a href="" title="Quét thẻ ngay!" class="button" id="open-scan">Quét thẻ ngay!</a>
-		</div>
-        <div class="button__wrapper button__wrapper--submit hidden">
-            <a href="" title="Gửi ảnh" class="button submit" id="">Gửi ảnh</a>
+
+        <div class="select hidden">
+            <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
         </div>
+
+        <div class="select hidden">
+            <label for="audioOutput">Audio output destination: </label><select id="audioOutput"></select>
+        </div>
+
+        <div class="select select-camera hidden">
+            <label for="videoSource">Video source: </label><select id="videoSource"></select>
+        </div>
+
+        <div id="count-time" class="count-time hidden">5</div>
+
+        <input type="file" accept="image/*" id="capture" capture="camera" class="hidden">
+        <div class="button__wrapper">
+            <a href="" title="Quét thẻ ngay!" class="button" id="open-scan">Quét thẻ ngay!</a>
+        </div>
+
+        <canvas id="canvas" class="hidden"></canvas>
+
+        <!-- <img id="frame"> -->
+        <!-- <img id="dummy" alt="The screen capture will appear in this box." src="images/dummy/dummy_scan.png" class="hidden"> -->
+        <!-- <div class="button__wrapper button__wrapper--submit hidden">
+            <a href="" title="Gửi ảnh" class="button submit" id="">Gửi ảnh</a>
+        </div> -->
+
         <input type="hidden" id="value-coin-card" class="value-coin-card">
+
 		<p class="desc">Xem <a href="#modal--intro-scan" title="hướng dẫn quét điểm thưởng" data-effect="mfp-move-from-top" class="open-modal--intro">hướng dẫn quét điểm thưởng</a> nếu bạn chưa rõ về cách quét điểm truy nã. ngoài ra, nếu gặp sự cố khi quét, bạn có thể nhập mã code trực tiếp <a href="" title="tại đây">tại đây</a>.</p>
     </section>
 
@@ -40,7 +64,7 @@
     <include src="partials/modal.html"></include>
 </main>
 
-<!-- /* Template Count Down */ -->
+<!-- /* URL Redirect */ -->
 <script type="text/javascript">
     urlRedirect = '/code.html';
 </script>

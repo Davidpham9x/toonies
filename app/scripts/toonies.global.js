@@ -27,6 +27,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 (function($) {
     toonies.Global = {
         modalSubmitVideo: null,
+        countScan: 0,
 
         init: function() { //initialization code goes here
             $.support.cors = true;
@@ -59,8 +60,13 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 })
             }
 
-            /*$(document).on('qrcode_scanned', function(status, time, data) {
-            });*/
+            /*$(document).on('scan_result', scanResultHandler);
+            // newMessage event handler
+            function scanResultHandler(e) {
+                alert(e.resultScan);
+                alert(e.countScan);
+                alert(e.dataScan);
+            }*/
 
             // Call before ajax
             /*this.initModalScanWaiting();*/
@@ -472,19 +478,121 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 btnScan.off('click').on('click', function(e) {
                     e.preventDefault();
 
-                    $('.scan_content').addClass('hidden');
-                    contentScan.find('.button__wrapper').addClass('hidden');
-                    $('.scan_content--camera').removeClass('hidden');
-                    $('#count-time').removeClass('hidden');
+                    if (isMobile.any()) { // It is mobile
+                        // Open Camera
+                        $('#capture').trigger('click');
+                    } else {
+                        $('.scan_content').addClass('hidden');
+                        $('.scan_content--camera').removeClass('hidden');
+                        $('#count-time').removeClass('hidden');
+                        contentScan.find('.button__wrapper').addClass('hidden');
 
-                    Webcam.set({
+                        // Init Camera
+                        start();
+                        toonies.Global.initCameraAction();
+                        /*$('.select-camera').removeClass('hidden');*/
+                    }
+
+                    /*Webcam.set({
                         fps: 45,
                         unfreeze_snap: false
                     });
 
-                    Webcam.attach('#camera');
+                    Webcam.attach('#camera');*/
+                });
 
-                    toonies.Global.initCameraAction();
+                function handleImage( file ) {
+                    var canvas = document.getElementById('canvas');
+                    var context = canvas.getContext('2d');
+                    var resultScan = true,
+                        dataScan = '';
+                    var reader = new FileReader();
+                    reader.onload = function(event) {
+                        var img = new Image();
+                        img.onload = function() {
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            context.drawImage(img, 0, 0);
+                            var data = canvas.toDataURL("image/jpeg", 1.0);
+                            $(img).addClass('hidden').appendTo(document.body);
+                            toonies.Global.countScan = toonies.Global.countScan + 1;
+                            var qr = new QCodeDecoder();
+                            qr.decodeFromImage(URL.createObjectURL(file), function (err, result) {
+                                if (err) {
+                                    /*alert(err);*/
+                                    resultScan = false;
+                                } else {
+                                    /*alert(result);*/
+                                    dataScan = result;
+                                }
+
+                                /*alert(resultScan);
+                                alert(toonies.Global.countScan);
+                                alert(dataScan);*/
+
+                                $.event.trigger({
+                                    type: "scan_result",
+                                    resultScan: resultScan,
+                                    countScan: toonies.Global.countScan,
+                                    dataScan: dataScan,
+                                    time: new Date()
+                                });
+
+                                /*$(document).trigger( "scan_result", [ resultScan, toonies.Global.countScan, dataScan ] );*/
+                            });
+                        }
+                        img.src = event.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                }
+
+                var camera = document.getElementById('capture');
+                camera.addEventListener('change', function(e) {
+                    if (typeof this.files[0] == 'undefined') {
+                        return;
+                    }
+
+                    $('.scan_content').addClass('hidden');
+                    $('.scan_content--camera').removeClass('hidden');
+                    $('#count-time').removeClass('hidden');
+                    contentScan.find('.button__wrapper').addClass('hidden');
+
+                    // get the file name, possibly with path (depends on browser)
+                    var filename = this.files[0].type;
+                    var file = e.target.files[0];
+
+                    // Use a regular expression to trim everything before final dot
+                    var extension = filename.split('/').pop().toLowerCase();
+
+                    if ($.inArray(extension, ['png', 'jpg', 'jpeg']) == -1) {
+                        $.magnificPopup.close();
+                        setTimeout(function() {
+                            toonies.Global.initShowModalAlert('Vui lòng chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
+                        });
+                        return;
+                    }
+
+                    if ((this.files[0].size / 1024 / 1024) >= 6) {
+                        $.magnificPopup.close();
+                        setTimeout(function() {
+                            toonies.Global.initShowModalAlert('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb');
+                        });
+                        return;
+                    }
+                    /*var img = new Image();
+                    img.onload = function () {
+                        var qr = new QCodeDecoder();
+                        qr.decodeFromImage(URL.createObjectURL(file), function (err, result) {
+                            if (err) {
+                                alert(err);
+                                return false;
+                            };
+
+                            alert(result);
+                        });
+                    }
+                    img.src = URL.createObjectURL(file);*/
+                    handleImage( file );
                 });
         },
 
@@ -493,11 +601,12 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 timer = 0;
 
             setTimeout(function () {
-                // freeze camera so user can preview pic
-                Webcam.freeze();
+                /*// freeze camera so user can preview pic
+                Webcam.freeze();*/
 
-                take_snapshot();
-                $('.button__wrapper--submit').removeClass('hidden');
+                toonies.Global.take_snapshot();
+                clearInterval( timer );
+                /*$('.button__wrapper--submit').removeClass('hidden');*/
             }, 5000);
 
             timer = setInterval(function () {
@@ -511,26 +620,61 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 $('#count-time').text( countTime );
             }, 1000);
 
-            function take_snapshot() {
-                Webcam.snap(function(data_uri) {
-                    $('#value-coin-card').val(data_uri);
+        },
 
-                    /*$.trigger( "qrcode_scanned", [ true, 1, 'url' ] );*/
+        take_snapshot: function() {
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+                canvas.width = 280;
+                canvas.height = 280;
+                context.drawImage(video, 0, 0, 280, 280);
+
+            var data = canvas.toDataURL("image/jpeg", 1.0);
+            var resultScan = true,
+                dataScan = '';
+            var img = new Image();
+            img.onload = function () {
+                $(img).addClass('hidden').appendTo(document.body);
+                toonies.Global.countScan = toonies.Global.countScan + 1;
+                var qr = new QCodeDecoder();
+                qr.decodeFromImage(img, function (err, result) {
+                    if (err) {
+                        /*alert(err);*/
+                        resultScan = false;
+                    } else {
+                        /*alert(result);*/
+                        dataScan = result;
+                    }
+
+                    /*console.log(resultScan);
+                    console.log(toonies.Global.countScan);
+                    console.log(dataScan);*/
+
+                    $.event.trigger({
+                        type: "scan_result",
+                        resultScan: resultScan,
+                        countScan: toonies.Global.countScan,
+                        dataScan: dataScan,
+                        time: new Date()
+                    });
+
+                    /*$(document).trigger( "scan_result", [ resultScan, toonies.Global.countScan, dataScan ] );*/
                 });
             }
+            img.src = data;
         },
 
         initResetCamera: function () {
             var contentScan = $('.scan');
-            // freeze camera so user can preview pic
-            Webcam.reset();
+            /*// freeze camera so user can preview pic
+            Webcam.reset();*/
 
             $('.scan_content').eq(0).removeClass('hidden');
             $('.scan_content--camera').removeClass('result');
             $('.scan_content--camera').addClass('hidden');
 
             contentScan.find('.button__wrapper').eq(0).removeClass('hidden');
-            $('.button__wrapper--submit').addClass('hidden');
+            /*$('.button__wrapper--submit').addClass('hidden');*/
 
             $('#count-time').text( 5 );
             $('#count-time').addClass('hidden');
@@ -868,7 +1012,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                                 $('input[id$="hidKidPhoto"]').val(imageBig.attr('src'));
                                 toonies.Global.initGetValueImg($(image).attr('src'), dataURL);
-
 
                                 /*var imgDummy = $('<img src="'+ani.createSequence(images)+'" alt="">');
                                 imgDummy.appendTo(document.body);*/

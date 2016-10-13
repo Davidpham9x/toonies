@@ -69,7 +69,7 @@
 				@include border-radius ( 50%, 50%, 50%, 50% );
 				-webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
 
-				#camera {
+				#camera, #video {
 					margin: 0 auto;
 					overflow: hidden;
 					@include ab ( -35px, -35px, n, n );
@@ -117,6 +117,9 @@
 				color: #d98248;
 				text-decoration: underline;
 			}
+		}
+		.select-camera {
+			margin-top: 35px;
 		}
 	}
 }
