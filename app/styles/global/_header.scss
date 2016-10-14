@@ -119,6 +119,10 @@ header {
 							width: 150px;
 							height: 64px;
 						}
+						&:hover, .active {
+							background: url('../images/header/menu-4--hover.png') center center no-repeat;
+							background-size: 100% 100%;
+						}
 					}
 					&.menu-5 {
 						background: url('../images/header/menu-5.png') center center no-repeat;

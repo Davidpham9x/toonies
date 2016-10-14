@@ -193,6 +193,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 /*$('#select_file').html(filename);*/
             });
 
+            if ( $('.page--treasure-hunt').length ) {
+                toonies.Global.initDragBackgroundTreasure();
+            }
+
             /*toonies.Global.initUploadImg('', $('#txt-file'));*/
         },
 
@@ -530,6 +534,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 scrollInertia:400
             });
         },
+
         initCameraScan: function () {
             var contentScan = $('.scan'),
                 btnScan = $('#open-scan');
@@ -740,6 +745,34 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             $('#count-time').text( 5 );
             $('#count-time').addClass('hidden');
             $('.scan_content--camera').find('img').remove();
+        },
+
+        initDragBackgroundTreasure: function () {
+            var divContent = $('.treasure-hunt-content'),
+                imgBg = divContent.find('#background-treasure'),
+                parentContent = imgBg.parents('.inner');
+
+            if ( window.windowWidth >= 1920 ) {
+                $('.treasure-hunt').find('.outer').css('width', 1920);
+            }
+
+            var constrainArray = function () {
+                var wDiff = imgBg.width() - divContent.find('.outer').width();
+                var hDiff = imgBg.height() - divContent.find('.outer').height();
+
+                return [
+                    -hDiff, 0, 0, -wDiff
+                ];
+            };
+
+            parentContent.pep({
+                constrainTo: constrainArray()
+                /*,
+                elementsWithInteraction: 'a',
+                start: function () {
+                    $('.wrap-content-tooltip').css('display', 'none');
+                }*/
+            });
         },
 
         initUploadImg: function(tagUploadHTML4, tagUploadHTML5) {

@@ -1,11 +1,124 @@
 .page--treasure-hunt {
+	width: 100%;
+	height: 100%;
+	padding-bottom: 0;
+
 	/** Treasure Hunt Content **/
 	.treasure-hunt {
+	    width: 100%;
+	    height: 100vh;
+	    overflow: hidden;
+		position: relative;
+	    margin-top: -117px;
 
+	    .treasure-hunt-content {
+	     	width: 100%;
+		    height: 100vh;
+		    overflow: hidden;
+	    }
+		.outer {
+			width: 100%;
+		    height: 100%;
+		    margin: 0 auto;
+		    max-width: 1920px;
+		    position: relative;
+
+			.inner {
+				cursor: move;
+
+				img {
+					max-width: none;
+				}
+				.mask {
+					z-index: 2;
+					@include ab ( 0, 0, n, n );
+				}
+				.area {
+					z-index: 1;
+					position: absolute;
+					/* opacity: 0.8; */
+					-webkit-filter: grayscale(0.5);
+					filter: grayscale(0.5);
+					&.area-1 {
+						left: 0;
+						bottom: 0;
+					}
+					&.area-2 {
+						top: 0;
+						left: 0;
+					}
+					&.area-3 {
+						top: 0;
+						left: 50%;
+						margin-left: -5%;
+						@include transform ( translateX(-50%) );
+					}
+					&.area-4 {
+						top: 0;
+						right: 0;
+					}
+					&.area-5 {
+						top: 50%;
+						right: 0;
+						margin-top: 2%;
+						@include transform ( translateY(-50%) );
+					}
+					&.area-6 {
+						right: 0;
+						bottom: 0;
+					}
+				}
+			}
+		}
 	}
 
 	/** Player Content **/
 	.player {
 
+	}
+
+	/** Welcome Content **/
+	.welcome {
+		width: 100%;
+		max-width: 817px;
+		padding: 0 10px;
+		@include ab ( 50%, 50%, n, n );
+		@include transform ( translate(-50%,-50%) );
+		@include screen ( ipad ) {
+			padding: 0;
+			margin-top: 3%;
+		}
+
+		.outer {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		.inner {
+			opacity: 0;
+			width: 100%;
+			height: 628px;
+			background: url('../images/treasure_hunt/background-welcome-1.png') center center no-repeat;
+			background-size: 100% 100%;
+			@include transform ( scale(0) );
+			@include transition ( all .3s linear );
+			&.animate {
+				opacity: 1;
+				@include transform ( scale(1) );
+			}
+		}
+		.inner--last {
+			height: 554px;
+			background: url('../images/treasure_hunt/background-welcome-2.png') center center no-repeat;
+			background-size: 100% 100%;
+		}
+		.heading {
+			text-indent: -9999px;
+		}
+		.text__warpper {
+			p {
+				text-indent: -9999px;
+			}
+		}
 	}
 }
