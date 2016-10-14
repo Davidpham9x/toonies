@@ -11,11 +11,11 @@
         position: relative;
         @media ( max-width: 767px ) {
             text-align:center; 
-            padding: 30px 10px;
+            padding: 30px 15px;
         }
         h2 {
             max-width: 100%;
-            margin: 0 auto 20px;
+            margin: 0 auto 30px;
             font-size: 0;
             display: block;
         }
@@ -31,6 +31,9 @@
                 width: 36%;
                 margin: 0 7% 20px;
                 text-align: center;
+                @media (max-width: 767px){
+                    margin: 0 10px 20px;
+                }
                 p {
                     text-transform: uppercase;
                     font-size: 13px;
@@ -51,9 +54,9 @@
         } 
         &.tnc {
             h2 {
-            	background: url('../images/about/tit-rule.png') center no-repeat;
-                width: 290x;
-                min-height: 42px;
+                background: url('../images/about/tit-rule.png') center no-repeat;
+                width: 290px;
+                min-height: 42px; 
                 background-size: 100%;
             }
             .wrap-content {
@@ -62,29 +65,90 @@
             }
             .wrap-text { 
                 padding: 0 7% 30px;
-                max-height: 600px;
+                max-height: 486px;
                 overflow-y: auto;
+                @media (max-width: 767px) {
+                    padding:0 5px 30px;
+                }
+                
+                #mCSB_1_scrollbar_vertical {
+                    width: 22px;
+                }
+                .mCSB_draggerRail{
+                	background: url('../images/about/line.png') center no-repeat;
+                    width: 9px;
+                }
+                .mCSB_dragger .mCSB_dragger_bar{
+                    background-color: transparent;
+                }
+
+                #mCSB_1_dragger_vertical {
+                    background: url('../images/about/dots.png') center no-repeat;
+                    width: 22px;
+                    height: 24px;
+
+                }
             }
         } 
     }
     .wrap-content {
         background: url(../images/about/bg.png) no-repeat;
         background-size: 100% 100%;
-        padding: 195px 5% 45px;
+        padding: 195px 5% 285px;
         max-width: 100%; 
         position: relative;
         z-index: 5;
         width: 800px;
         float: right;
         @include screen(medium){
-            padding: 50px 10% 45px; 
+            padding: 50px 2% 20px 10%; 
+        }
+        @media (max-width: 835px) and (min-width: 768px){
+            padding: 50px 2% 20px 20%; 
         }
     }
-    
+    .slick-slider {
+        position: relative;
+        color: #4e301c;
+        text-align: center;
+        img {
+            margin: 0 auto;
+        }
+        p {
+            max-width: 220px;
+            margin: 0 auto;
+        }
+        h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            span {
+                font-size: 20px;
+                color: #c66738; 
+            }
+        }
+        .slick-arrow{
+            border: none;
+            outline: none;
+            font-size: 0;
+            width: 13px;
+            height: 27px;
+            position: absolute;
+            top: 30%;
+        }
+        .slick-prev  {
+            background: url(../images/global/prev.png) no-repeat;
+            left: 5%;
+        }
+        .slick-next  {
+            background: url(../images/global/next.png) no-repeat;
+            right: 5%;
+        }
+        
+    }
     .tab-about{
         position: absolute;
         left: 0;
-        top: 65px;
+        top: 85px;
         text-align: center;
         width: 100%;
         @include screen(medium) { 
@@ -94,9 +158,9 @@
         ul {
             position: relative;
             z-index: 10;
-            @media (max-width: 767px){
-                width:100%;
-                text-align: center;
+            @media (max-width: 767px){ 
+                width: 190px;
+                margin:0 auto;
             }
         }
         li {
@@ -122,7 +186,7 @@
                 background: url(../images/about/tab-2.png) no-repeat;
                 background-size: 100%;   
             }
-            .active {
+            .active, &:hover a{
                 &.prize {
                     background: url(../images/about/tab-1-on.png) no-repeat;
                     background-size: 100%;
@@ -151,9 +215,16 @@
     }
     .product{
         position: absolute;
-        left: -50px;
-        bottom: 45px;
+        left: 0;
+        bottom: 120px;
         z-index: 9;
+        width: 100%;
+        text-align: center;
+        @include screen(medium){
+            bottom: 45px;
+            left: -50px;
+            width: auto;
+        }
     }
     .img-actor {
         position: absolute;
@@ -176,6 +247,12 @@
 .coin2 {
     right: -30%;
     top: 50%;
+    @media (max-width: 767px){
+        top:10%;
+        z-index: 9;
+        right: 1%;
+        max-width: 70px;
+    }
 }
 .coin3 {
     right: -10%;
@@ -188,6 +265,12 @@
 .coin5 {
     right: -15%;
     top: -200px;
+    @media (max-width: 767px){
+        top:12%;
+        z-index: 9;
+        left: 1%;
+        max-width: 50px;
+    }
 }
 .coin6 {
     left: 0;
@@ -207,7 +290,13 @@
 }
 .coin10 {
     left: -10%;
-    top: -120px;
+    top: -240px;
+}
+.coin10_1 {
+    z-index:9;
+    bottom: 160px;
+    left: -8%;
+    max-width:150px;
 }
 .coin11 {
     left: 0%;

@@ -2,6 +2,9 @@
 <include src="partials/head.html"></include>
 
 <main class="page page--about">
+    <!-- /* Header */ -->
+    <include src="partials/header.html"></include>
+
     <!-- /* User Action Content */ -->
     <section class="content-about prize">
         <h2>Cách săn thưởng</h2>
@@ -14,17 +17,37 @@
             </ul>
         </div>
         <div class="wrap-content">
-        	<div class="row">
-        		<img src="images/about/big-prize.png" class="big-prize" />
-        	</div>
+    		<img src="images/about/big-prize.png" class="big-prize hide-for-small" />
+    		<div class="wrap-prize show-for-small">
+    			<div class="item">
+    				<h3><span>03</span> giải nhì</h3>
+    				<p>Xe đạp leo núi Martin</p>
+    				<img src="images/about/bicycle.png" />
+    			</div>
+    			<div class="item">
+    				<h3><span>03</span> giải nhat</h3>
+    				<p>Xe đạp leo núi Martin</p>
+    				<img src="images/about/bicycle.png" />
+    			</div>
+    			<div class="item">
+    				<h3><span>03</span> giải ba</h3>
+    				<p>Xe đạp leo núi Martin</p>
+    				<img src="images/about/bicycle.png" />
+    			</div>
+    		</div>
         </div>
         <div class="clearfix"></div>
-        <img src="images/about/golden-coin.png" class="gold-coin">
-        <img src="images/about/snack.png" class="product">
-	    <img src="images/coin/coin7.png" class="coin coin7" />
-	    <img src="images/coin/coin8.png" class="coin coin8" />
-	    <img src="images/coin/coin9.png" class="coin coin9" />
-	    <img src="images/coin/coin10.png" class="coin coin10" />
+        <img src="images/about/golden-coin.png" class="gold-coin hide-for-small">
+        <div class="product">
+	        <img src="images/about/snack.png">
+        </div>
+	    <img src="images/coin/coin7.png" class="coin coin7 hide-for-small" />
+	    <img src="images/coin/coin8.png" class="coin coin8 hide-for-small" />
+	    <img src="images/coin/coin9.png" class="coin coin9 hide-for-small" />
+	    <img src="images/coin/coin10.png" class="coin coin10 hide-for-small" />
+        <img src="images/coin/coin2.png" class="coin coin2  show-for-small" />
+        <img src="images/coin/coin5.png" class="coin coin5  show-for-small" />
+        <img src="images/coin/coin10_1.png" class="coin coin10_1 show-for-small" />
     </section>
     <!-- /* Footer */ -->
     <include src="partials/footer.html"></include>
