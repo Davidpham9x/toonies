@@ -420,6 +420,10 @@
     }
 }
 
+.modal--common {
+    @extend .modal--scan-result;
+}
+
 @include keyframes(spin) {
     0% {
         @include transform (rotate(0));

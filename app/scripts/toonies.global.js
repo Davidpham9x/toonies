@@ -466,6 +466,29 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
         },
 
+        initModalCommon: function ( mess ) {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--common'
+                },
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        $('#modal--common').find('.desc').text(mess);
+                        this.st.mainClass = 'mfp-move-from-top';
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('#modal--common').find('.close').off('click').on('click', function (e) {
+                e.preventDefault();
+
+                toonies.Global.initCloseAllModal();
+            });
+        },
+
         initCloseAllModal: function () {
             var magnificPopup = $.magnificPopup.instance;
                 magnificPopup.close(); // Close popup that is currently opened
@@ -501,51 +524,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     Webcam.attach('#camera');*/
                 });
 
-                function handleImage( file ) {
-                    var canvas = document.getElementById('canvas');
-                    var context = canvas.getContext('2d');
-                    var resultScan = true,
-                        dataScan = '';
-                    var reader = new FileReader();
-                    reader.onload = function(event) {
-                        var img = new Image();
-                        img.onload = function() {
-                            canvas.width = img.width;
-                            canvas.height = img.height;
-                            context.drawImage(img, 0, 0);
-                            var data = canvas.toDataURL("image/jpeg", 1.0);
-                            $(img).addClass('hidden').appendTo(document.body);
-                            toonies.Global.countScan = toonies.Global.countScan + 1;
-                            var qr = new QCodeDecoder();
-                            qr.decodeFromImage(URL.createObjectURL(file), function (err, result) {
-                                if (err) {
-                                    /*alert(err);*/
-                                    resultScan = false;
-                                } else {
-                                    /*alert(result);*/
-                                    dataScan = result;
-                                }
-
-                                /*alert(resultScan);
-                                alert(toonies.Global.countScan);
-                                alert(dataScan);*/
-
-                                $.event.trigger({
-                                    type: "scan_result",
-                                    resultScan: resultScan,
-                                    countScan: toonies.Global.countScan,
-                                    dataScan: dataScan,
-                                    time: new Date()
-                                });
-
-                                /*$(document).trigger( "scan_result", [ resultScan, toonies.Global.countScan, dataScan ] );*/
-                            });
-                        }
-                        img.src = event.target.result;
-                    }
-                    reader.readAsDataURL(file);
-                }
-
                 var camera = document.getElementById('capture');
                 camera.addEventListener('change', function(e) {
                     if (typeof this.files[0] == 'undefined') {
@@ -565,20 +543,21 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     var extension = filename.split('/').pop().toLowerCase();
 
                     if ($.inArray(extension, ['png', 'jpg', 'jpeg']) == -1) {
-                        $.magnificPopup.close();
+                        toonies.Global.initCloseAllModal();
                         setTimeout(function() {
-                            toonies.Global.initShowModalAlert('Vui lòng chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
+                            toonies.Global.initModalCommon('Vui lòng chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
                         });
                         return;
                     }
 
                     if ((this.files[0].size / 1024 / 1024) >= 6) {
-                        $.magnificPopup.close();
+                        toonies.Global.initCloseAllModal();
                         setTimeout(function() {
-                            toonies.Global.initShowModalAlert('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb');
+                            toonies.Global.initModalCommon('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb');
                         });
                         return;
                     }
+
                     /*var img = new Image();
                     img.onload = function () {
                         var qr = new QCodeDecoder();
@@ -592,7 +571,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                         });
                     }
                     img.src = URL.createObjectURL(file);*/
-                    handleImage( file );
+                    toonies.Global.handleImage( file );
                 });
         },
 
@@ -619,7 +598,52 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 countTime = countTime - 1;
                 $('#count-time').text( countTime );
             }, 1000);
+        },
 
+        handleImage: function( file ) {
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            var resultScan = true,
+                dataScan = '';
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var img = new Image();
+                img.onload = function() {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    context.drawImage(img, 0, 0);
+                    var data = canvas.toDataURL("image/jpeg", 1.0);
+                    var tempImg = $(img).clone().appendTo( $('.scan_content--camera').find('.inner') );
+                    $(img).addClass('hidden').appendTo(document.body);
+                    toonies.Global.countScan = toonies.Global.countScan + 1;
+                    var qr = new QCodeDecoder();
+                    qr.decodeFromImage(URL.createObjectURL(file), function (err, result) {
+                        if (err) {
+                            /*alert(err);*/
+                            resultScan = false;
+                        } else {
+                            /*alert(result);*/
+                            dataScan = result;
+                        }
+
+                        /*alert(resultScan);
+                        alert(toonies.Global.countScan);
+                        alert(dataScan);*/
+
+                        $.event.trigger({
+                            type: "scan_result",
+                            resultScan: resultScan,
+                            countScan: toonies.Global.countScan,
+                            dataScan: dataScan,
+                            time: new Date()
+                        });
+
+                        /*$(document).trigger( "scan_result", [ resultScan, toonies.Global.countScan, dataScan ] );*/
+                    });
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
         },
 
         take_snapshot: function() {
@@ -634,6 +658,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 dataScan = '';
             var img = new Image();
             img.onload = function () {
+                var tempImg = $(img).clone().appendTo( $('.scan_content--camera').find('.inner') );
                 $(img).addClass('hidden').appendTo(document.body);
                 toonies.Global.countScan = toonies.Global.countScan + 1;
                 var qr = new QCodeDecoder();
@@ -678,6 +703,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             $('#count-time').text( 5 );
             $('#count-time').addClass('hidden');
+            $('.scan_content--camera').find('img').remove();
         },
 
         initUploadImg: function(tagUploadHTML4, tagUploadHTML5) {
@@ -704,7 +730,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                 uploader.bind('Init', function(up, params) {
                     if (params.runtime !== "flash") {
-                        toonies.Global.initShowModalAlert('Bạn vui lòng cài <a href="https://helpx.adobe.com/flash-player.html" target="_blank">flash</a> để sử dụng được tính năng này');
+                        toonies.Global.initModalCommon('Bạn vui lòng cài <a href="https://helpx.adobe.com/flash-player.html" target="_blank">flash</a> để sử dụng được tính năng này');
                     }
                 });
 
@@ -717,7 +743,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 });
 
                 uploader.bind('Error', function(up, err) {
-                    toonies.Global.initShowModalAlert('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb và chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
+                    toonies.Global.initModalCommon('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb và chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
 
                     up.refresh(); // Reposition Flash/Silverlight
                 });
@@ -734,17 +760,17 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     var extension = filename.split('/').pop().toLowerCase();
 
                     if ($.inArray(extension, ['png', 'jpg', 'jpeg']) == -1) {
-                        $.magnificPopup.close();
+                        toonies.Global.initCloseAllModal();
                         setTimeout(function() {
-                            toonies.Global.initShowModalAlert('Vui lòng chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
+                            toonies.Global.initModalCommon('Vui lòng chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
                         });
                         return;
                     }
 
                     if ((this.files[0].size / 1024 / 1024) >= 6) {
-                        $.magnificPopup.close();
+                        toonies.Global.initCloseAllModal();
                         setTimeout(function() {
-                            toonies.Global.initShowModalAlert('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb');
+                            toonies.Global.initModalCommon('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb');
                         });
                         return;
                     }
@@ -1022,7 +1048,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     divContent.find('#btn-cancel-crop-image').off('click').on('click', function(e) {
                         e.preventDefault();
 
-                        $.magnificPopup.close();
+                        toonies.Global.initCloseAllModal();
                         toonies.Global.initCancelEditImg();
                     });
                 }
@@ -1076,7 +1102,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         },
 
         initGetValueImg: function(imgBig, imgFace) {
-            $.magnificPopup.close();
+            toonies.Global.initCloseAllModal();
             $('input[id$="hidOriginalPhoto"]').val(imgBig);
             $('input[id$="hidKidFacePhoto"]').val(imgFace);
 
