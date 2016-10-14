@@ -44,6 +44,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             if ( $('.page--scan').length ) {
                 toonies.Global.initCameraScan();
             }
+            if ( $('.page--about,.page--leaderboard').length ) {
+                toonies.Global.initSlider();
+            }
 
             if ( $('.page--profile').length ) {
                 // toonies.Global.initTab();
@@ -494,6 +497,39 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 magnificPopup.close(); // Close popup that is currently opened
         },
 
+        initSlider: function () {
+
+            window.windowWidth = 0;
+
+            $(window).resize(function() {
+                window.windowWidth = $(window).width();
+
+                if ( window.windowWidth < 767 ) {
+
+                    if ( !$('.howto .wrap-content .row,.wrap-list,.wrap-prize').hasClass('slick-initialized') ) {
+                        $('.howto .wrap-content .row,.wrap-list,.wrap-prize').slick({
+                            dots: false,
+                            lazyLoad: 'ondemand',
+                            fade: true 
+                        });
+                    }
+                } else {
+                    if ( $('.howto .wrap-content .row,.wrap-list,.wrap-prize').hasClass('slick-initialized') ) {
+                        $('.howto .wrap-content .row,.wrap-list,.wrap-prize').slick('unslick');
+                    }
+                }
+            }).trigger('resize');
+
+            // $(window).width() < 767  && $('.howto .wrap-content .row,.wrap-list,.wrap-prize').slick({
+            //     dots: false,
+            //     lazyLoad: 'ondemand',
+            //     fade: true 
+            // });
+            $('.wrap-text').mCustomScrollbar({
+                theme:"rounded-dots",
+                scrollInertia:400
+            });
+        },
         initCameraScan: function () {
             var contentScan = $('.scan'),
                 btnScan = $('#open-scan');

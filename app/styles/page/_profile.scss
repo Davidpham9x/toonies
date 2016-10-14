@@ -160,7 +160,7 @@
 			    }
 			}
 		}
-	    .avatar {
+	    .img-profile {
 	    	cursor: pointer;
 	    	width: 100%;
     	    @include screen ( ipadPortrait ) {
@@ -175,6 +175,32 @@
 	    	p {
 	    		font-family: $font-iCPL;
 	    	}
+	        .avatar {
+	            background: url(../images/global/avatar.png) center top no-repeat;
+	            background-size: 100%;
+	            max-width: 170px;
+	            margin: 0 0 15px 5%;
+	            position: relative;
+	            min-height: 170px;
+	            @media (max-width: 767px){
+		            margin: 0 auto 15px; 
+	            }
+	            img {
+	                top: 12px;
+	                left: 13px;
+	                max-width: 84%;
+	                position: absolute;
+	                @include border-radius(50%);
+	            }
+	            &:after {
+	                content:'';
+	                position: absolute;
+	                width: 62px;
+	                height: 58px;
+	                left: 34%;
+	                top: 73%;
+	            }
+	        }
 	    }
 	    .upload {
 	    	width: 65%;
