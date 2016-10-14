@@ -6,7 +6,7 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
- 
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -91,21 +91,29 @@ textarea {
 
 // put your webfont declare here
 @import "webfont.scss";
+
 // SASS Variable & Mixin goes here
 @import "variables.scss";
 @import "global/helper.scss";
+
 // all code for button goes here
 @import "global/icon.scss";
+
 // all code for button goes here
 @import "global/button.scss";
+
 // all code for form element goes here
 @import "global/form.scss";
+
 // all code for dialog (popup) goes here
 @import "global/modal.scss";
+
 // all code for the global page header goes here
 @import "global/header.scss";
+
 // all code for the global page footer goes here
 @import "global/footer.scss";
+
 // all code for dialog (popup) goes here
 @import "global/global.scss";
 
@@ -117,8 +125,9 @@ textarea {
 @import "page/code.scss";
 @import "page/profile.scss";
 @import "page/about.scss";
+@import "page/treasure-hunt.scss";
 @import "page/_leader-board.scss";
- 
+
 // all code for specific component goes here, create as many file as you like
 // For responsive project, please uncomment the following line and create that file to work with
 // @import "global/media-queries.scss";

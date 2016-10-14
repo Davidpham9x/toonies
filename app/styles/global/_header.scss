@@ -8,7 +8,7 @@ header {
 	}
 	@include screen ( ipad ) {
 		padding: 0;
-		padding-top: 43px;
+		padding-top: 45px;
 	}
 
 	.outer {
@@ -26,7 +26,7 @@ header {
 			width: 22px;
 			height: 80px;
 
-			top: -43px;
+			top: -45px;
 			position: absolute;
 			z-index: 1;
 			left: 70px;
