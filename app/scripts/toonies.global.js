@@ -158,10 +158,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 });
             }
 
-            if ( $('#register').length ) {
+            if ( $('#register,#private-info').length ) {
                 $(".txt-dob").datepicker({
                     showOn: "both",
-                    buttonImage: "/themes/toonies/images/icons/calendar.png",
+                    buttonImage: "images/icons/calendar.png",
                     buttonImageOnly: true,
                     buttonText: "Select date"
                 });

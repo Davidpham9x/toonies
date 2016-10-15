@@ -173,7 +173,7 @@
 	    		margin-bottom: 10px;
 	    	}
 	    	p {
-	    		font-family: $font-iCPL;
+	    		font-family: $font-standard;
 	    	}
 	        .avatar {
 	            background: url(../images/global/avatar.png) center top no-repeat;
@@ -307,7 +307,64 @@
 		    	width: 30%;
 	    	}
 	    }
+	    .select-wrapper {
+	    	width: 70%;
+	    	text-align: center;
+	    	span {
+			   color: #222;
+			   width: 95%;
+			   font-family: $font-standard;
+			   font-weight: lighter;
+			   font-size: 14px;
+			    @include screen(medium){
+				   width: 80%;
+			    }
+	    	}
+	    	&:after {
+	    		content: '';
+	    		position: absolute;
+	    		top:8px;
+	    		right: 5px;
+			    border-style: solid;
+			    border-width: 10px 5.5px 0 5.5px;
+			    border-color: #4e301c transparent transparent transparent;
+			}
+	    	select {
+	    		width: 100%;
+	    	}
+	    }
+	    .input-date {
+	    	cursor: pointer;
+		    width: 82%;
+		    @include screen(medium){
+			    width: 70%;
+		    }
+		    input {
+	    	    background: none;
+			    border: none;
+			    outline: none;
+			    text-align: center;
+			    width: 85%;
+		    }
+		    ::-webkit-input-placeholder {
+			   color: #222;
+			}
 
+			:-moz-placeholder { /* Firefox 18- */
+			   color: #222;  
+			}
+
+			::-moz-placeholder {  /* Firefox 19+ */
+			   color: #222;  
+			}
+
+			:-ms-input-placeholder {  
+			   color: #222;  
+			}
+		    img {
+		    	float: right;
+		    }
+	    }
 	    .content {
 	    	width: 70%;
 	    	padding-left: 10%;
