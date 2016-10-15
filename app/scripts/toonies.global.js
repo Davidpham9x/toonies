@@ -37,24 +37,24 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initShowInfoUserMobile();
             this.initHandleWebsiteResize();
 
-            if ( $('.page--scan').length || $('.page--code').length ) {
+            if ($('.page--scan').length || $('.page--code').length) {
                 toonies.Global.initModalIntro();
             }
 
-            if ( $('.page--scan').length ) {
+            if ($('.page--scan').length) {
                 toonies.Global.initCameraScan();
             }
-            if ( $('.page--about,.page--leaderboard').length ) {
+            if ($('.page--about,.page--leaderboard').length) {
                 toonies.Global.initSlider();
             }
 
-            if ( $('.page--profile').length ) {
+            if ($('.page--profile').length) {
                 // toonies.Global.initTab();
-                $('.upload .button,.avatar').on('click', function(e){
+                $('.upload .button,.avatar').on('click', function(e) {
                     e.preventDefault()
                     $('#img-avatar').trigger('click');
                 })
-                $('.edit').on('click', function(e){
+                $('.edit').on('click', function(e) {
                     var searchInput = $(this).parent('.field').find('input');
                     var strLength = searchInput.val().length * 2;
 
@@ -83,7 +83,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             /** Case limit scan **/
             /*toonies.Global.initModalScanResult('Bạn đã quét thẻ sai 3 lần', true);*/
 
-            if ( $('#main-example-template').length ) {
+            if ($('#main-example-template').length) {
                 var labels = ['ngày', 'giờ', 'phút', 'giây'],
                     nextYear = dateOpen,
                     template = _.template($('#main-example-template').html()),
@@ -130,9 +130,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     /*console.log(event.offset.totalDays);*/
                     var newDate = event.strftime('%D:%H:%M:%S'),
                         data;
-                        /*console.log(event);*/
-                        /*console.log(newDate);*/
-                        /*console.log(nextDate);*/
+                    /*console.log(event);*/
+                    /*console.log(newDate);*/
+                    /*console.log(nextDate);*/
                     if (newDate !== nextDate) {
                         currDate = nextDate;
                         nextDate = newDate;
@@ -158,7 +158,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 });
             }
 
-            if ( $('#register').length ) {
+            if ($('#register').length) {
                 $(".txt-dob").datepicker({
                     showOn: "both",
                     buttonImage: "/themes/toonies/images/icons/calendar.png",
@@ -188,16 +188,18 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                         filename = filename.substring(1);
                     }
 
-                    $(this).parent().find('span').text( filename );
+                    $(this).parent().find('span').text(filename);
                 }
                 /*$('#select_file').html(filename);*/
             });
 
-            if ( $('.page--treasure-hunt').length ) {
+            if ($('.page--treasure-hunt').length) {
                 toonies.Global.initDragBackgroundTreasure();
             }
 
             /*toonies.Global.initUploadImg('', $('#txt-file'));*/
+            /*toonies.Global.initShowModalWelcomeTreasure();*/
+            toonies.Global.initExpandCollapsePlayer();
         },
 
         initFormElements: function() {
@@ -249,84 +251,84 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
         },
 
-        initShowMenuMobile: function () {
+        initShowMenuMobile: function() {
             var aTags = $('.bugger-menu'),
                 menuContent = $('.menu-mobile').not('.menu-mobile--user-info');
 
-                aTags.off('click').on('click', function (e) {
-                    e.preventDefault();
+            aTags.off('click').on('click', function(e) {
+                e.preventDefault();
 
-                    if ( $(this).hasClass('active') ) {
-                        menuContent.slideUp('normal');
-                        $(this).removeClass('active');
-                    } else {
-                        menuContent.slideDown('normal');
-                        $(this).addClass('active');
-                    }
-                });
+                if ($(this).hasClass('active')) {
+                    menuContent.slideUp('normal');
+                    $(this).removeClass('active');
+                } else {
+                    menuContent.slideDown('normal');
+                    $(this).addClass('active');
+                }
+            });
         },
 
-        initShowInfoUser: function () {
+        initShowInfoUser: function() {
             var aTags = $('.user-info'),
                 userContent = $('.menu-user');
             var timer = 0;
             var inShow = false;
 
-                aTags.off('mouseenter').on('mouseenter', function (e) {
-                    e.preventDefault();
+            aTags.off('mouseenter').on('mouseenter', function(e) {
+                e.preventDefault();
 
-                    /*if ( $(this).hasClass('active') ) {
-                        userContent.hide();
-                        $(this).removeClass('active');
-                    } else {
-                        $(this).addClass('active');
-                    }*/
-                    userContent.show();
-                });
-
-                aTags.off('mouseleave').on('mouseleave', function (e) {
-                    e.preventDefault();
-
-                    timer = setTimeout(function () {
-                        if ( !inShow ) {
-                            userContent.hide();
-                        }
-                    }, 100);
-
-                    /*if ( $(this).hasClass('active') ) {
-                        $(this).removeClass('active');
-                    } else {
-                        userContent.show();
-                        $(this).addClass('active');
-                    }*/
-                });
-
-                userContent.off('mouseenter').on('mouseenter', function (e) {
-                    inShow = true;
-                });
-
-                userContent.off('mouseleave').on('mouseleave', function (e) {
-                    inShow = false;
+                /*if ( $(this).hasClass('active') ) {
                     userContent.hide();
-                    clearTimeout(timer);
-                });
+                    $(this).removeClass('active');
+                } else {
+                    $(this).addClass('active');
+                }*/
+                userContent.show();
+            });
+
+            aTags.off('mouseleave').on('mouseleave', function(e) {
+                e.preventDefault();
+
+                timer = setTimeout(function() {
+                    if (!inShow) {
+                        userContent.hide();
+                    }
+                }, 100);
+
+                /*if ( $(this).hasClass('active') ) {
+                    $(this).removeClass('active');
+                } else {
+                    userContent.show();
+                    $(this).addClass('active');
+                }*/
+            });
+
+            userContent.off('mouseenter').on('mouseenter', function(e) {
+                inShow = true;
+            });
+
+            userContent.off('mouseleave').on('mouseleave', function(e) {
+                inShow = false;
+                userContent.hide();
+                clearTimeout(timer);
+            });
         },
 
-        initShowInfoUserMobile: function () {
+        initShowInfoUserMobile: function() {
             var aTags = $('.account--mobile'),
                 userContent = $('.menu-mobile--user-info');
 
-                aTags.off('click').on('click', function (e) {
-                    e.preventDefault();
+            aTags.off('click').on('click', function(e) {
+                e.preventDefault();
 
-                    if ( $(this).hasClass('active') ) {
-                        userContent.slideUp('normal');
-                        $(this).removeClass('active');
-                    } else {
-                        userContent.slideDown('normal');
-                        $(this).addClass('active');
-                    }
-                });
+                if ($(this).hasClass('active')) {
+                    userContent.slideUp('normal');
+                    $(this).removeClass('active');
+                } else {
+                    userContent.slideDown('normal');
+                    $(this).addClass('active');
+                }
+            });
         },
 
         initHandleWebsiteResize: function() {
@@ -335,51 +337,110 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             $(window).resize(function() {
                 window.windowWidth = $(window).width();
 
-                if ( window.windowWidth < 767 ) {
-                    if ( !$('#slider-step-code').hasClass('slick-initialized') ) {
+                if (window.windowWidth < 767) {
+                    if (!$('#slider-step-code').hasClass('slick-initialized')) {
                         toonies.Global.initSliderStepCode();
                     }
 
-                    if ( !$('#slider-step-scan').hasClass('slick-initialized') ) {
+                    if (!$('#slider-step-scan').hasClass('slick-initialized')) {
                         toonies.Global.initSliderStepScan();
                     }
                 } else {
-                    if ( $('#slider-step-code').hasClass('slick-initialized') ) {
+                    if ($('#slider-step-code').hasClass('slick-initialized')) {
                         $('#slider-step-code').slick('unslick');
                     }
 
-                    if ( $('#slider-step-scan').hasClass('slick-initialized') ) {
+                    if ($('#slider-step-scan').hasClass('slick-initialized')) {
                         $('#slider-step-scan').slick('unslick');
                     }
                 }
             }).trigger('resize');
         },
 
-        initSliderStepCode: function () {
+        initShowModalWelcomeTreasure: function() {
+            if ($('.page--treasure-hunt').length) {
+                var navigator = $('.navigation'),
+                    contentWelcome = $('.welcome').find('.inner'),
+                    liTags = navigator.children(),
+                    tagClose = $('.welcome').find('.close');
+
+                $('.page--treasure-hunt').addClass('show-modal');
+
+                setTimeout(function() {
+                    $('.welcome').removeClass('hidden');
+                    $('.welcome').find('.inner').not('.hidden').addClass('animate');
+                }, 600);
+
+                liTags.each(function(idx, elm) {
+                    var _this = $(this);
+                    _this.off('click').on('click', function(e) {
+                        e.preventDefault();
+                        if ($(this).hasClass('active')) {
+                            return;
+                        }
+
+                        contentWelcome.addClass('hidden');
+                        contentWelcome.eq(idx).removeClass('hidden').addClass('animate');
+
+                        liTags.removeClass('active');
+                        _this.addClass('active');
+                    });
+                });
+
+                tagClose.off('click').on('click', function(e) {
+                    e.preventDefault();
+
+                    $('.welcome').addClass('hidden');
+                    $('.page--treasure-hunt').removeClass('show-modal');
+                });
+            }
+        },
+
+        initExpandCollapsePlayer: function() {
+            var playerContent = $('.player'),
+                btn = playerContent.find('.arrow');
+
+            btn.off('click').on('click', function(e) {
+                e.preventDefault();
+                if ($(this).hasClass('expand')) {
+                    playerContent.animate({
+                        'right': -750
+                    });
+                    btn.removeClass('expand').addClass('collapse');
+                } else {
+                    playerContent.animate({
+                        'right': -380
+                    });
+                    btn.removeClass('collapse').addClass('expand');
+                }
+            });
+        },
+
+        initSliderStepCode: function() {
             var slider = $('#slider-step-code');
 
-                slider.slick({
-                    dots: false,
-                    lazyLoad: 'ondemand',
-                    fade: true,
-                    prevArrow: '<button type="button" class="slick-prev"></button>',
-                    nextArrow: '<button type="button" class="slick-next"></button>'
-                });
+            slider.slick({
+                dots: false,
+                lazyLoad: 'ondemand',
+                fade: true,
+                prevArrow: '<button type="button" class="slick-prev"></button>',
+                nextArrow: '<button type="button" class="slick-next"></button>'
+            });
         },
 
-        initSliderStepScan: function () {
+        initSliderStepScan: function() {
             var slider = $('#slider-step-scan');
 
-                slider.slick({
-                    dots: false,
-                    lazyLoad: 'ondemand',
-                    fade: true,
-                    prevArrow: '<button type="button" class="slick-prev"></button>',
-                    nextArrow: '<button type="button" class="slick-next"></button>'
-                });
+            slider.slick({
+                dots: false,
+                lazyLoad: 'ondemand',
+                fade: true,
+                prevArrow: '<button type="button" class="slick-prev"></button>',
+                nextArrow: '<button type="button" class="slick-next"></button>'
+            });
         },
 
-        initModalIntro: function () {
+        initModalIntro: function() {
             $('.open-modal--intro').magnificPopup({
                 type: 'inline',
                 removalDelay: 500, // Delay removal by X to allow out-animation
@@ -388,33 +449,33 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                         /*console.log( this.st.el.attr('data-effect') );*/
                         this.st.mainClass = this.st.el.attr('data-effect');
                     },
-                    open: function () {
+                    open: function() {
                         $(window).trigger('resize');
                     }
                 },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
             });
 
-            $('.modal--intro').find('.close').off('click').on('click', function (e) {
+            $('.modal--intro').find('.close').off('click').on('click', function(e) {
                 e.preventDefault();
 
                 var magnificPopup = $.magnificPopup.instance;
                 magnificPopup.close(); // Close popup that is currently opened
             });
 
-            $('.modal--intro').find('.button').off('click').on('click', function (e) {
+            $('.modal--intro').find('.button').off('click').on('click', function(e) {
                 e.preventDefault();
 
                 var magnificPopup = $.magnificPopup.instance;
                 magnificPopup.close(); // Close popup that is currently opened
             });
 
-            if ( $('.auto-load').length ) {
+            if ($('.auto-load').length) {
                 $('.open-modal--intro').trigger('click');
             }
         },
 
-        initModalScanWaiting: function () {
+        initModalScanWaiting: function() {
             $.magnificPopup.open({
                 items: {
                     src: '#modal--scan-waiting'
@@ -430,7 +491,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
         },
 
-        initModalScanResult: function ( mess, autoRedirect ) {
+        initModalScanResult: function(mess, autoRedirect) {
             $.magnificPopup.open({
                 items: {
                     src: '#modal--scan-result'
@@ -446,10 +507,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
             });
 
-            $('#modal--scan-result').find('.close').off('click').on('click', function (e) {
+            $('#modal--scan-result').find('.close').off('click').on('click', function(e) {
                 e.preventDefault();
 
-                if ( typeof autoRedirect == 'boolean' ) {
+                if (typeof autoRedirect == 'boolean') {
                     window.location.href = urlRedirect;
                 }
 
@@ -457,14 +518,14 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 toonies.Global.initResetCamera();
             });
 
-            if ( typeof autoRedirect == 'boolean' ) {
+            if (typeof autoRedirect == 'boolean') {
                 $('#modal--scan-result').find('.re-scan').parent().addClass('hidden');
             }
 
-            $('#modal--scan-result').find('.re-scan').off('click').on('click', function (e) {
+            $('#modal--scan-result').find('.re-scan').off('click').on('click', function(e) {
                 e.preventDefault();
 
-                if ( typeof autoRedirect == 'boolean' ) {
+                if (typeof autoRedirect == 'boolean') {
                     window.location.href = urlRedirect;
                 }
 
@@ -473,7 +534,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
         },
 
-        initModalCommon: function ( mess ) {
+        initModalCommon: function(mess) {
             $.magnificPopup.open({
                 items: {
                     src: '#modal--common'
@@ -489,36 +550,36 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
             });
 
-            $('#modal--common').find('.close').off('click').on('click', function (e) {
+            $('#modal--common').find('.close').off('click').on('click', function(e) {
                 e.preventDefault();
 
                 toonies.Global.initCloseAllModal();
             });
         },
 
-        initCloseAllModal: function () {
+        initCloseAllModal: function() {
             var magnificPopup = $.magnificPopup.instance;
-                magnificPopup.close(); // Close popup that is currently opened
+            magnificPopup.close(); // Close popup that is currently opened
         },
 
-        initSlider: function () {
+        initSlider: function() {
 
             window.windowWidth = 0;
 
             $(window).resize(function() {
                 window.windowWidth = $(window).width();
 
-                if ( window.windowWidth < 767 ) {
+                if (window.windowWidth < 767) {
 
-                    if ( !$('.howto .wrap-content .row,.wrap-list,.wrap-prize').hasClass('slick-initialized') ) {
+                    if (!$('.howto .wrap-content .row,.wrap-list,.wrap-prize').hasClass('slick-initialized')) {
                         $('.howto .wrap-content .row,.wrap-list,.wrap-prize').slick({
                             dots: false,
                             lazyLoad: 'ondemand',
-                            fade: true 
+                            fade: true
                         });
                     }
                 } else {
-                    if ( $('.howto .wrap-content .row,.wrap-list,.wrap-prize').hasClass('slick-initialized') ) {
+                    if ($('.howto .wrap-content .row,.wrap-list,.wrap-prize').hasClass('slick-initialized')) {
                         $('.howto .wrap-content .row,.wrap-list,.wrap-prize').slick('unslick');
                     }
                 }
@@ -530,118 +591,118 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             //     fade: true 
             // });
             $('.wrap-text').mCustomScrollbar({
-                theme:"rounded-dots",
-                scrollInertia:400
+                theme: "rounded-dots",
+                scrollInertia: 400
             });
         },
 
-        initCameraScan: function () {
+        initCameraScan: function() {
             var contentScan = $('.scan'),
                 btnScan = $('#open-scan');
 
-                btnScan.off('click').on('click', function(e) {
-                    e.preventDefault();
+            btnScan.off('click').on('click', function(e) {
+                e.preventDefault();
 
-                    if (isMobile.any()) { // It is mobile
-                        // Open Camera
-                        $('#capture').trigger('click');
-                    } else {
-                        $('.scan_content').addClass('hidden');
-                        $('.scan_content--camera').removeClass('hidden');
-                        $('#count-time').removeClass('hidden');
-                        contentScan.find('.button__wrapper').addClass('hidden');
-
-                        // Init Camera
-                        start();
-                        toonies.Global.initCameraAction();
-                        /*$('.select-camera').removeClass('hidden');*/
-                    }
-
-                    /*Webcam.set({
-                        fps: 45,
-                        unfreeze_snap: false
-                    });
-
-                    Webcam.attach('#camera');*/
-                });
-
-                var camera = document.getElementById('capture');
-                camera.addEventListener('change', function(e) {
-                    if (typeof this.files[0] == 'undefined') {
-                        return;
-                    }
-
+                if (isMobile.any()) { // It is mobile
+                    // Open Camera
+                    $('#capture').trigger('click');
+                } else {
                     $('.scan_content').addClass('hidden');
                     $('.scan_content--camera').removeClass('hidden');
                     $('#count-time').removeClass('hidden');
                     contentScan.find('.button__wrapper').addClass('hidden');
 
-                    // get the file name, possibly with path (depends on browser)
-                    var filename = this.files[0].type;
-                    var file = e.target.files[0];
+                    // Init Camera
+                    window.start();
+                    toonies.Global.initCameraAction();
+                    /*$('.select-camera').removeClass('hidden');*/
+                }
 
-                    // Use a regular expression to trim everything before final dot
-                    var extension = filename.split('/').pop().toLowerCase();
-
-                    if ($.inArray(extension, ['png', 'jpg', 'jpeg']) == -1) {
-                        toonies.Global.initCloseAllModal();
-                        setTimeout(function() {
-                            toonies.Global.initModalCommon('Vui lòng chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
-                        });
-                        return;
-                    }
-
-                    if ((this.files[0].size / 1024 / 1024) >= 6) {
-                        toonies.Global.initCloseAllModal();
-                        setTimeout(function() {
-                            toonies.Global.initModalCommon('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb');
-                        });
-                        return;
-                    }
-
-                    /*var img = new Image();
-                    img.onload = function () {
-                        var qr = new QCodeDecoder();
-                        qr.decodeFromImage(URL.createObjectURL(file), function (err, result) {
-                            if (err) {
-                                alert(err);
-                                return false;
-                            };
-
-                            alert(result);
-                        });
-                    }
-                    img.src = URL.createObjectURL(file);*/
-                    toonies.Global.handleImage( file );
+                /*Webcam.set({
+                    fps: 45,
+                    unfreeze_snap: false
                 });
+
+                Webcam.attach('#camera');*/
+            });
+
+            var camera = document.getElementById('capture');
+            camera.addEventListener('change', function(e) {
+                if (typeof this.files[0] == 'undefined') {
+                    return;
+                }
+
+                $('.scan_content').addClass('hidden');
+                $('.scan_content--camera').removeClass('hidden');
+                /*$('#count-time').removeClass('hidden');*/
+                contentScan.find('.button__wrapper').addClass('hidden');
+
+                // get the file name, possibly with path (depends on browser)
+                var filename = this.files[0].type;
+                var file = e.target.files[0];
+
+                // Use a regular expression to trim everything before final dot
+                var extension = filename.split('/').pop().toLowerCase();
+
+                if ($.inArray(extension, ['png', 'jpg', 'jpeg']) == -1) {
+                    toonies.Global.initCloseAllModal();
+                    setTimeout(function() {
+                        toonies.Global.initModalCommon('Vui lòng chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
+                    });
+                    return;
+                }
+
+                /*if ((this.files[0].size / 1024 / 1024) >= 6) {
+                    toonies.Global.initCloseAllModal();
+                    setTimeout(function() {
+                        toonies.Global.initModalCommon('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb');
+                    });
+                    return;
+                }*/
+
+                /*var img = new Image();
+                img.onload = function () {
+                    var qr = new QCodeDecoder();
+                    qr.decodeFromImage(URL.createObjectURL(file), function (err, result) {
+                        if (err) {
+                            alert(err);
+                            return false;
+                        };
+
+                        alert(result);
+                    });
+                }
+                img.src = URL.createObjectURL(file);*/
+                toonies.Global.handleImage(file);
+            });
         },
 
-        initCameraAction: function () {
+        initCameraAction: function() {
             var countTime = 5,
                 timer = 0;
 
-            setTimeout(function () {
+            setTimeout(function() {
                 /*// freeze camera so user can preview pic
                 Webcam.freeze();*/
 
                 toonies.Global.take_snapshot();
-                clearInterval( timer );
+                clearInterval(timer);
                 /*$('.button__wrapper--submit').removeClass('hidden');*/
             }, 5000);
 
-            timer = setInterval(function () {
-                if ( countTime == 1 ) {
+            timer = setInterval(function() {
+                if (countTime == 1) {
                     $('.scan_content--camera').addClass('result');
                     $('#count-time').addClass('hidden');
-                    clearInterval( timer );
+                    clearInterval(timer);
                 }
 
                 countTime = countTime - 1;
-                $('#count-time').text( countTime );
+                $('#count-time').text(countTime);
             }, 1000);
         },
 
-        handleImage: function( file ) {
+        handleImage: function(file) {
             var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
             var resultScan = true,
@@ -654,11 +715,11 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     canvas.height = img.height;
                     context.drawImage(img, 0, 0);
                     var data = canvas.toDataURL("image/jpeg", 1.0);
-                    var tempImg = $(img).clone().appendTo( $('.scan_content--camera').find('.inner') );
+                    var tempImg = $(img).clone().appendTo($('.scan_content--camera').find('.inner'));
                     $(img).addClass('hidden').appendTo(document.body);
                     toonies.Global.countScan = toonies.Global.countScan + 1;
                     var qr = new QCodeDecoder();
-                    qr.decodeFromImage(URL.createObjectURL(file), function (err, result) {
+                    qr.decodeFromImage(URL.createObjectURL(file), function(err, result) {
                         if (err) {
                             /*alert(err);*/
                             resultScan = false;
@@ -690,20 +751,20 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         take_snapshot: function() {
             var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
-                canvas.width = 280;
-                canvas.height = 280;
-                context.drawImage(video, 0, 0, 280, 280);
+            canvas.width = 280;
+            canvas.height = 280;
+            context.drawImage(video, 0, 0, 280, 280);
 
             var data = canvas.toDataURL("image/jpeg", 1.0);
             var resultScan = true,
                 dataScan = '';
             var img = new Image();
-            img.onload = function () {
-                var tempImg = $(img).clone().appendTo( $('.scan_content--camera').find('.inner') );
+            img.onload = function() {
+                var tempImg = $(img).clone().appendTo($('.scan_content--camera').find('.inner'));
                 $(img).addClass('hidden').appendTo(document.body);
                 toonies.Global.countScan = toonies.Global.countScan + 1;
                 var qr = new QCodeDecoder();
-                qr.decodeFromImage(img, function (err, result) {
+                qr.decodeFromImage(img, function(err, result) {
                     if (err) {
                         /*alert(err);*/
                         resultScan = false;
@@ -730,7 +791,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             img.src = data;
         },
 
-        initResetCamera: function () {
+        initResetCamera: function() {
             var contentScan = $('.scan');
             /*// freeze camera so user can preview pic
             Webcam.reset();*/
@@ -742,36 +803,34 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             contentScan.find('.button__wrapper').eq(0).removeClass('hidden');
             /*$('.button__wrapper--submit').addClass('hidden');*/
 
-            $('#count-time').text( 5 );
+            $('#count-time').text(5);
             $('#count-time').addClass('hidden');
             $('.scan_content--camera').find('img').remove();
         },
 
-        initDragBackgroundTreasure: function () {
+        initDragBackgroundTreasure: function() {
             var divContent = $('.treasure-hunt-content'),
                 imgBg = divContent.find('#background-treasure'),
                 parentContent = imgBg.parents('.inner');
 
-            if ( window.windowWidth >= 1920 ) {
+            if (window.windowWidth >= 1920) {
                 $('.treasure-hunt').find('.outer').css('width', 1920);
             }
 
-            var constrainArray = function () {
+            var constrainArray = function() {
                 var wDiff = imgBg.width() - divContent.find('.outer').width();
                 var hDiff = imgBg.height() - divContent.find('.outer').height();
 
-                return [
-                    -hDiff, 0, 0, -wDiff
-                ];
+                return [-hDiff, 0, 0, -wDiff];
             };
 
             parentContent.pep({
                 constrainTo: constrainArray()
-                /*,
-                elementsWithInteraction: 'a',
-                start: function () {
-                    $('.wrap-content-tooltip').css('display', 'none');
-                }*/
+                    /*,
+                    elementsWithInteraction: 'a',
+                    start: function () {
+                        $('.wrap-content-tooltip').css('display', 'none');
+                    }*/
             });
         },
 
@@ -859,7 +918,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 $('.tabcontent.active').removeClass('active');
                 $('.tablinks.active').removeClass('active');
                 $(this).addClass('active');
-                $('#'+tabData).addClass('active');
+                $('#' + tabData).addClass('active');
             });
         },
 
@@ -1208,52 +1267,53 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
 $(document).ready(function() {
     $('.page').imagesLoaded({
-        background: true
-    })
-    .always( function( instance ) {
-        /*console.log('all images loaded');*/
-    })
-    .done( function( instance ) {
-        /*console.log('all images successfully loaded');*/
-        $('.loading').css('display', 'none');
+            background: true
+        })
+        .always(function(instance) {
+            /*console.log('all images loaded');*/
+        })
+        .done(function(instance) {
+            /*console.log('all images successfully loaded');*/
+            $('.loading').css('display', 'none');
 
-        if ( $('.home').length ) {
-            setTimeout(function () {
-                $('.tagline').addClass('animate');
-                $('.button__wrapper').addClass('animate');
+            if ($('.home').length) {
+                setTimeout(function() {
+                    $('.tagline').addClass('animate');
+                    $('.button__wrapper').addClass('animate');
 
-                setTimeout(function () {
-                    $('.characters-left').addClass('animate');
-                    $('.characters-right').addClass('animate');
-                    $('.tvc-introduction').addClass('animate');
+                    setTimeout(function() {
+                        $('.characters-left').addClass('animate');
+                        $('.characters-right').addClass('animate');
+                        $('.tvc-introduction').addClass('animate');
 
-                    setTimeout(function () {
-                        $('.toonies-snack').addClass('animate');
-                        $('.gold-chest').addClass('animate');
-                    }, 500);
-                }, 400);
-            }, 300);
-        }
+                        setTimeout(function() {
+                            $('.toonies-snack').addClass('animate');
+                            $('.gold-chest').addClass('animate');
+                        }, 500);
+                    }, 400);
+                }, 300);
+            }
 
-        if ( $('.modal--medium').length ) {
-            setTimeout(function () {
-                $('.modal--medium').addClass('animate');
-            }, 600);
-        }
+            if ($('.modal--medium').length) {
+                setTimeout(function() {
+                    $('.modal--medium').addClass('animate');
+                }, 600);
+            }
 
-        if ( $('.page--coming-soon').length ) {
-            setTimeout(function () {
-                $('.welcome').find('.outer').addClass('animate');
-            }, 600);
-        }
+            if ($('.page--coming-soon').length) {
+                setTimeout(function() {
+                    $('.welcome').find('.outer').addClass('animate');
+                }, 600);
+            }
 
-        toonies.Global.init();
-    })
-    /*.fail( function() {
-        console.log('all images loaded, at least one is broken');
-    })
-    .progress( function( instance, image ) {
-        var result = image.isLoaded ? 'loaded' : 'broken';
-        console.log( 'image is ' + result + ' for ' + image.img.src );
-    })*/;
+            toonies.Global.init();
+        })
+        /*.fail( function() {
+            console.log('all images loaded, at least one is broken');
+        })
+        .progress( function( instance, image ) {
+            var result = image.isLoaded ? 'loaded' : 'broken';
+            console.log( 'image is ' + result + ' for ' + image.img.src );
+        })*/
+    ;
 });

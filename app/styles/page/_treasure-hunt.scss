@@ -1,19 +1,38 @@
 .page--treasure-hunt {
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 	padding-bottom: 0;
+	min-height: 770px;
+	&:before {
+    	content: '';
+    	width: 100%;
+    	height: 100%;
+    	z-index: 9;
+    	background: rgba( 0, 0, 0, 0.9 );
+    	@include ab ( 0, 0, n, n );
+    	display: none;
+    }
+    &.show-modal {
+    	min-height: 661px;
+    	&:before {
+    		display: block;
+    	}
+    }
 
 	/** Treasure Hunt Content **/
 	.treasure-hunt {
 	    width: 100%;
 	    height: 100vh;
+	    min-height: 770px;
 	    overflow: hidden;
 		position: relative;
 	    margin-top: -117px;
 
 	    .treasure-hunt-content {
 	     	width: 100%;
-		    height: 100vh;
+		    height: 100%;
+		    min-height: 770px;
 		    overflow: hidden;
 	    }
 		.outer {
@@ -30,42 +49,474 @@
 					max-width: none;
 				}
 				.mask {
-					z-index: 2;
+					z-index: 1;
 					@include ab ( 0, 0, n, n );
 				}
-				.area {
-					z-index: 1;
+				.area__wrapper {
+					z-index: 2;
 					position: absolute;
-					/* opacity: 0.8; */
-					-webkit-filter: grayscale(0.5);
-					filter: grayscale(0.5);
+					&.active {
+						.area {
+							filter: none;
+						}
+					}
 					&.area-1 {
 						left: 0;
 						bottom: 0;
+
+						.coin {
+							&.coin-1 {
+								top: 11%;
+								left: 25%;
+							}
+							&.coin-2 {
+								top: 16%;
+								left: 2%;
+							}
+							&.coin-3 {
+								top: 41%;
+								left: 5%;
+							}
+							&.coin-4 {
+								top: 28%;
+								left: 11%;
+							}
+							&.coin-5 {
+								top: 42%;
+								left: 22%;
+							}
+							&.coin-6 {
+								top: 45%;
+								left: 45%;
+							}
+							&.coin-7 {
+								top: 31%;
+								left: 30%;
+							}
+							&.coin-8 {
+								top: 66%;
+								left: 15%;
+							}
+							&.coin-9 {
+								top: 55%;
+								left: 45%;
+							}
+							&.coin-10 {
+								bottom: 10%;
+								left: 5%;
+							}
+							&.coin-11 {
+								bottom: 17%;
+								left: 27%;
+							}
+							&.coin-12 {
+								bottom: 5%;
+								left: 19%;
+							}
+							&.coin-13 {
+								bottom: 1%;
+								left: 40%;
+							}
+							&.coin-14 {
+								bottom: 15%;
+								left: 45%;
+							}
+							&.coin-15 {
+								bottom: 30%;
+								left: 50%;
+							}
+							&.coin-16 {
+								bottom: 25%;
+								left: 65%;
+							}
+						}
 					}
 					&.area-2 {
 						top: 0;
 						left: 0;
+
+						.coin {
+							&.coin-1 {
+								top: 11%;
+								left: 25%;
+							}
+							&.coin-2 {
+								top: 16%;
+								left: 2%;
+							}
+							&.coin-3 {
+								top: 41%;
+								left: 5%;
+							}
+							&.coin-4 {
+								top: 28%;
+								left: 11%;
+							}
+							&.coin-5 {
+								top: 42%;
+								left: 22%;
+							}
+							&.coin-6 {
+								top: 45%;
+								left: 45%;
+							}
+							&.coin-7 {
+								top: 31%;
+								left: 30%;
+							}
+							&.coin-8 {
+								top: 66%;
+								left: 15%;
+							}
+							&.coin-9 {
+								top: 55%;
+								left: 45%;
+							}
+							&.coin-10 {
+								bottom: 10%;
+								left: 5%;
+							}
+							&.coin-11 {
+								bottom: 17%;
+								left: 27%;
+							}
+							&.coin-12 {
+								bottom: 5%;
+								left: 19%;
+							}
+							&.coin-13 {
+								bottom: 1%;
+								left: 40%;
+							}
+							&.coin-14 {
+								bottom: 15%;
+								left: 45%;
+							}
+							&.coin-15 {
+								bottom: 30%;
+								left: 50%;
+							}
+							&.coin-16 {
+								bottom: 25%;
+								left: 65%;
+							}
+						}
 					}
 					&.area-3 {
 						top: 0;
 						left: 50%;
 						margin-left: -5%;
 						@include transform ( translateX(-50%) );
+
+						.coin {
+							&.coin-1 {
+								top: 11%;
+								left: 25%;
+							}
+							&.coin-2 {
+								top: 16%;
+								left: 2%;
+							}
+							&.coin-3 {
+								top: 41%;
+								left: 5%;
+							}
+							&.coin-4 {
+								top: 28%;
+								left: 11%;
+							}
+							&.coin-5 {
+								top: 42%;
+								left: 22%;
+							}
+							&.coin-6 {
+								top: 45%;
+								left: 45%;
+							}
+							&.coin-7 {
+								top: 31%;
+								left: 30%;
+							}
+							&.coin-8 {
+								top: 66%;
+								left: 15%;
+							}
+							&.coin-9 {
+								top: 55%;
+								left: 45%;
+							}
+							&.coin-10 {
+								bottom: 10%;
+								left: 5%;
+							}
+							&.coin-11 {
+								bottom: 17%;
+								left: 27%;
+							}
+							&.coin-12 {
+								bottom: 5%;
+								left: 19%;
+							}
+							&.coin-13 {
+								bottom: 1%;
+								left: 40%;
+							}
+							&.coin-14 {
+								bottom: 15%;
+								left: 45%;
+							}
+							&.coin-15 {
+								bottom: 30%;
+								left: 50%;
+							}
+							&.coin-16 {
+								bottom: 25%;
+								left: 65%;
+							}
+						}
 					}
 					&.area-4 {
 						top: 0;
 						right: 0;
+
+						.coin {
+							&.coin-1 {
+								top: 11%;
+								left: 25%;
+							}
+							&.coin-2 {
+								top: 16%;
+								left: 2%;
+							}
+							&.coin-3 {
+								top: 41%;
+								left: 5%;
+							}
+							&.coin-4 {
+								top: 28%;
+								left: 11%;
+							}
+							&.coin-5 {
+								top: 42%;
+								left: 22%;
+							}
+							&.coin-6 {
+								top: 45%;
+								left: 45%;
+							}
+							&.coin-7 {
+								top: 31%;
+								left: 30%;
+							}
+							&.coin-8 {
+								top: 66%;
+								left: 15%;
+							}
+							&.coin-9 {
+								top: 55%;
+								left: 45%;
+							}
+							&.coin-10 {
+								bottom: 10%;
+								left: 5%;
+							}
+							&.coin-11 {
+								bottom: 17%;
+								left: 27%;
+							}
+							&.coin-12 {
+								bottom: 5%;
+								left: 19%;
+							}
+							&.coin-13 {
+								bottom: 1%;
+								left: 40%;
+							}
+							&.coin-14 {
+								bottom: 15%;
+								left: 45%;
+							}
+							&.coin-15 {
+								bottom: 30%;
+								left: 50%;
+							}
+							&.coin-16 {
+								bottom: 25%;
+								left: 65%;
+							}
+						}
 					}
 					&.area-5 {
 						top: 50%;
 						right: 0;
 						margin-top: 2%;
 						@include transform ( translateY(-50%) );
+
+						.coin {
+							&.coin-1 {
+								top: 11%;
+								left: 25%;
+							}
+							&.coin-2 {
+								top: 16%;
+								left: 2%;
+							}
+							&.coin-3 {
+								top: 41%;
+								left: 5%;
+							}
+							&.coin-4 {
+								top: 28%;
+								left: 11%;
+							}
+							&.coin-5 {
+								top: 42%;
+								left: 22%;
+							}
+							&.coin-6 {
+								top: 45%;
+								left: 45%;
+							}
+							&.coin-7 {
+								top: 31%;
+								left: 30%;
+							}
+							&.coin-8 {
+								top: 66%;
+								left: 15%;
+							}
+							&.coin-9 {
+								top: 55%;
+								left: 45%;
+							}
+							&.coin-10 {
+								bottom: 10%;
+								left: 5%;
+							}
+							&.coin-11 {
+								bottom: 17%;
+								left: 27%;
+							}
+							&.coin-12 {
+								bottom: 5%;
+								left: 19%;
+							}
+							&.coin-13 {
+								bottom: 1%;
+								left: 40%;
+							}
+							&.coin-14 {
+								bottom: 15%;
+								left: 45%;
+							}
+							&.coin-15 {
+								bottom: 30%;
+								left: 50%;
+							}
+							&.coin-16 {
+								bottom: 25%;
+								left: 65%;
+							}
+						}
 					}
 					&.area-6 {
 						right: 0;
 						bottom: 0;
+
+						.coin {
+							&.coin-1 {
+								top: 11%;
+								left: 25%;
+							}
+							&.coin-2 {
+								top: 16%;
+								left: 2%;
+							}
+							&.coin-3 {
+								top: 41%;
+								left: 5%;
+							}
+							&.coin-4 {
+								top: 28%;
+								left: 11%;
+							}
+							&.coin-5 {
+								top: 42%;
+								left: 22%;
+							}
+							&.coin-6 {
+								top: 45%;
+								left: 45%;
+							}
+							&.coin-7 {
+								top: 31%;
+								left: 30%;
+							}
+							&.coin-8 {
+								top: 66%;
+								left: 15%;
+							}
+							&.coin-9 {
+								top: 55%;
+								left: 45%;
+							}
+							&.coin-10 {
+								bottom: 10%;
+								left: 5%;
+							}
+							&.coin-11 {
+								bottom: 17%;
+								left: 27%;
+							}
+							&.coin-12 {
+								bottom: 5%;
+								left: 19%;
+							}
+							&.coin-13 {
+								bottom: 1%;
+								left: 40%;
+							}
+							&.coin-14 {
+								bottom: 15%;
+								left: 45%;
+							}
+							&.coin-15 {
+								bottom: 30%;
+								left: 50%;
+							}
+							&.coin-16 {
+								bottom: 25%;
+								left: 65%;
+							}
+						}
+					}
+
+					.outer {
+						z-index: 3;
+						width: 100%;
+						height: 100%;
+						@include ab ( 0, 0, n, n );
+					}
+					.inner {
+						width: 100%;
+						height: 100%;
+						position: relative;
+
+						img {
+							max-width: 100px;
+							position: absolute;
+						}
+					}
+					img {
+						-webkit-filter: grayscale(0.5);
+						filter: grayscale(0.5);
+					}
+					.coin {
+						-webkit-filter: grayscale(0.5);
+						filter: grayscale(0.5);
+						&.active {
+							filter: none;
+						}
 					}
 				}
 			}
@@ -74,11 +525,169 @@
 
 	/** Player Content **/
 	.player {
+		background: url('../images/treasure_hunt/background-player.png') no-repeat;
+		background-size: 100% 100%;
+		width: 100%;
+		height: 761px;
+		max-width: 801px;
+		position: absolute;
+		right: -380px;
+		bottom: -15%;
+		z-index: 5;
 
+		ul {
+			margin: 0;
+			padding: 0;
+			width: 50%;
+			list-style: none;
+
+			li {
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+		.coin {
+			position: relative;
+
+			ul {
+				margin-bottom: 15px;
+			}
+			.title {
+				color: #4e301c;
+				font-size: 15px;
+				text-align: center;
+				text-transform: uppercase;
+
+				width: 50%;
+				display: block;
+				margin-bottom: 15px;
+			}
+			.pager {
+				.next, .prev {
+					padding-top: 0;
+				}
+			}
+		}
+		.list-coin {
+			margin: 0 -10px;
+			overflow: hidden;
+
+			li {
+				width: 20%;
+				float: left;
+				padding: 0 10px;
+				&.active {
+					img {
+						filter: none;
+					}
+				}
+
+				img {
+					-webkit-filter: grayscale(0.5);
+					filter: grayscale(0.5);
+					width: 100%;
+				}
+			}
+		}
+	}
+	.player__inner {
+		position: relative;
+		padding: 0 25px 0 60px;
+		.arrow {
+			width: 75px;
+			height: 73px;
+			background: url('../images/icons/collapse.png') no-repeat;
+			@include ab( 50%, -15px, n, n );
+			@include transform ( translateY(-50%) );
+			&.expand {
+				background: url('../images/icons/expand.png') no-repeat;
+			}
+		}
+	}
+	.player__info {
+        margin: 35px 0 0;
+		overflow: hidden;
+
+		.avatar {
+			float: left;
+            background: url(../images/global/avatar.png) center top no-repeat;
+            background-size: 100%;
+            width: 100%;
+            max-width: 90px;
+            min-height: 90px;
+            position: relative;
+            @media (max-width: 767px){
+                margin:0 auto 15px;
+            }
+            img {
+                top: 7px;
+                left: 6px;
+                max-width: 85%;
+                position: absolute;
+                @include border-radius(50%);
+            }
+        }
+		.info {
+			float: left;
+			height: 90px;
+			display: table;
+			padding-left: 15px;
+
+			.inner {
+				height: 100%;
+				display: table-cell;
+				vertical-align: middle;
+
+				.ranking {
+					margin: 10px 0 0;
+					overflow: hidden;
+
+					img {
+						float: left;
+						max-height: 30px;
+					}
+					.title {
+						float: left;
+						line-height: 30px;
+					}
+				}
+				span {
+					display: block;
+					&.name {
+						color: #4e301c;
+						font-size: 15px;
+						text-transform: uppercase;
+					}
+					&.title {
+						color: #d87d20;
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+	.score_wrapper {
+		width: 50%;
+		padding: 15px 0;
+
+		span {
+			display: block;
+			color: #4e301c;
+			text-align: center;
+			text-transform: uppercase;
+			&.title {
+				font-size: 15px;
+			}
+			&.score {
+				font-size: 30px;
+				margin-top: 15px;
+			}
+		}
 	}
 
 	/** Welcome Content **/
 	.welcome {
+		z-index: 9;
 		width: 100%;
 		max-width: 817px;
 		padding: 0 10px;
@@ -86,7 +695,6 @@
 		@include transform ( translate(-50%,-50%) );
 		@include screen ( ipad ) {
 			padding: 0;
-			margin-top: 3%;
 		}
 
 		.outer {
@@ -98,6 +706,7 @@
 			opacity: 0;
 			width: 100%;
 			height: 628px;
+			position: relative;
 			background: url('../images/treasure_hunt/background-welcome-1.png') center center no-repeat;
 			background-size: 100% 100%;
 			@include transform ( scale(0) );
@@ -111,6 +720,10 @@
 			height: 554px;
 			background: url('../images/treasure_hunt/background-welcome-2.png') center center no-repeat;
 			background-size: 100% 100%;
+
+			.close {
+				top: 35px;
+			}
 		}
 		.heading {
 			text-indent: -9999px;
@@ -120,5 +733,52 @@
 				text-indent: -9999px;
 			}
 		}
+		.form {
+			padding-top: 0;
+
+			.form_field {
+				float: left;
+
+				label {
+					color: #bf9264;
+				}
+			}
+			.navigation {
+				margin: 0;
+				float: right;
+				list-style: none;
+				padding: 5px 25px 0 0;
+
+				li {
+					padding: 0 15px;
+					display: inline-block;
+					vertical-align: middle;
+					background: url('../images/treasure_hunt/arrow-next.png') 100% 0 no-repeat;
+					opacity: 1;
+					&:first-child {
+						background: url('../images/treasure_hunt/arrow-prev.png') 0 0 no-repeat;
+					}
+					&.active {
+						opacity: 0.5;
+					}
+
+					a {
+						color: #bf9264;
+						font-size: 13px;
+						text-transform: uppercase;
+					}
+				}
+			}
+		}
+		.close {
+			z-index: 5;
+	        width: 100%;
+	        height: 50px;
+	        max-width: 54px;
+	        background: url('../images/icons/close.png') no-repeat;
+	        @include ab ( 115px, n, n, -10px );
+
+	        text-indent: -9999px;
+	    }
 	}
 }

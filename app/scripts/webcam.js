@@ -8,6 +8,8 @@
 
 'use strict';
 
+window.start = null;
+
 if ($('.page--scan').length) {
     var videoElement = document.querySelector('video');
     var audioInputSelect = document.querySelector('select#audioSource');
@@ -90,7 +92,7 @@ if ($('.page--scan').length) {
         return navigator.mediaDevices.enumerateDevices();
     }
 
-    function start() {
+    window.start = function start() {
         if (window.stream) {
             window.stream.getTracks().forEach(function(track) {
                 track.stop();
@@ -110,7 +112,7 @@ if ($('.page--scan').length) {
 
     /*audioInputSelect.onchange = start;
     audioOutputSelect.onchange = changeAudioDestination;*/
-    videoSelect.onchange = start;
+    videoSelect.onchange = window.start();
 
     /*start();*/
 
