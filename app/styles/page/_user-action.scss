@@ -36,14 +36,62 @@
 
             .form {
                 .form_field.form_field--tnc label {
-                    margin-top: 0;
+                    margin-top: 8px;
                     line-height: 1.4em;
                 }
+            }
+            .select-wrapper {
+                text-align: center;
+                position: relative;
+                background-color: #321e1b;
+                height: 35px;
+                @include border-radius(5px);
+                @include screen(medium){
+                    height: 47px;
+                }
+
+                span {
+                   color: #93755b;
+                   top: 6px; 
+                    @include screen(medium){
+                       top: 12px; 
+                    }
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top:8px;
+                    right: 5px;
+                    border-style: solid;
+                    border-width: 10px 5.5px 0 5.5px;
+                    border-color: #4e301c transparent transparent transparent;
+                }
+                select {
+                    width: 100%;
+                }
+            }
+            input {
+                color: #93755b;
+            }
+            ::-webkit-input-placeholder {
+               color: #93755b;
+            }
+
+            :-moz-placeholder { /* Firefox 18- */
+               color: #93755b;  
+            }
+
+            ::-moz-placeholder {  /* Firefox 19+ */
+               color: #93755b;  
+            }
+
+            :-ms-input-placeholder {  
+               color: #93755b;  
             }
     		.button__wrapper {
                 margin-top: 15px;
                 @include screen ( medium ) {
-                    margin-top: 0;
+                    /*margin-top: 0;*/
                 }
 
     			.button {
@@ -69,8 +117,8 @@
                         background: url('../images/buttons/button-yellow--register.png') no-repeat;
                         width: 302px;
                         height: 77px;
-                        &:hover {
-                            background: url('../images/buttons/button-yellow--register.png') no-repeat;
+                        &:hover { 
+                            background: url('../images/buttons/button-grey--register.png') no-repeat;
                         }
                     }
     			}
@@ -91,10 +139,15 @@
         }
         .inner {
             .form {
+                .forgot-pass {
+                    @media (max-width: 767px){
+                        padding-left:40px;
+                    }
+                }
                 .form_field {
                     &.form_field--tnc {
                         label {
-                            line-height: 30px;
+                            line-height: 20px;
                         }
                         a {
                             display: block;
@@ -286,6 +339,21 @@
             @include screen ( medium ) {
                 padding-bottom: 15px;
             }
+            ::-webkit-input-placeholder {
+               color: #93755b;
+            }
+
+            :-moz-placeholder { /* Firefox 18- */
+               color: #93755b;  
+            }
+
+            ::-moz-placeholder {  /* Firefox 19+ */
+               color: #93755b;   
+            }
+
+            :-ms-input-placeholder {  
+               color: #93755b;  
+            }
         }
     }
 
@@ -360,8 +428,9 @@
         z-index: 2;
         position: relative;
 
-    	span {
-	    	color: #ffc35d;
+        span {
+            /*color: #ffc35d;*/
+            color: #d0ab7c ;
 	    	font-size: 13px;
 	    	font-family: $font-iCPB;
 	    	text-transform: uppercase;
@@ -370,11 +439,19 @@
     		padding-left: 25px;
     		display: inline-block;
     		vertical-align: middle;
-    		background: url('../images/icons/star.png') 3px 0 no-repeat;
             @include screen ( medium ) {
                 margin-top: 4px;
             }
-    	}
+            &:before {
+                content: '';
+                position: absolute;
+                width: 16px;
+                height: 15px;
+                margin-left: -22px;
+        		background: url('../images/icons/star.png') no-repeat;
+            }
+        }
+
     	img {
     		margin-left: 5px;
     		display: inline-block;
