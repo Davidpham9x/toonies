@@ -25,499 +25,566 @@
 	    width: 100%;
 	    height: 100vh;
 	    min-height: 770px;
+		z-index: 1;
 	    overflow: hidden;
 		position: relative;
 	    margin-top: -117px;
+	    &.default {
+	    	height: 100%;
+	    }
 
+	    .button--back {
+	    	font-size: 13px;
+		    font-family: $font-iCPB;
+
+		    line-height: 50px;
+		    text-align: center;
+		    text-transform: uppercase;
+
+		    width: 202px;
+		    height: 46px;
+		    background: url('../images/buttons/button-yellow.png') no-repeat;
+		    z-index: 3;
+		    @include ab ( n, 20px, 60px, n );
+		    &:hover {
+		    	background: url('../images/buttons/button-grey.png') no-repeat;
+		    }
+
+		    img {
+		    	display: inline-block;
+				vertical-align: middle;
+				margin-right: 5px;
+				margin-top: -3px;
+		    }
+	    }
 	    .treasure-hunt-content {
 	     	width: 100%;
 		    height: 100%;
 		    min-height: 770px;
 		    overflow: hidden;
-	    }
-		.outer {
-			width: 100%;
-		    height: 100%;
-		    margin: 0 auto;
-		    max-width: 1920px;
-		    position: relative;
 
-			.inner {
-				cursor: move;
+			>.outer {
+				width: 100%;
+			    height: 100%;
+			    margin: 0 auto;
+			    max-width: 1920px;
+			    position: relative;
 
-				img {
-					max-width: none;
-				}
-				.mask {
-					z-index: 1;
-					@include ab ( 0, 0, n, n );
-				}
-				.area__wrapper {
-					z-index: 2;
-					position: absolute;
-					&.active {
-						.area {
-							filter: none;
-						}
+				>.inner {
+					cursor: move;
+					>img {
+						max-width: none;
 					}
-					&.area-1 {
-						left: 0;
-						bottom: 0;
+					/* &.draggable {} */
+					&.default {
+						cursor: pointer;
 
-						.coin {
-							&.coin-1 {
-								top: 11%;
-								left: 25%;
+						.area__wrapper {
+							@include transform ( scale(0.3) );
+							&.area-1 {
+								@include transform-origin ( bottom left );
 							}
-							&.coin-2 {
-								top: 16%;
-								left: 2%;
+							&.area-2 {
+								@include transform-origin ( top left );
 							}
-							&.coin-3 {
-								top: 41%;
-								left: 5%;
+							&.area-3 {
+								left: auto;
+								margin-left: 0;
+								/* @include transform ( scale(0.4) ); */
+								@include transform-origin ( top center );
 							}
-							&.coin-4 {
-								top: 28%;
-								left: 11%;
+							&.area-4 {
+								@include transform-origin ( top right );
 							}
-							&.coin-5 {
-								top: 42%;
-								left: 22%;
+							&.area-5 {
+								margin-top: 0;
+								@include transform ( scale(0.3) translateY(-50%) );
+								@include transform-origin ( top right );
 							}
-							&.coin-6 {
-								top: 45%;
-								left: 45%;
-							}
-							&.coin-7 {
-								top: 31%;
-								left: 30%;
-							}
-							&.coin-8 {
-								top: 66%;
-								left: 15%;
-							}
-							&.coin-9 {
-								top: 55%;
-								left: 45%;
-							}
-							&.coin-10 {
-								bottom: 10%;
-								left: 5%;
-							}
-							&.coin-11 {
-								bottom: 17%;
-								left: 27%;
-							}
-							&.coin-12 {
-								bottom: 5%;
-								left: 19%;
-							}
-							&.coin-13 {
-								bottom: 1%;
-								left: 40%;
-							}
-							&.coin-14 {
-								bottom: 15%;
-								left: 45%;
-							}
-							&.coin-15 {
-								bottom: 30%;
-								left: 50%;
-							}
-							&.coin-16 {
-								bottom: 25%;
-								left: 65%;
+							&.area-6 {
+								/* @include transform ( scale(0.5) ); */
+								@include transform-origin ( bottom right );
 							}
 						}
-					}
-					&.area-2 {
-						top: 0;
-						left: 0;
-
-						.coin {
-							&.coin-1 {
-								top: 11%;
-								left: 25%;
-							}
-							&.coin-2 {
-								top: 16%;
-								left: 2%;
-							}
-							&.coin-3 {
-								top: 41%;
-								left: 5%;
-							}
-							&.coin-4 {
-								top: 28%;
-								left: 11%;
-							}
-							&.coin-5 {
-								top: 42%;
-								left: 22%;
-							}
-							&.coin-6 {
-								top: 45%;
-								left: 45%;
-							}
-							&.coin-7 {
-								top: 31%;
-								left: 30%;
-							}
-							&.coin-8 {
-								top: 66%;
-								left: 15%;
-							}
-							&.coin-9 {
-								top: 55%;
-								left: 45%;
-							}
-							&.coin-10 {
-								bottom: 10%;
-								left: 5%;
-							}
-							&.coin-11 {
-								bottom: 17%;
-								left: 27%;
-							}
-							&.coin-12 {
-								bottom: 5%;
-								left: 19%;
-							}
-							&.coin-13 {
-								bottom: 1%;
-								left: 40%;
-							}
-							&.coin-14 {
-								bottom: 15%;
-								left: 45%;
-							}
-							&.coin-15 {
-								bottom: 30%;
-								left: 50%;
-							}
-							&.coin-16 {
-								bottom: 25%;
-								left: 65%;
-							}
-						}
-					}
-					&.area-3 {
-						top: 0;
-						left: 50%;
-						margin-left: -5%;
-						@include transform ( translateX(-50%) );
-
-						.coin {
-							&.coin-1 {
-								top: 11%;
-								left: 25%;
-							}
-							&.coin-2 {
-								top: 16%;
-								left: 2%;
-							}
-							&.coin-3 {
-								top: 41%;
-								left: 5%;
-							}
-							&.coin-4 {
-								top: 28%;
-								left: 11%;
-							}
-							&.coin-5 {
-								top: 42%;
-								left: 22%;
-							}
-							&.coin-6 {
-								top: 45%;
-								left: 45%;
-							}
-							&.coin-7 {
-								top: 31%;
-								left: 30%;
-							}
-							&.coin-8 {
-								top: 66%;
-								left: 15%;
-							}
-							&.coin-9 {
-								top: 55%;
-								left: 45%;
-							}
-							&.coin-10 {
-								bottom: 10%;
-								left: 5%;
-							}
-							&.coin-11 {
-								bottom: 17%;
-								left: 27%;
-							}
-							&.coin-12 {
-								bottom: 5%;
-								left: 19%;
-							}
-							&.coin-13 {
-								bottom: 1%;
-								left: 40%;
-							}
-							&.coin-14 {
-								bottom: 15%;
-								left: 45%;
-							}
-							&.coin-15 {
-								bottom: 30%;
-								left: 50%;
-							}
-							&.coin-16 {
-								bottom: 25%;
-								left: 65%;
-							}
-						}
-					}
-					&.area-4 {
-						top: 0;
-						right: 0;
-
-						.coin {
-							&.coin-1 {
-								top: 11%;
-								left: 25%;
-							}
-							&.coin-2 {
-								top: 16%;
-								left: 2%;
-							}
-							&.coin-3 {
-								top: 41%;
-								left: 5%;
-							}
-							&.coin-4 {
-								top: 28%;
-								left: 11%;
-							}
-							&.coin-5 {
-								top: 42%;
-								left: 22%;
-							}
-							&.coin-6 {
-								top: 45%;
-								left: 45%;
-							}
-							&.coin-7 {
-								top: 31%;
-								left: 30%;
-							}
-							&.coin-8 {
-								top: 66%;
-								left: 15%;
-							}
-							&.coin-9 {
-								top: 55%;
-								left: 45%;
-							}
-							&.coin-10 {
-								bottom: 10%;
-								left: 5%;
-							}
-							&.coin-11 {
-								bottom: 17%;
-								left: 27%;
-							}
-							&.coin-12 {
-								bottom: 5%;
-								left: 19%;
-							}
-							&.coin-13 {
-								bottom: 1%;
-								left: 40%;
-							}
-							&.coin-14 {
-								bottom: 15%;
-								left: 45%;
-							}
-							&.coin-15 {
-								bottom: 30%;
-								left: 50%;
-							}
-							&.coin-16 {
-								bottom: 25%;
-								left: 65%;
-							}
-						}
-					}
-					&.area-5 {
-						top: 50%;
-						right: 0;
-						margin-top: 2%;
-						@include transform ( translateY(-50%) );
-
-						.coin {
-							&.coin-1 {
-								top: 11%;
-								left: 25%;
-							}
-							&.coin-2 {
-								top: 16%;
-								left: 2%;
-							}
-							&.coin-3 {
-								top: 41%;
-								left: 5%;
-							}
-							&.coin-4 {
-								top: 28%;
-								left: 11%;
-							}
-							&.coin-5 {
-								top: 42%;
-								left: 22%;
-							}
-							&.coin-6 {
-								top: 45%;
-								left: 45%;
-							}
-							&.coin-7 {
-								top: 31%;
-								left: 30%;
-							}
-							&.coin-8 {
-								top: 66%;
-								left: 15%;
-							}
-							&.coin-9 {
-								top: 55%;
-								left: 45%;
-							}
-							&.coin-10 {
-								bottom: 10%;
-								left: 5%;
-							}
-							&.coin-11 {
-								bottom: 17%;
-								left: 27%;
-							}
-							&.coin-12 {
-								bottom: 5%;
-								left: 19%;
-							}
-							&.coin-13 {
-								bottom: 1%;
-								left: 40%;
-							}
-							&.coin-14 {
-								bottom: 15%;
-								left: 45%;
-							}
-							&.coin-15 {
-								bottom: 30%;
-								left: 50%;
-							}
-							&.coin-16 {
-								bottom: 25%;
-								left: 65%;
-							}
-						}
-					}
-					&.area-6 {
-						right: 0;
-						bottom: 0;
-
-						.coin {
-							&.coin-1 {
-								top: 11%;
-								left: 25%;
-							}
-							&.coin-2 {
-								top: 16%;
-								left: 2%;
-							}
-							&.coin-3 {
-								top: 41%;
-								left: 5%;
-							}
-							&.coin-4 {
-								top: 28%;
-								left: 11%;
-							}
-							&.coin-5 {
-								top: 42%;
-								left: 22%;
-							}
-							&.coin-6 {
-								top: 45%;
-								left: 45%;
-							}
-							&.coin-7 {
-								top: 31%;
-								left: 30%;
-							}
-							&.coin-8 {
-								top: 66%;
-								left: 15%;
-							}
-							&.coin-9 {
-								top: 55%;
-								left: 45%;
-							}
-							&.coin-10 {
-								bottom: 10%;
-								left: 5%;
-							}
-							&.coin-11 {
-								bottom: 17%;
-								left: 27%;
-							}
-							&.coin-12 {
-								bottom: 5%;
-								left: 19%;
-							}
-							&.coin-13 {
-								bottom: 1%;
-								left: 40%;
-							}
-							&.coin-14 {
-								bottom: 15%;
-								left: 45%;
-							}
-							&.coin-15 {
-								bottom: 30%;
-								left: 50%;
-							}
-							&.coin-16 {
-								bottom: 25%;
-								left: 65%;
-							}
+						>img {
+							max-width: 100%;
+							@include transition( all .3s ease-in-out );
 						}
 					}
 
-					.outer {
-						z-index: 3;
-						width: 100%;
-						height: 100%;
+					.mask {
+						z-index: 2;
 						@include ab ( 0, 0, n, n );
 					}
-					.inner {
-						width: 100%;
-						height: 100%;
-						position: relative;
+				}
+			}
+	    }
+		.area__wrapper {
+			z-index: 1;
+			position: absolute;
+			@include transition( all .3s ease-in-out );
+			&.active {
+				.area {
+					filter: none;
+				}
+			}
+			&.area-1 {
+				left: 0;
+				bottom: 45px;
 
-						img {
-							max-width: 100px;
-							position: absolute;
-						}
+				.coin {
+					&.coin-1 {
+						top: 11%;
+						left: 25%;
 					}
-					img {
-						-webkit-filter: grayscale(0.5);
-						filter: grayscale(0.5);
+					&.coin-2 {
+						top: 16%;
+						left: 2%;
 					}
-					.coin {
-						-webkit-filter: grayscale(0.5);
-						filter: grayscale(0.5);
-						&.active {
-							filter: none;
-						}
+					&.coin-3 {
+						top: 41%;
+						left: 5%;
 					}
+					&.coin-4 {
+						top: 28%;
+						left: 11%;
+					}
+					&.coin-5 {
+						top: 42%;
+						left: 22%;
+					}
+					&.coin-6 {
+						top: 45%;
+						left: 45%;
+					}
+					&.coin-7 {
+						top: 31%;
+						left: 30%;
+					}
+					&.coin-8 {
+						top: 66%;
+						left: 15%;
+					}
+					&.coin-9 {
+						top: 55%;
+						left: 45%;
+					}
+					&.coin-10 {
+						bottom: 10%;
+						left: 5%;
+					}
+					&.coin-11 {
+						bottom: 17%;
+						left: 27%;
+					}
+					&.coin-12 {
+						bottom: 5%;
+						left: 19%;
+					}
+					&.coin-13 {
+						bottom: 1%;
+						left: 40%;
+					}
+					&.coin-14 {
+						bottom: 15%;
+						left: 45%;
+					}
+					&.coin-15 {
+						bottom: 30%;
+						left: 50%;
+					}
+					&.coin-16 {
+						bottom: 25%;
+						left: 65%;
+					}
+				}
+			}
+			&.area-2 {
+				top: 0;
+				left: 0;
+
+				.coin {
+					&.coin-1 {
+						top: 11%;
+						left: 25%;
+					}
+					&.coin-2 {
+						top: 16%;
+						left: 2%;
+					}
+					&.coin-3 {
+						top: 41%;
+						left: 5%;
+					}
+					&.coin-4 {
+						top: 28%;
+						left: 11%;
+					}
+					&.coin-5 {
+						top: 42%;
+						left: 22%;
+					}
+					&.coin-6 {
+						top: 45%;
+						left: 45%;
+					}
+					&.coin-7 {
+						top: 31%;
+						left: 30%;
+					}
+					&.coin-8 {
+						top: 66%;
+						left: 15%;
+					}
+					&.coin-9 {
+						top: 55%;
+						left: 45%;
+					}
+					&.coin-10 {
+						bottom: 10%;
+						left: 5%;
+					}
+					&.coin-11 {
+						bottom: 17%;
+						left: 27%;
+					}
+					&.coin-12 {
+						bottom: 5%;
+						left: 19%;
+					}
+					&.coin-13 {
+						bottom: 1%;
+						left: 40%;
+					}
+					&.coin-14 {
+						bottom: 15%;
+						left: 45%;
+					}
+					&.coin-15 {
+						bottom: 30%;
+						left: 50%;
+					}
+					&.coin-16 {
+						bottom: 25%;
+						left: 65%;
+					}
+				}
+			}
+			&.area-3 {
+				top: 0;
+				left: 50%;
+				margin-left: -5%;
+				@include transform ( translateX(-50%) );
+
+				.coin {
+					&.coin-1 {
+						top: 11%;
+						left: 25%;
+					}
+					&.coin-2 {
+						top: 16%;
+						left: 2%;
+					}
+					&.coin-3 {
+						top: 41%;
+						left: 5%;
+					}
+					&.coin-4 {
+						top: 28%;
+						left: 11%;
+					}
+					&.coin-5 {
+						top: 42%;
+						left: 22%;
+					}
+					&.coin-6 {
+						top: 45%;
+						left: 45%;
+					}
+					&.coin-7 {
+						top: 31%;
+						left: 30%;
+					}
+					&.coin-8 {
+						top: 66%;
+						left: 15%;
+					}
+					&.coin-9 {
+						top: 55%;
+						left: 45%;
+					}
+					&.coin-10 {
+						bottom: 10%;
+						left: 5%;
+					}
+					&.coin-11 {
+						bottom: 17%;
+						left: 27%;
+					}
+					&.coin-12 {
+						bottom: 5%;
+						left: 19%;
+					}
+					&.coin-13 {
+						bottom: 1%;
+						left: 40%;
+					}
+					&.coin-14 {
+						bottom: 15%;
+						left: 45%;
+					}
+					&.coin-15 {
+						bottom: 30%;
+						left: 50%;
+					}
+					&.coin-16 {
+						bottom: 25%;
+						left: 65%;
+					}
+				}
+			}
+			&.area-4 {
+				top: 0;
+				right: 0;
+
+				.coin {
+					&.coin-1 {
+						top: 11%;
+						left: 25%;
+					}
+					&.coin-2 {
+						top: 16%;
+						left: 2%;
+					}
+					&.coin-3 {
+						top: 41%;
+						left: 5%;
+					}
+					&.coin-4 {
+						top: 28%;
+						left: 11%;
+					}
+					&.coin-5 {
+						top: 42%;
+						left: 22%;
+					}
+					&.coin-6 {
+						top: 45%;
+						left: 45%;
+					}
+					&.coin-7 {
+						top: 31%;
+						left: 30%;
+					}
+					&.coin-8 {
+						top: 66%;
+						left: 15%;
+					}
+					&.coin-9 {
+						top: 55%;
+						left: 45%;
+					}
+					&.coin-10 {
+						bottom: 10%;
+						left: 5%;
+					}
+					&.coin-11 {
+						bottom: 17%;
+						left: 27%;
+					}
+					&.coin-12 {
+						bottom: 5%;
+						left: 19%;
+					}
+					&.coin-13 {
+						bottom: 1%;
+						left: 40%;
+					}
+					&.coin-14 {
+						bottom: 15%;
+						left: 45%;
+					}
+					&.coin-15 {
+						bottom: 30%;
+						left: 50%;
+					}
+					&.coin-16 {
+						bottom: 25%;
+						left: 65%;
+					}
+				}
+			}
+			&.area-5 {
+				top: 50%;
+				right: 0;
+				margin-top: 2%;
+				@include transform ( translateY(-50%) );
+
+				.coin {
+					&.coin-1 {
+						top: 11%;
+						left: 25%;
+					}
+					&.coin-2 {
+						top: 16%;
+						left: 2%;
+					}
+					&.coin-3 {
+						top: 41%;
+						left: 5%;
+					}
+					&.coin-4 {
+						top: 28%;
+						left: 11%;
+					}
+					&.coin-5 {
+						top: 42%;
+						left: 22%;
+					}
+					&.coin-6 {
+						top: 45%;
+						left: 45%;
+					}
+					&.coin-7 {
+						top: 31%;
+						left: 30%;
+					}
+					&.coin-8 {
+						top: 66%;
+						left: 15%;
+					}
+					&.coin-9 {
+						top: 55%;
+						left: 45%;
+					}
+					&.coin-10 {
+						bottom: 10%;
+						left: 5%;
+					}
+					&.coin-11 {
+						bottom: 17%;
+						left: 27%;
+					}
+					&.coin-12 {
+						bottom: 5%;
+						left: 19%;
+					}
+					&.coin-13 {
+						bottom: 1%;
+						left: 40%;
+					}
+					&.coin-14 {
+						bottom: 15%;
+						left: 45%;
+					}
+					&.coin-15 {
+						bottom: 30%;
+						left: 50%;
+					}
+					&.coin-16 {
+						bottom: 25%;
+						left: 65%;
+					}
+				}
+			}
+			&.area-6 {
+				right: 0;
+				bottom: 45px;
+
+				.coin {
+					&.coin-1 {
+						top: 11%;
+						left: 25%;
+					}
+					&.coin-2 {
+						top: 16%;
+						left: 2%;
+					}
+					&.coin-3 {
+						top: 41%;
+						left: 5%;
+					}
+					&.coin-4 {
+						top: 28%;
+						left: 11%;
+					}
+					&.coin-5 {
+						top: 42%;
+						left: 22%;
+					}
+					&.coin-6 {
+						top: 45%;
+						left: 45%;
+					}
+					&.coin-7 {
+						top: 31%;
+						left: 30%;
+					}
+					&.coin-8 {
+						top: 66%;
+						left: 15%;
+					}
+					&.coin-9 {
+						top: 55%;
+						left: 45%;
+					}
+					&.coin-10 {
+						bottom: 10%;
+						left: 5%;
+					}
+					&.coin-11 {
+						bottom: 17%;
+						left: 27%;
+					}
+					&.coin-12 {
+						bottom: 5%;
+						left: 19%;
+					}
+					&.coin-13 {
+						bottom: 1%;
+						left: 40%;
+					}
+					&.coin-14 {
+						bottom: 15%;
+						left: 45%;
+					}
+					&.coin-15 {
+						bottom: 30%;
+						left: 50%;
+					}
+					&.coin-16 {
+						bottom: 25%;
+						left: 65%;
+					}
+				}
+			}
+
+			.outer {
+				z-index: 3;
+				width: 100%;
+				height: 100%;
+				@include ab ( 0, 0, n, n );
+			}
+			.inner {
+				width: 100%;
+				height: 100%;
+				position: relative;
+
+				img {
+					width: 100%;
+					max-width: 100px;
+					position: absolute;
+				}
+			}
+			img {
+				-webkit-filter: grayscale(1);
+				filter: grayscale(1);
+			}
+			.coin {
+				-webkit-filter: grayscale(1);
+				filter: grayscale(1);
+				&.active {
+					filter: none;
 				}
 			}
 		}
@@ -530,10 +597,10 @@
 		width: 100%;
 		height: 761px;
 		max-width: 801px;
-		position: absolute;
-		right: -380px;
-		bottom: -15%;
 		z-index: 5;
+		right: -380px;
+		bottom: -110px;
+		position: absolute;
 
 		ul {
 			margin: 0;
@@ -547,6 +614,7 @@
 			}
 		}
 		.coin {
+			margin-top: 10px;
 			position: relative;
 
 			ul {
@@ -583,8 +651,8 @@
 				}
 
 				img {
-					-webkit-filter: grayscale(0.5);
-					filter: grayscale(0.5);
+					-webkit-filter: grayscale(1);
+					filter: grayscale(1);
 					width: 100%;
 				}
 			}
@@ -645,10 +713,12 @@
 					img {
 						float: left;
 						max-height: 30px;
+						margin-right: 10px;
 					}
 					.title {
 						float: left;
 						line-height: 30px;
+						text-transform: uppercase;
 					}
 				}
 				span {
@@ -667,8 +737,21 @@
 		}
 	}
 	.score_wrapper {
-		width: 50%;
+		width: 51%;
 		padding: 15px 0;
+		margin-top: 10px;
+		position: relative;
+		&:before, &:after {
+			content: '';
+			height: 7px;
+			width: 345px;
+			background: url('../images/treasure_hunt/line.png') no-repeat;
+			@include ab ( 0, n, n, 0 );
+		}
+		&:after {
+			top: auto;
+			bottom: 0;
+		}
 
 		span {
 			display: block;

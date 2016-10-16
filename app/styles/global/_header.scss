@@ -3,6 +3,8 @@
 */
 
 header {
+	z-index: 2;
+	position: relative;
 	@include screen ( ipadPortrait ) {
 		padding: 0 10px;
 	}
@@ -30,6 +32,10 @@ header {
 			position: absolute;
 			z-index: 1;
 			left: 70px;
+			display: none;
+			@include screen ( medium ) {
+				display: block;
+			}
 		}
 		&:after {
 			left: auto;
@@ -155,13 +161,6 @@ header {
 					padding: 0 10px;
 				}
 			}
-			/* .user-info {
-				&:hover {
-					.menu-user {
-						display: block;
-					}
-				}
-			} */
 			.hot-line {
 				display: block;
 				text-indent: -9999px;
@@ -217,10 +216,16 @@ header {
 				}
 			}
 			.account {
-				img {
+				>img {
 					display: inline-block;
 					vertical-align: middle;
-					margin-bottom: 5px;
+					max-width: 55%;
+					margin-bottom: 2px;
+
+					@include screen ( ipad ) {
+						max-width: 100%;
+						margin-bottom: 5px;
+					}
 				}
 				.wrap-img {
 					overflow: hidden;
@@ -265,6 +270,7 @@ header {
 				span {
 					color: #a35a28;
 					font-size: 12px;
+					text-transform: uppercase;
 				}
 				.hotline {
 					text-indent: -9999px;
@@ -329,6 +335,7 @@ header {
 				span {
 					color: #a35a28;
 					font-size: 12px;
+					text-transform: uppercase;
 				}
 			}
 			.logout {

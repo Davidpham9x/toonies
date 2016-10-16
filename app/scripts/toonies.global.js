@@ -37,6 +37,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initShowInfoUserMobile();
             this.initHandleWebsiteResize();
 
+
             if ($('.page--scan').length || $('.page--code').length) {
                 toonies.Global.initModalIntro();
             }
@@ -167,16 +168,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 });
             }
 
-            /*var fullPath = document.getElementById('txt-avatar').value;
-            if (fullPath) {
-                var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
-                var filename = fullPath.substring(startIndex);
-                if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-                    filename = filename.substring(1);
-                }
-                alert(filename);
-            }*/
-
             $('#txt-avatar').change(function() {
                 var fullPath = $(this).val();
 
@@ -190,10 +181,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                     $(this).parent().find('span').text(filename);
                 }
-                /*$('#select_file').html(filename);*/
             });
 
-            if ($('.page--treasure-hunt').length) {
+            if ( $('.page--treasure-hunt').length ) {
                 toonies.Global.initDragBackgroundTreasure();
             }
 
@@ -534,6 +524,31 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
         },
 
+        initModalFinishArea: function(title, totalCoins, totalMoney) {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--notification'
+                },
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        $('#modal--notification').find('.title').text(title);
+                        $('#modal--notification').find('.total_coins').text(totalCoins);
+                        $('#modal--notification').find('.total_money').text(totalMoney);
+                        this.st.mainClass = 'mfp-move-from-top';
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('#modal--notification').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                toonies.Global.initCloseAllModal();
+            });
+        },
+
         initModalCommon: function(mess) {
             $.magnificPopup.open({
                 items: {
@@ -563,7 +578,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         },
 
         initSlider: function() {
-
             window.windowWidth = 0;
 
             $(window).resize(function() {
@@ -573,9 +587,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                     if (!$('.howto .wrap-content .row,.wrap-list,.wrap-prize').hasClass('slick-initialized')) {
                         $('.howto .wrap-content .row,.wrap-list,.wrap-prize').slick({
+                            fade: true,
                             dots: false,
                             lazyLoad: 'ondemand',
-                            fade: true
+                            adaptiveHeight: true
                         });
                     }
                 } else {
@@ -585,11 +600,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 }
             }).trigger('resize');
 
-            // $(window).width() < 767  && $('.howto .wrap-content .row,.wrap-list,.wrap-prize').slick({
-            //     dots: false,
-            //     lazyLoad: 'ondemand',
-            //     fade: true 
-            // });
             $('.wrap-text').mCustomScrollbar({
                 theme: "rounded-dots",
                 scrollInertia: 400
@@ -811,7 +821,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         initDragBackgroundTreasure: function() {
             var divContent = $('.treasure-hunt-content'),
                 imgBg = divContent.find('#background-treasure'),
-                parentContent = imgBg.parents('.inner');
+                parentContent = imgBg.parents('.inner'),
+                btnBack = divContent.find('.button--back'),
+                lastMouseX,
+                lastMouseY;
 
             if (window.windowWidth >= 1920) {
                 $('.treasure-hunt').find('.outer').css('width', 1920);
@@ -820,17 +833,28 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             var constrainArray = function() {
                 var wDiff = imgBg.width() - divContent.find('.outer').width();
                 var hDiff = imgBg.height() - divContent.find('.outer').height();
-
                 return [-hDiff, 0, 0, -wDiff];
             };
 
-            parentContent.pep({
-                constrainTo: constrainArray()
-                    /*,
-                    elementsWithInteraction: 'a',
-                    start: function () {
-                        $('.wrap-content-tooltip').css('display', 'none');
-                    }*/
+            parentContent.off('click').on('click', function () {
+                parentContent.removeClass('default');
+                $('.treasure-hunt').removeClass('default');
+                btnBack.removeClass('hidden');
+
+                parentContent.pep({
+                    constrainTo: constrainArray()
+                });
+            });
+
+            btnBack.off('click').on('click', function (e) {
+                e.preventDefault();
+
+                parentContent.addClass('default');
+                parentContent.removeAttr('style');
+                $('.treasure-hunt').addClass('default');
+                btnBack.addClass('hidden');
+
+                $.pep.unbind( parentContent );
             });
         },
 

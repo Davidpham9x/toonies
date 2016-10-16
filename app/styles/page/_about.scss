@@ -1,16 +1,18 @@
 .page--about {
-	overflow: hidden;
+    overflow: hidden;
     background: url('../images/profile/bg.jpg') top center no-repeat;
     background-size: 100% 100%;
-    padding-bottom:0;   
+    padding-bottom: 0;
     min-height: 500px;
-    .content-about{
-        max-width: 900px;
-        padding: 45px 0 ;
+
+    .content-about {
         margin: 0 auto;
+        padding: 45px 0;
+        max-width: 900px;
+        z-index: 1;
         position: relative;
-        @media ( max-width: 767px ) {
-            text-align:center; 
+        @media ( max-width: 767px) {
+            text-align: center;
             padding: 30px 15px;
         }
         h2 {
@@ -25,22 +27,21 @@
                 width: 322px;
                 min-height: 34px;
                 background-size: 100%;
-                
             }
-            .col  {
+            .col {
                 width: 36%;
                 margin: 0 7% 20px;
                 text-align: center;
-                @media (max-width: 767px){
+                @media (max-width: 767px) {
                     margin: 0 10px 20px;
                 }
                 p {
                     text-transform: uppercase;
                     font-size: 13px;
-                    color: #4e301c; 
+                    color: #4e301c;
                 }
             }
-        } 
+        }
         &.prize {
             h2 {
                 background: url('../images/about/tit-bigprize.png') center no-repeat;
@@ -49,70 +50,70 @@
                 background-size: 100%;
             }
             .wrap-content {
-                 min-height: 540px; 
+                min-height: 540px;
             }
-        } 
+        }
         &.tnc {
             h2 {
                 background: url('../images/about/tit-rule.png') center no-repeat;
                 width: 290px;
-                min-height: 42px; 
+                min-height: 42px;
                 background-size: 100%;
             }
             .wrap-content {
                 color: #000;
-                font-family: $font-iCPL; 
+                font-size: 12px;
+                font-family: $font-standard;
             }
-            .wrap-text { 
+            .wrap-text {
                 padding: 0 7% 30px;
                 max-height: 486px;
                 overflow-y: auto;
                 @media (max-width: 767px) {
-                    padding:0 5px 30px;
+                    padding: 0 5px 30px;
                 }
-                
                 #mCSB_1_scrollbar_vertical {
                     width: 22px;
                 }
-                .mCSB_draggerRail{
-                	background: url('../images/about/line.png') center no-repeat;
+                .mCSB_draggerRail {
+                    background: url('../images/about/line.png') center no-repeat;
                     width: 9px;
                 }
-                .mCSB_dragger .mCSB_dragger_bar{
+                .mCSB_dragger .mCSB_dragger_bar {
                     background-color: transparent;
                 }
-
                 #mCSB_1_dragger_vertical {
                     background: url('../images/about/dots.png') center no-repeat;
                     width: 22px;
                     height: 24px;
-
                 }
             }
-        } 
+        }
     }
     .wrap-content {
         background: url(../images/about/bg.png) no-repeat;
         background-size: 100% 100%;
         padding: 195px 5% 285px;
-        max-width: 100%; 
+        max-width: 100%;
         position: relative;
         z-index: 5;
         width: 800px;
         float: right;
-        @include screen(medium){
-            padding: 50px 2% 20px 10%; 
+        @include screen(medium) {
+            padding: 50px 2% 20px 10%;
         }
-        @media (max-width: 835px) and (min-width: 768px){
-            padding: 50px 2% 20px 20%; 
+        @media (max-width: 835px) and (min-width: 768px) {
+            padding: 50px 2% 20px 20%;
         }
     }
     .slick-slider {
-        position: relative;
         color: #4e301c;
         text-align: center;
+        position: relative;
+        margin-bottom: 30px;
+
         img {
-            margin: 0 auto;
+            margin: 10px auto 0;
         }
         p {
             max-width: 220px;
@@ -123,50 +124,50 @@
             text-transform: uppercase;
             span {
                 font-size: 20px;
-                color: #c66738; 
+                color: #c66738;
             }
         }
-        .slick-arrow{
+        .slick-arrow {
             border: none;
             outline: none;
             font-size: 0;
             width: 13px;
             height: 27px;
             position: absolute;
-            top: 30%;
+            top: 50%;
+            @include transform ( translateY(-50%) );
         }
-        .slick-prev  {
+        .slick-prev {
             background: url(../images/global/prev.png) no-repeat;
-            left: 5%;
+            left: 0;
         }
-        .slick-next  {
+        .slick-next {
             background: url(../images/global/next.png) no-repeat;
-            right: 5%;
+            right: 0;
         }
-        
     }
-    .tab-about{
+    .tab-about {
         position: absolute;
         left: 0;
         top: 85px;
         text-align: center;
         width: 100%;
-        @include screen(medium) { 
-            width:auto; 
+        @include screen(medium) {
+            width: auto;
             top: 20%;
         }
         ul {
             position: relative;
             z-index: 10;
-            @media (max-width: 767px){ 
+            @media (max-width: 767px) {
                 width: 190px;
-                margin:0 auto;
+                margin: 0 auto;
             }
         }
         li {
             list-style: none;
-            @media (max-width: 767px){
-                display:inline-block;
+            @media (max-width: 767px) {
+                display: inline-block;
             }
             a {
                 font-size: 0;
@@ -180,24 +181,27 @@
             }
             .tnc {
                 background: url(../images/about/tab-2.png) no-repeat;
-                background-size: 100%;   
+                background-size: 100%;
             }
             .howto {
-                background: url(../images/about/tab-2.png) no-repeat;
-                background-size: 100%;   
+                background: url(../images/about/tab-3.png) no-repeat;
+                background-size: 100%;
             }
-            .active, &:hover a{
-                &.prize {
-                    background: url(../images/about/tab-1-on.png) no-repeat;
-                    background-size: 100%;
-                }
-                &.tnc {
-                    background: url(../images/about/tab-2-on.png) no-repeat;
-                    background-size: 100%;   
-                }
-                &.howto {
-                    background: url(../images/about/tab-2-on.png) no-repeat;
-                    background-size: 100%;   
+            &.active,
+            &:hover {
+                a {
+                    &.prize {
+                        background: url(../images/about/tab-1-on.png) no-repeat;
+                        background-size: 100%;
+                    }
+                    &.tnc {
+                        background: url(../images/about/tab-2-on.png) no-repeat;
+                        background-size: 100%;
+                    }
+                    &.howto {
+                        background: url(../images/about/tab-3-on.png) no-repeat;
+                        background-size: 100%;
+                    }
                 }
             }
         }
@@ -213,14 +217,14 @@
         bottom: -20px;
         right: 50px;
     }
-    .product{
+    .product {
         position: absolute;
         left: 0;
         bottom: 120px;
         z-index: 9;
         width: 100%;
         text-align: center;
-        @include screen(medium){
+        @include screen(medium) {
             bottom: 45px;
             left: -50px;
             width: auto;
@@ -231,73 +235,86 @@
         top: 0;
         left: 0;
         display: none;
-        @include screen(medium){
+        @include screen(medium) {
             display: block;
         }
     }
 }
+
 .coin {
     position: absolute;
 }
+
 .coin1 {
     left: -10%;
     bottom: 25px;
     z-index: 10;
 }
+
 .coin2 {
     right: -30%;
     top: 50%;
-    @media (max-width: 767px){
-        top:10%;
+    @media (max-width: 767px) {
+        top: 10%;
         z-index: 9;
         right: 1%;
         max-width: 70px;
     }
 }
+
 .coin3 {
     right: -10%;
     top: 45%;
 }
+
 .coin4 {
     left: -15%;
     top: 30%;
 }
+
 .coin5 {
     right: -15%;
     top: -200px;
-    @media (max-width: 767px){
-        top:12%;
+    @media (max-width: 767px) {
+        top: 12%;
         z-index: 9;
         left: 1%;
         max-width: 50px;
     }
 }
+
 .coin6 {
     left: 0;
     top: 10%;
 }
+
 .coin7 {
     left: -20%;
     top: 60%;
 }
+
 .coin8 {
     right: -30%;
     top: 50%;
 }
+
 .coin9 {
     right: -10%;
     top: 10%;
 }
+
 .coin10 {
     left: -10%;
     top: -240px;
 }
+
 .coin10_1 {
-    z-index:9;
+    z-index: 9;
     bottom: 160px;
     left: -8%;
-    max-width:150px;
+    max-width: 150px;
 }
+
 .coin11 {
     left: 0%;
     bottom: 30%;
