@@ -28,6 +28,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
     toonies.Global = {
         modalSubmitVideo: null,
         countScan: 0,
+        timeOut: 0,
+        timeInterval: 0,
 
         init: function() { //initialization code goes here
             $.support.cors = true;
@@ -50,7 +52,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }
 
             if ($('.page--profile').length) {
-                // toonies.Global.initTab();
                 $('.upload .button,.avatar').on('click', function(e) {
                     e.preventDefault()
                     $('#img-avatar').trigger('click');
@@ -100,7 +101,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     labels.forEach(function(label, i) {
                         obj[label] = parsed[i]
                     });
-                    /*console.log(obj);*/
                     return obj;
                 }
 
@@ -112,7 +112,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                             diff.push(key);
                         }
                     });
-                    /*console.log(diff);*/
                     return diff;
                 }
 
@@ -128,12 +127,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                 // Starts the countdown
                 $example.countdown(nextYear, function(event) {
-                    /*console.log(event.offset.totalDays);*/
                     var newDate = event.strftime('%D:%H:%M:%S'),
                         data;
-                    /*console.log(event);*/
-                    /*console.log(newDate);*/
-                    /*console.log(nextDate);*/
                     if (newDate !== nextDate) {
                         currDate = nextDate;
                         nextDate = newDate;
@@ -267,12 +262,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             aTags.off('mouseenter').on('mouseenter', function(e) {
                 e.preventDefault();
 
-                /*if ( $(this).hasClass('active') ) {
-                    userContent.hide();
-                    $(this).removeClass('active');
-                } else {
-                    $(this).addClass('active');
-                }*/
                 userContent.show();
             });
 
@@ -284,13 +273,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                         userContent.hide();
                     }
                 }, 100);
-
-                /*if ( $(this).hasClass('active') ) {
-                    $(this).removeClass('active');
-                } else {
-                    userContent.show();
-                    $(this).addClass('active');
-                }*/
             });
 
             userContent.off('mouseenter').on('mouseenter', function(e) {
@@ -436,7 +418,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 removalDelay: 500, // Delay removal by X to allow out-animation
                 callbacks: {
                     beforeOpen: function() {
-                        /*console.log( this.st.el.attr('data-effect') );*/
                         this.st.mainClass = this.st.el.attr('data-effect');
                     },
                     open: function() {
@@ -613,98 +594,30 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             btnScan.off('click').on('click', function(e) {
                 e.preventDefault();
 
-                if (isMobile.any()) { // It is mobile
-                    // Open Camera
-                    $('#capture').trigger('click');
-                } else {
-                    $('.scan_content').addClass('hidden');
-                    $('.scan_content--camera').removeClass('hidden');
-                    $('#count-time').removeClass('hidden');
-                    contentScan.find('.button__wrapper').addClass('hidden');
-
-                    // Init Camera
-                    window.start();
-                    toonies.Global.initCameraAction();
-                    /*$('.select-camera').removeClass('hidden');*/
-                }
-
-                /*Webcam.set({
-                    fps: 45,
-                    unfreeze_snap: false
-                });
-
-                Webcam.attach('#camera');*/
-            });
-
-            var camera = document.getElementById('capture');
-            camera.addEventListener('change', function(e) {
-                if (typeof this.files[0] == 'undefined') {
-                    return;
-                }
-
                 $('.scan_content').addClass('hidden');
                 $('.scan_content--camera').removeClass('hidden');
-                /*$('#count-time').removeClass('hidden');*/
+                $('#count-time').removeClass('hidden');
                 contentScan.find('.button__wrapper').addClass('hidden');
 
-                // get the file name, possibly with path (depends on browser)
-                var filename = this.files[0].type;
-                var file = e.target.files[0];
-
-                // Use a regular expression to trim everything before final dot
-                var extension = filename.split('/').pop().toLowerCase();
-
-                if ($.inArray(extension, ['png', 'jpg', 'jpeg']) == -1) {
-                    toonies.Global.initCloseAllModal();
-                    setTimeout(function() {
-                        toonies.Global.initModalCommon('Vui lòng chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
-                    });
-                    return;
-                }
-
-                /*if ((this.files[0].size / 1024 / 1024) >= 6) {
-                    toonies.Global.initCloseAllModal();
-                    setTimeout(function() {
-                        toonies.Global.initModalCommon('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb');
-                    });
-                    return;
-                }*/
-
-                /*var img = new Image();
-                img.onload = function () {
-                    var qr = new QCodeDecoder();
-                    qr.decodeFromImage(URL.createObjectURL(file), function (err, result) {
-                        if (err) {
-                            alert(err);
-                            return false;
-                        };
-
-                        alert(result);
-                    });
-                }
-                img.src = URL.createObjectURL(file);*/
-                toonies.Global.handleImage(file);
+                // Init Camera
+                load();
+                toonies.Global.initCameraAction();
             });
         },
 
         initCameraAction: function() {
-            var countTime = 5,
-                timer = 0;
+            var countTime = 15;
 
-            setTimeout(function() {
-                /*// freeze camera so user can preview pic
-                Webcam.freeze();*/
-
+            toonies.Global.timeOut = setTimeout(function() {
                 toonies.Global.take_snapshot();
-                clearInterval(timer);
-                /*$('.button__wrapper--submit').removeClass('hidden');*/
-            }, 5000);
+                clearInterval(toonies.Global.timeOut);
+            }, 15000);
 
-            timer = setInterval(function() {
+            toonies.Global.timeInterval = setInterval(function() {
                 if (countTime == 1) {
                     $('.scan_content--camera').addClass('result');
                     $('#count-time').addClass('hidden');
-                    clearInterval(timer);
+                    clearInterval(toonies.Global.timeInterval);
                 }
 
                 countTime = countTime - 1;
@@ -712,108 +625,28 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }, 1000);
         },
 
-        handleImage: function(file) {
-            var canvas = document.getElementById('canvas');
-            var context = canvas.getContext('2d');
-            var resultScan = true,
-                dataScan = '';
-            var reader = new FileReader();
-            reader.onload = function(event) {
-                var img = new Image();
-                img.onload = function() {
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    context.drawImage(img, 0, 0);
-                    var data = canvas.toDataURL("image/jpeg", 1.0);
-                    var tempImg = $(img).clone().appendTo($('.scan_content--camera').find('.inner'));
-                    $(img).addClass('hidden').appendTo(document.body);
-                    toonies.Global.countScan = toonies.Global.countScan + 1;
-                    var qr = new QCodeDecoder();
-                    qr.decodeFromImage(URL.createObjectURL(file), function(err, result) {
-                        if (err) {
-                            /*alert(err);*/
-                            resultScan = false;
-                        } else {
-                            /*alert(result);*/
-                            dataScan = result;
-                        }
-
-                        /*alert(resultScan);
-                        alert(toonies.Global.countScan);
-                        alert(dataScan);*/
-
-                        $.event.trigger({
-                            type: "scan_result",
-                            resultScan: resultScan,
-                            countScan: toonies.Global.countScan,
-                            dataScan: dataScan,
-                            time: new Date()
-                        });
-
-                        /*$(document).trigger( "scan_result", [ resultScan, toonies.Global.countScan, dataScan ] );*/
-                    });
-                }
-                img.src = event.target.result;
-            }
-            reader.readAsDataURL(file);
-        },
-
         take_snapshot: function() {
-            var canvas = document.getElementById('canvas');
-            var context = canvas.getContext('2d');
-            canvas.width = 280;
-            canvas.height = 280;
-            context.drawImage(video, 0, 0, 280, 280);
+            toonies.Global.countScan = toonies.Global.countScan + 1;
 
-            var data = canvas.toDataURL("image/jpeg", 1.0);
-            var resultScan = true,
-                dataScan = '';
-            var img = new Image();
-            img.onload = function() {
-                var tempImg = $(img).clone().appendTo($('.scan_content--camera').find('.inner'));
-                $(img).addClass('hidden').appendTo(document.body);
-                toonies.Global.countScan = toonies.Global.countScan + 1;
-                var qr = new QCodeDecoder();
-                qr.decodeFromImage(img, function(err, result) {
-                    if (err) {
-                        /*alert(err);*/
-                        resultScan = false;
-                    } else {
-                        /*alert(result);*/
-                        dataScan = result;
-                    }
-
-                    /*console.log(resultScan);
-                    console.log(toonies.Global.countScan);
-                    console.log(dataScan);*/
-
-                    $.event.trigger({
-                        type: "scan_result",
-                        resultScan: resultScan,
-                        countScan: toonies.Global.countScan,
-                        dataScan: dataScan,
-                        time: new Date()
-                    });
-
-                    /*$(document).trigger( "scan_result", [ resultScan, toonies.Global.countScan, dataScan ] );*/
-                });
-            }
-            img.src = data;
+            $.event.trigger({
+                type: "scan_result",
+                dataScan: null,
+                resultScan: false,
+                countScan: toonies.Global.countScan,
+                time: new Date()
+            });
         },
 
         initResetCamera: function() {
             var contentScan = $('.scan');
-            /*// freeze camera so user can preview pic
-            Webcam.reset();*/
 
             $('.scan_content').eq(0).removeClass('hidden');
             $('.scan_content--camera').removeClass('result');
             $('.scan_content--camera').addClass('hidden');
 
             contentScan.find('.button__wrapper').eq(0).removeClass('hidden');
-            /*$('.button__wrapper--submit').addClass('hidden');*/
 
-            $('#count-time').text(5);
+            $('#count-time').text(15);
             $('#count-time').addClass('hidden');
             $('.scan_content--camera').find('img').remove();
         },
@@ -855,435 +688,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 btnBack.addClass('hidden');
 
                 $.pep.unbind( parentContent );
-            });
-        },
-
-        initUploadImg: function(tagUploadHTML4, tagUploadHTML5) {
-            var tagUploadHTML4 = tagUploadHTML4,
-                tagUploadHTML5 = tagUploadHTML5;
-
-            if (IE <= 9) {
-                tagUploadHTML4.removeClass('hidden');
-                tagUploadHTML5.addClass('hidden');
-
-                var btn = 'upload-' + (idx + 1),
-                    container = 'wrap-upload-flash-' + (idx + 1);
-
-                var uploader = new plupload.Uploader({
-                    runtimes: 'html5,flash',
-                    browse_button: btn,
-                    container: container,
-                    max_file_size: '6mb',
-                    filters: [
-                        { title: "Image files", extensions: "jpg,jpeg,png" }
-                    ],
-                    flash_swf_url: '//rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf'
-                });
-
-                uploader.bind('Init', function(up, params) {
-                    if (params.runtime !== "flash") {
-                        toonies.Global.initModalCommon('Bạn vui lòng cài <a href="https://helpx.adobe.com/flash-player.html" target="_blank">flash</a> để sử dụng được tính năng này');
-                    }
-                });
-
-                uploader.init();
-
-                uploader.bind('FilesAdded', function(up, files) {
-                    plupload.each(files, function(file) {
-                        toonies.Global.initAddImg(file);
-                    });
-                });
-
-                uploader.bind('Error', function(up, err) {
-                    toonies.Global.initModalCommon('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb và chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
-
-                    up.refresh(); // Reposition Flash/Silverlight
-                });
-            } else {
-                tagUploadHTML5.off('change').on('change', function(e) {
-                    if (typeof this.files[0] == 'undefined') {
-                        return;
-                    }
-
-                    // get the file name, possibly with path (depends on browser)
-                    var filename = this.files[0].type;
-
-                    // Use a regular expression to trim everything before final dot
-                    var extension = filename.split('/').pop().toLowerCase();
-
-                    if ($.inArray(extension, ['png', 'jpg', 'jpeg']) == -1) {
-                        toonies.Global.initCloseAllModal();
-                        setTimeout(function() {
-                            toonies.Global.initModalCommon('Vui lòng chọn đúng định dạng hình ảnh "jpg,jpeg,png"');
-                        });
-                        return;
-                    }
-
-                    if ((this.files[0].size / 1024 / 1024) >= 6) {
-                        toonies.Global.initCloseAllModal();
-                        setTimeout(function() {
-                            toonies.Global.initModalCommon('Kích thước hình ảnh của bạn quá lớn, mỗi ảnh không quá 6Mb');
-                        });
-                        return;
-                    }
-
-                    if (isMobile.any()) { // It is mobile
-                        toonies.Global.dropChangeHandler(e);
-                    } else {
-                        toonies.Global.initAddImg($(this)[0]);
-                    }
-                });
-            }
-        },
-
-        initTab: function() {
-            $('.tablinks').on('click', function() {
-                var tabData = $(this).attr('data-tab');
-                $('.tabcontent.active').removeClass('active');
-                $('.tablinks.active').removeClass('active');
-                $(this).addClass('active');
-                $('#' + tabData).addClass('active');
-            });
-        },
-
-        resizeImg: function(img) {
-            var canvas = document.createElement("canvas");
-            var ctx = canvas.getContext("2d");
-
-            var MAX_WIDTH = 480;
-            var MAX_HEIGHT = 320;
-            var width = img.width;
-            var height = img.height;
-
-            if (width > height) {
-                if (width > MAX_WIDTH) {
-                    height *= MAX_WIDTH / width;
-                    width = MAX_WIDTH;
-                }
-            } else {
-                if (height > MAX_HEIGHT) {
-                    width *= MAX_HEIGHT / height;
-                    height = MAX_HEIGHT;
-                }
-            }
-
-            canvas.width = width;
-            canvas.height = height;
-
-            ctx.drawImage(img, 0, 0, width, height);
-
-            var dataurl = canvas.toDataURL('image/jpeg', 0.8);
-            var image = $('<img id="target" src="' + dataurl + '">').appendTo($('.outer--review'));
-
-            $('.outer--upload').addClass('hidden');
-            $('.outer--review').removeClass('hidden');
-            $('.button__wrapper').removeClass('hidden');
-
-            /*$('#inpt-value-img-upload').val(dataurl);*/
-            /*toonies.Global.initModalEditImg(image);*/
-        },
-
-        replaceResults: function(img) {
-            var content = img.src || img.toDataURL('image/jpeg', 0.8);
-            var URL = window.URL || window.webkitURL;
-
-            if (toonies.Global.reUpload) {
-                toonies.Global.cropContainer.one('built.cropper', function() {
-                    URL.revokeObjectURL(content);
-                    toonies.Global.loading.hide();
-
-                    // Revoke when load complete
-                    toonies.Global.originDegree = 18;
-                    toonies.Global.currentDegree = 0;
-                    $('.range-slider-rotate').slider('option', 'value', 18);
-                }).cropper('reset').cropper('replace', content);
-            } else {
-                toonies.Global.initAddImgUploadMobile(content);
-            }
-        },
-
-        displayImage: function(file, options) {
-            toonies.Global.currentFile = file;
-
-            if (!loadImage(file, toonies.Global.replaceResults, options)) {}
-        },
-
-        dropChangeHandler: function(e) {
-            e.preventDefault();
-            e = e.originalEvent;
-
-            var target = e.dataTransfer || e.target,
-                file = target && target.files && target.files[0],
-                options = {
-                    maxWidth: 480,
-                    canvas: true
-                };
-
-            if (!file) {
-                return;
-            }
-
-            loadImage.parseMetaData(file, function(data) {
-                if (data.exif) {
-                    options.orientation = data.exif.get('Orientation');
-                }
-                toonies.Global.displayImage(file, options);
-            });
-        },
-
-        initAddImgUploadMobile: function(srcImg) {
-            var image = new Image();
-
-            image.onload = function() {
-                $(image).attr('id', 'target');
-                /*toonies.Global.resizeImg(image);*/
-                $('#inpt-value-img-upload').val(srcImg);
-
-                toonies.Global.initModalEditImg(image);
-            }
-
-            image.src = srcImg;
-        },
-
-        initAddImg: function(e) {
-            if (IE <= 9) {
-                var image = $(new Image());
-
-                var preloader = new mOxie.Image();
-
-                preloader.onerror = function(err) {};
-
-                preloader.onload = function() {
-                    preloader.downsize('480');
-
-                    if (preloader.type == "image/jpeg") {
-                        image.attr("src", preloader.getAsDataURL('image/jpeg', 100));
-                        toonies.Global.resizeImg(image);
-                        /*$('#inpt-value-img-upload').val(preloader.getAsDataURL('image/jpeg', 100));*/
-                    } else {
-                        image.attr("src", preloader.getAsDataURL());
-                        toonies.Global.resizeImg(image);
-                        /*$('#inpt-value-img-upload').val(preloader.getAsDataURL());*/
-                    }
-
-                    image.attr('id', 'target');
-
-                    toonies.Global.initModalEditImg(image);
-                };
-
-                preloader.load(e.getSource());
-            } else {
-                var reader = new FileReader();
-
-                reader.onload = function(event) {
-                        var image = new Image();
-
-                        image.onload = function() {
-                                $(image).attr('id', 'target');
-                                toonies.Global.resizeImg(image);
-                                /*$('#inpt-value-img-upload').val(event.target.result);
-
-                                toonies.Global.initModalEditImg(image);*/
-                            },
-
-                            image.src = event.target.result;
-                    },
-
-                    reader.readAsDataURL(e.files[0]);
-            }
-        },
-
-        initEditImg: function(image) {
-            var divContent = $('.img-edit-block');
-
-            $(image).appendTo(divContent.find('.wrap-edit-img'));
-            toonies.Global.cropContainer = divContent.find('.wrap-edit-img > #target');
-
-            var contentSliderRotate = divContent.find('.range-slider-rotate'),
-                contentSliderZoom = divContent.find('.range-slider-zoom');
-
-            var btnPlusZoom = $('.range-slider-zoom').parents('.wrap-range-slider').find('.btn-plus'),
-                btnMinusZoom = $('.range-slider-zoom').parents('.wrap-range-slider').find('.btn-minus');
-
-            var btnPlusRotate = contentSliderRotate.parents('.wrap-range-slider').find('.btn-plus'),
-                btnMinusRotate = contentSliderRotate.parents('.wrap-range-slider').find('.btn-minus');
-
-            contentSliderRotate.slider({
-                range: "max",
-                min: 0,
-                max: 36,
-                value: 18,
-                slide: function(event, ui) {
-                    toonies.Global.currentDegree = ui.value - toonies.Global.originDegree;
-                    toonies.Global.originDegree = ui.value;
-                    toonies.Global.cropContainer.cropper('rotate', toonies.Global.currentDegree * 10);
-                }
-            });
-
-            contentSliderZoom.slider({
-                range: "max",
-                min: 0,
-                max: 20,
-                value: 10,
-                slide: function(event, ui) {
-                    if (ui.value > contentSliderZoom.slider('option', 'value')) {
-                        btnPlusZoom.trigger('click');
-                    } else {
-                        btnMinusZoom.trigger('click');
-                    }
-                }
-            });
-
-            toonies.Global.cropContainer.cropper({
-                cropBoxMovable: true,
-                cropBoxResizable: false,
-                guides: false,
-                dragMode: 'move',
-                mouseWheelZoom: true,
-                built: function() {
-                    $('.cropper-crop-box').addClass('mask-boy');
-
-                    toonies.Global.cropContainer.cropper("setCropBoxData", {
-                        top: 100,
-                        left: 108,
-                        width: 85,
-                        height: 100
-                    });
-
-                    divContent.find('#btn-crop-image').off('click').on('click', function(e) {
-                        e.preventDefault();
-
-                        /*divContent.find('.content-edit-img').addClass('hidden');
-                        divContent.find('.wrap-canvas').removeClass('hidden');*/
-                        /*$('.wrap-tool-edit-img').removeClass('hidden');*/
-
-                        var canvasCrop = toonies.Global.cropContainer.cropper('getCroppedCanvas');
-                        var dataURL = canvasCrop.toDataURL('image/jpeg', 0.8);
-
-                        $('.outer--review').find('.inner').find('img').remove();
-
-                        $('.outer--upload').addClass('hidden');
-                        $('.outer--review').removeClass('hidden');
-                        $('.step--upload.step--review').find('.button__wrapper').removeClass('hidden');
-                        /*var imageTemp = $('<img alt="" src="' + dataURL + '" />').appendTo(document.body);*/
-
-                        /*toonies.Global.initRenderImage(image[0]);*/
-                        toonies.Global.initReEditImg();
-
-                        var frames = [
-                            sitePath + 'images/global/frame_boy.png'
-                        ];
-
-                        if ($('.choose-gender .active').hasClass('female')) {
-                            frames = [
-                                sitePath + 'images/global/frame_girl.png'
-                            ];
-                        }
-
-                        var ani = new AnimateCanvas('c', 400, 400, dataURL);
-                        //var ani = new AnimateCanvas('c', 800, 800, dataURL);
-
-                        setTimeout(function() {
-                            ani.loadImages(frames, function(images) {
-                                var imageBig = $('<img alt="" src="' + ani.createSequence(images) + '" />');
-                                imageBig.appendTo($('.outer--review').find('.inner'));
-
-                                $('input[id$="hidKidPhoto"]').val(imageBig.attr('src'));
-                                toonies.Global.initGetValueImg($(image).attr('src'), dataURL);
-
-                                /*var imgDummy = $('<img src="'+ani.createSequence(images)+'" alt="">');
-                                imgDummy.appendTo(document.body);*/
-                            });
-                        });
-                    });
-
-                    divContent.find('#btn-cancel-crop-image').off('click').on('click', function(e) {
-                        e.preventDefault();
-
-                        toonies.Global.initCloseAllModal();
-                        toonies.Global.initCancelEditImg();
-                    });
-                }
-            });
-
-            btnPlusZoom.off('click').on('click', function() {
-                if (contentSliderZoom.slider('option', 'value') > 20) {
-                    return;
-                }
-                toonies.Global.cropContainer.cropper('zoom', 0.1);
-                contentSliderZoom.slider('option', 'value', contentSliderZoom.slider('option', 'value') + 1);
-            });
-
-            btnMinusZoom.off('click').on('click', function() {
-                if (contentSliderZoom.slider('option', 'value') <= 0) {
-                    return;
-                }
-                toonies.Global.cropContainer.cropper('zoom', -0.1);
-                contentSliderZoom.slider('option', 'value', contentSliderZoom.slider('option', 'value') - 1);
-            });
-
-            btnPlusRotate.off('click').on('click', function() {
-                if (contentSliderRotate.slider('option', 'value') > 36) {
-                    return;
-                }
-                toonies.Global.cropContainer.cropper('rotate', 10);
-                contentSliderRotate.slider('option', 'value', contentSliderRotate.slider('option', 'value') + 1);
-            });
-
-            btnMinusRotate.off('click').on('click', function() {
-                if (contentSliderRotate.slider('option', 'value') <= 0) {
-                    return;
-                }
-                toonies.Global.cropContainer.cropper('rotate', -10);
-                contentSliderRotate.slider('option', 'value', contentSliderRotate.slider('option', 'value') - 1);
-            });
-        },
-
-        initCancelEditImg: function() {
-            var divContent = $('.img-edit-block');
-
-            var range = divContent.find(".range-slider-rotate");
-            if (range.hasClass('ui-slider')) {
-                range.slider("destroy");
-            }
-            toonies.Global.cropContainer.cropper('destroy');
-            divContent.find('#target').remove();
-
-            // clear value
-            $('#txt-file').val('');
-        },
-
-        initGetValueImg: function(imgBig, imgFace) {
-            toonies.Global.initCloseAllModal();
-            $('input[id$="hidOriginalPhoto"]').val(imgBig);
-            $('input[id$="hidKidFacePhoto"]').val(imgFace);
-
-            toonies.Global.initCancelEditImg();
-        },
-
-        initReEditImg: function() {
-            var reEditContent = $('.outer--review'),
-                btnRemove = reEditContent.find('#btn-remove-img'),
-                btnEdit = reEditContent.find('#btn-edit-img');
-
-            btnRemove.off('click').on('click', function(e) {
-                e.preventDefault();
-
-                $('.outer--review').addClass('hidden');
-                $('.outer--upload').removeClass('hidden');
-
-                toonies.Global.initCancelEditImg();
-                $('.step--upload.step--review').find('.button__wrapper').addClass('hidden');
-            });
-
-            btnEdit.off('click').on('click', function(e) {
-                e.preventDefault();
-
-                toonies.Global.initCancelEditImg();
-
-                var image = $('<img alt="" id="target" src="' + $('#inpt-value-img-upload').val() + '" />')
-
-                toonies.Global.initModalEditImg(image);
             });
         }
     };

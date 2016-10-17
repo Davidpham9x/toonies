@@ -13,6 +13,10 @@
         height: 100vh;
     }
 
+    #qr-canvas {
+    	display: none;
+    }
+
 	/** Scan Content **/
 	.scan {
 		width: 100%;

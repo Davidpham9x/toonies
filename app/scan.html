@@ -18,36 +18,22 @@
         <div class="scan_content scan_content--camera hidden">
             <div class="inner">
                 <video id="video" autoplay style="width:280px; height:280px;"></video>
-                <!-- <div id="camera" style="width:280px; height:280px;"></div> -->
             </div>
         </div>
 
-        <div class="select hidden">
-            <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
-        </div>
+        <div id="mainbody"></div>
+        <div id="result"></div>
+        <div id="outdiv"></div>
+        <span class="selector hidden" id="webcamimg"  onclick="setwebcam()" align="left"></span>
+        <span class="selector hidden" id="qrimg"  onclick="setimg()" align="right"></span>
 
-        <div class="select hidden">
-            <label for="audioOutput">Audio output destination: </label><select id="audioOutput"></select>
-        </div>
+        <div id="count-time" class="count-time hidden">15</div>
 
-        <div class="select select-camera hidden">
-            <label for="videoSource">Video source: </label><select id="videoSource"></select>
-        </div>
-
-        <div id="count-time" class="count-time hidden">5</div>
-
-        <input type="file" accept="image/*" id="capture" capture="camera" class="hidden">
         <div class="button__wrapper">
             <a href="" title="Quét thẻ ngay!" class="button" id="open-scan">Quét thẻ ngay!</a>
         </div>
 
-        <canvas id="canvas" class="hidden"></canvas>
-
-        <!-- <img id="frame"> -->
-        <!-- <img id="dummy" alt="The screen capture will appear in this box." src="images/dummy/dummy_scan.png" class="hidden"> -->
-        <!-- <div class="button__wrapper button__wrapper--submit hidden">
-            <a href="" title="Gửi ảnh" class="button submit" id="">Gửi ảnh</a>
-        </div> -->
+        <canvas id="qr-canvas" width="800" height="600"></canvas>
 
         <input type="hidden" id="value-coin-card" class="value-coin-card">
 
