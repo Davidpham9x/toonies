@@ -10,7 +10,9 @@
 
     /** User Action Content **/
     .user-action {
+        z-index: 1;
         margin-top: -10px;
+        position: relative;
         /* padding-bottom: 80px; */
     }
 
