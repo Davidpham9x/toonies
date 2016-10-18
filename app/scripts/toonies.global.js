@@ -684,8 +684,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             };
 
             parentContent.off('click').on('click', function (e) {
-                /*console.log(e.clientX);
-                console.log(e.clientY);*/
                 if ( parentContent.hasClass('default') ) {
                     parentContent.removeClass('default');
                     $('.treasure-hunt').removeClass('default');
@@ -698,77 +696,47 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 }
             });
 
-            /*document.onmousedown = handleMouseMove;
-            function handleMouseMove(event) {
-                var dot, eventDoc, doc, body, pageX, pageY;
-
-                event = event || window.event; // IE-ism
-
-                // If pageX/Y aren't available and clientX/Y are,
-                // calculate pageX/Y - logic taken from jQuery.
-                // (This is to support old IE)
-                if (event.pageX == null && event.clientX != null) {
-                    eventDoc = (event.target && event.target.ownerDocument) || document;
-                    doc = eventDoc.documentElement;
-                    body = eventDoc.body;
-
-                    event.pageX = event.clientX +
-                      (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
-                      (doc && doc.clientLeft || body && body.clientLeft || 0);
-                    event.pageY = event.clientY +
-                      (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
-                      (doc && doc.clientTop  || body && body.clientTop  || 0 );
-                }
-
-                console.log(event.pageX);
-                console.log(event.pageY);
-
-                // Use event.pageX / event.pageY here
-            }*/
-
             areaContent.each(function () {
                 var _this = $(this);
 
                 _this.off('click').on('click', function () {
-                    if ( $(this).hasClass('area-1') ) {
-                        setTimeout(function () {
-                            toonies.Global.initScrollToPoint( 350, 2750 );
-                        }, 1000);
-                    }
+                    if ( parentContent.hasClass('default') ) {
+                        if ( $(this).hasClass('area-1') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 350, 2750 );
+                            }, 1000);
+                        }
 
-                    if ( $(this).hasClass('area-2') ) {
-                        setTimeout(function () {
-                            toonies.Global.initScrollToPoint( 860, 910 );
-                        }, 1000);
-                    }
+                        if ( $(this).hasClass('area-2') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 860, 910 );
+                            }, 1000);
+                        }
 
-                    if ( $(this).hasClass('area-3') ) {
-                        setTimeout(function () {
-                            toonies.Global.initScrollToPoint( 2090, 270 );
-                        }, 1000);
-                    }
+                        if ( $(this).hasClass('area-3') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 2090, 270 );
+                            }, 1000);
+                        }
 
-                    if ( $(this).hasClass('area-4') ) {
-                        setTimeout(function () {
-                            toonies.Global.initScrollToPoint( 3870, 210 );
-                        }, 1000);
-                    }
+                        if ( $(this).hasClass('area-4') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 3870, 210 );
+                            }, 1000);
+                        }
 
-                    if ( $(this).hasClass('area-5') ) {
-                        setTimeout(function () {
-                            toonies.Global.initScrollToPoint( 3725, 1555 );
-                        }, 1000);
-                    }
+                        if ( $(this).hasClass('area-5') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 3725, 1555 );
+                            }, 1000);
+                        }
 
-                    if ( $(this).hasClass('area-6') ) {
-                        setTimeout(function () {
-                            toonies.Global.initScrollToPoint( 3700, 3000 );
-                        }, 1000);
+                        if ( $(this).hasClass('area-6') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 3700, 3000 );
+                            }, 1000);
+                        }
                     }
-                    /*console.log($(this).position().left);
-                    console.log($(this).position().top);
-                    console.log($(this).offset().left);
-                    console.log($(this).offset().top);*/
                 });
             });
 
@@ -838,16 +806,13 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     scroll = true;
                 }
 
-                console.log(distanceX);
-                console.log(distanceY);
+                map_img.animate({
+                    'top': distanceY,
+                    'left': distanceX
+                }, 500);
 
-                map_img.css({
-                    'left': distanceX,
-                    'top': distanceY
-                });
-
-                /*if(scroll)
-                    $("html, body").animate({ scrollTop: 0 });*/
+                if(scroll)
+                    $("html, body").animate({ scrollTop: 0 });
             }, 500);
         }
     };
