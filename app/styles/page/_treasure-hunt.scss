@@ -68,6 +68,8 @@
 			    height: 100%;
 			    margin: 0 auto;
 			    max-width: 1920px;
+			    top: 0;
+			    left: 0;
 			    position: relative;
 
 				>.inner {
@@ -605,7 +607,7 @@
 		ul {
 			margin: 0;
 			padding: 0;
-			width: 50%;
+			width: 100%;
 			list-style: none;
 
 			li {
@@ -626,7 +628,7 @@
 				text-align: center;
 				text-transform: uppercase;
 
-				width: 50%;
+				width: 100%;
 				display: block;
 				margin-bottom: 15px;
 			}
@@ -657,10 +659,101 @@
 				}
 			}
 		}
+		.slick-arrow {
+			border: none;
+			cursor: pointer;
+        	background: none;
+			bottom: 12px;
+			position: absolute;
+			&.slick-prev {
+				left: 10px;
+				.icon {
+		            background: url('../images/profile/left.png') no-repeat;
+		            background-size: 100% 100%;
+		            width: 8px;
+		            height: 18px;
+		        }
+			}
+			&.slick-next {
+				right: 10px;
+				.icon {
+			        background: url('../images/profile/right.png') no-repeat;
+			        background-size: 100% 100%;
+			        width: 8px;
+		            height: 18px;
+			    }
+			}
+		}
+		.slick-dots {
+		    text-align: center;
+		    margin-bottom: 30px;
+
+		    li {
+		        margin: 0;
+		        vertical-align: top;
+		        display: inline-block;
+		        @include opacity(0.8);
+		        &:hover,
+		        &.slick-active {
+		            @include opacity(1);
+		        }
+		    }
+	        button {
+	        	border: none;
+	        	background: none;
+	            background: url('../images/profile/num-bg.png') no-repeat;
+	            background-size: 100% 100%;
+	            padding: 0;
+	            width: 48px;
+	            height: 45px;
+	            display: block;
+	        	cursor: pointer;
+	            line-height: 45px;
+
+	            color: #fff;
+	            font-size: 15px;
+	            font-family: $font-iCPB;
+	            text-align: center;
+	        }
+		    /* .number {
+		        @media (max-width: 767px) {
+		            display: none;
+		        }
+		    }
+		    .next,
+		    .prev {
+		        font-size: 0;
+		        margin: 0 5px;
+		        padding-top: 12px;
+		        @media (max-width: 767px) {
+		            font-size: 14px;
+		        }
+		        a {
+		            color: #4e301c;
+		        }
+		        .icon {
+		            background: url('../images/profile/left.png') no-repeat;
+		            background-size: 100% 100%;
+		            width: 8px;
+		            height: 18px;
+		        }
+		        span {
+		            margin: 0 5px;
+		            display: inline-block;
+		            vertical-align: middle;
+		        }
+		    }
+		    .next .icon {
+		        background: url('../images/profile/right.png') no-repeat;
+		        background-size: 100% 100%;
+		    } */
+		}
 	}
 	.player__inner {
+		max-width: 55%;
 		position: relative;
-		padding: 0 25px 0 60px;
+		padding: 0 20px 0 60px;
+
 		.arrow {
 			width: 75px;
 			height: 73px;
@@ -737,7 +830,7 @@
 		}
 	}
 	.score_wrapper {
-		width: 51%;
+		width: 100%;
 		padding: 15px 0;
 		margin-top: 10px;
 		position: relative;

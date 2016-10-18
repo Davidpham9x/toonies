@@ -37,8 +37,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initShowMenuMobile();
             this.initShowInfoUser();
             this.initShowInfoUserMobile();
+            this.initSliderCoins();
             this.initHandleWebsiteResize();
-
 
             if ($('.page--scan').length || $('.page--code').length) {
                 toonies.Global.initModalIntro();
@@ -388,6 +388,18 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
         },
 
+        initSliderCoins: function() {
+            var slider = $('#slider-coins');
+
+            slider.slick({
+                dots: true,
+                fade: true,
+                lazyLoad: 'ondemand',
+                prevArrow: '<button type="button" class="slick-prev"><span class="icon"></span</button>',
+                nextArrow: '<button type="button" class="slick-next"><span class="icon"></span</button>'
+            });
+        },
+
         initSliderStepCode: function() {
             var slider = $('#slider-step-code');
 
@@ -468,6 +480,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     src: '#modal--scan-result'
                 },
                 type: 'inline',
+                closeOnBgClick: false,
                 removalDelay: 500, // Delay removal by X to allow out-animation
                 callbacks: {
                     beforeOpen: function() {
@@ -658,6 +671,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 btnBack = divContent.find('.button--back'),
                 lastMouseX,
                 lastMouseY;
+            var areaContent = $('.area__wrapper');
 
             if (window.windowWidth >= 1920) {
                 $('.treasure-hunt').find('.outer').css('width', 1920);
@@ -669,13 +683,92 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 return [-hDiff, 0, 0, -wDiff];
             };
 
-            parentContent.off('click').on('click', function () {
-                parentContent.removeClass('default');
-                $('.treasure-hunt').removeClass('default');
-                btnBack.removeClass('hidden');
+            parentContent.off('click').on('click', function (e) {
+                /*console.log(e.clientX);
+                console.log(e.clientY);*/
+                if ( parentContent.hasClass('default') ) {
+                    parentContent.removeClass('default');
+                    $('.treasure-hunt').removeClass('default');
+                    btnBack.removeClass('hidden');
 
-                parentContent.pep({
-                    constrainTo: constrainArray()
+                    parentContent.pep({
+                        constrainTo: constrainArray(),
+                        elementsWithInteraction: 'a'
+                    });
+                }
+            });
+
+            /*document.onmousedown = handleMouseMove;
+            function handleMouseMove(event) {
+                var dot, eventDoc, doc, body, pageX, pageY;
+
+                event = event || window.event; // IE-ism
+
+                // If pageX/Y aren't available and clientX/Y are,
+                // calculate pageX/Y - logic taken from jQuery.
+                // (This is to support old IE)
+                if (event.pageX == null && event.clientX != null) {
+                    eventDoc = (event.target && event.target.ownerDocument) || document;
+                    doc = eventDoc.documentElement;
+                    body = eventDoc.body;
+
+                    event.pageX = event.clientX +
+                      (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+                      (doc && doc.clientLeft || body && body.clientLeft || 0);
+                    event.pageY = event.clientY +
+                      (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
+                      (doc && doc.clientTop  || body && body.clientTop  || 0 );
+                }
+
+                console.log(event.pageX);
+                console.log(event.pageY);
+
+                // Use event.pageX / event.pageY here
+            }*/
+
+            areaContent.each(function () {
+                var _this = $(this);
+
+                _this.off('click').on('click', function () {
+                    if ( $(this).hasClass('area-1') ) {
+                        setTimeout(function () {
+                            toonies.Global.initScrollToPoint( 350, 2750 );
+                        }, 1000);
+                    }
+
+                    if ( $(this).hasClass('area-2') ) {
+                        setTimeout(function () {
+                            toonies.Global.initScrollToPoint( 860, 910 );
+                        }, 1000);
+                    }
+
+                    if ( $(this).hasClass('area-3') ) {
+                        setTimeout(function () {
+                            toonies.Global.initScrollToPoint( 2090, 270 );
+                        }, 1000);
+                    }
+
+                    if ( $(this).hasClass('area-4') ) {
+                        setTimeout(function () {
+                            toonies.Global.initScrollToPoint( 3870, 210 );
+                        }, 1000);
+                    }
+
+                    if ( $(this).hasClass('area-5') ) {
+                        setTimeout(function () {
+                            toonies.Global.initScrollToPoint( 3725, 1555 );
+                        }, 1000);
+                    }
+
+                    if ( $(this).hasClass('area-6') ) {
+                        setTimeout(function () {
+                            toonies.Global.initScrollToPoint( 3700, 3000 );
+                        }, 1000);
+                    }
+                    /*console.log($(this).position().left);
+                    console.log($(this).position().top);
+                    console.log($(this).offset().left);
+                    console.log($(this).offset().top);*/
                 });
             });
 
@@ -689,6 +782,73 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                 $.pep.unbind( parentContent );
             });
+        },
+
+        initScrollToPoint: function ( pointX, pointY ) {
+            var divContent = $('.treasure-hunt-content'),
+                imgBg = divContent.find('#background-treasure'),
+                container = divContent.find('>.outer'),
+                map_img = container.find('>.inner');
+
+            //Function multi 2 matrix
+            function mtrx_multi(mtrx1, mtrx2) {
+                var row = mtrx1.length / 3;
+                var col = mtrx2.length / 3;
+
+                var pro_mtrx = [];
+                for (var i = 0; i < row; i++)
+                    for (var j = 0; j < col; j++) {
+
+                        var cal_col = j*3;
+                        var val = mtrx1[i]*mtrx2[cal_col] + mtrx1[i+row]*mtrx2[cal_col+1] + mtrx1[i+2*row]*mtrx2[cal_col+2];
+                        pro_mtrx.push(val)
+                    }
+                return pro_mtrx;
+            }
+
+            var initMatrix = [1, 0, 0, 0, 1, 0, -map_img.position().left, -map_img.position().top, 1];
+            var scroll = false;
+
+            //get center point of outer viewport
+            var center = [container.width()/2, container.height()/2 - 100, 1];
+
+            //convert it to matrix cordinate
+            var center_mtrx = mtrx_multi(initMatrix, center);
+
+            setTimeout( function () {
+                var offsetX = center_mtrx[0] - pointX;
+                var offsetY = center_mtrx[1] - pointY;
+
+                var distanceX = map_img.position().left + offsetX;
+                var distanceY = map_img.position().top + offsetY;
+
+                if( distanceX < - ( parseInt( imgBg.width() ) - container.width() ) ) {
+                    distanceX = - ( parseInt( imgBg.width() ) - container.width() );
+                    scroll = true;
+                } else if(distanceX > 0) {
+                    distanceX = 0;
+                    scroll = true;
+                }
+
+                if( distanceY < - ( parseInt( imgBg.height() ) - container.height() ) ) {
+                    distanceY = - ( parseInt( imgBg.height() ) - container.height() );
+                    scroll = true;
+                } else if(distanceY > 0) {
+                    distanceY = 0;
+                    scroll = true;
+                }
+
+                console.log(distanceX);
+                console.log(distanceY);
+
+                map_img.css({
+                    'left': distanceX,
+                    'top': distanceY
+                });
+
+                /*if(scroll)
+                    $("html, body").animate({ scrollTop: 0 });*/
+            }, 500);
         }
     };
 })(jQuery);
