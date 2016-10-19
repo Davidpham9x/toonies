@@ -23,6 +23,8 @@
 		max-width: 500px;
 		margin: 35px auto 0;
 		text-align: center;
+		z-index: 1;
+		position: relative;
 
 		.heading {
 			background: url('../images/scan/heading.png');

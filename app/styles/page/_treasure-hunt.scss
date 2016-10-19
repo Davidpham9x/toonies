@@ -84,26 +84,29 @@
 						.area__wrapper {
 							@include transform ( scale(0.3) );
 							&.area-1 {
+								bottom: 45px;
 								@include transform-origin ( bottom left );
 							}
 							&.area-2 {
+								top: 11.5%;
 								@include transform-origin ( top left );
 							}
 							&.area-3 {
+								top: 11.5%;
 								left: auto;
-								margin-left: 0;
 								/* @include transform ( scale(0.4) ); */
 								@include transform-origin ( top center );
 							}
 							&.area-4 {
+								top: 11.5%;
 								@include transform-origin ( top right );
 							}
 							&.area-5 {
-								margin-top: 0;
 								@include transform ( scale(0.3) translateY(-50%) );
 								@include transform-origin ( top right );
 							}
 							&.area-6 {
+								bottom: 45px;
 								/* @include transform ( scale(0.5) ); */
 								@include transform-origin ( bottom right );
 							}
@@ -132,72 +135,72 @@
 			}
 			&.area-1 {
 				left: 0;
-				bottom: 45px;
+				bottom: 0;
 
 				.coin {
 					&.coin-1 {
-						top: 11%;
-						left: 25%;
+						top: 5%;
+						left: 10%;
 					}
 					&.coin-2 {
-						top: 16%;
-						left: 2%;
+						top: 25%;
+						left: 0;
 					}
 					&.coin-3 {
-						top: 41%;
-						left: 5%;
+						top: 40%;
+						left: 3%;
 					}
 					&.coin-4 {
-						top: 28%;
-						left: 11%;
+						top: 20%;
+						left: 13%;
 					}
 					&.coin-5 {
-						top: 42%;
-						left: 22%;
+						top: 45%;
+						left: 15%;
 					}
 					&.coin-6 {
-						top: 45%;
-						left: 45%;
+						top: 55%;
+						left: 21%;
 					}
 					&.coin-7 {
-						top: 31%;
+						bottom: 31%;
 						left: 30%;
 					}
 					&.coin-8 {
-						top: 66%;
-						left: 15%;
+						bottom: 26%;
+						left: 12%;
 					}
 					&.coin-9 {
-						top: 55%;
-						left: 45%;
+						bottom: 30%;
+						left: 40%;
 					}
 					&.coin-10 {
-						bottom: 10%;
-						left: 5%;
+						bottom: 2%;
+						left: 0;
 					}
 					&.coin-11 {
 						bottom: 17%;
-						left: 27%;
+						left: 32%;
 					}
 					&.coin-12 {
 						bottom: 5%;
-						left: 19%;
+						left: 10%;
 					}
 					&.coin-13 {
 						bottom: 1%;
-						left: 40%;
+						left: 35%;
 					}
 					&.coin-14 {
-						bottom: 15%;
+						bottom: 5%;
 						left: 45%;
 					}
 					&.coin-15 {
-						bottom: 30%;
-						left: 50%;
+						bottom: 20%;
+						left: 3%;
 					}
 					&.coin-16 {
-						bottom: 25%;
-						left: 65%;
+						bottom: 5%;
+						left: 20%;
 					}
 				}
 			}
@@ -215,133 +218,144 @@
 						left: 2%;
 					}
 					&.coin-3 {
-						top: 41%;
-						left: 5%;
+						top: 35%;
+						left: 80%;
 					}
 					&.coin-4 {
-						top: 28%;
+						top: 30%;
 						left: 11%;
 					}
 					&.coin-5 {
 						top: 42%;
-						left: 22%;
+						left: 27%;
 					}
 					&.coin-6 {
 						top: 45%;
-						left: 45%;
+						left: 60%;
 					}
 					&.coin-7 {
 						top: 31%;
 						left: 30%;
 					}
 					&.coin-8 {
-						top: 66%;
-						left: 15%;
+						top: 60%;
+						left: 23%;
 					}
 					&.coin-9 {
-						top: 55%;
-						left: 45%;
+						top: 60%;
+						left: 55%;
 					}
 					&.coin-10 {
-						bottom: 10%;
-						left: 5%;
+						bottom: 25%;
+						right: 5%;
 					}
 					&.coin-11 {
-						bottom: 17%;
-						left: 27%;
+						bottom: 15%;
+						right: 0;
 					}
 					&.coin-12 {
-						bottom: 5%;
-						left: 19%;
+						bottom: 65%;
+						right: 40%;
 					}
 					&.coin-13 {
-						bottom: 1%;
-						left: 40%;
+						bottom: 40%;
+						right: 10%;
 					}
 					&.coin-14 {
 						bottom: 15%;
-						left: 45%;
+						right: 45%;
 					}
 					&.coin-15 {
 						bottom: 30%;
-						left: 50%;
+						right: 50%;
 					}
 					&.coin-16 {
 						bottom: 25%;
-						left: 65%;
+						right: 35%;
+					}
+					&.coin-17 {
+						top: 5%;
+						left: 15%;
 					}
 				}
 			}
 			&.area-3 {
-				top: 0;
+				top: 3%;
 				left: 50%;
-				margin-left: -5%;
 				@include transform ( translateX(-50%) );
 
 				.coin {
 					&.coin-1 {
-						top: 11%;
-						left: 25%;
+						top: 17%;
+						left: 17%;
 					}
 					&.coin-2 {
-						top: 16%;
-						left: 2%;
+						top: 5%;
+						left: 0;
 					}
 					&.coin-3 {
-						top: 41%;
-						left: 5%;
+						top: 10%;
+						left: 40%;
 					}
 					&.coin-4 {
-						top: 28%;
-						left: 11%;
+						top: 5%;
+						left: 55%;
 					}
 					&.coin-5 {
-						top: 42%;
+						top: 10%;
 						left: 22%;
 					}
 					&.coin-6 {
-						top: 45%;
+						top: 30%;
 						left: 45%;
 					}
 					&.coin-7 {
-						top: 31%;
+						top: 1%;
 						left: 30%;
 					}
 					&.coin-8 {
-						top: 66%;
-						left: 15%;
+						top: 20%;
+						left: 45%;
 					}
 					&.coin-9 {
-						top: 55%;
+						top: 30%;
 						left: 45%;
 					}
 					&.coin-10 {
-						bottom: 10%;
-						left: 5%;
+						top: 10%;
+						left: 10%;
 					}
 					&.coin-11 {
-						bottom: 17%;
-						left: 27%;
+						top: 17%;
+						left: 30%;
 					}
 					&.coin-12 {
-						bottom: 5%;
+						top: 0;
 						left: 19%;
 					}
 					&.coin-13 {
-						bottom: 1%;
-						left: 40%;
+						top: 1%;
+						right: 20%;
 					}
 					&.coin-14 {
-						bottom: 15%;
-						left: 45%;
+						top: 15%;
+						right: 35%;
 					}
 					&.coin-15 {
-						bottom: 30%;
-						left: 50%;
+						top: 25%;
+						right: 15%;
 					}
 					&.coin-16 {
-						bottom: 25%;
-						left: 65%;
+						top: 25%;
+						right: 25%;
+					}
+					&.coin-17 {
+						top: 15%;
+						right: 10%;
+					}
+					&.coin-18 {
+						top: 30%;
+						right: 35%;
 					}
 				}
 			}
@@ -352,146 +366,154 @@
 				.coin {
 					&.coin-1 {
 						top: 11%;
-						left: 25%;
+						right: 25%;
 					}
 					&.coin-2 {
 						top: 16%;
-						left: 2%;
+						right: 2%;
 					}
 					&.coin-3 {
 						top: 41%;
-						left: 5%;
+						right: 5%;
 					}
 					&.coin-4 {
 						top: 28%;
-						left: 11%;
+						right: 11%;
 					}
 					&.coin-5 {
 						top: 42%;
-						left: 22%;
+						right: 22%;
 					}
 					&.coin-6 {
 						top: 45%;
-						left: 45%;
+						right: 55%;
 					}
 					&.coin-7 {
 						top: 31%;
-						left: 30%;
+						right: 30%;
 					}
 					&.coin-8 {
-						top: 66%;
-						left: 15%;
+						top: 65%;
+						right: 10%;
 					}
 					&.coin-9 {
-						top: 55%;
-						left: 45%;
+						top: 0;
+						right: 60%;
 					}
 					&.coin-10 {
-						bottom: 10%;
-						left: 5%;
+						top: 0;
+						right: 5%;
 					}
 					&.coin-11 {
-						bottom: 17%;
-						left: 27%;
+						top: 20%;
+						right: 35%;
 					}
 					&.coin-12 {
-						bottom: 5%;
-						left: 19%;
+						top: 0;
+						right: 20%;
 					}
 					&.coin-13 {
-						bottom: 1%;
-						left: 40%;
+						top: 1%;
+						right: 40%;
 					}
 					&.coin-14 {
-						bottom: 15%;
-						left: 45%;
+						top: 15%;
+						right: 45%;
 					}
 					&.coin-15 {
-						bottom: 30%;
-						left: 50%;
+						top: 30%;
+						right: 50%;
 					}
 					&.coin-16 {
-						bottom: 25%;
-						left: 65%;
+						top: 25%;
+						right: 65%;
+					}
+					&.coin-17 {
+						top: 15%;
+						right: 55%;
+					}
+					&.coin-18 {
+						top: 5%;
+						right: 70%;
 					}
 				}
 			}
 			&.area-5 {
 				top: 50%;
 				right: 0;
-				margin-top: 2%;
+				margin-top: 5%;
 				@include transform ( translateY(-50%) );
 
 				.coin {
 					&.coin-1 {
-						top: 11%;
-						left: 25%;
+						top: 3%;
+						right: 25%;
 					}
 					&.coin-2 {
 						top: 16%;
-						left: 2%;
+						right: 2%;
 					}
 					&.coin-3 {
-						top: 41%;
-						left: 5%;
+						top: 31%;
+						right: 5%;
 					}
 					&.coin-4 {
 						top: 28%;
-						left: 11%;
+						right: 11%;
 					}
 					&.coin-5 {
-						top: 42%;
-						left: 22%;
+						top: 32%;
+						right: 22%;
 					}
 					&.coin-6 {
-						top: 45%;
-						left: 45%;
+						top: 25%;
+						right: 50%;
 					}
 					&.coin-7 {
 						top: 31%;
-						left: 30%;
+						right: 30%;
 					}
 					&.coin-8 {
-						top: 66%;
-						left: 15%;
+						top: 36%;
+						right: 15%;
 					}
 					&.coin-9 {
-						top: 55%;
-						left: 45%;
+						top: 40%;
+						right: 45%;
 					}
 					&.coin-10 {
-						bottom: 10%;
-						left: 5%;
+						top: 10%;
+						right: 5%;
 					}
 					&.coin-11 {
-						bottom: 17%;
-						left: 27%;
+						top: 17%;
+						right: 27%;
 					}
 					&.coin-12 {
 						bottom: 5%;
-						left: 19%;
+						right: 19%;
 					}
 					&.coin-13 {
 						bottom: 1%;
-						left: 40%;
+						right: 40%;
 					}
 					&.coin-14 {
 						bottom: 15%;
-						left: 45%;
+						right: 45%;
 					}
 					&.coin-15 {
 						bottom: 30%;
-						left: 50%;
+						right: 39%;
 					}
 					&.coin-16 {
 						bottom: 25%;
-						left: 65%;
+						right: 32%;
 					}
 				}
 			}
 			&.area-6 {
 				right: 0;
-				bottom: 45px;
+				bottom: 0;
 
 				.coin {
 					&.coin-1 {

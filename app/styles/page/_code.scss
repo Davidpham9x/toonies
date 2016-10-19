@@ -20,6 +20,8 @@
 		padding: 0 10px;
 		margin: 35px auto 0;
 		text-align: center;
+		z-index: 1;
+		position: relative;
 		@include screen ( medium ) {
 			padding: 0;
 		}

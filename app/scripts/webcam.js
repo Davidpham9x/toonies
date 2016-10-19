@@ -133,8 +133,8 @@ function error(error) {
 }
 
 function load() {
-    if ( typeof navigator.getUserMedia == 'undefined' ) {
-        toonies.Global.initModalCommon('Your browser is not supported');
+    if ( typeof navigator.getUserMedia == 'undefined' && typeof navigator.webkitGetUserMedia == 'undefined' && typeof navigator.mozGetUserMedia == 'undefined' ) {
+        toonies.Global.initModalCommon('Trình duyệt của bạn ko hổ trợ tính năng này!');
         return false;
     }
 
@@ -177,7 +177,7 @@ function setwebcam() {
 
 function setwebcam2(options) {
     /*console.log(options);*/
-    document.getElementById("result").innerHTML = "- scanning -";
+    document.getElementById("result").innerHTML = "Đang quét";
     if (stype == 1) {
         setTimeout(captureToCanvas, 500);
         return;
