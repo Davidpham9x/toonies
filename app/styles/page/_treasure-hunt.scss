@@ -67,7 +67,7 @@
 				width: 100%;
 			    height: 100%;
 			    margin: 0 auto;
-			    max-width: 1920px;
+			    /* max-width: 1920px; */
 			    top: 0;
 			    left: 0;
 			    position: relative;
@@ -88,17 +88,17 @@
 								@include transform-origin ( bottom left );
 							}
 							&.area-2 {
-								top: 11.5%;
+								/* top: 11.5%; */
 								@include transform-origin ( top left );
 							}
 							&.area-3 {
-								top: 11.5%;
+								/* top: 11.5%; */
 								left: auto;
 								/* @include transform ( scale(0.4) ); */
 								@include transform-origin ( top center );
 							}
 							&.area-4 {
-								top: 11.5%;
+								/* top: 11.5%; */
 								@include transform-origin ( top right );
 							}
 							&.area-5 {

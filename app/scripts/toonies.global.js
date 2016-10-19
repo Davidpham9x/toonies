@@ -673,9 +673,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 lastMouseY;
             var areaContent = $('.area__wrapper');
 
-            if (window.windowWidth >= 1920) {
+            /*if (window.windowWidth >= 1920) {
                 $('.treasure-hunt').find('.outer').css('width', 1920);
-            }
+            }*/
 
             var constrainArray = function() {
                 var wDiff = imgBg.width() - divContent.find('.outer').width();
