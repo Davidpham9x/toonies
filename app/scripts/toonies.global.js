@@ -38,6 +38,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initShowInfoUser();
             this.initShowInfoUserMobile();
             this.initSliderCoins();
+            this.initSliderCoinsProfile();
             this.initHandleWebsiteResize();
 
             if ($('.page--scan').length || $('.page--code').length) {
@@ -52,10 +53,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }
 
             if ($('.page--profile').length) {
-                /*$('.upload .button,.avatar').on('click', function(e) {
-                    e.preventDefault()
-                    $('#img-avatar').trigger('click');
-                })*/
                 $('.edit').on('click', function(e) {
                     var searchInput = $(this).parent('.field').find('input');
                     var strLength = searchInput.val().length * 2;
@@ -64,26 +61,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     searchInput[0].setSelectionRange(strLength, strLength);
                 })
             }
-
-            /*$(document).on('scan_result', scanResultHandler);
-            // newMessage event handler
-            function scanResultHandler(e) {
-                alert(e.resultScan);
-                alert(e.countScan);
-                alert(e.dataScan);
-            }*/
-
-            // Call before ajax
-            /*this.initModalScanWaiting();*/
-
-            // Call for close popup
-            /*toonies.Global.initCloseAllModal();*/
-
-            // Call when ajax show result scan not successful
-            /** Case defaul **/
-            /*toonies.Global.initModalScanResult('Bạn đã quét thẻ sai 1 lần', '');*/
-            /** Case limit scan **/
-            /*toonies.Global.initModalScanResult('Bạn đã quét thẻ sai 3 lần', true);*/
 
             if ($('#main-example-template').length) {
                 var labels = ['ngày', 'giờ', 'phút', 'giây'],
@@ -164,6 +141,21 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }
 
             $('#txt-avatar').change(function() {
+                var fullPath = $(this).val();
+
+                if (fullPath) {
+                    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                    var filename = fullPath.substring(startIndex);
+
+                    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                        filename = filename.substring(1);
+                    }
+
+                    $(this).parent().find('span').text(filename);
+                }
+            });
+
+            $('#img-avatar').change(function() {
                 var fullPath = $(this).val();
 
                 if (fullPath) {
@@ -388,6 +380,26 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
         },
 
+        initSliderCoinsProfile: function() {
+            var slider = $('#slider-coins-profile');
+
+            slider.slick({
+                dots: true,
+                fade: true,
+                lazyLoad: 'ondemand',
+                prevArrow: '<button type="button" class="slick-prev"><span class="icon"></span><span>Trở lại</span></button>',
+                nextArrow: '<button type="button" class="slick-next"><span>Xem tiếp</span><span class="icon"></span></button>',
+                responsive: [{
+                    breakpoint: 640,
+                    settings: {
+                        dots: false
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }]
+            });
+        },
+
         initSliderCoins: function() {
             var slider = $('#slider-coins');
 
@@ -395,8 +407,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 dots: true,
                 fade: true,
                 lazyLoad: 'ondemand',
-                prevArrow: '<button type="button" class="slick-prev"><span class="icon"></span</button>',
-                nextArrow: '<button type="button" class="slick-next"><span class="icon"></span</button>'
+                prevArrow: '<button type="button" class="slick-prev"><span class="icon"></span></button>',
+                nextArrow: '<button type="button" class="slick-next"><span class="icon"></span></button>'
             });
         },
 

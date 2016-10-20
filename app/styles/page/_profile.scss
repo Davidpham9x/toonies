@@ -3,6 +3,7 @@
     background: url('../images/profile/bg.jpg') top center no-repeat;
     background-size: 100% 100%;
     min-height: 763px;
+
     .content-profile {
     	z-index: 1;
     	position: relative;
@@ -18,11 +19,11 @@
         border: 1px solid;
         height: 40px;
         span {
-            background: url("../images/icons/icon-file.png") 97% 70% no-repeat;
-            top: -5px;
+            background: url("../images/icons/icon-file.png") 97% 50% no-repeat;
             font-style: italic;
             font-family: $font-iCPL;
             font-size: 12px;
+            line-height: 40px
         }
     }
     .side-bar {
@@ -52,13 +53,16 @@
                 display: inline-block;
                 vertical-align: middle;
                 font-size: 12px;
+                line-height: 35px;
+                margin-left: 5px;
             }
+            /* img {}
             .icon {
                 background: url('../images/profile/medal.png') top center no-repeat;
                 background-size: 100% 100%;
                 width: 37px;
                 height: 35px;
-            }
+            } */
         }
         .tablinks {
             @media ( max-width: 767px) {
@@ -231,13 +235,17 @@
             }
         }
         .wrap-income {
+            padding-bottom: 100px;
+            @include screen ( small ) {
+                padding-bottom: 0;
+            }
+
             .col {
-                width: 46%;
+                width: 50%;
+                padding: 0 5px;
                 text-align: center;
-                margin: 0 2% 10px;
-                @include screen(medium) {
-                    width: 33.33%;
-                    margin: 0 0 10px;
+                @include screen ( small ) {
+                    width: 25%;
                 }
             }
             .wrap-item {
@@ -267,14 +275,98 @@
                 width: 164px;
                 max-width: 100%;
                 display: inline-block;
-                padding: 15px 0 0 50px;
+                padding: 13px 0 0 35px;
                 font-size: 16px;
                 height: 54px;
                 margin-top: -10px;
                 color: #fff;
-                @include screen(medium) {
-                    padding: 17px 0 0 50px;
+                @include screen ( xs ) {
+                    padding: 15px 0 0 35px;
+                }
+                @include screen ( small ) {
+                    padding: 18px 0 0 35px;
+                }
+                @include screen ( medium ) {
+                    padding: 8px 0 0 35px;
+                }
+                @include screen(ipad) {
+                    padding: 11px 0 0 47px;
                     font-size: 18px;
+                }
+            }
+            .slick-arrow {
+                border: none;
+                cursor: pointer;
+                background: none;
+                bottom: -25px;
+                padding: 0;
+                position: absolute;
+                @include screen ( small ) {
+                    bottom: 12px;
+                }
+                &.slick-prev {
+                    left: 0;
+
+                    .icon {
+                        background: url('../images/profile/left.png') no-repeat;
+                        background-size: 100% 100%;
+                        width: 8px;
+                        height: 18px;
+                        margin-right: 5px;
+                    }
+                }
+                &.slick-next {
+                    right: -10px;
+
+                    .icon {
+                        background: url('../images/profile/right.png') no-repeat;
+                        background-size: 100% 100%;
+                        width: 8px;
+                        height: 18px;
+                        margin-left: 5px;
+                    }
+                }
+
+                span {
+                    font-family: $font-iCPB;
+                    display: inline-block;
+                    vertical-align: middle;
+                    &.icon {
+                        top: -2px;
+                        position: relative;
+                    }
+                }
+            }
+            .slick-dots {
+                text-align: center;
+                margin-bottom: 30px;
+
+                li {
+                    margin: 0;
+                    vertical-align: top;
+                    display: inline-block;
+                    @include opacity(0.8);
+                    &:hover,
+                    &.slick-active {
+                        @include opacity(1);
+                    }
+                }
+                button {
+                    border: none;
+                    background: none;
+                    background: url('../images/profile/num-bg.png') no-repeat;
+                    background-size: 100% 100%;
+                    padding: 0;
+                    width: 48px;
+                    height: 45px;
+                    display: block;
+                    cursor: pointer;
+                    line-height: 45px;
+
+                    color: #fff;
+                    font-size: 15px;
+                    font-family: $font-iCPB;
+                    text-align: center;
                 }
             }
         }
@@ -308,8 +400,9 @@
             }
         }
         .select-wrapper {
-            width: 70%;
+            width: 60%;
             text-align: center;
+
             span {
                 color: #222;
                 width: 95%;
@@ -323,7 +416,7 @@
             &:after {
                 content: '';
                 position: absolute;
-                top: 8px;
+                top: 5px;
                 right: 5px;
                 border-style: solid;
                 border-width: 10px 5.5px 0 5.5px;
@@ -364,20 +457,43 @@
                 float: right;
             }
         }
+        ::-webkit-input-placeholder {
+           color: #93755b;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+           color: #93755b;
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+           color: #93755b;
+        }
+
+        :-ms-input-placeholder {
+           color: #93755b;
+        }
         .content {
             width: 70%;
             padding-left: 10%;
+            text-align: center;
             @include screen(medium) {
                 width: 60%;
                 padding-left: 0;
             }
+            input[type="text"]:disabled {
+                background: none;
+            }
             input {
                 text-align: center;
                 font-size: 15px;
-                background: none;
+                font-family: $font-iCPB;
                 outline: none;
                 width: 100%;
+                color: #93755b;
                 border: none;
+                line-height: 1.5em;
+                background-color: #321e1b;
+                @include border-radius( 5px, 5px, 5px, 5px);
             }
         }
         .edit {
@@ -385,10 +501,11 @@
             cursor: pointer;
             text-align: right;
             .icon {
-                background: url('../images/profile/icon-pen.png') top center no-repeat;
                 display: inline-block;
+                vertical-align: middle;
                 width: 13px;
                 height: 13px;
+                background: url('../images/profile/icon-pen.png') top center no-repeat;
             }
         }
     }
@@ -397,6 +514,7 @@
 .pager {
     text-align: center;
     margin-bottom: 30px;
+
     li {
         display: inline-block;
         vertical-align: top;

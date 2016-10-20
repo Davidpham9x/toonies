@@ -1,6 +1,6 @@
 .page--home {
     height: 100vh;
-    min-height: 1490px;
+    min-height: 1200px;
 	overflow: hidden;
 	background: url('../images/home/main-bg--mobile.jpg') top center no-repeat;
     background-size: 100% 100%;
@@ -142,7 +142,7 @@
 	/** Toonies Snack **/
 	.toonies-snack {
 		z-index: 3;
-		@include ab ( n, 0, 0, n );
+		@include ab ( n, 50%, 12%, n );
 		opacity: 0;
 		width: 100%;
 		max-width: 347px;
@@ -150,7 +150,7 @@
 		@include transition ( all .5s ease-in-out );
 		&.animate {
 			opacity: 1;
-			@include transform ( scale(1) );
+			@include transform ( scale(1) translateX(-50%) );
 		}
 		@include screen ( medium ) {
 			z-index: 1;
@@ -183,13 +183,13 @@
 	.tvc-introduction {
 		z-index: 4;
 		opacity: 0;
-		max-width: 261px;
 		margin: 0 auto;
-		/* @include ab ( n, 50%, 20%, n );
-		@include transform ( translateX(-50%) ); */
+		max-width: 261px;
+		@include ab ( n, 50%, 115px, n );
+		@include transform ( translateX(-50%) );
 		@include transition ( all .3s ease-in-out );
 		@include screen ( medium ) {
-			z-index: 2;
+			z-index: 0;
 			left: auto;
 			bottom: auto;
 			@include ab ( 50%, n, n, 0 );
