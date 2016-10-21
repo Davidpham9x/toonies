@@ -108,7 +108,7 @@
                 text-transform: uppercase;
             }
         }
-        .first {
+        /* .first {
             .avatar:after {
                 background: url(../images/icons/medal-first.png) no-repeat;
             }
@@ -126,7 +126,7 @@
                 width: 57px;
                 height: 54px;
             }
-        }
+        } */
         .avatar {
             background: url(../images/global/avatar.png) center top no-repeat;
             background-size: 100%;
@@ -144,14 +144,19 @@
                 position: absolute;
                 @include border-radius(50%);
             }
-            &:after {
+            .icon {
+                top: auto;
+                @include ab ( n, 50%, 0, n );
+                @include transform ( translateX(-50%) );
+            }
+            /* &:after {
                 content: '';
                 position: absolute;
                 width: 62px;
                 height: 58px;
                 left: 34%;
                 top: 73%;
-            }
+            } */
         }
     }
     .field {

@@ -374,6 +374,11 @@ header {
 			margin-top: -6px;
 			@include ab ( 50%, n, n, 65px );
 			@include transform ( translateY(-50%) );
+
+			img {
+				max-width: 30px;
+				@include border-radius( 50%, 50%, 50%, 50% );
+			}
 		}
 	}
 

@@ -5,6 +5,8 @@
     <!-- /* Header */ -->
     <include src="partials/header.html"></include>
 
+    <h2 class="heading--mobile">Đại Hải Trình - Khu vực truy nã Hải Tặc</h2>
+
     <!-- /* Treasure Hunt Content */ -->
     <section class="treasure-hunt default">
         <div class="treasure-hunt-content">
@@ -12,6 +14,7 @@
                 <div class="inner default">
                     <img src="images/treasure_hunt/main-background.jpg" alt="" id="background-treasure" class="">
                     <!-- <img src="images/treasure_hunt/mask.png" alt="" class="mask"> -->
+                    <img src="images/treasure_hunt/heading.png" alt="" class="heading">
 
                     <!-- /* All Area Treasure */ -->
                     <!-- /* Area:: 1 */ -->
@@ -179,461 +182,498 @@
 
     <!-- /* Modal Player */ -->
     <div class="player">
-    	<div class="player__inner">
-    		<div class="player__info">
-    			<div class="avatar">
-    				<img src="images/global/img-ava.jpg" alt="">
-    			</div>
-    			<div class="info">
-                    <div class="inner">
-        				<span class="name">Nguyễn vũ hải hà</span>
-        				<p class="ranking">
-        					<img src="images/icons/medal-first.png" alt="Thợ săn đồng">
-        					<span class="title">Thợ săn đồng</span>
-        				</p>
+        <a href="" title="" class="toogle"></a>
+        <div class="outer">
+        	<div class="player__inner">
+        		<div class="player__info">
+        			<div class="avatar">
+        				<img src="images/global/img-ava.jpg" alt="">
+        			</div>
+        			<div class="info">
+                        <div class="inner">
+            				<span class="name">Nguyễn vũ hải hà</span>
+            				<p class="ranking ranking--1">
+            					<img src="images/medal/1.png" alt="Thường dân">
+            					<span class="title">Thường dân</span>
+            				</p>
+                        </div>
+        			</div>
+        		</div>
+        		<div class="score_wrapper">
+        			<span class="title">Tiền thưởng hiện có</span>
+        			<span class="score">22,000,0000</span>
+        		</div>
+        		<div class="coin">
+        			<span class="title">Các thẻ đã thu thập</span>
+                    <div class="slider" id="slider-coins">
+                        <div class="item">
+                			<ul class="list-coin">
+                				<li class="active">
+                					<img src="images/toonies_coins/001.png" alt="">
+                				</li>
+                				<li class="active">
+                					<img src="images/toonies_coins/002.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/003.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/004.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/005.png" alt="">
+                				</li>
+                			</ul>
+                			<ul class="list-coin">
+                				<li>
+                					<img src="images/toonies_coins/006.png" alt="">
+                				</li>
+                				<li class="active">
+                					<img src="images/toonies_coins/007.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/008.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/009.png" alt="">
+                				</li>
+                				<li class="active">
+                					<img src="images/toonies_coins/010.png" alt="">
+                				</li>
+                			</ul>
+                			<ul class="list-coin">
+                				<li>
+                					<img src="images/toonies_coins/011.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/012.png" alt="">
+                				</li>
+                				<li class="active">
+                					<img src="images/toonies_coins/013.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/014.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/015.png" alt="">
+                				</li>
+                			</ul>
+                			<ul class="list-coin">
+                				<li class="active">
+                					<img src="images/toonies_coins/016.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/017.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/018.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/019.png" alt="">
+                				</li>
+                				<li>
+                					<img src="images/toonies_coins/020.png" alt="">
+                				</li>
+                			</ul>
+                        </div>
+                        <div class="item">
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/001.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/002.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/003.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/004.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/005.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/006.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/007.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/008.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/009.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/010.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/011.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/012.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/013.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/014.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/015.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/016.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/017.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/018.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/019.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/020.png" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/001.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/002.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/003.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/004.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/005.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/006.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/007.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/008.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/009.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/010.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/011.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/012.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/013.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/014.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/015.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/016.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/017.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/018.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/019.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/020.png" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/001.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/002.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/003.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/004.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/005.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/006.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/007.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/008.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/009.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/010.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/011.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/012.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/013.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/014.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/015.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/016.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/017.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/018.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/019.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/020.png" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/001.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/002.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/003.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/004.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/005.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/006.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/007.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/008.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/009.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/010.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/011.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/012.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/013.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/014.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/015.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/016.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/017.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/018.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/019.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/020.png" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/001.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/002.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/003.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/004.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/005.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/006.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/007.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/008.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/009.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/010.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li>
+                                    <img src="images/toonies_coins/011.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/012.png" alt="">
+                                </li>
+                                <li class="active">
+                                    <img src="images/toonies_coins/013.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/014.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/015.png" alt="">
+                                </li>
+                            </ul>
+                            <ul class="list-coin">
+                                <li class="active">
+                                    <img src="images/toonies_coins/016.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/017.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/018.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/019.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="images/toonies_coins/020.png" alt="">
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-    			</div>
-    		</div>
-    		<div class="score_wrapper">
-    			<span class="title">Tiền thưởng hiện có</span>
-    			<span class="score">22,000,0000</span>
-    		</div>
-    		<div class="coin">
-    			<span class="title">Các thẻ đã thu thập</span>
-                <div class="slider" id="slider-coins">
-                    <div class="item">
-            			<ul class="list-coin">
-            				<li class="active">
-            					<img src="images/toonies_coins/001.png" alt="">
-            				</li>
-            				<li class="active">
-            					<img src="images/toonies_coins/002.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/003.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/004.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/005.png" alt="">
-            				</li>
-            			</ul>
-            			<ul class="list-coin">
-            				<li>
-            					<img src="images/toonies_coins/006.png" alt="">
-            				</li>
-            				<li class="active">
-            					<img src="images/toonies_coins/007.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/008.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/009.png" alt="">
-            				</li>
-            				<li class="active">
-            					<img src="images/toonies_coins/010.png" alt="">
-            				</li>
-            			</ul>
-            			<ul class="list-coin">
-            				<li>
-            					<img src="images/toonies_coins/011.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/012.png" alt="">
-            				</li>
-            				<li class="active">
-            					<img src="images/toonies_coins/013.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/014.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/015.png" alt="">
-            				</li>
-            			</ul>
-            			<ul class="list-coin">
-            				<li class="active">
-            					<img src="images/toonies_coins/016.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/017.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/018.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/019.png" alt="">
-            				</li>
-            				<li>
-            					<img src="images/toonies_coins/020.png" alt="">
-            				</li>
-            			</ul>
-                    </div>
-                    <div class="item">
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/001.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/002.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/003.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/004.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/005.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/006.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/007.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/008.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/009.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/010.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/011.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/012.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/013.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/014.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/015.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/016.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/017.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/018.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/019.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/020.png" alt="">
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item">
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/001.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/002.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/003.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/004.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/005.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/006.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/007.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/008.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/009.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/010.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/011.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/012.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/013.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/014.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/015.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/016.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/017.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/018.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/019.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/020.png" alt="">
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item">
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/001.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/002.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/003.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/004.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/005.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/006.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/007.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/008.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/009.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/010.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/011.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/012.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/013.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/014.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/015.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/016.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/017.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/018.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/019.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/020.png" alt="">
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item">
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/001.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/002.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/003.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/004.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/005.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/006.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/007.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/008.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/009.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/010.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/011.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/012.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/013.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/014.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/015.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/016.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/017.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/018.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/019.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/020.png" alt="">
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item">
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/001.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/002.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/003.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/004.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/005.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/006.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/007.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/008.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/009.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/010.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li>
-                                <img src="images/toonies_coins/011.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/012.png" alt="">
-                            </li>
-                            <li class="active">
-                                <img src="images/toonies_coins/013.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/014.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/015.png" alt="">
-                            </li>
-                        </ul>
-                        <ul class="list-coin">
-                            <li class="active">
-                                <img src="images/toonies_coins/016.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/017.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/018.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/019.png" alt="">
-                            </li>
-                            <li>
-                                <img src="images/toonies_coins/020.png" alt="">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-    			<!-- <ul class="pager">
-                    <li class="prev"><a href="#" title=""><span class="icon"></span><span>Trở lại</span></a></li>
-                    <li class="number active"><a href="#">1</a></li>
-                    <li class="number"><a href="#">2</a></li>
-                    <li class="number"><a href="#">3</a></li>
-                    <li class="number"><a href="#">4</a></li>
-                    <li class="next active"><a href="#" title=""><span>Xem tiếp</span><span class="icon"></span></a></li>
-                </ul> -->
-    		</div>
-            <a href="" title="Mở" data-title-expand="Mở" data-title-collapse="Đóng" class="arrow expand"></a>
+        			<!-- <ul class="pager">
+                        <li class="prev"><a href="#" title=""><span class="icon"></span><span>Trở lại</span></a></li>
+                        <li class="number active"><a href="#">1</a></li>
+                        <li class="number"><a href="#">2</a></li>
+                        <li class="number"><a href="#">3</a></li>
+                        <li class="number"><a href="#">4</a></li>
+                        <li class="next active"><a href="#" title=""><span>Xem tiếp</span><span class="icon"></span></a></li>
+                    </ul> -->
+        		</div>
+                <a href="" title="Mở" data-title-expand="Mở" data-title-collapse="Đóng" class="arrow expand"></a>
+            </div>
         </div>
     </div>
+
+    <!-- /* Menu Area Mobile */ -->
+    <ul class="menu-area">
+        <li>
+            <a class="area area-1" href="javascript:void(0)" title="Khu vực 1">
+            Khu vực 1
+            </a>
+        </li>
+        <li>
+            <a class="area area-2" href="javascript:void(0)" title="Khu vực 2">
+            Khu vực 2
+            </a>
+        </li>
+        <li>
+            <a class="area area-3" href="javascript:void(0)" title="Khu vực 3">
+            Khu vực 3
+            </a>
+        </li>
+        <li>
+            <a class="area area-4" href="javascript:void(0)" title="Khu vực 4">
+            Khu vực 4
+            </a>
+        </li>
+        <li>
+            <a class="area area-5" href="javascript:void(0)" title="Khu vực 5">
+            Khu vực 5
+            </a>
+        </li>
+        <li>
+            <a class="area area-6" href="javascript:void(0)" title="Khu vực 6">
+            Khu vực 6
+            </a>
+        </li>
+    </ul>
 
     <!-- /* Welcome Content */ -->
     <section class="welcome hidden">
@@ -668,6 +708,45 @@
                 </li>
             </ul>
 		</div>
+    </section>
+
+    <!-- /* Welcome Content:: Mobile */ -->
+    <section class="welcome welcome--mobile hidden">
+        <div class="outer">
+            <a href="" title="Trở lại" class="arrow prev active">Trở lại</a>
+            <div class="inner">
+                <a href="" title="Close" class="close"></a>
+                <h2 class="heading hidden">Đại Hải Trình</h2>
+                <div class="text__warpper hidden">
+                    <p>Câu chuyện bắt đầu từ bạn, chàng thợ săn tập sự với mong ước tìm kiếm kho báu Hải Tặc quý giá.</p>
+                </div>
+                <img src="images/treasure_hunt/welcome-1.png" alt="">
+            </div>
+            <div class="inner inner--last hidden">
+                <a href="" title="Close" class="close"></a>
+                <div class="text__warpper hidden">
+                    <p>Để bắt đầu hành trình, bạn cần tìm đủ những đồng vàng Toonies huyền thoại vào bộ sưu tập, mỗi đồng Toonies được phát hiện, sẽ giúp bạn tiến gần hơn với Kho Báu Hải Tặc.Chúc bạn may mắn trong hành trình đầy cam go.</p>
+                </div>
+                <img src="images/treasure_hunt/welcome-2.png" alt="">
+            </div>
+            <a href="" title="Xem tiếp" class="arrow next">Xem tiếp</a>
+        </div>
+        <div class="form clearfix">
+            <div class="form_field clearfix form_field--tnc">
+                <div class="radio-wrapper">
+                    <input type="radio" class="input-radio" id="input-radio-register">
+                </div>
+                <label for="input-radio-register">Không nhắc lại lần sau</label>
+            </div>
+            <!-- <ul class="navigation">
+                <li class="active">
+                    <a href="" title="Trở lại" class="prev">Trở lại</a>
+                </li>
+                <li>
+                    <a href="" title="Xem tiếp" class="next">Xem tiếp</a>
+                </li>
+            </ul> -->
+        </div>
     </section>
 
     <!-- /* All Images */ -->

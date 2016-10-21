@@ -100,7 +100,7 @@ gulp.task('html-include', function() {
 gulp.task('serve', ['html-include', 'styles', 'scripts', 'fonts'], () => {
     browserSync({
         notify: false,
-        port: 9900,
+        port: 9990,
         https: true,
         server: {
             baseDir: ['.tmp', 'app'],

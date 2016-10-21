@@ -151,9 +151,13 @@
 		&.animate {
 			opacity: 1;
 			@include transform ( scale(1) translateX(-50%) );
+			@include screen ( medium ) {
+				left: 0;
+				@include transform (scale(1));
+			}
 		}
 		@include screen ( medium ) {
-			z-index: 1;
+			z-index: 0;
 			bottom: -5%;
 		}
 		@include screen ( hd ) {

@@ -3,7 +3,13 @@
 	height: 100%;
 	overflow: hidden;
 	padding-bottom: 0;
-	min-height: 770px;
+	background: url( '../images/treasure_hunt/main-background-mobile.jpg' ) center center no-repeat;
+	background-size: 100% 100%;
+	min-height: 1822px;
+	@include screen ( ipad ) {
+		background: none;
+		min-height: 770px;
+	}
 	&:before {
     	content: '';
     	width: 100%;
@@ -20,6 +26,55 @@
     	}
     }
 
+    .heading--mobile {
+    	z-index: 1;
+		position: relative;
+    	margin: 20px auto 0;
+    	text-indent: -9999px;
+    	width: 204px;
+    	height: 51px;
+    	background: url('../images/treasure_hunt/heading-mobile.png') no-repeat;
+    	@include screen ( ipad ) {
+    		display: none;
+    	}
+    }
+
+    .menu-area {
+    	z-index: 1;
+    	@include ab ( n, 50%, 6%, n );
+    	@include transform ( translateX( -50% ) );
+    	display: none;
+    	/* @include screen ( ipad ) {} */
+
+    	li {
+    		.area {
+    			width: 211px;
+    			height: 56px;
+    			display: block;
+    			margin: 0 auto;
+    			text-indent: -9999px;
+    			&.area-1 {
+    				background: url('../images/buttons/area-1.png') no-repeat;
+    			}
+    			&.area-2 {
+    				background: url('../images/buttons/area-2.png') no-repeat;
+    			}
+    			&.area-3 {
+    				background: url('../images/buttons/area-3.png') no-repeat;
+    			}
+    			&.area-4 {
+    				background: url('../images/buttons/area-4.png') no-repeat;
+    			}
+    			&.area-5 {
+    				background: url('../images/buttons/area-5.png') no-repeat;
+    			}
+    			&.area-6 {
+    				background: url('../images/buttons/area-6.png') no-repeat;
+    			}
+    		}
+    	}
+    }
+
 	/** Treasure Hunt Content **/
 	.treasure-hunt {
 	    width: 100%;
@@ -29,10 +84,20 @@
 	    overflow: hidden;
 		position: relative;
 	    margin-top: -117px;
+	    display: none;
+	    @include screen ( ipad ) {
+	    	display: block;
+	    }
 	    &.default {
 	    	height: 100%;
 	    }
 
+	    .heading {
+	    	width: 100%;
+	    	max-width: 347px!important;
+	    	@include ab ( 50%, 50%, 0, 0 );
+	    	@include transform ( translate(-50%, -50%) );
+	    }
 	    .button--back {
 	    	font-size: 13px;
 		    font-family: $font-iCPB;
@@ -280,7 +345,7 @@
 				}
 			}
 			&.area-3 {
-				top: 3%;
+				top: 0;
 				left: 50%;
 				@include transform ( translateX(-50%) );
 
@@ -446,68 +511,76 @@
 
 				.coin {
 					&.coin-1 {
-						top: 3%;
-						right: 25%;
+						top: 0;
+						right: 35%;
 					}
 					&.coin-2 {
-						top: 16%;
-						right: 2%;
+						top: 0;
+						right: 20%;
 					}
 					&.coin-3 {
-						top: 31%;
-						right: 5%;
+						top: 30%;
+						right: 10%;
 					}
 					&.coin-4 {
-						top: 28%;
-						right: 11%;
+						top: 20%;
+						right: 10%;
 					}
 					&.coin-5 {
-						top: 32%;
-						right: 22%;
+						top: 45%;
+						right: 20%;
 					}
 					&.coin-6 {
-						top: 25%;
-						right: 50%;
+						top: 20%;
+						right: 30%;
 					}
 					&.coin-7 {
-						top: 31%;
+						top: 30%;
 						right: 30%;
 					}
 					&.coin-8 {
-						top: 36%;
-						right: 15%;
+						top: 35%;
+						right: 20%;
 					}
 					&.coin-9 {
-						top: 40%;
-						right: 45%;
+						top: 45%;
+						right: 30%;
 					}
 					&.coin-10 {
 						top: 10%;
-						right: 5%;
+						right: 10%;
 					}
 					&.coin-11 {
-						top: 17%;
-						right: 27%;
+						top: 10%;
+						right: 30%;
 					}
 					&.coin-12 {
-						bottom: 5%;
-						right: 19%;
+						bottom: 10%;
+						right: 25%;
 					}
 					&.coin-13 {
-						bottom: 1%;
+						bottom: 0;
 						right: 40%;
 					}
 					&.coin-14 {
 						bottom: 15%;
-						right: 45%;
+						right: 75%;
 					}
 					&.coin-15 {
-						bottom: 30%;
-						right: 39%;
+						bottom: 25%;
+						right: 45%;
 					}
 					&.coin-16 {
-						bottom: 25%;
-						right: 32%;
+						bottom: 35%;
+						right: 50%;
+					}
+					&.coin-17 {
+						bottom: 30%;
+						right: 70%;
+					}
+					&.coin-18 {
+						bottom: 5%;
+						right: 60%;
 					}
 				}
 			}
@@ -517,68 +590,68 @@
 
 				.coin {
 					&.coin-1 {
-						top: 11%;
+						bottom: 0;
 						left: 25%;
 					}
 					&.coin-2 {
-						top: 16%;
-						left: 2%;
+						bottom: 0;
+						left: 0;
 					}
 					&.coin-3 {
-						top: 41%;
-						left: 5%;
+						bottom: 45%;
+						left: 10%;
 					}
 					&.coin-4 {
-						top: 28%;
-						left: 11%;
+						bottom: 15%;
+						left: 10%;
 					}
 					&.coin-5 {
-						top: 42%;
-						left: 22%;
+						bottom: 40%;
+						left: 20%;
 					}
 					&.coin-6 {
-						top: 45%;
-						left: 45%;
+						bottom: 70%;
+						right: 30%;
 					}
 					&.coin-7 {
-						top: 31%;
-						left: 30%;
+						bottom: 45%;
+						right: 25%;
 					}
 					&.coin-8 {
-						top: 66%;
-						left: 15%;
+						bottom: 70%;
+						right: 15%;
 					}
 					&.coin-9 {
-						top: 55%;
-						left: 45%;
+						bottom: 5%;
+						left: 35%;
 					}
 					&.coin-10 {
 						bottom: 10%;
-						left: 5%;
+						right: 10%;
 					}
 					&.coin-11 {
-						bottom: 17%;
-						left: 27%;
+						bottom: 25%;
+						right: 30%;
 					}
 					&.coin-12 {
 						bottom: 5%;
-						left: 19%;
+						right: 19%;
 					}
 					&.coin-13 {
-						bottom: 1%;
-						left: 40%;
+						bottom: 0;
+						right: 30%;
 					}
 					&.coin-14 {
 						bottom: 15%;
-						left: 45%;
+						right: 45%;
 					}
 					&.coin-15 {
-						bottom: 30%;
-						left: 50%;
+						bottom: 35%;
+						right: 10%;
 					}
 					&.coin-16 {
 						bottom: 25%;
-						left: 65%;
+						right: 65%;
 					}
 				}
 			}
@@ -616,16 +689,51 @@
 
 	/** Player Content **/
 	.player {
-		background: url('../images/treasure_hunt/background-player.png') no-repeat;
-		background-size: 100% 100%;
-		width: 100%;
-		height: 761px;
-		max-width: 801px;
 		z-index: 5;
-		right: -380px;
-		bottom: -110px;
-		position: absolute;
+		margin-top: 45px;
+		z-index: 1;
+		position: relative;
+		@include screen ( ipad ) {
+			right: -380px;
+			bottom: -110px;
+			margin-top: 0;
+			position: absolute;
+			height: 761px;
+			padding-bottom: 0;
+		}
 
+		.outer {
+			background: url('../images/treasure_hunt/background-player.png') no-repeat;
+			background-size: 100% 100%;
+			width: 100%;
+			height: auto;
+			padding-bottom: 35px;
+			max-width: 801px;
+		}
+		.toogle {
+			width: 246px;
+			height: 56px;
+			@include ab ( -25px, 50%, n, n );
+			@include transform ( translateX(-50%) );
+			background: url('../images/buttons/hide-info.png') no-repeat;
+			&.show {
+				background: url('../images/buttons/show-info.png') no-repeat;
+				&:before {
+					content: '';
+					background: url('../images/icons/toggle-hide.png') no-repeat;
+				}
+			}
+			@include screen ( ipad ) {
+				display: none;
+			}
+			&:before {
+				content: '';
+				@include ab ( 17px, n, n, 15px );
+				width: 28px;
+				height: 21px;
+				background: url('../images/icons/toggle.png') no-repeat;
+			}
+		}
 		ul {
 			margin: 0;
 			padding: 0;
@@ -661,7 +769,7 @@
 			}
 		}
 		.list-coin {
-			margin: 0 -10px;
+			/* margin: 0 -10px; */
 			overflow: hidden;
 
 			li {
@@ -772,9 +880,12 @@
 		}
 	}
 	.player__inner {
-		max-width: 55%;
 		position: relative;
-		padding: 0 20px 0 60px;
+		padding: 30px 3% 0 5%;
+		@include screen ( ipad ) {
+			max-width: 55%;
+			padding: 20px 20px 0 60px;
+		}
 
 		.arrow {
 			width: 75px;
@@ -782,14 +893,20 @@
 			background: url('../images/icons/collapse.png') no-repeat;
 			@include ab( 50%, -15px, n, n );
 			@include transform ( translateY(-50%) );
+			display: none;
+			@include screen ( ipad ) {
+				display: block;
+			}
 			&.expand {
 				background: url('../images/icons/expand.png') no-repeat;
 			}
 		}
 	}
 	.player__info {
-        margin: 35px 0 0;
 		overflow: hidden;
+		/* @include screen ( ipad ) {
+        	margin: 35px 0 0;
+		} */
 
 		.avatar {
 			float: left;
@@ -859,9 +976,17 @@
 		&:before, &:after {
 			content: '';
 			height: 7px;
-			width: 345px;
-			background: url('../images/treasure_hunt/line.png') no-repeat;
-			@include ab ( 0, n, n, 0 );
+			width: 100%;
+			max-width: 345px;
+			background: url('../images/treasure_hunt/line.png') center center no-repeat;
+			background-size: 100% 100%;
+			@include ab ( 0, 50%, n, n );
+			@include transform ( translateX(-50%) );
+			@include screen ( ipad ) {
+				left: auto;
+				@include ab ( 0, n, n, 0 );
+				transform: none;
+			}
 		}
 		&:after {
 			top: auto;
@@ -889,8 +1014,8 @@
 		width: 100%;
 		max-width: 817px;
 		padding: 0 10px;
-		@include ab ( 50%, 50%, n, n );
-		@include transform ( translate(-50%,-50%) );
+		@include ab ( 0, 50%, n, n );
+		@include transform ( translateX(-50%) );
 		@include screen ( ipad ) {
 			padding: 0;
 		}
@@ -978,5 +1103,51 @@
 
 	        text-indent: -9999px;
 	    }
+	}
+	.welcome--mobile {
+		@include ab ( 0, 50%, n, n );
+		@include transform ( translateX(-50%) );
+		.inner {
+			background: url('../images/modal/background-modal--small-mobile.png') center center no-repeat;
+			background-size: 100% 100%;
+			height: auto;
+			min-height: 459px;
+
+			text-align: center;
+		}
+		.inner--last {
+			img {
+				margin-top: 60px;
+			}
+		}
+		.form {
+			.form_field {
+				float: none;
+			}
+		}
+		.arrow {
+			text-indent: -9999px;
+			top: 50%;
+			z-index: 3;
+			position: absolute;
+			@include transform ( translateY(-50%) );
+			&.prev {
+				left: 10%;
+				opacity: 1;
+				background: url('../images/treasure_hunt/arrow-prev.png') 0 0 no-repeat;
+			}
+			&.next {
+				right: 10%;
+				left: auto;
+				background: url('../images/treasure_hunt/arrow-next.png') 100% 0 no-repeat;
+			}
+			&.active {
+				opacity: 0.5;
+			}
+		}
+		.close {
+			right: 0;
+			top: 35px;
+		}
 	}
 }

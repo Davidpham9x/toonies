@@ -177,6 +177,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             /*toonies.Global.initUploadImg('', $('#txt-file'));*/
             /*toonies.Global.initShowModalWelcomeTreasure();*/
             toonies.Global.initExpandCollapsePlayer();
+            toonies.Global.initShowHideInfoUser();
         },
 
         initFormElements: function() {
@@ -323,40 +324,85 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
         initShowModalWelcomeTreasure: function() {
             if ($('.page--treasure-hunt').length) {
-                var navigator = $('.navigation'),
-                    contentWelcome = $('.welcome').find('.inner'),
-                    liTags = navigator.children(),
-                    tagClose = $('.welcome').find('.close');
+                if ( $(window).width() > 640 ) {
+                    var navigator = $('.navigation'),
+                        contentWelcome = $('.welcome').not('.welcome--mobile'),
+                        liTags = navigator.children(),
+                        tagClose = $('.welcome').find('.close');
 
-                $('.page--treasure-hunt').addClass('show-modal');
+                    $('.page--treasure-hunt').addClass('show-modal');
+                    contentWelcome.removeClass('hidden');
 
-                setTimeout(function() {
-                    $('.welcome').removeClass('hidden');
-                    $('.welcome').find('.inner').not('.hidden').addClass('animate');
-                }, 600);
+                    setTimeout(function() {
+                        contentWelcome.find('.inner').not('.hidden').addClass('animate');
+                    }, 600);
 
-                liTags.each(function(idx, elm) {
-                    var _this = $(this);
-                    _this.off('click').on('click', function(e) {
+                    liTags.each(function(idx, elm) {
+                        var _this = $(this);
+                        _this.off('click').on('click', function(e) {
+                            e.preventDefault();
+                            if ($(this).hasClass('active')) {
+                                return;
+                            }
+
+                            contentWelcome.find('.inner').addClass('hidden');
+                            contentWelcome.find('.inner').eq(idx).removeClass('hidden').addClass('animate');
+
+                            liTags.removeClass('active');
+                            _this.addClass('active');
+                        });
+                    });
+
+                    tagClose.off('click').on('click', function(e) {
                         e.preventDefault();
-                        if ($(this).hasClass('active')) {
-                            return;
-                        }
 
                         contentWelcome.addClass('hidden');
-                        contentWelcome.eq(idx).removeClass('hidden').addClass('animate');
-
-                        liTags.removeClass('active');
-                        _this.addClass('active');
+                        $('.page--treasure-hunt').removeClass('show-modal');
                     });
-                });
+                } else {
+                    var contentWelcome = $('.welcome--mobile'),
+                        tagClose = contentWelcome.find('.close'),
+                        aTags = contentWelcome.find('.arrow');
 
-                tagClose.off('click').on('click', function(e) {
-                    e.preventDefault();
+                    $('.page--treasure-hunt').addClass('show-modal');
+                    contentWelcome.removeClass('hidden');
 
-                    $('.welcome').addClass('hidden');
-                    $('.page--treasure-hunt').removeClass('show-modal');
-                });
+                    setTimeout(function() {
+                        contentWelcome.find('.inner').not('.hidden').addClass('animate');
+                    }, 600);
+
+                    aTags.each(function(idx, elm) {
+                        var _this = $(this);
+                        _this.off('click').on('click', function(e) {
+                            e.preventDefault();
+                            if ($(this).hasClass('active')) {
+
+                            }
+                            if ($(this).hasClass('prev')) {
+                                contentWelcome.find('.inner').addClass('hidden');
+                                contentWelcome.find('.inner').eq(0).removeClass('hidden').addClass('animate');
+
+                                aTags.removeClass('active');
+                                _this.addClass('active');
+                            }
+
+                            if ($(this).hasClass('next')) {
+                                contentWelcome.find('.inner').addClass('hidden');
+                                contentWelcome.find('.inner').eq(1).removeClass('hidden').addClass('animate');
+
+                                aTags.removeClass('active');
+                                _this.addClass('active');
+                            }
+                        });
+                    });
+
+                    tagClose.off('click').on('click', function(e) {
+                        e.preventDefault();
+
+                        contentWelcome.addClass('hidden');
+                        $('.page--treasure-hunt').removeClass('show-modal');
+                    });
+                }
             }
         },
 
@@ -392,7 +438,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 responsive: [{
                     breakpoint: 640,
                     settings: {
-                        dots: false
+                        dots: false,
                         slidesToShow: 1,
                         slidesToScroll: 1
                     }
@@ -674,6 +720,25 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             $('#count-time').text(15);
             $('#count-time').addClass('hidden');
             $('.scan_content--camera').find('img').remove();
+
+            document.getElementById("result").innerHTML = "";
+        },
+
+        initShowHideInfoUser: function () {
+            var playerContent = $('.player'),
+                aTag = playerContent.find('.toogle');
+
+                aTag.off('click').on('click', function (e) {
+                    e.preventDefault();
+
+                    if ( $(this).hasClass('show') ) {
+                        $(this).removeClass('show');
+                        playerContent.find('.outer').slideDown('normal');
+                    } else {
+                        $(this).addClass('show');
+                        playerContent.find('.outer').slideUp('normal');
+                    }
+                });
         },
 
         initDragBackgroundTreasure: function() {
@@ -684,6 +749,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 lastMouseX,
                 lastMouseY;
             var areaContent = $('.area__wrapper');
+            /*var areaMenuMobile = $('.menu-area'),
+                aTags = areaMenuMobile.find('a');*/
 
             /*if (window.windowWidth >= 1920) {
                 $('.treasure-hunt').find('.outer').css('width', 1920);
@@ -758,10 +825,66 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 parentContent.addClass('default');
                 parentContent.removeAttr('style');
                 $('.treasure-hunt').addClass('default');
+                if ( window.windowWidth < 1024 ) {
+                    $('.treasure-hunt').css('display', 'none');
+                }
                 btnBack.addClass('hidden');
 
                 $.pep.unbind( parentContent );
             });
+
+            /*aTags.each(function () {
+                var _this = $(this);
+
+                _this.off('click').on('click', function () {
+                    if ( parentContent.hasClass('default') ) {
+                        parentContent.removeClass('default');
+                        $('.treasure-hunt').removeClass('default').css('display', 'block');
+                        btnBack.removeClass('hidden');
+
+                        parentContent.pep({
+                            constrainTo: constrainArray(),
+                            elementsWithInteraction: 'a'
+                        });
+
+                        if ( $(this).hasClass('area-1') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 350, 2750 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-2') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 860, 910 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-3') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 2090, 270 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-4') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 3870, 210 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-5') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 3725, 1555 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-6') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 3700, 3000 );
+                            }, 1000);
+                        }
+                    }
+                });
+            });*/
         },
 
         initScrollToPoint: function ( pointX, pointY ) {
@@ -822,10 +945,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     'top': distanceY,
                     'left': distanceX
                 }, 500);
-
-                if(scroll)
-                    $("html, body").animate({ scrollTop: 0 });
             }, 500);
+
+            if(scroll)
+                $("html, body").animate({ scrollTop: 0 });
         }
     };
 })(jQuery);
