@@ -231,12 +231,13 @@
         }
     }
     .img-actor {
-        position: absolute;
-        top: 0;
-        left: 0;
+        @include ab ( 5px, 0, n, n );
         display: none;
         @include screen(medium) {
             display: block;
+        }
+        &.img-actor--zoro {
+            @include ab ( -10px, -25px, n, n );
         }
     }
 }

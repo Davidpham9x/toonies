@@ -240,8 +240,8 @@
     }
     &:after {
         content: '';
-        width: 187px;
-        height: 548px;
+        width: 195px;
+        height: 686px;
         background: url('../images/modal/characters--sanji.png') no-repeat;
 
         z-index: 0;
@@ -257,7 +257,7 @@
             left: -20%;
         }
         &:after {
-            right: -10%;
+            right: -15%;
         }
     }
 
@@ -310,12 +310,12 @@
     }
     &:after {
         content: '';
-        width: 389px;
-        height: 556px;
+        width: 378px;
+        height: 677px;
         background: url('../images/modal/characters--luffy.png') no-repeat;
 
         z-index: 0;
-        @include ab ( 10%, n, n, -28% );
+        @include ab ( 24%, n, n, -30% );
         display: none;
         @include screen ( medium ) {
             display: block;
@@ -459,6 +459,10 @@
 }
 
 .modal--common {
+    @extend .modal--scan-result;
+}
+
+.modal--alert {
     @extend .modal--scan-result;
 }
 

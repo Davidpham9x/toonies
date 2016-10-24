@@ -624,6 +624,29 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
         },
 
+        initModalAlert: function(mess) {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--alert'
+                },
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        $('#modal--alert').find('.desc').text(mess);
+                        this.st.mainClass = 'mfp-move-from-top';
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('#modal--alert').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                toonies.Global.initCloseAllModal();
+            });
+        },
+
         initCloseAllModal: function() {
             var magnificPopup = $.magnificPopup.instance;
             magnificPopup.close(); // Close popup that is currently opened
