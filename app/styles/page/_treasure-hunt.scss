@@ -44,7 +44,6 @@
     	@include ab ( n, 50%, 6%, n );
     	@include transform ( translateX( -50% ) );
     	display: none;
-    	/* @include screen ( ipad ) {} */
 
     	li {
     		.area {
@@ -240,7 +239,7 @@
 						left: 40%;
 					}
 					&.coin-10 {
-						bottom: 2%;
+						bottom: 7%;
 						left: 0;
 					}
 					&.coin-11 {
@@ -252,7 +251,7 @@
 						left: 10%;
 					}
 					&.coin-13 {
-						bottom: 1%;
+						bottom: 4%;
 						left: 35%;
 					}
 					&.coin-14 {
@@ -351,24 +350,24 @@
 
 				.coin {
 					&.coin-1 {
-						top: 17%;
-						left: 17%;
+						top: -2%;
+						left: 45%;
 					}
 					&.coin-2 {
-						top: 5%;
-						left: 0;
+						top: 30%;
+						left: 31%;
 					}
 					&.coin-3 {
-						top: 10%;
+						top: 25%;
 						left: 40%;
 					}
 					&.coin-4 {
-						top: 5%;
-						left: 55%;
+						top: 35%;
+						left: 52%;
 					}
 					&.coin-5 {
-						top: 10%;
-						left: 22%;
+						top: 35%;
+						left: 69%;
 					}
 					&.coin-6 {
 						top: 30%;
@@ -379,8 +378,8 @@
 						left: 30%;
 					}
 					&.coin-8 {
-						top: 20%;
-						left: 45%;
+						top: 26%;
+						left: 51%;
 					}
 					&.coin-9 {
 						top: 30%;
@@ -399,7 +398,7 @@
 						left: 19%;
 					}
 					&.coin-13 {
-						top: 1%;
+						top: -2%;
 						right: 20%;
 					}
 					&.coin-14 {
@@ -415,7 +414,7 @@
 						right: 25%;
 					}
 					&.coin-17 {
-						top: 15%;
+						top: -2%;
 						right: 10%;
 					}
 					&.coin-18 {
@@ -458,28 +457,28 @@
 						right: 30%;
 					}
 					&.coin-8 {
-						top: 65%;
+						top: 62%;
 						right: 10%;
 					}
 					&.coin-9 {
-						top: 0;
-						right: 60%;
+						top: 2%;
+						right: 50%;
 					}
 					&.coin-10 {
-						top: 0;
-						right: 5%;
+						top: 30%;
+						right: 2%;
 					}
 					&.coin-11 {
 						top: 20%;
 						right: 35%;
 					}
 					&.coin-12 {
-						top: 0;
-						right: 20%;
+						top: 50%;
+						right: 10%;
 					}
 					&.coin-13 {
-						top: 1%;
-						right: 40%;
+						top: 55%;
+						right: 19%;
 					}
 					&.coin-14 {
 						top: 15%;
@@ -487,19 +486,19 @@
 					}
 					&.coin-15 {
 						top: 30%;
-						right: 50%;
+						right: 20%;
 					}
 					&.coin-16 {
-						top: 25%;
-						right: 65%;
+						top: 40%;
+						right: 15%;
 					}
 					&.coin-17 {
 						top: 15%;
-						right: 55%;
+						right: 15%;
 					}
 					&.coin-18 {
-						top: 5%;
-						right: 70%;
+						top: 60%;
+						right: 2%;
 					}
 				}
 			}
@@ -590,12 +589,12 @@
 
 				.coin {
 					&.coin-1 {
-						bottom: 0;
 						left: 25%;
+						bottom: 6%;
 					}
 					&.coin-2 {
-						bottom: 0;
 						left: 0;
+						bottom: 5%;
 					}
 					&.coin-3 {
 						bottom: 45%;
@@ -638,7 +637,7 @@
 						right: 19%;
 					}
 					&.coin-13 {
-						bottom: 0;
+						bottom: 5%;
 						right: 30%;
 					}
 					&.coin-14 {
@@ -904,9 +903,6 @@
 	}
 	.player__info {
 		overflow: hidden;
-		/* @include screen ( ipad ) {
-        	margin: 35px 0 0;
-		} */
 
 		.avatar {
 			float: left;
@@ -1148,6 +1144,48 @@
 		.close {
 			right: 0;
 			top: 35px;
+		}
+	}
+
+	/** Info Area **/
+	.info-area {
+		width: 100%;
+		background: url('../images/treasure_hunt/info-area.png') center center no-repeat;
+		height: 374px;
+		max-width: 293px;
+		z-index: 2;
+		@include ab ( 0, 0, n, n );
+		padding: 80px 45px;
+		text-align: center;
+
+		p, span {
+			color: #4e301c;
+		}
+		.title {
+			font-size: 16px;
+			font-family: $font-iCPB;
+			text-transform: uppercase;
+		}
+		.desc {
+			font-size: 12px;
+			font-family: $font-standard;
+			line-height: 17px;
+
+		}
+		.requirement {
+			font-size: 12px;
+			font-weight: bold;
+			font-family: $font-standard;
+			line-height: normal;
+
+			strong {
+				font-size: 15px;
+				font-family: $font-iCPB;
+				text-transform: uppercase;
+
+				display: block;
+				margin-top: 10px;
+			}
 		}
 	}
 }

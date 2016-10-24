@@ -41,6 +41,12 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initSliderCoinsProfile();
             this.initHandleWebsiteResize();
 
+            $('.tooltip').tooltipster({
+                animation: 'grow',
+                contentAsHTML: true,
+                contentCloning: true
+            });
+
             if ($('.page--scan').length || $('.page--code').length) {
                 toonies.Global.initModalIntro();
             }
@@ -683,6 +689,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
         initCameraScan: function() {
             var contentScan = $('.scan'),
+                blockTriggerClick = contentScan.find('.scan_content').eq(0).find('.inner'),
                 btnScan = $('#open-scan');
 
             btnScan.off('click').on('click', function(e) {
@@ -696,6 +703,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 // Init Camera
                 load();
                 toonies.Global.initCameraAction();
+            });
+
+            blockTriggerClick.off('click').on('click', function(e) {
+                btnScan.trigger('click');
             });
         },
 

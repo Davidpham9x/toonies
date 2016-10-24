@@ -11,7 +11,8 @@
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "qcode-decoder": "^0.1.0",
     "pep": "^0.6.8",
-    "zoomooz": "^1.1.6"
+    "zoomooz": "^1.1.6",
+    "tooltipster": "^4.1.5"
   },
   "devDependencies": {
     "chai": "^3.5.0",

@@ -43,9 +43,10 @@
 			margin: 40px auto 0;
 
 			.inner {
+				height: 100%;
+				cursor: pointer;
 				display: table-cell;
 				vertical-align: middle;
-				height: 100%;
 			}
 			span {
 				display: block;
@@ -70,6 +71,7 @@
 				height: 100%;
 				margin: 0 auto;
 				display: block;
+				cursor: default;
 				overflow: hidden;
 				position: relative;
 				@include border-radius ( 50%, 50%, 50%, 50% );

@@ -78,7 +78,7 @@
 	}
 	.characters-left {
 		margin-left: -50%;
-		@include ab ( 15%, 50%, n, n );
+		@include ab ( n, 50%, 0, n );
 		@include transform ( translateX(-50%) );
 		opacity: 0;
 		@include transition ( all .3s ease-in-out );
