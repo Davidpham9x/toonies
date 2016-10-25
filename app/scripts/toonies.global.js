@@ -45,6 +45,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 $('.tooltip').tooltipster({
                     content: $('#info-area'),
                     theme: 'tooltipster-custom-area',
+                    minWidth: '293',
                     animation: 'grow',
                     contentAsHTML: true,
                     contentCloning: true,
