@@ -73,6 +73,9 @@
     		}
     	}
     }
+    .tooltip_templates {
+    	display: none;
+   	}
 
 	/** Treasure Hunt Content **/
 	.treasure-hunt {
@@ -120,6 +123,12 @@
 				margin-right: 5px;
 				margin-top: -3px;
 		    }
+	    }
+	    .flag {
+	    	position: absolute;
+	    	background: url('../images/treasure_hunt/flag.png');
+	    	width: 87px;
+	    	height: 96px;
 	    }
 	    .treasure-hunt-content {
 	     	width: 100%;
@@ -201,6 +210,10 @@
 				left: 0;
 				bottom: 0;
 
+				.flag {
+					top: 35%;
+					left: 30%;
+				}
 				.coin {
 					&.coin-1 {
 						top: 5%;
@@ -272,6 +285,10 @@
 				top: 0;
 				left: 0;
 
+				.flag {
+				    top: 50%;
+				    left: 50%;
+				}
 				.coin {
 					&.coin-1 {
 						top: 11%;
@@ -348,6 +365,10 @@
 				left: 50%;
 				@include transform ( translateX(-50%) );
 
+				.flag {
+				    top: 50%;
+				    left: 50%;
+				}
 				.coin {
 					&.coin-1 {
 						top: -2%;
@@ -427,6 +448,10 @@
 				top: 0;
 				right: 0;
 
+				.flag {
+				    top: 50%;
+				    left: 50%;
+				}
 				.coin {
 					&.coin-1 {
 						top: 11%;
@@ -508,6 +533,10 @@
 				margin-top: 5%;
 				@include transform ( translateY(-50%) );
 
+				.flag {
+				    top: 50%;
+				    left: 50%;
+				}
 				.coin {
 					&.coin-1 {
 						top: 0;
@@ -587,6 +616,10 @@
 				right: 0;
 				bottom: 0;
 
+				.flag {
+				    top: 30%;
+				    left: 45%;
+				}
 				.coin {
 					&.coin-1 {
 						left: 25%;
@@ -1146,46 +1179,101 @@
 			top: 35px;
 		}
 	}
+}
 
-	/** Info Area **/
-	.info-area {
+/** Info Area **/
+.info-area {
+	width: 100%;
+	background: url('../images/treasure_hunt/info-area.png') center center no-repeat;
+	height: 374px;
+	max-width: 293px;
+	z-index: 2;
+	text-align: center;
+
+	.inner {
 		width: 100%;
-		background: url('../images/treasure_hunt/info-area.png') center center no-repeat;
-		height: 374px;
-		max-width: 293px;
-		z-index: 2;
-		@include ab ( 0, 0, n, n );
+		height: 100%;
 		padding: 80px 45px;
-		text-align: center;
+	}
+	p, span {
+		color: #4e301c;
+	}
+	.title {
+		font-size: 16px;
+		font-family: $font-iCPB;
+		text-transform: uppercase;
+	}
+	.desc {
+		font-size: 12px;
+		font-family: $font-standard;
+		line-height: 17px;
 
-		p, span {
-			color: #4e301c;
-		}
-		.title {
-			font-size: 16px;
+	}
+	.requirement {
+		font-size: 12px;
+		font-weight: bold;
+		font-family: $font-standard;
+		line-height: normal;
+
+		strong {
+			font-size: 15px;
 			font-family: $font-iCPB;
 			text-transform: uppercase;
-		}
-		.desc {
-			font-size: 12px;
-			font-family: $font-standard;
-			line-height: 17px;
 
+			display: block;
+			margin-top: 10px;
 		}
-		.requirement {
-			font-size: 12px;
-			font-weight: bold;
-			font-family: $font-standard;
-			line-height: normal;
+	}
+}
 
-			strong {
-				font-size: 15px;
-				font-family: $font-iCPB;
-				text-transform: uppercase;
+/** Profile Characters **/
+.profile-characters {
+	width: 100%;
+	background: url('../images/treasure_hunt/profile-characters.png') center center no-repeat;
+	height: 390px;
+	max-width: 293px;
+	z-index: 2;
+	text-align: center;
 
-				display: block;
-				margin-top: 10px;
-			}
-		}
+	.inner {
+		width: 100%;
+		height: 100%;
+		padding: 80px 40px;
+	}
+	p, span {
+		color: #4e301c;
+	}
+	img {
+		margin: 0 auto;
+		max-width: 85px;
+	}
+	.title {
+		font-size: 16px;
+		font-family: $font-iCPB;
+		text-transform: uppercase;
+		display: block;
+		margin-top: 20px;
+	}
+	.desc {
+		font-size: 12px;
+		font-family: $font-standard;
+		line-height: 17px;
+
+	}
+}
+
+/** Tooltipster Custom Area **/
+.tooltipster-custom-area {
+	.tooltipster-box {
+		border: none;
+		border-radius: 0;
+		margin-bottom: 0!important;
+		background: transparent;
+	}
+	.tooltipster-content {
+		padding: 0;
+	}
+	.tooltipster-arrow {
+		display: none;
 	}
 }

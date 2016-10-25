@@ -41,11 +41,38 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initSliderCoinsProfile();
             this.initHandleWebsiteResize();
 
-            $('.tooltip').tooltipster({
-                animation: 'grow',
-                contentAsHTML: true,
-                contentCloning: true
-            });
+            if ( $('.tooltip').length ) {
+                $('.tooltip').tooltipster({
+                    content: $('#info-area'),
+                    theme: 'tooltipster-custom-area',
+                    animation: 'grow',
+                    contentAsHTML: true,
+                    contentCloning: true,
+                    functionReady: function (instance, helper) {
+                        $(helper.tooltip).find('.title').text( $(helper.origin).attr('data-title') );
+                        $(helper.tooltip).find('.desc').text( $(helper.origin).attr('data-description') );
+                        $(helper.tooltip).find('.requirement > strong').html( $(helper.origin).attr('data-requirement') );
+                    }
+                });
+            }
+
+            if ( $('.tooltip-characters').length ) {
+                $('.tooltip-characters').tooltipster({
+                    content: $('#profile-characters'),
+                    theme: 'tooltipster-custom-area',
+                    minWidth: '293',
+                    animation: 'grow',
+                    contentAsHTML: true,
+                    contentCloning: true,
+                    functionReady: function (instance, helper) {
+                        $(helper.tooltip).find('img').remove();
+                        var imgTemp = $('<img src="'+$(helper.origin).attr('src')+'" alt="'+ $(helper.origin).attr('data-title') +'">');
+                        imgTemp.appendTo( $(helper.tooltip).find('.wrap-img') );
+                        $(helper.tooltip).find('.desc').text( $(helper.origin).attr('data-description') );
+                        $(helper.tooltip).find('.requirement > strong').html( $(helper.origin).attr('data-requirement') );
+                    }
+                });
+            }
 
             if ($('.page--scan').length || $('.page--code').length) {
                 toonies.Global.initModalIntro();
