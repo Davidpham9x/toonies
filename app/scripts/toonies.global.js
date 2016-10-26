@@ -41,6 +41,66 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initSliderCoinsProfile();
             this.initHandleWebsiteResize();
 
+            var myMem = new Memory({
+                wrapperID: "my-memory-game",
+                cards: [{
+                    id: 1,
+                    img: "images/toonies_coins/001.png"
+                }, {
+                    id: 2,
+                    img: "images/toonies_coins/002.png"
+                }, {
+                    id: 3,
+                    img: "images/toonies_coins/003.png"
+                }, {
+                    id: 4,
+                    img: "images/toonies_coins/004.png"
+                }, {
+                    id: 5,
+                    img: "images/toonies_coins/005.png"
+                }, {
+                    id: 6,
+                    img: "images/toonies_coins/006.png"
+                }, {
+                    id: 7,
+                    img: "images/toonies_coins/007.png"
+                }, {
+                    id: 8,
+                    img: "images/toonies_coins/008.png"
+                }, {
+                    id: 9,
+                    img: "images/toonies_coins/009.png"
+                }, {
+                    id: 10,
+                    img: "images/toonies_coins/010.png"
+                }, {
+                    id: 11,
+                    img: "images/toonies_coins/011.png"
+                }, {
+                    id: 12,
+                    img: "images/toonies_coins/012.png"
+                }, {
+                    id: 13,
+                    img: "images/toonies_coins/013.png"
+                }, {
+                    id: 14,
+                    img: "images/toonies_coins/014.png"
+                }, {
+                    id: 15,
+                    img: "images/toonies_coins/015.png"
+                }, {
+                    id: 16,
+                    img: "images/toonies_coins/016.png"
+                }/*, {
+                    id: 17,
+                    img: "images/toonies_coins/015.png"
+                }, {
+                    id: 18,
+                    img: "images/toonies_coins/016.png"
+                }*/]
+            });
+            $('span[data-level="2"]').trigger('click');
+
             if ( $('.tooltip').length ) {
                 $('.tooltip').tooltipster({
                     content: $('#info-area'),
