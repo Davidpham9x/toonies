@@ -127,8 +127,8 @@
 	    .flag {
 	    	position: absolute;
 	    	background: url('../images/treasure_hunt/flag.png');
-	    	width: 87px;
-	    	height: 96px;
+	    	width: 200px;
+	    	height: 200px;
 	    }
 	    .treasure-hunt-content {
 	     	width: 100%;
@@ -161,17 +161,13 @@
 								@include transform-origin ( bottom left );
 							}
 							&.area-2 {
-								/* top: 11.5%; */
 								@include transform-origin ( top left );
 							}
 							&.area-3 {
-								/* top: 11.5%; */
 								left: auto;
-								/* @include transform ( scale(0.4) ); */
 								@include transform-origin ( top center );
 							}
 							&.area-4 {
-								/* top: 11.5%; */
 								@include transform-origin ( top right );
 							}
 							&.area-5 {
@@ -180,7 +176,6 @@
 							}
 							&.area-6 {
 								bottom: 45px;
-								/* @include transform ( scale(0.5) ); */
 								@include transform-origin ( bottom right );
 							}
 						}
@@ -211,8 +206,8 @@
 				bottom: 0;
 
 				.flag {
-					top: 35%;
-					left: 30%;
+					top: 25%;
+					left: 25%;
 				}
 				.coin {
 					&.coin-1 {
@@ -286,8 +281,8 @@
 				left: 0;
 
 				.flag {
-				    top: 50%;
-				    left: 50%;
+				    top: 45%;
+				    left: 45%;
 				}
 				.coin {
 					&.coin-1 {
@@ -534,8 +529,8 @@
 				@include transform ( translateY(-50%) );
 
 				.flag {
-				    top: 50%;
-				    left: 50%;
+				    top: 35%;
+				    left: 45%;
 				}
 				.coin {
 					&.coin-1 {
@@ -617,8 +612,8 @@
 				bottom: 0;
 
 				.flag {
-				    top: 30%;
-				    left: 45%;
+				    top: 20%;
+				    left: 40%;
 				}
 				.coin {
 					&.coin-1 {
@@ -815,6 +810,7 @@
 				}
 
 				img {
+					cursor: pointer;
 					-webkit-filter: grayscale(1);
 					filter: grayscale(1);
 					width: 100%;

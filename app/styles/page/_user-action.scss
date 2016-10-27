@@ -363,7 +363,12 @@
             }
         }
         .capcha {
+            margin-top: 20px;
             text-align: center;
+
+            .g-recaptcha > div:first-child {
+                margin: 0 auto;
+            }
         }
     }
 
