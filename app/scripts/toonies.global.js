@@ -1050,6 +1050,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 $('.treasure-hunt').addClass('default');
                 if ( window.windowWidth < 1024 ) {
                     $('.treasure-hunt').css('display', 'none');
+
+                    $('.heading--mobile').removeClass('hidden');
+                    $('.map-overview').removeClass('hidden');
+                    areaContentMenu.removeClass('hidden');
                 }
                 btnBack.addClass('hidden');
 
