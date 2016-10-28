@@ -86,9 +86,14 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     theme: 'tooltipster-custom-area',
                     minWidth: '293',
                     animation: 'grow',
+                    interactive: true,
                     contentAsHTML: true,
                     contentCloning: true,
                     functionReady: function (instance, helper) {
+                        if( $('.desc').hasClass('mCustomScrollbar') ) {
+                            $('.desc').mCustomScrollbar("destroy");
+                        }
+
                         $(helper.tooltip).find('img').remove();
 
                         var imgTemp = $('<img src="'+$(helper.origin).attr('src')+'" alt="'+ $(helper.origin).attr('data-title') +'">');
@@ -96,6 +101,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                         $(helper.tooltip).find('.title').text( $(helper.origin).attr('data-title') );
                         $(helper.tooltip).find('.desc').text( $(helper.origin).attr('data-description') );
+
+                        if( !$('.desc').hasClass('mCustomScrollbar') ) {
+                            $('.desc').mCustomScrollbar();
+                        }
                     }
                 });
             }
@@ -246,9 +255,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             // newMessage event handler
             function resultHandler(e) {
                 alert(e);
-            }*/
+            }
 
-            /*$(document).on('memory_game_end', resultHandler);
+            $(document).on('memory_game_end', resultHandler);
             // newMessage event handler
             function resultHandler(e) {
                 alert(e);
@@ -1081,7 +1090,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                         if ( $(this).hasClass('area-1') ) {
                             setTimeout(function () {
-                                console.log(3);
                                 toonies.Global.initScrollToPoint( 350, 2750 );
                             }, 1000);
                         }
@@ -1392,9 +1400,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     id: 64,
                     img: GlobalVar.theme_url + "images/toonies_coins/064.png"
                 }, {
-                    id: 65,
-                    img: GlobalVar.theme_url + "images/toonies_coins/065.png"
-                }, {
                     id: 66,
                     img: GlobalVar.theme_url + "images/toonies_coins/066.png"
                 }, {
@@ -1511,6 +1516,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 }, {
                     id: 104,
                     img: GlobalVar.theme_url + "images/toonies_coins/104.png"
+                }, {
+                    id: 65,
+                    img: GlobalVar.theme_url + "images/toonies_coins/105.png"
                 }],
                 onGameStart : function() {
                     $.event.trigger({
@@ -1576,10 +1584,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 $('span[data-level="2"]').trigger('click');
                 setTimeout(function () {
                     $('.mg__tile--inner').addClass('flipped');
-                }, 2000);
+                }, 1000);
                 setTimeout(function () {
                     $('.mg__tile--inner').removeClass('flipped');
-                }, 4000);
+                }, 3000);
             });
 
             btnReBetGame.off('click').on('click', function (e) {
@@ -1628,6 +1636,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             clearInterval(toonies.Global.gameTimeInterval);
             toonies.Global.memoryGame.resetGame();
             $('.memory-game').html('');
+            $('.count-down').text('');
         },
 
         initShowLoading: function () {

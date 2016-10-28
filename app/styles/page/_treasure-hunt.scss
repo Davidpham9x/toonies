@@ -185,7 +185,7 @@
 						.area__wrapper {
 							@include transform ( scale(0.3) );
 							&.area-1 {
-								bottom: 45px;
+								/* bottom: 45px; */
 								@include transform-origin ( bottom left );
 							}
 							&.area-2 {
@@ -203,7 +203,7 @@
 								@include transform-origin ( top right );
 							}
 							&.area-6 {
-								bottom: 45px;
+								/* bottom: 45px; */
 								@include transform-origin ( bottom right );
 							}
 						}
@@ -902,38 +902,6 @@
 	            font-family: $font-iCPB;
 	            text-align: center;
 	        }
-		    /* .number {
-		        @media (max-width: 767px) {
-		            display: none;
-		        }
-		    }
-		    .next,
-		    .prev {
-		        font-size: 0;
-		        margin: 0 5px;
-		        padding-top: 12px;
-		        @media (max-width: 767px) {
-		            font-size: 14px;
-		        }
-		        a {
-		            color: #4e301c;
-		        }
-		        .icon {
-		            background: url('../images/profile/left.png') no-repeat;
-		            background-size: 100% 100%;
-		            width: 8px;
-		            height: 18px;
-		        }
-		        span {
-		            margin: 0 5px;
-		            display: inline-block;
-		            vertical-align: middle;
-		        }
-		    }
-		    .next .icon {
-		        background: url('../images/profile/right.png') no-repeat;
-		        background-size: 100% 100%;
-		    } */
 		}
 	}
 	.player__inner {
@@ -1283,6 +1251,7 @@
 		font-size: 12px;
 		font-family: $font-standard;
 		line-height: 17px;
+		height: 80px;
 
 	}
 }

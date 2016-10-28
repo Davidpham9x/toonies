@@ -376,7 +376,7 @@
         window.setTimeout(function() {
             self.card1.classList.add("correct");
             self.card2.classList.add("correct");
-        }, 300);
+        }, 100);
 
         // remove correct class and reset vars
         window.setTimeout(function() {
@@ -387,7 +387,7 @@
             if (self.flippedTiles == self.numTiles) {
                 self._winGame();
             }
-        }, 500);
+        }, 150);
 
         // plus one on the move counter
         this._gameCounterPlusOne();
@@ -411,7 +411,7 @@
             self.card1.classList.remove("flipped");
             self.card2.classList.remove("flipped");
             self._gameResetVars();
-        }, 900);
+        }, 400);
 
         // plus one on the move counter
         this._gameCounterPlusOne();
