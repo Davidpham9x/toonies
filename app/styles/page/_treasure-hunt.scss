@@ -1,11 +1,10 @@
 .page--treasure-hunt {
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
-	padding-bottom: 0;
+	min-height: 1822px;
 	background: url( '../images/treasure_hunt/main-background-mobile.jpg' ) center center no-repeat;
 	background-size: 100% 100%;
-	min-height: 1822px;
+	overflow: hidden;
 	@include screen ( ipad ) {
 		background: none;
 		min-height: 770px;
@@ -38,36 +37,65 @@
     		display: none;
     	}
     }
+    .map-overview {
+    	margin-top: 15px;
+    	border: 2px solid #6d5239;
+    	border-left: 0;
+    	border-right: 0;
+    	@include screen ( ipad ) {
+    		display: none;
+    	}
+
+    	img {
+    		width: 100%;
+    	}
+    }
 
     .menu-area {
-    	z-index: 1;
-    	@include ab ( n, 50%, 6%, n );
-    	@include transform ( translateX( -50% ) );
-    	display: none;
+    	margin: 0;
+    	padding: 0;
+    	list-style: none;
+    	@include screen ( ipad ) {
+    		display: none;
+    	}
 
     	li {
-    		.area {
+    		position: relative;
+    		border-top: 2px solid #6d5239;
+    		&:first-child {
+    			border-top: 0;
+    		}
+    		&.center {
+    			text-align: center;
+    		}
+    		&.right {
+    			text-align: right;
+    		}
+
+    		.tag {
     			width: 211px;
     			height: 56px;
-    			display: block;
     			margin: 0 auto;
+    			text-align: left;
     			text-indent: -9999px;
-    			&.area-1 {
+    			@include ab ( 5px, 50%, n, n );
+    			@include transform ( translateX(-50%) );
+    			&.tag-1 {
     				background: url('../images/buttons/area-1.png') no-repeat;
     			}
-    			&.area-2 {
+    			&.tag-2 {
     				background: url('../images/buttons/area-2.png') no-repeat;
     			}
-    			&.area-3 {
+    			&.tag-3 {
     				background: url('../images/buttons/area-3.png') no-repeat;
     			}
-    			&.area-4 {
+    			&.tag-4 {
     				background: url('../images/buttons/area-4.png') no-repeat;
     			}
-    			&.area-5 {
+    			&.tag-5 {
     				background: url('../images/buttons/area-5.png') no-repeat;
     			}
-    			&.area-6 {
+    			&.tag-6 {
     				background: url('../images/buttons/area-6.png') no-repeat;
     			}
     		}
@@ -720,6 +748,7 @@
 		margin-top: 45px;
 		z-index: 1;
 		position: relative;
+		padding-bottom: 30px;
 		@include screen ( ipad ) {
 			right: -380px;
 			bottom: -110px;

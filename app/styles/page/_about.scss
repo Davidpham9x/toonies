@@ -7,7 +7,7 @@
 
     .content-about {
         margin: 0 auto;
-        padding: 45px 0;
+        padding: 45px 0 0;
         max-width: 900px;
         z-index: 1;
         position: relative;
@@ -208,7 +208,7 @@
     }
     .gold-coin {
         position: absolute;
-        bottom: 45px;
+        bottom: -5px;
         right: -150px;
         z-index: 10;
     }
@@ -225,7 +225,7 @@
         width: 100%;
         text-align: center;
         @include screen(medium) {
-            bottom: 45px;
+            bottom: -5px;
             left: -50px;
             width: auto;
         }

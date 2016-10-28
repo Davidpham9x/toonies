@@ -421,6 +421,19 @@
 
         z-index: 3;
         position: relative;
+
+        .browser {
+            li {
+                padding: 0 20px;
+                display: inline-block;
+                vertical-align: middle;
+
+                img {
+                    margin-top: 0;
+                    animation: none;
+                }
+            }
+        }
     }
     .close {
         width: 100%;
@@ -557,6 +570,10 @@
 }
 
 .modal--alert {
+    @extend .modal--scan-result;
+}
+
+.modal--upgrade {
     @extend .modal--scan-result;
 }
 

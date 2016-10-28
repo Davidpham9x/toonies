@@ -9,16 +9,10 @@ footer {
 	height: 126px;
 
 	z-index: 7;
-	text-align: center;
-	@include ab ( n, 0, 0, n );
 	display: table;
-	padding-top: 12px;
-	@include screen ( small ) {
-		padding-top: 0;
-		@include ab ( n, 50%, 0, n );
-		@include transform( translateX(-50%) );
-		display: table;
-	}
+	margin-top: -5px;
+	position: relative;
+	text-align: center;
 	@include screen ( medium ) {
 		background: url('../images/footer/footer-bg.png') center center no-repeat;
 		background-size: 100% 100%;

@@ -22,6 +22,21 @@ var isMobile = {
     }
 };
 
+// Opera 8.0+
+var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+// Firefox 1.0+
+var isFirefox = typeof InstallTrigger !== 'undefined';
+// At least Safari 3+: "[object HTMLElementConstructor]"
+var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+// Internet Explorer 6-11
+var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+// Edge 20+
+var isEdge = !isIE && !!window.StyleMedia;
+// Chrome 1+
+var isChrome = !!window.chrome && !!window.chrome.webstore;
+// Blink engine detection
+var isBlink = (isChrome || isOpera) && !!window.CSS;
+
 var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1])) || NaN;
 
 (function($) {
@@ -89,13 +104,18 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 toonies.Global.initModalIntro();
             }
 
+            if ($('.page--scan').length) {
+                if ( isSafari || isOpera || isMobile.isiOS() || isMobile.isBlackBerry() || isMobile.isOpera() ) {
+                    toonies.Global.initModalAlert();
+                } else {
+                    toonies.Global.initCameraScan();
+                }
+            }
+
             if ($('.page--offline-games').length) {
                 toonies.Global.initModalIntroGame();
             }
 
-            if ($('.page--scan').length) {
-                toonies.Global.initCameraScan();
-            }
             if ($('.page--about,.page--leaderboard').length) {
                 toonies.Global.initSlider();
             }
@@ -786,10 +806,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     src: '#modal--alert'
                 },
                 type: 'inline',
+                closeOnBgClick: false,
                 removalDelay: 500, // Delay removal by X to allow out-animation
                 callbacks: {
                     beforeOpen: function() {
-                        $('#modal--alert').find('.desc').text(mess);
                         this.st.mainClass = 'mfp-move-from-top';
                     }
                 },
@@ -797,6 +817,29 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
 
             $('#modal--alert').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                toonies.Global.initCloseAllModal();
+            });
+        },
+
+        initModalUpgrade: function(mess) {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--upgrade'
+                },
+                type: 'inline',
+                closeOnBgClick: false,
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.mainClass = 'mfp-move-from-top';
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('#modal--upgrade').find('.close').off('click').on('click', function(e) {
                 e.preventDefault();
 
                 toonies.Global.initCloseAllModal();
@@ -933,6 +976,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 lastMouseX,
                 lastMouseY;
             var areaContent = $('.area__wrapper');
+            var areaContentMenu = $('.menu-area'),
+                aTags = areaContentMenu.find('.area');
 
             var constrainArray = function() {
                 var wDiff = imgBg.width() - divContent.find('.outer').width();
@@ -1009,6 +1054,65 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 btnBack.addClass('hidden');
 
                 $.pep.unbind( parentContent );
+            });
+
+
+            aTags.each(function () {
+                var _this = $(this);
+
+                _this.off('click').on('click', function () {
+                    if ( parentContent.hasClass('default') ) {
+                        parentContent.removeClass('default');
+                        $('.treasure-hunt').css('display', 'block').removeClass('default');
+                        btnBack.removeClass('hidden');
+
+                        $('.heading--mobile').addClass('hidden');
+                        $('.map-overview').addClass('hidden');
+                        areaContentMenu.addClass('hidden');
+
+                        parentContent.pep({
+                            constrainTo: constrainArray(),
+                            elementsWithInteraction: 'a'
+                        });
+
+                        if ( $(this).hasClass('area-1') ) {
+                            setTimeout(function () {
+                                console.log(3);
+                                toonies.Global.initScrollToPoint( 350, 2750 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-2') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 860, 910 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-3') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 2090, 270 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-4') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 3870, 210 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-5') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 3725, 1555 );
+                            }, 1000);
+                        }
+
+                        if ( $(this).hasClass('area-6') ) {
+                            setTimeout(function () {
+                                toonies.Global.initScrollToPoint( 3700, 3000 );
+                            }, 1000);
+                        }
+                    }
+                });
             });
         },
 
@@ -1089,7 +1193,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         },
 
         initGamePlay: function ( timeCountDown ) {
-            /*timeCountDown = timeCountDown * 60;*/
             toonies.Global.memoryGame = new Memory({
                 wrapperID: "my-memory-game",
                 cards: [{
@@ -1212,6 +1315,198 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 }, {
                     id: 40,
                     img: GlobalVar.theme_url + "images/toonies_coins/040.png"
+                }, {
+                    id: 41,
+                    img: GlobalVar.theme_url + "images/toonies_coins/041.png"
+                }, {
+                    id: 42,
+                    img: GlobalVar.theme_url + "images/toonies_coins/042.png"
+                }, {
+                    id: 43,
+                    img: GlobalVar.theme_url + "images/toonies_coins/043.png"
+                }, {
+                    id: 44,
+                    img: GlobalVar.theme_url + "images/toonies_coins/044.png"
+                }, {
+                    id: 45,
+                    img: GlobalVar.theme_url + "images/toonies_coins/045.png"
+                }, {
+                    id: 46,
+                    img: GlobalVar.theme_url + "images/toonies_coins/046.png"
+                }, {
+                    id: 47,
+                    img: GlobalVar.theme_url + "images/toonies_coins/047.png"
+                }, {
+                    id: 48,
+                    img: GlobalVar.theme_url + "images/toonies_coins/048.png"
+                }, {
+                    id: 49,
+                    img: GlobalVar.theme_url + "images/toonies_coins/049.png"
+                }, {
+                    id: 50,
+                    img: GlobalVar.theme_url + "images/toonies_coins/050.png"
+                }, {
+                    id: 51,
+                    img: GlobalVar.theme_url + "images/toonies_coins/051.png"
+                }, {
+                    id: 52,
+                    img: GlobalVar.theme_url + "images/toonies_coins/052.png"
+                }, {
+                    id: 53,
+                    img: GlobalVar.theme_url + "images/toonies_coins/053.png"
+                }, {
+                    id: 54,
+                    img: GlobalVar.theme_url + "images/toonies_coins/054.png"
+                }, {
+                    id: 55,
+                    img: GlobalVar.theme_url + "images/toonies_coins/055.png"
+                }, {
+                    id: 56,
+                    img: GlobalVar.theme_url + "images/toonies_coins/056.png"
+                }, {
+                    id: 57,
+                    img: GlobalVar.theme_url + "images/toonies_coins/057.png"
+                }, {
+                    id: 58,
+                    img: GlobalVar.theme_url + "images/toonies_coins/058.png"
+                }, {
+                    id: 59,
+                    img: GlobalVar.theme_url + "images/toonies_coins/059.png"
+                }, {
+                    id: 60,
+                    img: GlobalVar.theme_url + "images/toonies_coins/060.png"
+                }, {
+                    id: 61,
+                    img: GlobalVar.theme_url + "images/toonies_coins/061.png"
+                }, {
+                    id: 62,
+                    img: GlobalVar.theme_url + "images/toonies_coins/062.png"
+                }, {
+                    id: 63,
+                    img: GlobalVar.theme_url + "images/toonies_coins/063.png"
+                }, {
+                    id: 64,
+                    img: GlobalVar.theme_url + "images/toonies_coins/064.png"
+                }, {
+                    id: 65,
+                    img: GlobalVar.theme_url + "images/toonies_coins/065.png"
+                }, {
+                    id: 66,
+                    img: GlobalVar.theme_url + "images/toonies_coins/066.png"
+                }, {
+                    id: 67,
+                    img: GlobalVar.theme_url + "images/toonies_coins/067.png"
+                }, {
+                    id: 68,
+                    img: GlobalVar.theme_url + "images/toonies_coins/068.png"
+                }, {
+                    id: 69,
+                    img: GlobalVar.theme_url + "images/toonies_coins/069.png"
+                }, {
+                    id: 70,
+                    img: GlobalVar.theme_url + "images/toonies_coins/070.png"
+                }, {
+                    id: 71,
+                    img: GlobalVar.theme_url + "images/toonies_coins/071.png"
+                }, {
+                    id: 72,
+                    img: GlobalVar.theme_url + "images/toonies_coins/072.png"
+                }, {
+                    id: 73,
+                    img: GlobalVar.theme_url + "images/toonies_coins/073.png"
+                }, {
+                    id: 74,
+                    img: GlobalVar.theme_url + "images/toonies_coins/074.png"
+                }, {
+                    id: 75,
+                    img: GlobalVar.theme_url + "images/toonies_coins/075.png"
+                }, {
+                    id: 76,
+                    img: GlobalVar.theme_url + "images/toonies_coins/076.png"
+                }, {
+                    id: 77,
+                    img: GlobalVar.theme_url + "images/toonies_coins/077.png"
+                }, {
+                    id: 78,
+                    img: GlobalVar.theme_url + "images/toonies_coins/078.png"
+                }, {
+                    id: 79,
+                    img: GlobalVar.theme_url + "images/toonies_coins/079.png"
+                }, {
+                    id: 80,
+                    img: GlobalVar.theme_url + "images/toonies_coins/080.png"
+                }, {
+                    id: 81,
+                    img: GlobalVar.theme_url + "images/toonies_coins/081.png"
+                }, {
+                    id: 82,
+                    img: GlobalVar.theme_url + "images/toonies_coins/082.png"
+                }, {
+                    id: 83,
+                    img: GlobalVar.theme_url + "images/toonies_coins/083.png"
+                }, {
+                    id: 84,
+                    img: GlobalVar.theme_url + "images/toonies_coins/084.png"
+                }, {
+                    id: 85,
+                    img: GlobalVar.theme_url + "images/toonies_coins/085.png"
+                }, {
+                    id: 86,
+                    img: GlobalVar.theme_url + "images/toonies_coins/086.png"
+                }, {
+                    id: 87,
+                    img: GlobalVar.theme_url + "images/toonies_coins/087.png"
+                }, {
+                    id: 88,
+                    img: GlobalVar.theme_url + "images/toonies_coins/088.png"
+                }, {
+                    id: 89,
+                    img: GlobalVar.theme_url + "images/toonies_coins/089.png"
+                }, {
+                    id: 90,
+                    img: GlobalVar.theme_url + "images/toonies_coins/090.png"
+                }, {
+                    id: 91,
+                    img: GlobalVar.theme_url + "images/toonies_coins/091.png"
+                }, {
+                    id: 92,
+                    img: GlobalVar.theme_url + "images/toonies_coins/092.png"
+                }, {
+                    id: 93,
+                    img: GlobalVar.theme_url + "images/toonies_coins/093.png"
+                }, {
+                    id: 94,
+                    img: GlobalVar.theme_url + "images/toonies_coins/094.png"
+                }, {
+                    id: 95,
+                    img: GlobalVar.theme_url + "images/toonies_coins/095.png"
+                }, {
+                    id: 96,
+                    img: GlobalVar.theme_url + "images/toonies_coins/096.png"
+                }, {
+                    id: 97,
+                    img: GlobalVar.theme_url + "images/toonies_coins/097.png"
+                }, {
+                    id: 98,
+                    img: GlobalVar.theme_url + "images/toonies_coins/098.png"
+                }, {
+                    id: 99,
+                    img: GlobalVar.theme_url + "images/toonies_coins/099.png"
+                }, {
+                    id: 100,
+                    img: GlobalVar.theme_url + "images/toonies_coins/100.png"
+                }, {
+                    id: 101,
+                    img: GlobalVar.theme_url + "images/toonies_coins/101.png"
+                }, {
+                    id: 102,
+                    img: GlobalVar.theme_url + "images/toonies_coins/102.png"
+                }, {
+                    id: 103,
+                    img: GlobalVar.theme_url + "images/toonies_coins/103.png"
+                }, {
+                    id: 104,
+                    img: GlobalVar.theme_url + "images/toonies_coins/104.png"
                 }],
                 onGameStart : function() {
                     $.event.trigger({

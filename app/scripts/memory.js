@@ -387,7 +387,7 @@
             if (self.flippedTiles == self.numTiles) {
                 self._winGame();
             }
-        }, 1000);
+        }, 500);
 
         // plus one on the move counter
         this._gameCounterPlusOne();

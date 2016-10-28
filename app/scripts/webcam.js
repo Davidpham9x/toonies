@@ -134,7 +134,7 @@ function error(error) {
 
 function load() {
     if ( typeof navigator.getUserMedia == 'undefined' && typeof navigator.webkitGetUserMedia == 'undefined' && typeof navigator.mozGetUserMedia == 'undefined' ) {
-        toonies.Global.initModalCommon('Trình duyệt của bạn ko hổ trợ tính năng này!');
+        toonies.Global.initModalUpgrade();
         return false;
     }
 

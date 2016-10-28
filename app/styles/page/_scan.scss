@@ -20,11 +20,14 @@
 	/** Scan Content **/
 	.scan {
 		width: 100%;
-		max-width: 500px;
+		max-width: 600px;
 		margin: 35px auto 0;
 		text-align: center;
 		z-index: 1;
 		position: relative;
+		@include screen ( medium ) {
+			height: 100vh;
+		}
 
 		.heading {
 			background: url('../images/scan/heading.png');

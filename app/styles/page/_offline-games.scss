@@ -9,7 +9,6 @@
 
     overflow: hidden;
     position: relative;
-    padding-bottom: 45px;
     &:before {
         content: '';
         width: 100%;
@@ -34,6 +33,9 @@
         max-width: 850px;
         position: relative;
         margin: 25px auto 0;
+        @include screen ( medium ) {
+            height: 100vh;
+        }
 
         .tagline {
             margin: 0 auto;
