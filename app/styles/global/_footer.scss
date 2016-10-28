@@ -58,21 +58,18 @@ footer {
 		}
 	}
 	.copyright--toei {
-		width: 304px;
-		height: 27px;
+		width: 242px;
+		height: 24px;
 		background: url('../images/footer/copyright--toei.png') center center no-repeat;
 		background-size: 100% 100%;
 
 		display: none;
 		margin: 0 auto;
 		@include screen ( medium ) {
-			width: 204px;
-			height: 18px;
+			width: 242px;
+			height: 24px;
 			margin-top: 15px;
 			display: inline-block;
-		}
-		@include screen ( ipad ) {
-			width: 304px;
 		}
 	}
 	img {

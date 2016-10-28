@@ -89,6 +89,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 toonies.Global.initModalIntro();
             }
 
+            if ($('.page--offline-games').length) {
+                toonies.Global.initModalIntroGame();
+            }
+
             if ($('.page--scan').length) {
                 toonies.Global.initCameraScan();
             }
@@ -217,6 +221,18 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             if ( $('.page--treasure-hunt').length ) {
                 toonies.Global.initDragBackgroundTreasure();
             }
+
+            /*$(document).on('memory_game_start', resultHandler);
+            // newMessage event handler
+            function resultHandler(e) {
+                alert(e);
+            }*/
+
+            /*$(document).on('memory_game_end', resultHandler);
+            // newMessage event handler
+            function resultHandler(e) {
+                alert(e);
+            }*/
 
             toonies.Global.initExpandCollapsePlayer();
             toonies.Global.initShowHideInfoUser();
@@ -558,6 +574,40 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }
         },
 
+        initModalIntroGame: function() {
+            $('.open-modal--intro-game').magnificPopup({
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.mainClass = this.st.el.attr('data-effect');
+                    },
+                    open: function() {
+                        $(window).trigger('resize');
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('.modal--intro-game').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
+            });
+
+            $('.modal--intro-game').find('.join-now').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
+            });
+
+            if ($('.auto-load').length) {
+                $('.open-modal--intro-game').trigger('click');
+            }
+        },
+
         initModalScanWaiting: function() {
             $.magnificPopup.open({
                 items: {
@@ -615,6 +665,70 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                 toonies.Global.initCloseAllModal();
                 toonies.Global.initResetCamera();
+            });
+        },
+
+        initModalWinGame: function(mess, autoRedirect) {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--win-game'
+                },
+                type: 'inline',
+                closeOnBgClick: false,
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        $('#modal--win-game').find('span').text(mess);
+                        this.st.mainClass = 'mfp-move-from-top';
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('#modal--win-game').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                toonies.Global.initCloseAllModal();
+            });
+
+            $('#modal--win-game').find('.continue-play').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                toonies.Global.isWin = false;
+                toonies.Global.initResetGame();
+                toonies.Global.initCloseAllModal();
+            });
+        },
+
+        initModalLoserGame: function(mess, autoRedirect) {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--loser-game'
+                },
+                type: 'inline',
+                closeOnBgClick: false,
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        $('#modal--loser-game').find('span').text(mess);
+                        this.st.mainClass = 'mfp-move-from-top';
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('#modal--loser-game').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                toonies.Global.initCloseAllModal();
+            });
+
+            $('#modal--loser-game').find('.continue-play').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                toonies.Global.isWin = false;
+                toonies.Global.initResetGame();
+                toonies.Global.initCloseAllModal();
             });
         },
 
@@ -819,12 +933,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 lastMouseX,
                 lastMouseY;
             var areaContent = $('.area__wrapper');
-            /*var areaMenuMobile = $('.menu-area'),
-                aTags = areaMenuMobile.find('a');*/
-
-            /*if (window.windowWidth >= 1920) {
-                $('.treasure-hunt').find('.outer').css('width', 1920);
-            }*/
 
             var constrainArray = function() {
                 var wDiff = imgBg.width() - divContent.find('.outer').width();
@@ -902,59 +1010,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                 $.pep.unbind( parentContent );
             });
-
-            /*aTags.each(function () {
-                var _this = $(this);
-
-                _this.off('click').on('click', function () {
-                    if ( parentContent.hasClass('default') ) {
-                        parentContent.removeClass('default');
-                        $('.treasure-hunt').removeClass('default').css('display', 'block');
-                        btnBack.removeClass('hidden');
-
-                        parentContent.pep({
-                            constrainTo: constrainArray(),
-                            elementsWithInteraction: 'a'
-                        });
-
-                        if ( $(this).hasClass('area-1') ) {
-                            setTimeout(function () {
-                                toonies.Global.initScrollToPoint( 350, 2750 );
-                            }, 1000);
-                        }
-
-                        if ( $(this).hasClass('area-2') ) {
-                            setTimeout(function () {
-                                toonies.Global.initScrollToPoint( 860, 910 );
-                            }, 1000);
-                        }
-
-                        if ( $(this).hasClass('area-3') ) {
-                            setTimeout(function () {
-                                toonies.Global.initScrollToPoint( 2090, 270 );
-                            }, 1000);
-                        }
-
-                        if ( $(this).hasClass('area-4') ) {
-                            setTimeout(function () {
-                                toonies.Global.initScrollToPoint( 3870, 210 );
-                            }, 1000);
-                        }
-
-                        if ( $(this).hasClass('area-5') ) {
-                            setTimeout(function () {
-                                toonies.Global.initScrollToPoint( 3725, 1555 );
-                            }, 1000);
-                        }
-
-                        if ( $(this).hasClass('area-6') ) {
-                            setTimeout(function () {
-                                toonies.Global.initScrollToPoint( 3700, 3000 );
-                            }, 1000);
-                        }
-                    }
-                });
-            });*/
         },
 
         initScrollToPoint: function ( pointX, pointY ) {
@@ -1034,128 +1089,129 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         },
 
         initGamePlay: function ( timeCountDown ) {
+            /*timeCountDown = timeCountDown * 60;*/
             toonies.Global.memoryGame = new Memory({
                 wrapperID: "my-memory-game",
                 cards: [{
                     id: 1,
-                    img: "images/toonies_coins/001.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/001.png"
                 }, {
                     id: 2,
-                    img: "images/toonies_coins/002.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/002.png"
                 }, {
                     id: 3,
-                    img: "images/toonies_coins/003.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/003.png"
                 }, {
                     id: 4,
-                    img: "images/toonies_coins/004.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/004.png"
                 }, {
                     id: 5,
-                    img: "images/toonies_coins/005.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/005.png"
                 }, {
                     id: 6,
-                    img: "images/toonies_coins/006.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/006.png"
                 }, {
                     id: 7,
-                    img: "images/toonies_coins/007.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/007.png"
                 }, {
                     id: 8,
-                    img: "images/toonies_coins/008.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/008.png"
                 }, {
                     id: 9,
-                    img: "images/toonies_coins/009.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/009.png"
                 }, {
                     id: 10,
-                    img: "images/toonies_coins/010.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/010.png"
                 }, {
                     id: 11,
-                    img: "images/toonies_coins/011.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/011.png"
                 }, {
                     id: 12,
-                    img: "images/toonies_coins/012.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/012.png"
                 }, {
                     id: 13,
-                    img: "images/toonies_coins/013.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/013.png"
                 }, {
                     id: 14,
-                    img: "images/toonies_coins/014.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/014.png"
                 }, {
                     id: 15,
-                    img: "images/toonies_coins/015.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/015.png"
                 }, {
                     id: 16,
-                    img: "images/toonies_coins/016.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/016.png"
                 }, {
                     id: 17,
-                    img: "images/toonies_coins/017.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/017.png"
                 }, {
                     id: 18,
-                    img: "images/toonies_coins/018.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/018.png"
                 }, {
                     id: 19,
-                    img: "images/toonies_coins/019.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/019.png"
                 }, {
                     id: 20,
-                    img: "images/toonies_coins/020.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/020.png"
                 }, {
                     id: 21,
-                    img: "images/toonies_coins/021.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/021.png"
                 }, {
                     id: 22,
-                    img: "images/toonies_coins/022.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/022.png"
                 }, {
                     id: 23,
-                    img: "images/toonies_coins/023.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/023.png"
                 }, {
                     id: 24,
-                    img: "images/toonies_coins/024.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/024.png"
                 }, {
                     id: 25,
-                    img: "images/toonies_coins/025.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/025.png"
                 }, {
                     id: 26,
-                    img: "images/toonies_coins/026.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/026.png"
                 }, {
                     id: 27,
-                    img: "images/toonies_coins/027.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/027.png"
                 }, {
                     id: 28,
-                    img: "images/toonies_coins/028.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/028.png"
                 }, {
                     id: 29,
-                    img: "images/toonies_coins/029.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/029.png"
                 }, {
                     id: 30,
-                    img: "images/toonies_coins/030.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/030.png"
                 }, {
                     id: 31,
-                    img: "images/toonies_coins/031.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/031.png"
                 }, {
                     id: 32,
-                    img: "images/toonies_coins/032.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/032.png"
                 }, {
                     id: 33,
-                    img: "images/toonies_coins/033.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/033.png"
                 }, {
                     id: 34,
-                    img: "images/toonies_coins/034.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/034.png"
                 }, {
                     id: 35,
-                    img: "images/toonies_coins/035.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/035.png"
                 }, {
                     id: 36,
-                    img: "images/toonies_coins/036.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/036.png"
                 }, {
                     id: 37,
-                    img: "images/toonies_coins/037.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/037.png"
                 }, {
                     id: 38,
-                    img: "images/toonies_coins/038.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/038.png"
                 }, {
                     id: 39,
-                    img: "images/toonies_coins/039.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/039.png"
                 }, {
                     id: 40,
-                    img: "images/toonies_coins/040.png"
+                    img: GlobalVar.theme_url + "images/toonies_coins/040.png"
                 }],
                 onGameStart : function() {
                     $.event.trigger({
@@ -1167,7 +1223,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                     setTimeout ( function () {
                         toonies.Global.initGameCountDown( timeCountDown );
-                    }, 5000);
+                    }, 4000);
 
                     return false;
                 },
@@ -1200,10 +1256,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                 setTimeout(function () {
                     $('.mg__tile--inner').addClass('flipped');
-                }, 2000);
+                }, 1000);
                 setTimeout(function () {
                     $('.mg__tile--inner').removeClass('flipped');
-                }, 4000);
+                }, 3000);
             }, 500);
 
             btnResetGame.off('click').on('click', function (e) {
@@ -1235,8 +1291,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         },
 
         initGameCountDown: function( timeCountDown ) {
-            var countTime = timeCountDown;
-                $('.count-down').text(countTime);
+            var countTime = timeCountDown,
+                timeOut = timeCountDown*1000;
+            $('.count-down').text(countTime);
 
             toonies.Global.gameTimeOut = setTimeout(function() {
                 if ( !toonies.Global.isWin ) {
@@ -1248,7 +1305,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 }
 
                 clearInterval(toonies.Global.gameTimeOut);
-            }, countTime);
+            }, timeOut);
 
             toonies.Global.gameTimeInterval = setInterval(function() {
                 if (countTime == 1) {
@@ -1272,6 +1329,14 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             clearInterval(toonies.Global.gameTimeInterval);
             toonies.Global.memoryGame.resetGame();
             $('.memory-game').html('');
+        },
+
+        initShowLoading: function () {
+            $('.loading').css('display', 'block');
+        },
+
+        initHideLoading: function () {
+            $('.loading').css('display', 'none');
         }
     };
 })(jQuery);
