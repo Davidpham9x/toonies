@@ -50,24 +50,52 @@
 .modal--big-new {
     @extend .modal--big;
     max-width: 760px;
+    &:before {
+        content: '';
+        width: 265px;
+        height: 406px;
+        background: url('../images/modal/snack.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 25%, -20%, n, n );
+        @include transition ( all .5s ease-in-out );
+        display: none;
+        @include screen ( medium ) {
+            display: block;
+        }
+    }
+    &:after {
+        content: '';
+        width: 344px;
+        height: 744px;
+        background: url('../images/modal/characters.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 20%, n, n, -15% );
+        @include transition ( all .5s ease-in-out );
+        display: none;
+        @include screen ( medium ) {
+            display: block;
+        }
+    }
     &.modal--intro {
         .button__wrapper {
-            margin-top: 40px;
+            margin-top: 20px;
         }
     }
 
     .outer {
         width: 100%;
-        background: url('../images/modal/background-modal--big-mobile.png') center center no-repeat;
+        background: url('../images/modal/background-intro-game--mobile.png') center center no-repeat;
         background-size: 100% 100%;
-        height: 398px;
+        height: 718px;
+        padding-top: 25px;
         @include screen ( medium ) {
             background: url('../images/modal/background-intro-game.png') center center no-repeat;
             background-size: 100% 100%;
             height: 793px;
+            padding-top: 50px;
         }
-
-        padding-top: 50px;
     }
     .step {
         text-align: center;
@@ -77,6 +105,7 @@
             font-size: 13px;
             font-family: $font-iCPB;
             text-transform: uppercase;
+            margin-top: 10px;
         }
         p {
             color: #4e301c;
@@ -84,10 +113,10 @@
             font-family: $font-standard;
             line-height: 1.6em;
             max-width: 500px;
-            margin: 15px auto 0;
+            margin: 10px auto 0;
         }
         img {
-            margin-top: 15px;
+            margin-top: 10px;
         }
     }
     .content {
@@ -110,11 +139,13 @@
         }
     }
     .video {
-        width: 261px;
+        width: 100%;
+        max-width: 261px;
         height: 175px;
         margin: 0 auto;
         margin-top: 15px;
-        background: url('../images/home/bgd-video.png') no-repeat;
+        background: url('../images/home/bgd-video.png') center center no-repeat;
+        background-size: 100% 100%;
 
         .inner {
             width: 100%;
@@ -125,6 +156,12 @@
                 padding: 0;
                 height: 100%;
             }
+        }
+    }
+    .close {
+        top: 20px;
+        @include screen ( medium ) {
+            top: 25px;
         }
     }
 }
@@ -172,7 +209,6 @@
                 right: 15px;
             }
         }
-        /* .row {} */
         .col {
             width: 100%;
             @include screen ( medium ) {
@@ -181,7 +217,7 @@
                 padding: 0 10px;
             }
             @include screen ( large ) {
-                padding: 0 20px;
+                padding: 0 15px;
             }
         }
         .board {
@@ -209,7 +245,7 @@
         .desc {
             color: #4e301c;
             font-size: 13px;
-            font-family: $font-standard; 
+            font-family: $font-standard;
 
             text-align: center;
             line-height: normal;
@@ -233,6 +269,7 @@
     }
     .button__wrapper {
         margin-top: 0;
+
         .button {
             font-size: 13px;
             font-family: $font-iCPB;
@@ -281,6 +318,9 @@
             max-width: 280px;
         }
     }
+    .form {
+        padding-top: 0;
+    }
 }
 
 .modal--intro-code {
@@ -295,6 +335,68 @@
         @include screen ( medium ) {
             height: 72px;
             max-width: 280px;
+        }
+    }
+}
+
+.modal--intro-game {
+    .heading {
+        width: 100%;
+        height: 51px;
+        margin: 0 auto;
+        max-width: 200px;
+        background: url('../images/modal/heading-modal-game.png') center center no-repeat;
+        background-size: 100% 100%;
+        text-indent: -9999px;
+        @include screen ( medium ) {
+            height: 72px;
+            max-width: 240px;
+        }
+    }
+    .button__wrapper {
+        .button {
+            margin-top: 15px;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+    .all-level {
+        margin: 0 auto;
+    }
+    .step-content {
+        padding: 0;
+        &#slider-level {
+            .slick-arrow {
+                &.slick-prev {
+                    left: -5px;
+                }
+                &.slick-next {
+                    right: -5px;
+                }
+            }
+        }
+
+        .slick-arrow {
+            top: 50%;
+            width: 9px;
+            height: 18px;
+            &.slick-prev {
+                background: url('../images/profile/left.png') no-repeat;
+                left: -10px;
+            }
+            &.slick-next {
+                background: url('../images/profile/right.png') no-repeat;
+                right: -10px;
+            }
+        }
+        .board {
+            .wrap-img {
+                img {
+                    width: auto;
+                    margin: 10px auto 0;
+                }
+            }
         }
     }
 }

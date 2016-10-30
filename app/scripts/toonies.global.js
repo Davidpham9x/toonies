@@ -60,53 +60,13 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initSliderCoinsProfile();
             this.initHandleWebsiteResize();
 
+            /*$(document.body).click(function (e) {
+                console.log(e.target);
+                alert(e);
+            });*/
+
             if ( $('.offline-games').length ) {
                 toonies.Global.initGetRandomListCoin();
-            }
-
-            if ( $('.tooltip').length ) {
-                $('.tooltip').tooltipster({
-                    content: $('#info-area'),
-                    theme: 'tooltipster-custom-area',
-                    minWidth: '293',
-                    animation: 'grow',
-                    contentAsHTML: true,
-                    contentCloning: true,
-                    functionReady: function (instance, helper) {
-                        $(helper.tooltip).find('.title').text( $(helper.origin).attr('data-title') );
-                        $(helper.tooltip).find('.desc').text( $(helper.origin).attr('data-description') );
-                        $(helper.tooltip).find('.requirement > strong').html( $(helper.origin).attr('data-requirement') );
-                    }
-                });
-            }
-
-            if ( $('.tooltip-characters').length ) {
-                $('.tooltip-characters').tooltipster({
-                    content: $('#profile-characters'),
-                    theme: 'tooltipster-custom-area',
-                    minWidth: '293',
-                    animation: 'grow',
-                    interactive: true,
-                    contentAsHTML: true,
-                    contentCloning: true,
-                    functionReady: function (instance, helper) {
-                        if( $('.desc').hasClass('mCustomScrollbar') ) {
-                            $('.desc').mCustomScrollbar("destroy");
-                        }
-
-                        $(helper.tooltip).find('img').remove();
-
-                        var imgTemp = $('<img src="'+$(helper.origin).attr('src')+'" alt="'+ $(helper.origin).attr('data-title') +'">');
-                            imgTemp.appendTo( $(helper.tooltip).find('.wrap-img') );
-
-                        $(helper.tooltip).find('.title').text( $(helper.origin).attr('data-title') );
-                        $(helper.tooltip).find('.desc').text( $(helper.origin).attr('data-description') );
-
-                        if( !$('.desc').hasClass('mCustomScrollbar') ) {
-                            $('.desc').mCustomScrollbar();
-                        }
-                    }
-                });
             }
 
             if ($('.page--scan').length || $('.page--code').length) {
@@ -248,19 +208,20 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
 
             if ( $('.page--treasure-hunt').length ) {
+                toonies.Global.initTooltip();
                 toonies.Global.initDragBackgroundTreasure();
             }
 
-            /*$(document).on('memory_game_start', resultHandler);
+            /*$(document).on('memory_game_start', resultHandlerStartGame);
             // newMessage event handler
-            function resultHandler(e) {
-                alert(e);
+            function resultHandlerStartGame(e) {
+                alert('play');
             }
 
-            $(document).on('memory_game_end', resultHandler);
+            $(document).on('memory_game_end', resultHandlerEndGame);
             // newMessage event handler
-            function resultHandler(e) {
-                alert(e);
+            function resultHandlerEndGame(e) {
+                alert('end');
             }*/
 
             toonies.Global.initExpandCollapsePlayer();
@@ -314,6 +275,73 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             $(document).on('change', '.select-wrapper select', function() {
                 $(this).prev('span').replaceWith('<span>' + $(this).find('option:selected').text() + '</span>');
             });
+        },
+
+        initTooltip: function () {
+            if ( $('.tooltip').length ) {
+                $('.tooltip').tooltipster({
+                    trigger: 'custom',
+                    triggerOpen: {
+                        mouseenter: true,
+                        touchstart: true
+                    },
+                    triggerClose: {
+                        mouseleave: true,
+                        click: true,
+                        tap: true
+                    },
+                    content: $('#info-area'),
+                    theme: 'tooltipster-custom-area',
+                    minWidth: '293',
+                    animation: 'grow',
+                    contentAsHTML: true,
+                    contentCloning: true,
+                    functionReady: function (instance, helper) {
+                        $(helper.tooltip).find('.title').text( $(helper.origin).attr('data-title') );
+                        $(helper.tooltip).find('.desc').text( $(helper.origin).attr('data-description') );
+                        $(helper.tooltip).find('.requirement > strong').html( $(helper.origin).attr('data-requirement') );
+                    }
+                });
+            }
+
+            if ( $('.tooltip-characters').length ) {
+                $('.tooltip-characters').tooltipster({
+                    trigger: 'custom',
+                    triggerOpen: {
+                        mouseenter: true,
+                        touchstart: true
+                    },
+                    triggerClose: {
+                        mouseleave: true,
+                        click: true,
+                        tap: true
+                    },
+                    content: $('#profile-characters'),
+                    theme: 'tooltipster-custom-area',
+                    minWidth: '293',
+                    animation: 'grow',
+                    interactive: true,
+                    contentAsHTML: true,
+                    contentCloning: true,
+                    functionReady: function (instance, helper) {
+                        if( $('.desc').hasClass('mCustomScrollbar') ) {
+                            $('.desc').mCustomScrollbar("destroy");
+                        }
+
+                        $(helper.tooltip).find('img').remove();
+
+                        var imgTemp = $('<img src="'+$(helper.origin).attr('src')+'" alt="'+ $(helper.origin).attr('data-title') +'">');
+                            imgTemp.appendTo( $(helper.tooltip).find('.wrap-img') );
+
+                        $(helper.tooltip).find('.title').text( $(helper.origin).attr('data-title') );
+                        $(helper.tooltip).find('.desc').text( $(helper.origin).attr('data-description') );
+
+                        if( !$('.desc').hasClass('mCustomScrollbar') ) {
+                            $('.desc').mCustomScrollbar();
+                        }
+                    }
+                });
+            }
         },
 
         initShowMenuMobile: function() {
@@ -397,6 +425,14 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     if (!$('#slider-step-scan').hasClass('slick-initialized')) {
                         toonies.Global.initSliderStepScan();
                     }
+
+                    if (!$('#slider-level').hasClass('slick-initialized')) {
+                        toonies.Global.initSliderLevel();
+                    }
+
+                    if (!$('#slider-step-game').hasClass('slick-initialized')) {
+                        toonies.Global.initSliderStepGame();
+                    }
                 } else {
                     if ($('#slider-step-code').hasClass('slick-initialized')) {
                         $('#slider-step-code').slick('unslick');
@@ -404,6 +440,14 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                     if ($('#slider-step-scan').hasClass('slick-initialized')) {
                         $('#slider-step-scan').slick('unslick');
+                    }
+
+                    if ($('#slider-level').hasClass('slick-initialized')) {
+                        $('#slider-level').slick('unslick');
+                    }
+
+                    if ($('#slider-step-game').hasClass('slick-initialized')) {
+                        $('#slider-step-game').slick('unslick');
                     }
                 }
             }).trigger('resize');
@@ -547,6 +591,30 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
         initSliderStepCode: function() {
             var slider = $('#slider-step-code');
+
+            slider.slick({
+                dots: false,
+                lazyLoad: 'ondemand',
+                fade: true,
+                prevArrow: '<button type="button" class="slick-prev"></button>',
+                nextArrow: '<button type="button" class="slick-next"></button>'
+            });
+        },
+
+        initSliderLevel: function() {
+            var slider = $('#slider-level');
+
+            slider.slick({
+                dots: false,
+                lazyLoad: 'ondemand',
+                fade: true,
+                prevArrow: '<button type="button" class="slick-prev"></button>',
+                nextArrow: '<button type="button" class="slick-next"></button>'
+            });
+        },
+
+        initSliderStepGame: function() {
+            var slider = $('#slider-step-game');
 
             slider.slick({
                 dots: false,

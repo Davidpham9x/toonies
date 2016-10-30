@@ -305,9 +305,10 @@ header {
 		.menu-user {
 			z-index: 5;
 			width: 100%;
+			height: auto;
 			max-width: 173px;
-			min-height: 201px;
-			padding: 20px 25px;
+			max-height: 220px;
+			padding: 20px 25px 40px;
 			background: url('../images/modal/background-box-info-user.png') center center no-repeat;
 			background-size: 100% 100%;
 			@include ab ( 45px, n, n, -54px );

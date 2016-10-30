@@ -30,19 +30,24 @@
     /** Offline Games Content **/
     .offline-games {
         z-index: 1;
+        height: auto;
         max-width: 850px;
         position: relative;
         margin: 25px auto 0;
+        padding: 0 10px 126px;
         @include screen ( medium ) {
+            padding: 0;
             height: 100vh;
         }
 
         .tagline {
             margin: 0 auto;
             text-indent: -9999px;
-            width: 314px;
+            width: 100%;
+            max-width: 314px;
             height: 32px;
-            background: url('../images/offline_games/tagline.png') no-repeat;
+            background: url('../images/offline_games/tagline.png') center center no-repeat;
+            background-size: 100%;
         }
         .menu--mini {
             padding: 0;
@@ -52,12 +57,23 @@
             text-align: center;
 
             li {
-                display: inline-block;
-                vertical-align: middle;
-                padding: 0 15px;
-                border-left: 1px solid #c1a48f;
+                display: block;
+                margin-top: 10px;
                 &:first-child {
-                    border-left: 0;
+                    margin-top: 0;
+                }
+                @include screen ( small ) {
+                    margin-top: 0;
+                    padding: 0 10px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    border-left: 1px solid #c1a48f;
+                    &:first-child {
+                        border-left: 0;
+                    }
+                }
+                @include screen ( medium ) {
+                    padding: 0 15px;
                 }
 
                 a {
@@ -97,31 +113,53 @@
                 text-align: center;
 
                 li {
-                    display: inline-block;
-                    vertical-align: middle;
-                    padding: 0 10px;
+                    @include screen ( xs ) {
+                        display: inline-block;
+                        vertical-align: middle;
+                        padding: 0 10px;
+                    }
 
                     a {
-                        display: block;
                         width: 222px;
                         height: 222px;
+                        margin: 15px auto 0;
+                        display: block;
                         text-indent: -9999px;
+                        @include screen ( xs ) {
+                            width: 111px;
+                            height: 111px;
+                            margin-top: 0;
+                        }
+                        @include screen ( small ) {
+                            width: 155px;
+                            height: 155px;
+                        }
+                        @include screen ( medium ) {
+                            width: 222px;
+                            height: 222px;
+                        }
                         &.lv-1 {
-                            background: url('../images/offline_games/lv-1.png') no-repeat;
+                            background: url('../images/offline_games/lv-1.png') center center no-repeat;
+                            background-size: 100% 100%;
                             &:hover {
-                                background: url('../images/offline_games/lv-1-hover.png') no-repeat;
+                                background: url('../images/offline_games/lv-1-hover.png') center center no-repeat;
+                                background-size: 100% 100%;
                             }
                         }
                         &.lv-2 {
-                            background: url('../images/offline_games/lv-2.png') no-repeat;
+                            background: url('../images/offline_games/lv-2.png') center center no-repeat;
+                            background-size: 100% 100%;
                             &:hover {
-                                background: url('../images/offline_games/lv-2-hover.png') no-repeat;
+                                background: url('../images/offline_games/lv-2-hover.png') center center no-repeat;
+                                background-size: 100% 100%;
                             }
                         }
                         &.lv-3 {
-                            background: url('../images/offline_games/lv-3.png') no-repeat;
+                            background: url('../images/offline_games/lv-3.png') center center no-repeat;
+                            background-size: 100% 100%;
                             &:hover {
-                                background: url('../images/offline_games/lv-3-hover.png') no-repeat;
+                                background: url('../images/offline_games/lv-3-hover.png') center center no-repeat;
+                                background-size: 100% 100%;
                             }
                         }
                     }
@@ -134,12 +172,13 @@
     .game {
         z-index: 9;
         width: 100%;
-        max-width: 600px;
+        max-width: 690px;
         padding: 0 10px;
-        @include ab ( 50%, 50%, n, n );
+        @include ab ( 10px, 50%, n, n );
         display: none;
-        @include transform ( translate(-50%,-50%) );
+        @include transform ( translateX(-50%) );
         @include screen ( ipad ) {
+            top: 10%;
             padding: 0;
         }
 
@@ -187,15 +226,21 @@
 
                 width: 202px;
                 height: 46px;
-                margin: 0 15px;
+                margin: 15px 0 0;
                 background: url('../images/buttons/button-yellow.png') no-repeat;
                 &:hover {
                     background: url('../images/buttons/button-grey.png') no-repeat;
                 }
+                @include screen ( medium ) {
+                    margin: 0 15px;
+                }
             }
         }
         .memory-game {
-            margin-top: 30px;
+            margin-top: 15px;
+            @include screen ( medium ) {
+                margin-top: 30px;
+            }
         }
         .mg__meta {
             display: none;
@@ -204,11 +249,20 @@
             display: none;
         }
         .mg__contents {
+            text-align: center;
+            padding-bottom: 0;
             &.mg__level-2 {
                 .mg__tile {
+                    min-width: 94px;
+                    min-height: 94px;
+                    padding: 0;
+                    margin: 3px;
                     cursor: pointer;
                     display: inline-block;
                     vertical-align: middle;
+                    @include screen ( medium ) {
+                        margin: 10px 10px 0;
+                    }
 
                     span {
                         display: block;
@@ -364,10 +418,10 @@
  * the tiles.
  */
 
-.mg__tile {
+/* .mg__tile {
     position: absolute;
     padding: 5px;
-}
+} */
 
 
 /* game__level-1 styles */
@@ -420,9 +474,11 @@
 
 /* game__level-2 styles */
 
-.mg__level-2 .mg__tile {
+/* .mg__level-2 .mg__tile {
     width: 16.66667%;
     height: 33.33333%;
+    min-width: 94px;
+    min-height: 94px;
 }
 
 .mg__level-2 .mg__tile-1 {
@@ -513,7 +569,7 @@
 .mg__level-2 .mg__tile-18 {
     top: 66.66667%;
     left: 83.33333%;
-}
+} */
 
 
 /* game__level-3 styles */

@@ -7,6 +7,7 @@
     .content-profile {
     	z-index: 1;
     	position: relative;
+        min-height: 100vh;
         max-width: 900px;
         padding: 50px 0;
         margin: 0 auto;
@@ -56,13 +57,6 @@
                 line-height: 35px;
                 margin-left: 5px;
             }
-            /* img {}
-            .icon {
-                background: url('../images/profile/medal.png') top center no-repeat;
-                background-size: 100% 100%;
-                width: 37px;
-                height: 35px;
-            } */
         }
         .tablinks {
             @media ( max-width: 767px) {
@@ -117,6 +111,10 @@
         }
         &.active {
             display: inline-block;
+        }
+
+        .empty {
+            text-align: center;
         }
         .block-top {
             text-align: center;

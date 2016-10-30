@@ -57,7 +57,13 @@
 					margin-right: 25px;
 				}
 				span {
+					display: block;
 					margin-right: 10px;
+					margin-bottom: 5px;
+					@include screen ( small ) {
+						margin-bottom: 0;
+						display: inline-block;
+					}
 				}
 				.radio-wrapper {
 					margin-top: -3px;
