@@ -366,7 +366,7 @@
     }
     .step-content {
         padding: 0;
-        &#slider-level {
+        &#slider-level, &#slider-step-countervailing {
             .slick-arrow {
                 &.slick-prev {
                     left: -5px;
@@ -395,6 +395,76 @@
                 img {
                     width: auto;
                     margin: 10px auto 0;
+                }
+            }
+        }
+    }
+}
+
+.modal--intro-game-countervailing {
+    @extend .modal--intro-game;
+
+    .step {
+        p {
+            max-width: none;
+            font-family: $font-iCPB;
+            line-height: 22px;
+            text-transform: uppercase;
+            @include screen ( medium ) {
+                max-width: 80%;
+            }
+        }
+    }
+    .step-content {
+        margin-top: 10px;
+    }
+    .video {
+        max-width: 381px;
+        height: 251px;
+        margin-top: 25px;
+        background: url('../images/offline_games/bgd-video-small.png') center center no-repeat;
+        background-size: 100% 100%;
+    }
+    .list-step {
+        li {
+            width: 50%;
+            float: left;
+            display: block;
+            padding: 0 30px;
+        }
+        .info {
+            text-align: center;
+            @include screen ( medium ) {
+                text-align: left;
+            }
+
+            img, .wrap-text {
+                @include screen ( medium ) {
+                    float: left;
+                    display: block;
+                }
+            }
+            img {
+                margin: 0 auto;
+            }
+            .wrap-text {
+                @include screen ( medium ) {
+                    width: 80%;
+                    padding-left: 10px;
+                }
+
+                .title {
+                    @include screen ( medium ) {
+                        margin: 0;
+                    }
+                }
+                p {
+                    margin: 0;
+                    padding: 0;
+                    max-width: none;
+                    text-transform: none;
+                    font-family: $font-standard;
+                    /* @include screen ( medium ) {} */
                 }
             }
         }
@@ -693,6 +763,8 @@
 */
 
 .mfp-move-from-top {
+    top: 0!important;
+
     .mfp-content {
         vertical-align: top;
     }

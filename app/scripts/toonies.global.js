@@ -83,6 +83,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             if ($('.page--offline-games').length) {
                 toonies.Global.initModalIntroGame();
+                toonies.Global.initModalIntroGameCountervailing();
             }
 
             if ($('.page--about,.page--leaderboard').length) {
@@ -222,6 +223,18 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             // newMessage event handler
             function resultHandlerEndGame(e) {
                 alert('end');
+            }
+
+            $(document).on('memory_game_cancel_replay_game', resultHandlerReplayGame);
+            // newMessage event handler
+            function resultHandlerReplayGame(e) {
+                alert('replay');
+            }
+
+            $(document).on('memory_game_cancel_new_game', resultHandlerNewGame);
+            // newMessage event handler
+            function resultHandlerNewGame(e) {
+                alert('new game');
             }*/
 
             toonies.Global.initExpandCollapsePlayer();
@@ -433,6 +446,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     if (!$('#slider-step-game').hasClass('slick-initialized')) {
                         toonies.Global.initSliderStepGame();
                     }
+
+                    if (!$('#slider-step-countervailing').hasClass('slick-initialized')) {
+                        toonies.Global.initSliderStepGameCountervailing();
+                    }
                 } else {
                     if ($('#slider-step-code').hasClass('slick-initialized')) {
                         $('#slider-step-code').slick('unslick');
@@ -448,6 +465,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
                     if ($('#slider-step-game').hasClass('slick-initialized')) {
                         $('#slider-step-game').slick('unslick');
+                    }
+
+                    if ($('#slider-step-countervailing').hasClass('slick-initialized')) {
+                        $('#slider-step-countervailing').slick('unslick');
                     }
                 }
             }).trigger('resize');
@@ -625,6 +646,18 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
         },
 
+        initSliderStepGameCountervailing: function() {
+            var slider = $('#slider-step-countervailing');
+
+            slider.slick({
+                dots: false,
+                lazyLoad: 'ondemand',
+                fade: true,
+                prevArrow: '<button type="button" class="slick-prev"></button>',
+                nextArrow: '<button type="button" class="slick-next"></button>'
+            });
+        },
+
         initSliderStepScan: function() {
             var slider = $('#slider-step-scan');
 
@@ -668,6 +701,40 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             if ($('.auto-load').length) {
                 $('.open-modal--intro').trigger('click');
+            }
+        },
+
+        initModalIntroGameCountervailing: function() {
+            $('.open-modal--intro-game-countervailing').magnificPopup({
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.mainClass = this.st.el.attr('data-effect');
+                    },
+                    open: function() {
+                        $(window).trigger('resize');
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('.modal--intro-game').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
+            });
+
+            $('.modal--intro-game').find('.understand').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
+            });
+
+            if ($('.auto-load').length) {
+                $('.open-modal--intro-game-countervailing').trigger('click');
             }
         },
 
@@ -1253,11 +1320,11 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 map_img.animate({
                     'top': distanceY,
                     'left': distanceX
-                }, 500);
+                }, 500, function () {
+                    $("html, body").animate({ scrollTop: 0 });
+                    /*if(scroll)*/
+                });
             }, 500);
-
-            if(scroll)
-                $("html, body").animate({ scrollTop: 0 });
         },
 
         initGetRandomListCoin: function () {
@@ -1640,7 +1707,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             btnResetGame.off('click').on('click', function (e) {
                 e.preventDefault();
                 $.event.trigger({
-                    type: "memory_game_end",
+                    type: "memory_game_cancel_replay_game",
                     is_win: false,
                     time: new Date()
                 });
@@ -1696,7 +1763,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             $('.game .inner').removeClass('animate');
             $('.page--offline-games').removeClass('play-game');
             $.event.trigger({
-                type: "memory_game_end",
+                type: "memory_game_cancel_new_game",
                 is_win: false,
                 time: new Date()
             });

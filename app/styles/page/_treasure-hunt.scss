@@ -53,8 +53,11 @@
 
     .menu-area {
     	margin: 0;
-    	padding: 0;
+    	padding: 0 0 120px;
     	list-style: none;
+    	@include screen ( ipadPortrait ) {
+    		padding: 0;
+    	}
     	@include screen ( ipad ) {
     		display: none;
     	}
