@@ -1345,6 +1345,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     e.preventDefault();
 
                     toonies.Global.initGamePlay( $(this).attr('data-countdown') );
+                    $("html, body").animate({ scrollTop: 0 });
                 });
         },
 
