@@ -125,14 +125,14 @@
                         margin: 15px auto 0;
                         display: block;
                         text-indent: -9999px;
-                        @include screen ( xs ) {
+                        /* @include screen ( xs ) {
                             width: 111px;
                             height: 111px;
-                            margin-top: 0;
-                        }
+                        } */
                         @include screen ( small ) {
                             width: 155px;
                             height: 155px;
+                            margin-top: 0;
                         }
                         @include screen ( medium ) {
                             width: 222px;
@@ -216,14 +216,14 @@
                     margin: 15px auto 0;
                     display: block;
                     text-indent: -9999px;
-                    @include screen ( xs ) {
+                    /* @include screen ( xs ) {
                         width: 111px;
                         height: 111px;
-                        margin-top: 0;
-                    }
+                    } */
                     @include screen ( small ) {
                         width: 212px;
                         height: 212px;
+                        margin-top: 0;
                     }
                     @include screen ( medium ) {
                         width: 312px;

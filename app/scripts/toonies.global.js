@@ -48,6 +48,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         gameTimeOut: 0,
         gameTimeInterval: 0,
         isWin: false,
+        /*isOnGame: false,*/
         memoryGame: null,
 
         init: function() { //initialization code goes here
@@ -852,15 +853,19 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             $('#modal--win-game').find('.close').off('click').on('click', function(e) {
                 e.preventDefault();
 
-                toonies.Global.initCloseAllModal();
+                window.location.reload();
+
+                /*toonies.Global.initCloseAllModal();*/
             });
 
             $('#modal--win-game').find('.continue-play').off('click').on('click', function(e) {
                 e.preventDefault();
 
-                toonies.Global.isWin = false;
+                window.location.reload();
+
+                /*toonies.Global.isWin = false;
                 toonies.Global.initResetGame();
-                toonies.Global.initCloseAllModal();
+                toonies.Global.initCloseAllModal();*/
             });
         },
 
@@ -884,15 +889,19 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             $('#modal--loser-game').find('.close').off('click').on('click', function(e) {
                 e.preventDefault();
 
-                toonies.Global.initCloseAllModal();
+                window.location.reload();
+
+                /*toonies.Global.initCloseAllModal();*/
             });
 
             $('#modal--loser-game').find('.continue-play').off('click').on('click', function(e) {
                 e.preventDefault();
 
-                toonies.Global.isWin = false;
+                window.location.reload();
+
+                /*toonies.Global.isWin = false;
                 toonies.Global.initResetGame();
-                toonies.Global.initCloseAllModal();
+                toonies.Global.initCloseAllModal();*/
             });
         },
 
@@ -1052,7 +1061,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             toonies.Global.timeOut = setTimeout(function() {
                 toonies.Global.take_snapshot();
-                clearInterval(toonies.Global.timeOut);
+                clearTimeout(toonies.Global.timeOut);
             }, 15000);
 
             toonies.Global.timeInterval = setInterval(function() {
@@ -1677,9 +1686,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     });
 
                     toonies.Global.isWin = true;
-
-                    clearInterval(toonies.Global.gameTimeOut);
-                    clearInterval(toonies.Global.gameTimeInterval);
+                    /*toonies.Global.isOnGame = true;*/
+                    toonies.Global.initResetGame();
 
                     return false;
                 }
@@ -1711,7 +1719,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     is_win: false,
                     time: new Date()
                 });
-                clearInterval(toonies.Global.gameTimeOut);
+                clearTimeout(toonies.Global.gameTimeOut);
                 clearInterval(toonies.Global.gameTimeInterval);
                 toonies.Global.isWin = false;
                 toonies.Global.memoryGame.resetGame();
@@ -1746,7 +1754,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     });
                 }
 
-                clearInterval(toonies.Global.gameTimeOut);
+                clearTimeout(toonies.Global.gameTimeOut);
             }, timeOut);
 
             toonies.Global.gameTimeInterval = setInterval(function() {
@@ -1762,12 +1770,14 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
         initResetGame: function () {
             $('.game .inner').removeClass('animate');
             $('.page--offline-games').removeClass('play-game');
-            $.event.trigger({
-                type: "memory_game_cancel_new_game",
-                is_win: false,
-                time: new Date()
-            });
-            clearInterval(toonies.Global.gameTimeOut);
+            if ( !toonies.Global.isWin ) {
+                $.event.trigger({
+                    type: "memory_game_cancel_new_game",
+                    is_win: false,
+                    time: new Date()
+                });
+            }
+            clearTimeout(toonies.Global.gameTimeOut);
             clearInterval(toonies.Global.gameTimeInterval);
             toonies.Global.memoryGame.resetGame();
             $('.memory-game').html('');
