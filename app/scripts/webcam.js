@@ -133,7 +133,7 @@ function error(error) {
 }
 
 function load() {
-    if ( typeof navigator.getUserMedia == 'undefined' && typeof navigator.webkitGetUserMedia == 'undefined' && typeof navigator.mozGetUserMedia == 'undefined' ) {
+    if (typeof navigator.getUserMedia == 'undefined' && typeof navigator.webkitGetUserMedia == 'undefined' && typeof navigator.mozGetUserMedia == 'undefined') {
         toonies.Global.initModalUpgrade();
         return false;
     }
@@ -176,6 +176,7 @@ function setwebcam() {
 }
 
 function setwebcam2(options) {
+    /*options = { 'deviceId': { 'exact': device.deviceId }, 'facingMode': 'environment' };*/
     /*console.log(options);*/
     document.getElementById("result").innerHTML = "Đang quét";
     if (stype == 1) {
