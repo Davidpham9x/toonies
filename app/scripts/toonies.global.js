@@ -66,8 +66,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 alert(e);
             });*/
 
-            var scene = document.getElementById('scene');
-            var parallax = new Parallax(scene);
+            /*var scene = document.getElementById('scene');
+            var parallax = new Parallax(scene);*/
 
             if ( $('.offline-games').length ) {
                 toonies.Global.initGetRandomListCoin();
@@ -173,7 +173,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 });
             }
 
-            if ( $('#register,#private-info').length ) {
+            if ( $('#register, #private-info').length ) {
                 $(".txt-dob").datepicker({
                     showOn: "both",
                     buttonImage: "images/icons/calendar.png",
@@ -1820,8 +1820,8 @@ $(document).ready(function() {
                         $('.tvc-introduction').addClass('animate');
 
                         setTimeout(function() {
-                            $('.toonies-snack').addClass('animate');
                             $('.gold-chest').addClass('animate');
+                            $('.toonies-snack').addClass('animate');
                         }, 500);
                     }, 400);
                 }, 300);

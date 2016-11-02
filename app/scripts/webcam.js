@@ -79,11 +79,9 @@ function captureToCanvas() {
             try {
                 qrcode.decode();
             } catch (e) {
-                /*console.log(e);*/
                 setTimeout(captureToCanvas, 500);
             };
         } catch (e) {
-            /*console.log(e);*/
             setTimeout(captureToCanvas, 500);
         };
     }
@@ -152,32 +150,52 @@ function load() {
 }
 
 function setwebcam() {
-    var options = true;
+    var options = { video: true };
     if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
         try {
             navigator.mediaDevices.enumerateDevices()
                 .then(function(devices) {
-                    devices.forEach(function(device) {
-                        if (device.kind === 'videoinput') {
-                            if (device.label.toLowerCase().search("back") > -1)
-                                options = { 'deviceId': { 'exact': device.deviceId }, 'facingMode': 'environment' };
+                    var device = devices.filter(function(device) {
+                        var deviceLabel = device.label.split(',')[1];
+                        if (device.kind == "videoinput") {
+                            return device;
                         }
-                        /*console.log(device.kind + ": " + device.label + " id = " + device.deviceId);*/
                     });
-                    setwebcam2(options);
+
+                    if (device.length > 1) {
+                        var constraints = {
+                            video: {
+                                mandatory: {
+                                    sourceId: device[1].deviceId ? device[1].deviceId : null
+                                }
+                            },
+                            audio: false
+                        };
+
+                        setwebcam2(constraints);
+                    } else if (device.length) {
+                        var constraints = {
+                            video: {
+                                mandatory: {
+                                    sourceId: device[0].deviceId ? device[0].deviceId : null
+                                }
+                            },
+                            audio: false
+                        };
+
+                        setwebcam2(constraints);
+                    } else {
+                        setwebcam2({ video: true });
+                    }
                 });
-        } catch (e) {
-            /*console.log(e);*/
-        }
+        } catch (e) {}
     } else {
-        /*console.log("no navigator.mediaDevices.enumerateDevices");*/
         setwebcam2(options);
     }
 }
 
 function setwebcam2(options) {
     /*options = { 'deviceId': { 'exact': device.deviceId }, 'facingMode': 'environment' };*/
-    /*console.log(options);*/
     document.getElementById("result").innerHTML = "Đang quét";
     if (stype == 1) {
         setTimeout(captureToCanvas, 500);
@@ -190,15 +208,15 @@ function setwebcam2(options) {
 
     if (n.getUserMedia) {
         webkit = true;
-        n.getUserMedia({ video: options, audio: false }, success, error);
+        n.getUserMedia(options, success, error);
     } else
     if (n.webkitGetUserMedia) {
         webkit = true;
-        n.webkitGetUserMedia({ video: options, audio: false }, success, error);
+        n.webkitGetUserMedia(options, success, error);
     } else
     if (n.mozGetUserMedia) {
         moz = true;
-        n.mozGetUserMedia({ video: options, audio: false }, success, error);
+        n.mozGetUserMedia(options, success, error);
     }
 
     document.getElementById("qrimg").style.opacity = 0.2;
