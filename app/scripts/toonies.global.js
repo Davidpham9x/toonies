@@ -66,6 +66,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 alert(e);
             });*/
 
+            var scene = document.getElementById('scene');
+            var parallax = new Parallax(scene);
+
             if ( $('.offline-games').length ) {
                 toonies.Global.initGetRandomListCoin();
             }

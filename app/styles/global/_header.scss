@@ -260,12 +260,30 @@ header {
 			li {
 				padding: 10px 0;
 				text-align: center;
+				&:first-child {
+					a {
+						position: relative;
+						&:before {
+							content: '';
+							background: url('../images/header/new.png') no-repeat;
+							width: 61px;
+							height: 49px;
+							@include ab ( -31px, n, n, -46px );
+						}
+					}
+				}
 
 				a {
-					display: block;
 					color: #4f2d23;
 					font-size: 15px;
 					text-transform: uppercase;
+					display: inline-block;
+					&.active {
+						color: #ffd07d;
+						&:before {
+							display: none;
+						}
+					}
 				}
 				span {
 					color: #a35a28;
@@ -299,6 +317,17 @@ header {
 					height: 56px;
 					margin: 0 auto;
 					background: url('../images/header/logout.png') no-repeat;
+				}
+			}
+		}
+		.menu-mobile--user-info {
+			li {
+				&:first-child {
+					a {
+						&:before {
+							display: none;
+						}
+					}
 				}
 			}
 		}
@@ -355,9 +384,9 @@ header {
 
 		z-index: 6;
 		position: relative;
-		@include screen ( small ) {
+		/* @include screen ( small ) {
 			height: 96px;
-		}
+		} */
 		@include screen ( ipadPortrait ) {
 			background: url('../images/header/header.png') center center no-repeat;
 			background-size: 100% 100%;
@@ -396,13 +425,13 @@ header {
 		max-width: 80px;
 		top: 0;
 		left: 10px;
-		@include screen ( small ) {
+		/* @include screen ( small ) {
 			height: 112px;
 			max-width: 153px;
 			top: auto;
 			bottom: -13px;
 			left: 15px;
-		}
+		} */
 	}
 	.logo--orion {
 		background: url('../images/header/logo-orion.png') no-repeat;
