@@ -74,6 +74,7 @@ header {
 				a {
 					display: block;
 					text-indent: -9999px;
+					position: relative;
 					&.menu-1 {
 						background: url('../images/header/menu-1.png') center center no-repeat;
 						background-size: 100% 100%;
@@ -83,9 +84,22 @@ header {
 							width: 168px;
 							height: 64px;
 						}
+						&.active {
+							&:before {
+								display: none;
+							}
+						}
 						&:hover, &.active {
 							background: url('../images/header/menu-1--hover.png') center center no-repeat;
 							background-size: 100% 100%;
+						}
+						&:before {
+							content: '';
+							background: url('../images/header/new.png') no-repeat;
+							width: 61px;
+							height: 49px;
+							@include ab ( -20px, -20px, n, n );
+							@include transform ( rotate(-20deg) );
 						}
 					}
 					&.menu-2 {

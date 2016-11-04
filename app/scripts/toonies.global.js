@@ -1810,18 +1810,23 @@ $(document).ready(function() {
             $('.loading').css('display', 'none');
 
             if ($('.home').length) {
-                setTimeout(function() {
+                setInterval(function() {
                     $('.tagline').addClass('animate');
                     $('.button__wrapper').addClass('animate');
 
-                    setTimeout(function() {
+                    setInterval(function() {
                         $('.characters-left').addClass('animate');
                         $('.characters-right').addClass('animate');
                         $('.tvc-introduction').addClass('animate');
 
-                        setTimeout(function() {
+                        setInterval(function() {
                             $('.gold-chest').addClass('animate');
                             $('.toonies-snack').addClass('animate');
+                            $('.layer').addClass('slideDown');
+
+                            setInterval(function() {
+                                $('.layer').removeClass('slideDown').addClass('tossing');
+                            }, 2500);
                         }, 500);
                     }, 400);
                 }, 300);

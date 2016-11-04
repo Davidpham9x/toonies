@@ -6,11 +6,8 @@
     height: 100%;
     @include screen ( ipadPortrait ) {
         background: url('../images/coming_soon/main-background.jpg') center center no-repeat;
-        background-size: 100% 100%;
-        min-height: 720px;
-    }
-    @include screen ( hd ) {
-        height: 100vh;
+        background-size: cover;
+        min-height: auto;
     }
 
     #qr-canvas {
@@ -20,13 +17,15 @@
 	/** Scan Content **/
 	.scan {
 		width: 100%;
+		padding: 0 10px;
 		max-width: 600px;
 		margin: 35px auto 0;
 		text-align: center;
 		z-index: 1;
 		position: relative;
 		@include screen ( medium ) {
-			height: 100vh;
+			padding: 0;
+			height: calc(100vh - 198px)
 		}
 
 		.heading {

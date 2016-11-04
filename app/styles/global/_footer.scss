@@ -15,10 +15,9 @@ footer {
 	@include screen ( medium ) {
 		background: url('../images/footer/footer-bg.png') center center no-repeat;
 		background-size: 100% 100%;
-		height: 48px;
+		height: 47px;
 		left: auto;
 		bottom: auto;
-		margin-top: -5px;
 		position: relative;
 	}
 
