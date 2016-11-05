@@ -15,10 +15,10 @@
     	z-index: 1;
     	position: relative;
     	@include screen ( medium ) {
-    		height: calc(100vh - 45px);
+    		min-height: calc(100vh - 45px);
     	}
     	@include screen ( hd ) {
-    		height: calc(100vh - 163px);
+    		min-height: calc(100vh - 163px);
     	}
     }
 

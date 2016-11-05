@@ -83,12 +83,20 @@
         }
     }
     .wrap-list {
+        margin-bottom: 45px;
+
         .col {
             font-size: 13px;
             width: 30%;
             text-align: center;
             margin: 0 1.5%;
             margin-bottom: 20px;
+            &.user {
+                .avatar {
+                    background: url(../images/global/avatar-user.png) center top no-repeat;
+                    background-size: 100%;
+                }
+            }
 
             span {
                 line-height: normal;
@@ -106,6 +114,20 @@
             .info {
                 line-height: 18px;
                 text-transform: uppercase;
+            }
+            .score {
+                color: #ffd07d;
+                font-size: 20px;
+                -webkit-text-stroke: 1px #77472a;
+                text-shadow: 3px 3px 0 #77472a, -1px -1px 0 #77472a, 1px -1px 0 #77472a, -1px 1px 0 #77472a, 1px 1px 0 #77472a;
+                @include ab ( n, 50%, 0, n );
+                @include transform ( translateX(-50%) );
+            }
+            .empty {
+                margin: 0;
+                line-height: 170px;
+                color: #673f25;
+                font-size: 3em;
             }
         }
         /* .first {

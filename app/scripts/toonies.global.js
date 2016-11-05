@@ -241,6 +241,15 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 alert('new game');
             }*/
 
+            if ( $('.star-1').length && $('.star-2').length && $('.star-3').length && $('.star-4').length ) {
+                setInterval(function () {
+                    $('.star-1').fadeOut(150).delay(2000).fadeIn(300).fadeOut(150).delay(1254);
+                    $('.star-2').fadeOut(300).fadeIn(120).fadeOut(120).delay(1920);
+                    $('.star-3').fadeOut(150).delay(1200).fadeIn(300).fadeOut(150).delay(800);
+                    $('.star-4').fadeOut(700).fadeIn(300).fadeOut(160).delay(1350);
+                }, 1);
+            }
+
             toonies.Global.initExpandCollapsePlayer();
             toonies.Global.initShowHideInfoUser();
         },
@@ -299,6 +308,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 $('.tooltip').tooltipster({
                     trigger: 'custom',
                     triggerOpen: {
+                        click: true,
                         mouseenter: true,
                         touchstart: true
                     },
@@ -325,6 +335,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 $('.tooltip-characters').tooltipster({
                     trigger: 'custom',
                     triggerOpen: {
+                        click: true,
                         mouseenter: true,
                         touchstart: true
                     },

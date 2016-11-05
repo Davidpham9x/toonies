@@ -14,11 +14,11 @@
         margin-bottom: 136px;
         @include screen ( medium ) {
             margin-bottom: 47px;
-            height: 100vh;
+            min-height: 100vh;
         }
         @include screen ( hd ) {
             margin-bottom: 0;
-            height: calc(100vh - 153px);
+            min-height: calc(100vh - 153px);
         }
     }
 
