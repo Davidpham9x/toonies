@@ -1821,21 +1821,22 @@ $(document).ready(function() {
             $('.loading').css('display', 'none');
 
             if ($('.home').length) {
-                setInterval(function() {
+                setTimeout(function() {
                     $('.tagline').addClass('animate');
                     $('.button__wrapper').addClass('animate');
 
-                    setInterval(function() {
+                    setTimeout(function() {
                         $('.characters-left').addClass('animate');
                         $('.characters-right').addClass('animate');
+                        $('.characters-mobile').addClass('animate');
                         $('.tvc-introduction').addClass('animate');
 
-                        setInterval(function() {
+                        setTimeout(function() {
                             $('.gold-chest').addClass('animate');
                             $('.toonies-snack').addClass('animate');
                             $('.layer').addClass('slideDown');
 
-                            setInterval(function() {
+                            setTimeout(function() {
                                 $('.layer').removeClass('slideDown').addClass('tossing');
                             }, 2500);
                         }, 500);
