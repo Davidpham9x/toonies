@@ -75,13 +75,18 @@
                 }
 
                 a {
-                    color: #c1a48f;
+                    color: #bfaf95;
                     font-size: 13px;
                     text-transform: uppercase;
                     display: block;
                     line-height: normal;
+                    background: url('../images/offline_games/menu.png') no-repeat;
+                    width: 211px;
+                    margin: 0 auto;
+                    height: 56px;
+                    line-height: 56px;
                     &.active, &:hover {
-                        color: #4e301c;
+                        color: #ffd07d;
                     }
                 }
             }
