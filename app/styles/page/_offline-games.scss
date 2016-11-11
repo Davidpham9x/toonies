@@ -29,7 +29,7 @@
     .offline-games {
         z-index: 1;
         height: auto;
-        max-width: 850px;
+        /* max-width: 850px; */
         position: relative;
         margin: 25px auto 0;
         padding: 0 10px 300px;
@@ -238,6 +238,10 @@
                     }
                     &.menu--countervailing-2 {
                         background: url('../images/offline_games/countervailing-2.png') center center no-repeat;
+                        background-size: 100% 100%;
+                    }
+                    &.menu--countervailing-3 {
+                        background: url('../images/offline_games/countervailing-3.png') center center no-repeat;
                         background-size: 100% 100%;
                     }
                 }

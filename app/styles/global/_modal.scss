@@ -1,4 +1,4 @@
-.modal {}
+/* .modal {} */
 
 .mfp-bg {
     opacity: 1;
@@ -542,6 +542,43 @@
 	}
 }
 
+.modal--youtube {
+    .heading {
+        width: 100%;
+        height: 72px;
+        margin: 0 auto;
+        max-width: 240px;
+        background: url('../images/modal/heading-modal-youtube.png') no-repeat;
+
+        text-indent: -9999px;
+    }
+    .outer {
+        padding-bottom: 0;
+    }
+    .video {
+        width: 100%;
+        max-width: 620px;
+        height: 377px;
+        margin: 50px auto 0;
+        background: url('../images/offline_games/bgd-video.png') center center no-repeat;
+        background-size: 100% 100%;
+
+        .inner {
+            width: 100%;
+            height: 100%;
+            padding: 10px 15px;
+
+            .embed-container {
+                padding: 0;
+                height: 100%;
+            }
+        }
+    }
+    .close {
+        top: 40px;
+    }
+}
+
 .modal--small {
     width: 100%;
     margin: 0 auto;
@@ -747,6 +784,111 @@
 
 .modal--upgrade {
     @extend .modal--scan-result;
+}
+
+.modal--group {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 759px;
+
+    z-index: 2;
+    position: relative;
+    &:before {
+        content: '';
+        width: 265px;
+        height: 406px;
+        background: url('../images/modal/snack.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 25%, 10%, n, n );
+        @include transition ( all .5s ease-in-out );
+        display: none;
+        @include screen ( medium ) {
+            display: block;
+        }
+    }
+    &:after {
+        content: '';
+        width: 195px;
+        height: 686px;
+        background: url('../images/modal/characters--sanji.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 20%, n, n, 10% );
+        @include transition ( all .5s ease-in-out );
+        display: none;
+        @include screen ( medium ) {
+            display: block;
+        }
+    }
+    &.animate {
+        &:before {
+            left: -20%;
+        }
+        &:after {
+            right: -15%;
+        }
+    }
+
+    .outer {
+        width: 100%;
+        background: url('../images/modal/background-modal--medium-mobile.png') center center no-repeat;
+        background-size: 100% 100%;
+        height: auto;
+        padding-bottom: 60px;
+        @include screen ( medium ) {
+            background: url('../images/modal/background-modal--group.png') center center no-repeat;
+            background-size: 100% 100%;
+            height: 631px;
+        }
+
+        z-index: 3;
+        padding-top: 20px;
+        position: relative;
+    }
+    .close {
+        width: 100%;
+        height: 50px;
+        max-width: 54px;
+        background: url('../images/icons/close.png') no-repeat;
+        @include ab ( 45px, n, n, 5px );
+
+        text-indent: -9999px;
+    }
+}
+
+.modal--group-find {
+    .heading {
+        width: 100%;
+        height: 72px;
+        margin: 0 auto;
+        max-width: 240px;
+        background: url('../images/modal/heading-modal-find-group.png') no-repeat;
+
+        text-indent: -9999px;
+    }
+    .outer {
+        .inner {
+            padding: 0 55px;
+        }
+    }
+    .desc {
+        color: #4e301c;
+        font-size: 14px;
+        line-height: 1.6em;
+
+        text-align: center;
+        text-transform: uppercase;
+
+        padding: 0 25px;
+    }
+    .content {
+        width: 618px;
+        height: 350px;
+        margin: 0 auto;
+        background: url('../images/modal/background-content-find-group.png') center center no-repeat;
+        background-size: 100% 100%;
+    }
 }
 
 @include keyframes(spin) {

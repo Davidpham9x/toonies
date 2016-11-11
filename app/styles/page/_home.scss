@@ -199,7 +199,7 @@
 	}
 
 	/** TVC Content **/
-	.tvc {}
+	/* .tvc {} */
 	.tvc-introduction {
 		z-index: 4;
 		opacity: 0;
@@ -218,6 +218,9 @@
 		&.animate {
 			opacity: 1;
 			@include screen ( medium ) {
+				right: 10px;
+			}
+			@include screen ( hd ) {
 				right: 5%;
 			}
 		}
@@ -245,6 +248,37 @@
 				.embed-container {
 					padding: 0;
 					height: 100%;
+				}
+			}
+		}
+		.video--popup {
+			display: table;
+
+			/* .inner {} */
+			.wrap-img {
+				width: 100%;
+				height: 100%;
+				padding: 10px 0;
+				background-color: #000;
+				position: relative;
+				display: block;
+				&:hover {
+					span {
+						opacity: 1;
+						background: url('../images/icons/youtube--active.png') center center no-repeat;
+						background-size: 100% 100%;
+					}
+				}
+
+				span {
+					background: url('../images/icons/youtube.png') center center no-repeat;
+					background-size: 100% 100%;
+					width: 100%;
+					max-width: 50px;
+					height: 35px;
+					opacity: 0.9;
+					@include ab ( 50%, 50%, n, n );
+					@include transform ( translate(-50%, -50%) );
 				}
 			}
 		}

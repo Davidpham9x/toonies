@@ -69,6 +69,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             /*var scene = document.getElementById('scene');
             var parallax = new Parallax(scene);*/
 
+            if ( $('.page--home').length ) {
+                toonies.Global.initModalYoutube();
+            }
+
             if ( $('.offline-games').length ) {
                 toonies.Global.initGetRandomListCoin();
             }
@@ -87,6 +91,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             if ($('.page--offline-games').length) {
                 toonies.Global.initModalIntroGame();
+                toonies.Global.initModalIntroGameFlipCard();
                 toonies.Global.initModalIntroGameCountervailing();
             }
 
@@ -719,6 +724,33 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }
         },
 
+        initModalYoutube: function() {
+            $('.open-modal-youtube').magnificPopup({
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.mainClass = this.st.el.attr('data-effect');
+                    },
+                    open: function() {
+                        $(window).trigger('resize');
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('.modal--youtube').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
+            });
+
+            if ($('.auto-load').length) {
+                $('.open-modal-youtube').trigger('click');
+            }
+        },
+
         initModalIntroGameCountervailing: function() {
             $('.open-modal--intro-game-countervailing').magnificPopup({
                 type: 'inline',
@@ -750,6 +782,40 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             if ($('.auto-load').length) {
                 $('.open-modal--intro-game-countervailing').trigger('click');
+            }
+        },
+
+        initModalIntroGameFlipCard: function() {
+            $('.open-modal--intro-game-flip-card').magnificPopup({
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.mainClass = this.st.el.attr('data-effect');
+                    },
+                    open: function() {
+                        $(window).trigger('resize');
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('.modal--intro-game').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
+            });
+
+            $('.modal--intro-game').find('.understand').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
+            });
+
+            if ($('.auto-load').length) {
+                $('.open-modal--intro-game-flip-card').trigger('click');
             }
         },
 
