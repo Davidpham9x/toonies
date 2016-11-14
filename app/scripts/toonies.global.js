@@ -73,6 +73,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 toonies.Global.initModalYoutube();
             }
 
+            if ( $('.page--group').length ) {
+                toonies.Global.initModalConfirm();
+            }
+
             if ( $('.offline-games').length ) {
                 toonies.Global.initGetRandomListCoin();
             }
@@ -748,6 +752,33 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             if ($('.auto-load').length) {
                 $('.open-modal-youtube').trigger('click');
+            }
+        },
+
+        initModalConfirm: function() {
+            $('.open-modal-confirm').magnificPopup({
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.mainClass = this.st.el.attr('data-effect');
+                    },
+                    open: function() {
+                        $(window).trigger('resize');
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('.modal--confirm').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                var magnificPopup = $.magnificPopup.instance;
+                magnificPopup.close(); // Close popup that is currently opened
+            });
+
+            if ($('.auto-load').length) {
+                $('.open-modal-confirm').trigger('click');
             }
         },
 
