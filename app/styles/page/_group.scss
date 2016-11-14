@@ -1,0 +1,101 @@
+.page--group {
+    .paging {
+        margin-top: 10px;
+        text-align: center;
+    }
+    .slick-arrow {
+        border: none;
+        cursor: pointer;
+        background: none;
+        display: inline-block;
+        vertical-align: middle;
+        &.slick-prev {
+            left: 10px;
+            .icon {
+                background: url('../images/profile/left.png') no-repeat;
+                background-size: 100% 100%;
+                width: 8px;
+                height: 18px;
+            }
+        }
+        &.slick-next {
+            right: 10px;
+            .icon {
+                background: url('../images/profile/right.png') no-repeat;
+                background-size: 100% 100%;
+                width: 8px;
+                height: 18px;
+            }
+        }
+    }
+    .slick-dots {
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin: 0;
+            vertical-align: top;
+            display: inline-block;
+            @include opacity(0.8);
+            &:hover,
+            &.slick-active {
+                @include opacity(1);
+            }
+        }
+        button {
+            border: none;
+            background: none;
+            background: url('../images/profile/num-bg.png') no-repeat;
+            background-size: 100% 100%;
+            padding: 0;
+            width: 45px;
+            height: 43px;
+            display: block;
+            cursor: pointer;
+            line-height: 23px;
+
+            color: #fff;
+            font-size: 12px;
+            font-family: $font-iCPB;
+            text-align: center;
+        }
+    }
+    .group-management {
+        .title {
+            color: #4e301c;
+            font-size: 17px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .desc {
+            font-size: 12px;
+            font-family: $font-standard;
+            text-align: center;
+        }
+        .button__wrapper {
+            text-align: center;
+
+            .button {
+                font-size: 13px;
+                font-family: $font-iCPB;
+
+                line-height: 50px;
+                text-align: center;
+                text-transform: uppercase;
+
+                background: url('../images/buttons/button-yellow.png') no-repeat;
+                width: 202px;
+                height: 46px;
+                &:hover {
+                    background: url('../images/buttons/button-grey.png') no-repeat;
+                }
+            }
+        }
+    }
+    .group-management--no-group {
+        padding-top: 50px;
+    }
+}

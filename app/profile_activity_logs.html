@@ -4,7 +4,7 @@
 <main class="page page--profile">
     <!-- /* Header */ -->
     <include src="partials/header.html"></include>
-    
+
     <!-- /* User Action Content */ -->
     <section class="content-profile row">
         <div class="side-bar col">
@@ -12,12 +12,13 @@
             <div class="mark"><span class="icon"></span><span>thợ săn đồng</span> </div>
             <ul class="tab">
                 <li>
-                    tiền thưởng hiện có<br />
+                    Tiền thưởng hiện có<br />
                     <span>12,000,00</span>
                 </li>
-                <li><a href="#" class="tablinks " data-tab='private-info'>thông tin cá nhân</a></li>
-                <li><a href="#" class="tablinks active" data-tab='update-act'>CẬP NHẬT HOẠT ĐỘNG</a></li>
-                <li><a href="#" class="tablinks" data-tab='income'>THẺ ĐÃ THU THẬP</a></li>
+                <li><a href="#" class="tablinks active" data-tab='private-info' title="Thông tin cá nhân">Thông tin cá nhân</a></li>
+                <li><a href="#" class="tablinks" data-tab='update-act' title="CẬP NHẬT HOẠT ĐỘNG">CẬP NHẬT HOẠT ĐỘNG</a></li>
+                <li><a href="#" class="tablinks" data-tab='income' title="THẺ ĐÃ THU THẬP">THẺ ĐÃ THU THẬP (150)</a></li>
+                <li><a href="#" class="tablinks" data-tab='income' title="Nhóm của bạn">Nhóm của bạn</a></li>
             </ul>
         </div>
         <div id="update-act" class="tabcontent col active">
@@ -51,8 +52,11 @@
                 </div>
             </div>
         </div>
-            
     </section>
+
+    <!-- /* All Images */ -->
+    <include src="partials/images.html"></include>
+
     <!-- /* Footer */ -->
     <include src="partials/footer.html"></include>
 </main>

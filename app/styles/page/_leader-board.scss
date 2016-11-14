@@ -181,6 +181,9 @@
             } */
         }
     }
+    .wrap-list--group {
+        margin-bottom: 0;
+    }
     .field {
         text-align: center;
         margin-bottom: 20px;
@@ -236,6 +239,10 @@
                     background: url(../images/leader-board/tab-week.png) no-repeat;
                     background-size: 100%;
                 }
+                &.group {
+                    background: url(../images/leader-board/tab-group.png) no-repeat;
+                    background-size: 100%;
+                }
                 &.active {
                     &.month {
                         background: url(../images/leader-board/tab-month-on.png) no-repeat;
@@ -243,6 +250,10 @@
                     }
                     &.week {
                         background: url(../images/leader-board/tab-week-on.png) no-repeat;
+                        background-size: 100%;
+                    }
+                    &.group {
+                        background: url(../images/leader-board/tab-group-on.png) no-repeat;
                         background-size: 100%;
                     }
                 }

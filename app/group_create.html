@@ -1,0 +1,94 @@
+<!-- /* Head */ -->
+<include src="partials/head.html"></include>
+
+<main class="page page--user-action page--group">
+    <!-- /* Header */ -->
+    <include src="partials/header.html"></include>
+
+    <!-- /* Group Content */ -->
+    <section class="user-action">
+
+        <!-- /* Box Modal: Group Create */ -->
+        <div id="modal-group-create" class="modal--group modal--group-create">
+            <div class="outer">
+                <div class="inner">
+                    <h3 class="heading">Tạo nhóm thợ săn</h3>
+                    <p class="desc">Bạn đã sẵn sàng để trở thành thủ lĩnh của biệt đội thợ săn tài ba chưa? <br>Nếu đã sẵn sàng, hãy hoàn tất bảng thông tin đăng ký tạo nhóm thợ săn ngay bên dưới đây nhé!</p>
+                    <div class="content clearfix">
+                        <form action="" class="form">
+                            <div class="form_field clearfix two-col">
+                                <div class="col">
+                                    <label for="txt-group-name" class="star">
+                                        <strong>Tên nhóm</strong>(bắt buộc)
+                                    </label>
+                                    <div class="input-text">
+                                        <input type="text" class="txt-group-name" id="txt-group-name" name="txt-group-name">
+                                    </div>
+                                    <span class="error hidden">Vui lòng nhập Tên Nhóm</span>
+                                </div>
+                                <div class="col">
+                                    <label for="txt-avatar-group" class="star">
+                                        <strong>Ảnh cờ nhóm</strong>(bắt buộc)
+                                    </label>
+                                    <div class="input-file">
+                                        <input type="file" class="txt-avatar-group" id="txt-avatar-group" name="txt-avatar-group">
+                                        <span class="text">Chọn ảnh</span>
+                                    </div>
+                                    <span class="error hidden">Vui lòng chọn ảnh đại diện của Nhóm</span>
+                                </div>
+                            </div>
+                            <div class="form_field clearfix two-col">
+                                <div class="col">
+                                    <label for="txt-group-fee" class="fee">
+                                        <strong>Phí lập nhóm</strong>(bắt buộc)
+                                    </label>
+                                    <div class="input-text input-text-fee">
+                                        <input type="text" class="txt-group-fee" id="txt-group-fee" fee="txt-group-fee" disabled="true" value="50,000 toonies coin">
+                                        <div class="radio-wrapper fee">
+                                            <input type="radio" class="input-radio" id="input-radio-register">
+                                        </div>
+                                    </div>
+                                    <span class="error hidden">Vui lòng chọn</span>
+                                </div>
+                            </div>
+                            <div class="form_field clearfix form_field--tnc">
+                                <div class="radio-wrapper">
+                                    <input type="radio" class="input-radio" id="input-radio-register">
+                                </div>
+                                <label for="input-radio-register"><strong>Tôi đã đọc và đồng ý với những</strong><a href="http://www.google.com.vn" target="_blank" title="quy định về tạo nhóm thợ săn">quy định về tạo nhóm thợ săn</a></label>
+                            </div>
+                        </form>
+                        <div class="button__wrapper">
+                            <a href="" title="Xác nhận tạo nhóm" target="_blank" class="button">Xác nhận tạo nhóm</a>
+                        </div>
+                    </div>
+                    <a href="" title="Đóng" class="close">Đóng</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- /* Hot Line */ -->
+        <p class="hot-line">
+            <span>Mọi thông tin liên hệ hỗ trợ vui lòng gọi đến Hotline:</span>
+            <a href="tel:0909.800.605" title="0909.800.605"><img src="images/global/hot-line.png" alt="0909.800.605"></a>
+        </p>
+    </section>
+
+    <!-- /* All Images */ -->
+    <include src="partials/images.html"></include>
+
+    <!-- /* All Group Coins */ -->
+    <img src="images/user_action/group-coins-1.png" alt="" class="group-coins group-coins-1">
+    <img src="images/user_action/group-coins-2.png" alt="" class="group-coins group-coins-2">
+    <img src="images/user_action/group-coins-3.png" alt="" class="group-coins group-coins-3">
+    <img src="images/user_action/group-coins-4.png" alt="" class="group-coins group-coins-4">
+    <img src="images/user_action/group-coins-5.png" alt="" class="group-coins group-coins-5">
+    <img src="images/user_action/group-coins-6.png" alt="" class="group-coins group-coins-6">
+    <img src="images/user_action/group-coins-7.png" alt="" class="group-coins group-coins-7">
+
+    <!-- /* Footer */ -->
+    <include src="partials/footer.html"></include>
+</main>
+
+<!-- /* Footer Main */ -->
+<include src="partials/footer_main.html"></include>

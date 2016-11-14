@@ -987,16 +987,19 @@
 		overflow: hidden;
 
 		.avatar {
-			float: left;
             background: url(../images/global/avatar.png) center top no-repeat;
             background-size: 100%;
+
             width: 100%;
             max-width: 90px;
             min-height: 90px;
+
+			float: left;
             position: relative;
-            @media (max-width: 767px){
+            @media ( max-width: 767px ) {
                 margin:0 auto 15px;
             }
+
             img {
                 top: 7px;
                 left: 6px;

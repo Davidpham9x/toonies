@@ -257,7 +257,10 @@
         }
         .inner {
             position: relative;
-            padding: 0 35px 0 25px;
+            padding: 0 30px 0 20px;
+            @include screen ( small ) {
+                padding: 0 35px 0 25px;
+            }
 
             .button__wrapper {
                 margin-top: 10px;
@@ -286,9 +289,19 @@
 
             .title {
                 color: #4e301c;
-                font-size: 20px;
+                font-size: 18px;
                 font-family: $font-iCPB;
                 text-transform: uppercase;
+                @include screen ( small ) {
+                    font-size: 20px;
+                }
+
+                br {
+                    display: none;
+                    @include screen ( medium ) {
+                        display: block;
+                    }
+                }
             }
             .desc {
                 margin: 30px 0 0;
@@ -510,4 +523,55 @@
 			bottom: 25%;
 		}
 	}
+
+    /** Group Join Successful **/
+    .group_join-successful {
+        @extend .scan-result;
+
+        .wrap-img {
+            background: url(../images/global/avatar.png) center top no-repeat;
+            background-size: 100%;
+
+            margin: 0 auto;
+            max-width: 170px;
+            min-height: 170px;
+            position: relative;
+
+            img {
+                top: 12px;
+                left: 13px;
+                max-width: 84%;
+                position: absolute;
+                @include border-radius(50%);
+            }
+        }
+    }
+
+    /** Group Level Up **/
+    .group_level-up {
+        @extend .scan-result;
+    }
+
+    /** Group Create Successful **/
+    .group_create-successful {
+        @extend .notification;
+
+        .content {
+            padding: 25px 15px 0;
+            text-align: center;
+            @include screen ( medium ) {
+                padding: 50px 30px 25px;
+            }
+        }
+    }
+
+    /** Group Remove Member**/
+    .group_remove-member {
+        @extend .group_create-successful;
+    }
+
+    /** Group Delete **/
+    .group_delete {
+        @extend .group_create-successful;
+    }
 }

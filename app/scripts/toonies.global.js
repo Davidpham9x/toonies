@@ -187,7 +187,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 });
             }
 
-            $('#txt-avatar').change(function() {
+            $('#txt-avatar, #txt-avatar-group').change(function() {
                 var fullPath = $(this).val();
 
                 if (fullPath) {
@@ -1913,6 +1913,12 @@ $(document).ready(function() {
             if ($('.modal--medium').length) {
                 setTimeout(function() {
                     $('.modal--medium').addClass('animate');
+                }, 600);
+            }
+
+            if ($('.modal--group').length) {
+                setTimeout(function() {
+                    $('.modal--group').addClass('animate');
                 }, 600);
             }
 

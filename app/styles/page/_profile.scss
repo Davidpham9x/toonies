@@ -70,10 +70,10 @@
             }
         }
         li {
-            padding: 15px 0 10px;
-            border-top: 1px solid #caa97a;
-            list-style: none;
+            padding: 10px 0;
+            border-top: 1px solid rgba(78, 48, 28, 0.1);
             color: #4e301c;
+            list-style: none;
             @media ( max-width: 767px) {
                 border-top: none;
                 padding: 0;
