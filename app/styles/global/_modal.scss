@@ -1085,6 +1085,30 @@
 
         z-index: 3;
         position: relative;
+
+        .inner {
+            text-align: center;
+            padding: 55px 75px;
+            text-transform: uppercase;
+        }
+        .heading {
+            color: #4e301c;
+            font-size: 18px;
+        }
+        .content {
+            margin-top: 40px;
+
+            a {
+                display: inline-block;
+                vertical-align: middle;
+                color: #0e9900;
+                font-size: 22px;
+                padding: 0 25px;
+                &:hover {
+                    color: #c30000;
+                }
+            }
+        }
     }
 }
 

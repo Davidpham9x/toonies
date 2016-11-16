@@ -66,7 +66,6 @@
     .tabcontent {
         .img-profile  {
             .avatar {
-                /* margin-bottom: 0; */
                 &:after {
                     display: none;
                 }
@@ -236,11 +235,9 @@
                     text-shadow: 2px 2px 0 #4f2912, -1px -1px 0 #4f2912, 1px -1px 0 #4f2912, -1px 1px 0 #4f2912, 1px 1px 0 #4f2912;
                 }
                 .members {
-                    /* width: 50%; */
                     float: left;
                 }
                 .waiting {
-                    /* width: 50%; */
                     float: right;
                     position: relative;
 
@@ -251,6 +248,7 @@
                         text-shadow: 2px 2px 0 #4e301c, -1px -1px 0 #4e301c, 1px -1px 0 #4e301c, -1px 1px 0 #4e301c, 1px 1px 0 #4e301c;
                     }
                     .bubble {
+                        color: #64462e;
                         width: 29px;
                         height: 26px;
                         background: url('../images/icons/bubble.png') no-repeat;
@@ -264,6 +262,24 @@
         }
         .list-members {
             margin-top: 20px;
+            padding: 0 0 60px;
+            max-height: 450px;
+            overflow-y: auto;
+            #mCSB_1_scrollbar_vertical {
+                width: 15px;
+            }
+            .mCSB_draggerRail {
+                background: url('../images/group/line-v.png') center no-repeat;
+                width: 5px;
+            }
+            .mCSB_dragger .mCSB_dragger_bar {
+                background-color: transparent;
+            }
+            #mCSB_1_dragger_vertical {
+                background: url('../images/group/dot.png') center no-repeat;
+                width: 15px;
+                height: 17px;
+            }
 
             ul {
                 margin: 0;
@@ -273,7 +289,6 @@
                 li {
                     padding: 10px 0;
                     border-top: 1px solid rgba( 0, 0, 0, 0.1 );
-                    /* border-bottom: 1px solid rgba( 0, 0, 0, 0.1 ); */
                     &:first-child {
                         border-top: 0;
                         padding-top: 0;
@@ -282,9 +297,41 @@
                     a {
                         display: block;
                         position: relative;
-                        &.member {
+                        &.waiting {
+                            opacity: 0.7;
+                            &:before {
+                                content: '';
+                                background: url('../images/icons/confirm-member.png') no-repeat;
+                                width: 50px;
+                                height: 40px;
+                                @include ab ( 50%, n, n, 25px );
+                                @include transform ( translateY(-50%) );
+                            }
                             &:hover {
-                                
+                                opacity: 1;
+                                &:before {
+                                    content: '';
+                                    background: url('../images/icons/confirm-member-active.png') no-repeat;
+                                }
+                            }
+                        }
+                        &.current {
+                            background-color: #d9ae77;
+                        }
+                        &.member {
+                            &:before {
+                                content: '';
+                                background: url('../images/icons/remove-member.png') no-repeat;
+                                width: 46px;
+                                height: 42px;
+                                @include ab ( 50%, n, n, 25px );
+                                @include transform ( translateY(-50%) );
+                            }
+                            &:hover {
+                                &:before {
+                                    content: '';
+                                    background: url('../images/icons/remove-member-active.png') no-repeat;
+                                }
                             }
                         }
                     }

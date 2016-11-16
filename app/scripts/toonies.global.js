@@ -69,6 +69,11 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             /*var scene = document.getElementById('scene');
             var parallax = new Parallax(scene);*/
 
+            $('.list-members').mCustomScrollbar({
+                theme: "rounded-dots",
+                scrollInertia: 400
+            });
+
             if ( $('.page--home').length ) {
                 toonies.Global.initModalYoutube();
             }
@@ -764,7 +769,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                         this.st.mainClass = this.st.el.attr('data-effect');
                     },
                     open: function() {
-                        $(window).trigger('resize');
+                        $('#modal--confirm').find('.heading').html($('.open-modal-confirm').attr('data-mess'));
                     }
                 },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
