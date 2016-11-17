@@ -384,6 +384,32 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     }
                 });
             }
+
+            if ( $('.tooltip-group').length ) {
+                $('.tooltip-group').tooltipster({
+                    trigger: 'custom',
+                    triggerOpen: {
+                        click: true,
+                        mouseenter: true,
+                        touchstart: true
+                    },
+                    triggerClose: {
+                        mouseleave: true,
+                        click: true,
+                        tap: true
+                    },
+                    content: $('#group-notification'),
+                    theme: 'tooltipster-custom-area',
+                    minWidth: '293',
+                    animation: 'grow',
+                    interactive: true,
+                    contentAsHTML: true,
+                    contentCloning: true,
+                    functionReady: function (instance, helper) {
+                        $(helper.tooltip).find('.desc').html( $(helper.origin).attr('data-description') );
+                    }
+                });
+            }
         },
 
         initShowMenuMobile: function() {
@@ -769,7 +795,9 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                         this.st.mainClass = this.st.el.attr('data-effect');
                     },
                     open: function() {
-                        $('#modal--confirm').find('.heading').html($('.open-modal-confirm').attr('data-mess'));
+                        $('#modal--confirm').find('.heading').html( $('.open-modal-confirm').attr('data-mess') );
+                        $('#modal--confirm').find('.confirm').text( $('.open-modal-confirm').attr('data-confirm') );
+                        $('#modal--confirm').find('.confirm').attr( 'href', $('.open-modal-confirm').attr('data-target') );
                     }
                 },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.

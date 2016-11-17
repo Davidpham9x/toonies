@@ -261,6 +261,15 @@
         </div>
     </div>
 
+    <!-- /* Group Notification */ -->
+    <div class="tooltip_templates">
+        <div class="group-notification" id="group-notification">
+            <div class="inner">
+                <p class="desc">Hãy săn thưởng thật nhiều và tích đủ số tiền thưởng là <strong>50,000,000</strong> toonies coin để khám phá tính năng hội nhóm này nhé!</p>
+            </div>
+        </div>
+    </div>
+
     <!-- /* Modal Player */ -->
     <div class="player">
         <a href="" title="" class="toogle"></a>
@@ -277,13 +286,37 @@
             					<img src="images/medal/1.png" alt="Thường dân">
             					<span class="title">Thường dân</span>
             				</p>
+                            <span class="score">22,000,0000</span>
                         </div>
         			</div>
         		</div>
-        		<div class="score_wrapper">
-        			<span class="title">Tiền thưởng hiện có</span>
-        			<span class="score">22,000,0000</span>
-        		</div>
+                <div class="group group--active clearfix"><!-- group--inactive: Dùng để chưa có điều kiện để tạo nhóm và gia nhập nhóm -->
+                    <div class="group__content group__create">
+                        <div class="table-cell">
+                            <!-- Trường hợp không đủ điều kiện tạo nhóm và gia nhập nhóm  -->
+                            <a href="" title="Tạo nhóm thợ săn của bạn" class="tooltip-group" data-description="Hãy săn thưởng thật nhiều và tích đủ số tiền thưởng là <strong>50,000,000</strong> toonies coin để khám phá tính năng hội nhóm này nhé!">
+                            <!-- Trường hợp đã đủ điều kiện tạo nhóm và gia nhập nhóm  -->
+                            <!-- <a href="" title="Tạo nhóm thợ săn của bạn"> -->
+                                <span class="hat"></span>
+                                <!-- <img src="images/treasure_hunt/hat.png" alt=""> -->
+                                <span class="title">Tạo nhóm thợ săn của bạn</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="group__content group__join">
+                        <div class="table-cell">
+                            <a href="" title="Gia nhập nhóm thợ săn">
+                                <span class="map"></span>
+                                <!-- <img src="images/treasure_hunt/map.png" alt=""> -->
+                                <span class="title">Gia nhập nhóm thợ săn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        		<!-- <div class="score_wrapper">
+                    <span class="title">Tiền thưởng hiện có</span>
+                    <span class="score">22,000,0000</span>
+                </div> -->
         		<div class="coin">
         			<span class="title">Các thẻ đã thu thập</span>
                     <div class="slider" id="slider-coins">

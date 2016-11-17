@@ -862,7 +862,7 @@
 			position: relative;
 
 			ul {
-				margin-bottom: 15px;
+				margin-bottom: 10px;
 			}
 			.title {
 				color: #4e301c;
@@ -1020,7 +1020,7 @@
 				vertical-align: middle;
 
 				.ranking {
-					margin: 10px 0 0;
+					margin: 0;
 					overflow: hidden;
 
 					img {
@@ -1033,6 +1033,13 @@
 						line-height: 30px;
 						text-transform: uppercase;
 					}
+				}
+				.score {
+					color: #ffd07d;
+					margin-top: 5px;
+					font-size: 30px;
+					-webkit-text-stroke: 1px #77472a;
+					text-shadow: 3px 3px 0 #77472a, -1px -1px 0 #77472a, 1px -1px 0 #77472a, -1px 1px 0 #77472a, 1px 1px 0 #77472a;
 				}
 				span {
 					display: block;
@@ -1086,6 +1093,98 @@
 				font-size: 30px;
 				margin-top: 15px;
 			}
+		}
+	}
+
+	/** Group Content **/
+	.group {
+		margin-top: 10px;
+		background: url('../images/treasure_hunt/line-h.png') center top no-repeat,
+		url('../images/treasure_hunt/line-h.png') center bottom no-repeat;
+
+		.group__content {
+			width: 50%;
+			height: 135px;
+			float: left;
+			display: table;
+			text-align: center;
+			padding: 0 20px;
+
+			span {
+				display: block;
+				&.title {
+					margin-top: 5px;
+
+					color: #4e301c;
+					font-size: 12px;
+					line-height: normal;
+					text-transform: uppercase;
+				}
+			}
+			&.group__create {
+				.hat {
+					background: url('../images/treasure_hunt/hat.png') no-repeat;
+					width: 112px;
+					height: 68px;
+					margin: 0 auto;
+				}
+				.flag {
+					background: url('../images/treasure_hunt/flag-group.png') no-repeat;
+					width: 78px;
+					height: 68px;
+					margin: 0 auto;
+				}
+			}
+			&.group__join {
+				position: relative;
+				&:before {
+					content: '';
+					background: url('../images/treasure_hunt/line-v.png') no-repeat;
+					width: 7px;
+					height: 135px;
+					@include ab ( 0, 0, n, n );
+				}
+				.map {
+					background: url('../images/treasure_hunt/map.png') no-repeat;
+					width: 87px;
+					height: 83px;
+					position: relative;
+					top: -15px;
+					margin: 0 auto;
+				}
+				span {
+					&.title {
+						margin-top: -15px;
+					}
+				}
+			}
+		}
+	}
+	.group--inactive {
+		opacity: 0.5;
+	}
+	.group--active {
+		.group__content {
+			&:hover {
+				span {
+					&.title {
+						color: #a35a28;
+					}
+				}
+				&.group__create {
+					.hat {
+						background: url('../images/treasure_hunt/hat-active.png') no-repeat;
+					}
+				}
+				&.group__join {
+					.map {
+						background: url('../images/treasure_hunt/map-active.png') no-repeat;
+					}
+				}
+			}
+		}
+		a {
+			display: block;
 		}
 	}
 
@@ -1312,6 +1411,28 @@
 		line-height: 17px;
 		height: 80px;
 
+	}
+}
+
+/** Tooltipster Custom Area **/
+.group-notification {
+	width: 100%;
+	height: 162px;
+	max-width: 238px;
+	background: url('../images/treasure_hunt/info-create-group.png') no-repeat;
+
+	.inner {
+		padding: 15px 40px;
+	}
+	.desc {
+		color: #4e301c;
+		font-size: 12px;
+		text-align: center;
+		font-family: $font-iCPL;
+
+		strong {
+			font-family: $font-iCPB;
+		}
 	}
 }
 
