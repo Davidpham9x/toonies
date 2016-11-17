@@ -796,8 +796,8 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     },
                     open: function() {
                         $('#modal--confirm').find('.heading').html( $('.open-modal-confirm').attr('data-mess') );
-                        $('#modal--confirm').find('.confirm').text( $('.open-modal-confirm').attr('data-confirm') );
-                        $('#modal--confirm').find('.confirm').attr( 'href', $('.open-modal-confirm').attr('data-target') );
+                        $('#modal--confirm').find('.confirm').attr( 'data-confirm', $('.open-modal-confirm').attr('data-confirm') );
+                        $('#modal--confirm').find('.confirm').attr( 'data-target', $('.open-modal-confirm').attr('data-target') );
                     }
                 },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.

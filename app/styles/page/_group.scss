@@ -297,42 +297,8 @@
                     a {
                         display: block;
                         position: relative;
-                        &.waiting {
-                            opacity: 0.7;
-                            &:before {
-                                content: '';
-                                background: url('../images/icons/confirm-member.png') no-repeat;
-                                width: 50px;
-                                height: 40px;
-                                @include ab ( 50%, n, n, 25px );
-                                @include transform ( translateY(-50%) );
-                            }
-                            &:hover {
-                                opacity: 1;
-                                &:before {
-                                    content: '';
-                                    background: url('../images/icons/confirm-member-active.png') no-repeat;
-                                }
-                            }
-                        }
                         &.current {
                             background-color: #d9ae77;
-                        }
-                        &.member {
-                            &:before {
-                                content: '';
-                                background: url('../images/icons/remove-member.png') no-repeat;
-                                width: 46px;
-                                height: 42px;
-                                @include ab ( 50%, n, n, 25px );
-                                @include transform ( translateY(-50%) );
-                            }
-                            &:hover {
-                                &:before {
-                                    content: '';
-                                    background: url('../images/icons/remove-member-active.png') no-repeat;
-                                }
-                            }
                         }
                     }
                     .wrap-avatar {
@@ -389,6 +355,33 @@
                                 font-size: 22px;
                                 -webkit-text-stroke: 1px #77472a;
                                 text-shadow: 3px 3px 0 #77472a, -1px -1px 0 #77472a, 1px -1px 0 #77472a, -1px 1px 0 #77472a, 1px 1px 0 #77472a;
+                            }
+                        }
+                    }
+                    .action {
+                        display: inline-block;
+                        vertical-align: middle;
+
+                        a {
+                            margin: 0 5px;
+                            display: inline-block;
+                            vertical-align: middle;
+                            text-indent: -99999px;
+                            &.approve {
+                                width: 50px;
+                                height: 40px;
+                                background: url('../images/icons/confirm-member.png') no-repeat;
+                                &:hover {
+                                    background: url('../images/icons/confirm-member-active.png') no-repeat;
+                                }
+                            }
+                            &.remove {
+                                width: 46px;
+                                height: 42px;
+                                background: url('../images/icons/remove-member.png') no-repeat;
+                                &:hover {
+                                    background: url('../images/icons/remove-member-active.png') no-repeat;
+                                }
                             }
                         }
                     }
