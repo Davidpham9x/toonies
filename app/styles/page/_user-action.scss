@@ -315,6 +315,12 @@
                 span {
                     color: #9f5232;
                 }
+                br {
+                    display: none;
+                    @include screen ( medium ) {
+                        display: block;
+                    }
+                }
             }
         }
     }

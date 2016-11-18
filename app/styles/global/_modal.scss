@@ -832,14 +832,15 @@
 
     >.outer {
         width: 100%;
-        background: url('../images/modal/background-modal--medium-mobile.png') center center no-repeat;
+        background: url('../images/modal/background-modal--group-mobile.png') center center no-repeat;
         background-size: 100% 100%;
+        min-height: 606px;
         height: auto;
-        padding-bottom: 60px;
         @include screen ( medium ) {
             background: url('../images/modal/background-modal--group.png') center center no-repeat;
             background-size: 100% 100%;
             height: 631px;
+            padding-bottom: 60px;
         }
 
         z-index: 3;
@@ -851,7 +852,10 @@
         height: 50px;
         max-width: 54px;
         background: url('../images/icons/close.png') no-repeat;
-        @include ab ( 45px, n, n, 5px );
+        @include ab ( 35px, n, n, 5px );
+        @include screen ( medium ) {
+            top: 45px;
+        }
 
         text-indent: -9999px;
     }
@@ -860,35 +864,56 @@
 .modal--group-find {
     .heading {
         width: 100%;
-        height: 72px;
+        height: 60px;
+        max-width: 200px;
         margin: 0 auto;
-        max-width: 240px;
-        background: url('../images/modal/heading-modal-find-group.png') no-repeat;
+        background: url('../images/modal/heading-modal-find-group.png') center center no-repeat;
+        background-size: 100% 100%;
+        @include screen ( medium ) {
+            height: 72px;
+            max-width: 240px;
+        }
 
         text-indent: -9999px;
     }
     >.outer {
         >.inner {
-            padding: 0 55px;
+            padding: 0 30px 0 20px;
+            @include screen ( medium ) {
+                padding: 0 55px;
+            }
         }
     }
     .desc {
         color: #4e301c;
-        font-size: 14px;
+        font-size: 12px;
         line-height: 1.6em;
 
         text-align: center;
         text-transform: uppercase;
+        @include screen ( medium ) {
+            font-size: 14px;
+            padding: 0 25px;
+        }
 
-        padding: 0 25px;
+        br {
+            display: none;
+            @include screen ( medium ) {
+                display: block;
+            }
+        }
     }
     .content {
-        width: 618px;
-        height: 350px;
+        width: 100%;
+        max-width: 618px;
+        min-height: 350px;
         margin: 0 auto;
+        padding: 0 5px;
         background: url('../images/modal/background-content-find-group.png') center center no-repeat;
         background-size: 100% 100%;
-        padding: 0 15px;
+        @include screen ( medium ) {
+            padding: 0 15px;
+        }
     }
     .search {
         ::-webkit-input-placeholder {
@@ -1003,26 +1028,31 @@
 
     .heading {
         width: 100%;
-        height: 72px;
         margin: 0 auto;
-        max-width: 240px;
-        background: url('../images/modal/heading-modal-create-group.png') no-repeat;
+        height: 60px;
+        max-width: 200px;
+        background: url('../images/modal/heading-modal-create-group.png') center center no-repeat;
+        background-size: 100% 100%;
 
         text-indent: -9999px;
+        @include screen ( medium ) {
+            height: 72px;
+            max-width: 240px;
+        }
     }
     >.outer {
         width: 100%;
-        background: url('../images/modal/background-modal--medium-mobile.png') center center no-repeat;
+        background: url('../images/modal/background-modal--group-mobile.png') center center no-repeat;
         background-size: 100% 100%;
         height: auto;
         @include screen ( medium ) {
             background: url('../images/modal/background-modal--group-create.png') center center no-repeat;
             background-size: 100% 100%;
             height: 599px;
+            padding-top: 90px;
         }
 
         z-index: 3;
-        padding-top: 90px;
         position: relative;
     }
     .content {
@@ -1062,7 +1092,6 @@
         }
     }
 }
-
 
 .modal--confirm {
     width: 100%;
