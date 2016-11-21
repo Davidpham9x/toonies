@@ -25,7 +25,22 @@
     }
     .pager {
         @media (max-width: 767px) {
-            display: none;
+            position: relative;
+            .number {
+                display: inline-block;
+            }
+            .prev, .next {
+                padding: 0;
+                font-size: 0;
+                position: absolute;
+                top: 0;
+            }
+            .prev {
+                left: 0;
+            }
+            .next {
+                right: 0;
+            }
         }
     }
     .slick-slider {
@@ -67,7 +82,10 @@
         width: 830px;
         color: #4e301c;
         @media (max-width: 767px) {
-            padding: 120px 10% 45px;
+            background: url(../images/leader-board/bg_mb.png) no-repeat;
+            background-size: 100% 100%;
+            padding: 50px 10% 30px;
+            margin: 30px auto 120px;
         }
     }
     .block-top {
@@ -80,6 +98,34 @@
             font-family: $font-iCPB;
             text-transform: uppercase;
             display: inline-block;
+        }
+
+        .select-wrapper {
+            background: url(../images/leader-board/tab-mb.png) no-repeat;
+            background-size: 100%;
+            width: 202px;
+            display: block;
+            min-height: 56px;
+            margin: 15px auto 0;
+            &:after {
+                content: '';
+                position: absolute;
+                background: url(../images/leader-board/arrow-dropdown.png) no-repeat;
+                width: 5px;
+                height: 10px;
+                top: 20px;
+                right: 10px;
+            }
+            select {
+                min-height: 50px;
+            }
+            span {
+                top: 15px;
+                left: 15px;
+                color: #ffd07d;
+                font-size: 14px;
+                text-transform: uppercase;
+            }
         }
     }
     .wrap-list {

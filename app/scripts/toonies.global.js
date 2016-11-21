@@ -631,6 +631,14 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     btn.removeClass('collapse').addClass('expand');
                 }
             });
+
+            $(window).resize(function() {
+                window.windowWidth = $(window).width();
+
+                if (window.windowWidth < 768) {
+                    playerContent.attr('style','');
+                }
+            });
         },
 
         initSliderCoinsProfile: function() {

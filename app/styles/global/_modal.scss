@@ -916,20 +916,34 @@
         }
     }
     .search {
+        position: relative;
         ::-webkit-input-placeholder {
            color: #ba916d;
+           line-height: 28px;
         }
 
         :-moz-placeholder { /* Firefox 18- */
            color: #ba916d;
+           line-height: 28px;
         }
 
         ::-moz-placeholder {  /* Firefox 19+ */
            color: #ba916d;
+           line-height: 28px;
         }
 
         :-ms-input-placeholder {
            color: #ba916d;
+           line-height: 28px;
+        }
+        .icon {
+            background: url(../images/icons/search.png) no-repeat center;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            top: 6px;
         }
     }
     .group__list {
@@ -948,11 +962,18 @@
                 }
 
                 a {
-                    width: 50%;
-                    float: right;
-                    display: block;
+                    width: 100%;
+                    display: inline-block;
+                    vertical-align: top;
+                    max-width: 270px;
+                    @include screen(medium){
+                        width: 50%;
+                        float: right;
+                    }
                     &:first-child {
-                        float: left;
+                        @include screen(medium){
+                            float: left;
+                        }
                     }
                 }
             }
@@ -1007,7 +1028,7 @@
             }
             .status {
                 display: inline-block;
-
+                float: right;
                 .outer {
                     height: 45px;
                     display: table;
@@ -1016,7 +1037,11 @@
                     height: 100%;
                     display: table-cell;
                     vertical-align: middle;
-                    padding: 0 10px;
+                    padding: 0 3px;
+                    @include screen (medium){
+                        padding: 0 10px;
+                    }
+
                 }
             }
         }

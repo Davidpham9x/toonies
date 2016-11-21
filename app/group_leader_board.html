@@ -8,11 +8,19 @@
         <h2>Top thợ săn xuất sắc</h2>
         <div class="wrap-content">
             <div class="block-top">
-                <ul class="tab">
+                <ul class="tab hide-for-small">
                     <li><a href="#" class="week">TOP 10 THỢ SĂN TUẦN</a></li>
                     <li><a href="#" class="month">TOP 10 THỢ SĂN THÁNG</a></li>
                     <li><a href="#" class="group active">Top các hội thợ săn</a></li>
                 </ul>
+                <div class="select-wrapper  show-for-small">
+                    <span>TOP 10 THỢ SĂN TUẦN</span>
+                    <select>
+                        <option>TOP 10 THỢ SĂN TUẦN</option>
+                        <option>TOP 10 THỢ SĂN THÁNG</option>
+                        <option>Top các hội thợ săn</option>
+                    </select>
+                </div>
             </div>
             <div class="field">
                 <label>xếp theo</label>
@@ -137,7 +145,12 @@
                     </div>
                 </div>
             </div>
-            <ul class="pager">
+            <ul class="pager show-for-small">
+                <li class="prev"><a href="#"><span class="icon"></span><span>Trở lại</span></a></li>
+                <li class="number">1 / 10</li>
+                <li class="next active"><a href="#"><span>xem tiếp</span><span class="icon"></span></a></li>
+            </ul>
+            <ul class="pager hide-for-small">
                 <li class="prev"><a href="#"><span class="icon"></span><span>Trở lại</span></a></li>
                 <li class="number"><a href="#">1</a></li>
                 <li class="number active"><a href="#">2</a></li>

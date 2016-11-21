@@ -801,11 +801,11 @@
 	/** Player Content **/
 	.player {
 		z-index: 5;
-		margin-top: 45px;
 		z-index: 1;
 		position: relative;
 		padding-bottom: 30px;
 		@include screen ( ipad ) {
+			margin-top: 45px;
 			right: -380px;
 			bottom: -110px;
 			margin-top: 0;
@@ -815,12 +815,16 @@
 		}
 
 		.outer {
-			background: url('../images/treasure_hunt/background-player.png') no-repeat;
-			background-size: 100% 100%;
+			background: url('../images/treasure_hunt/background-player.png') no-repeat center;
+			background-size: 115% 103%;
 			width: 100%;
 			height: auto;
-			padding-bottom: 35px;
+			padding-bottom: 50px;
 			max-width: 801px;
+			@include screen ( medium ) {
+				padding-bottom: 35px;
+				background-size: 100% 100%;
+			}
 		}
 		.toogle {
 			width: 246px;
@@ -860,6 +864,14 @@
 		.coin {
 			margin-top: 10px;
 			position: relative;
+			padding: 0 20px;
+			@include screen (medium) {
+				padding: 0;
+				.slider {
+					max-height: 300px;
+					overflow: hidden;
+				}
+			}
 
 			ul {
 				margin-bottom: 10px;
@@ -887,7 +899,10 @@
 			li {
 				width: 20%;
 				float: left;
-				padding: 0 10px;
+				padding: 0 3px;
+				@include screen (medium) {
+					padding: 0 10px;
+				}
 				&.active {
 					img {
 						filter: none;
@@ -906,24 +921,45 @@
 			border: none;
 			cursor: pointer;
         	background: none;
-			bottom: 12px;
+			bottom: 50%;
 			position: absolute;
+            @include screen(medium){
+				bottom: 12px;
+            }
 			&.slick-prev {
-				left: 10px;
+				left: -30px;
+	            @include screen(medium){
+					left: 10px;
+	            }
 				.icon {
-		            background: url('../images/profile/left.png') no-repeat;
+		            background: url('../images/profile/left_mb.png') no-repeat;
 		            background-size: 100% 100%;
-		            width: 8px;
-		            height: 18px;
+		            width: 19px;
+		            height: 41px;
+		            @include screen(medium){
+			            background: url('../images/profile/left.png') no-repeat;
+			            background-size: 100% 100%;
+			            width: 8px;
+			            height: 18px;
+		            }
 		        }
 			}
 			&.slick-next {
-				right: 10px;
+				right: -30px;
+	            @include screen(medium){
+					right: 10px;
+	            }
 				.icon {
-			        background: url('../images/profile/right.png') no-repeat;
-			        background-size: 100% 100%;
-			        width: 8px;
-		            height: 18px;
+		            background: url('../images/profile/right_mb.png') no-repeat;
+		            background-size: 100% 100%;
+		            width: 19px;
+		            height: 41px;
+		            @include screen(medium){
+				        background: url('../images/profile/right.png') no-repeat;
+				        background-size: 100% 100%;
+				        width: 8px;
+			            height: 18px;
+			        }
 			    }
 			}
 		}
@@ -947,22 +983,27 @@
 	            background: url('../images/profile/num-bg.png') no-repeat;
 	            background-size: 100% 100%;
 	            padding: 0;
-	            width: 48px;
-	            height: 45px;
-	            display: block;
-	        	cursor: pointer;
-	            line-height: 45px;
-
+			    width: 44px;
+			    height: 42px;
+			    display: block;
+			    cursor: pointer;
+			    line-height: 40px;
 	            color: #fff;
 	            font-size: 15px;
 	            font-family: $font-iCPB;
 	            text-align: center;
+	            @include screen (medium){
+		            width: 48px;
+		            height: 45px;
+		            line-height: 45px;
+	            }
 	        }
 		}
 	}
 	.player__inner {
 		position: relative;
 		padding: 30px 3% 0 5%;
+		text-align: center;
 		@include screen ( ipad ) {
 			max-width: 55%;
 			padding: 20px 20px 0 60px;
@@ -985,7 +1026,10 @@
 	}
 	.player__info {
 		overflow: hidden;
-
+		@media (max-width: 999px) {
+		    display: inline-block;
+		    min-width: 320px;
+		}
 		.avatar {
             background: url(../images/global/avatar.png) center top no-repeat;
             background-size: 100%;
@@ -1018,6 +1062,7 @@
 				height: 100%;
 				display: table-cell;
 				vertical-align: middle;
+				text-align: left;
 
 				.ranking {
 					margin: 0;
@@ -1108,13 +1153,20 @@
 			float: left;
 			display: table;
 			text-align: center;
-			padding: 0 20px;
+			padding: 0 15px;
+			@include screen (medium) {
+				padding: 0 20px;
+			}
+
+			a {
+				text-align: center;
+				display: inline-block;
+			}
 
 			span {
 				display: block;
 				&.title {
 					margin-top: 5px;
-
 					color: #4e301c;
 					font-size: 12px;
 					line-height: normal;
@@ -1122,6 +1174,9 @@
 				}
 			}
 			&.group__create {
+				@include respond-to(ipad){
+					text-align: right;
+				}
 				.hat {
 					background: url('../images/treasure_hunt/hat.png') no-repeat;
 					width: 112px;
@@ -1137,6 +1192,9 @@
 			}
 			&.group__join {
 				position: relative;
+				@include respond-to(ipad){
+					text-align: left;
+				}
 				&:before {
 					content: '';
 					background: url('../images/treasure_hunt/line-v.png') no-repeat;

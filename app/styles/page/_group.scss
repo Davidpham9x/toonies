@@ -209,15 +209,53 @@
             }
         }
         .group__members {
+
+            @include respond-to(mobile){
+                position: relative;
+                &:before {
+                    content: '';
+                    background: url('../images/group/line-v.png') center center no-repeat;
+                    background-size: 100% 100%;
+                    width: 5px;
+                    height: 100%;
+                    @include ab (0, -2%, n, n );
+                }
+                &:after {
+                    content: '';
+                    background: url('../images/group/line-v.png') center center no-repeat;
+                    background-size: 100% 100%;
+                    width: 5px;
+                    height: 100%;
+                    @include ab (0, n, n, -2% );
+                }
+            }
             .statistic {
                 position: relative;
+                @include respond-to(mobile){
+                    padding: 20px 0 25px;
+                }
                 &:before {
                     content: '';
                     background: url('../images/group/line.png') center center no-repeat;
                     background-size: 100% 100%;
-                    width: 542px;
+                    width: 103.5%;
                     height: 8px;
-                    @include ab ( n, -5px, -10px, n );
+                    @include ab ( n, -2%, -15px, n );
+                    @include screen (medium){
+                        width: 100%;
+                        @include ab ( n, -5px, -10px, n );
+                    }
+                }
+                &:after {
+                    @include respond-to(mobile){
+                        content: '';
+                        background: url('../images/group/line.png') center center no-repeat;
+                        background-size: 100% 100%;
+                        width: 103.5%;
+                        height: 8px;
+                        @include ab ( -3px , -2% , n , n );
+                    }
+
                 }
 
                 span {
@@ -236,6 +274,25 @@
                 }
                 .members {
                     float: left;
+                    @include respond-to(mobile){
+                        margin-left: 15px;
+                    }
+                    .numbers {
+                        @include respond-to(mobile){
+                            display: none;
+                        }
+                    }
+                    &:after {
+                        @include respond-to(mobile){
+                            content: '';
+                            position: absolute;
+                            left: 50%;
+                            border-left: 1px solid;
+                            width:1px;
+                            height: 25px;
+                            top: 18px;
+                        }
+                    }
                 }
                 .waiting {
                     float: right;
@@ -261,10 +318,25 @@
             }
         }
         .list-members {
-            margin-top: 20px;
-            padding: 0 0 60px;
+            margin:20px 0 58px;
+            padding: 20px 0px 30px 5px;
             max-height: 450px;
             overflow-y: auto;
+            text-align: left;
+            @include screen(medium){
+                padding: 0 0 60px;
+                margin-bottom: 0;
+            }
+            &:after {
+                @include respond-to(mobile) {
+                    content: '';
+                    background: url('../images/group/line.png') center center no-repeat;
+                    background-size: 100% 100%;
+                    width: 103.5%;
+                    height: 8px;
+                    @include ab ( n, -2%, -3px, n );
+                }
+            }
             #mCSB_1_scrollbar_vertical {
                 width: 15px;
             }
@@ -333,6 +405,10 @@
                         vertical-align: middle;
                         font-size: 12px;
                         text-transform: uppercase;
+                        text-align: left;
+                        @include respond-to(mobile){
+                            border-bottom: 2px solid #ddbe90; 
+                        }
 
                         span, img, strong {
                             display: inline-block;
@@ -341,6 +417,9 @@
                         }
                         strong {
                             color: #4e301c;
+                            @include respond-to(mobile){
+                                display: none;
+                            }
                         }
                         .name {
                             .name {
@@ -352,35 +431,68 @@
 
                             .money {
                                 color: #ffd07d;
-                                font-size: 22px;
+                                font-size: 18px;
                                 -webkit-text-stroke: 1px #77472a;
                                 text-shadow: 3px 3px 0 #77472a, -1px -1px 0 #77472a, 1px -1px 0 #77472a, -1px 1px 0 #77472a, 1px 1px 0 #77472a;
+                                @include screen(small){
+                                    font-size: 22px;
+                                }
                             }
                         }
                     }
                     .action {
                         display: inline-block;
                         vertical-align: middle;
+                        @include respond-to(mobile){
+                            margin-left: 85px;
+                        }
+                        @include screen(ipad){
+                            margin-top: 20px;
+                            float: right;
+                        }
 
                         a {
                             margin: 0 5px;
-                            display: inline-block;
+                            display: block;
                             vertical-align: middle;
-                            text-indent: -99999px;
+                            padding-left: 30px;
+                            color: #4e301c;
+                            @include screen(small){
+                                display: inline-block;
+                                text-indent: -99999px;
+                            }
                             &.approve {
-                                width: 50px;
-                                height: 40px;
-                                background: url('../images/icons/confirm-member.png') no-repeat;
+                                background: url('../images/icons/confirm-member-active.png') no-repeat;
+                                background-size: 22px 20px;
+                                @include screen(small){
+                                    background: url('../images/icons/confirm-member.png') no-repeat;
+                                    background-size: 100% 100%;
+                                    width: 50px;
+                                    height: 40px;
+                                }
                                 &:hover {
                                     background: url('../images/icons/confirm-member-active.png') no-repeat;
+                                    background-size: 22px 20px;
+                                    @include screen(small){
+                                        background-size: 100% 100%;
+                                    }
                                 }
                             }
                             &.remove {
-                                width: 46px;
-                                height: 42px;
-                                background: url('../images/icons/remove-member.png') no-repeat;
+                                background: url('../images/icons/remove-member-active.png') no-repeat;
+                                background-size: 22px 20px;
+                                @include screen(small){
+                                    background: url('../images/icons/remove-member.png') no-repeat;
+                                    background-size: 100% 100%;
+                                    width: 46px;
+                                    height: 42px;
+                                }
                                 &:hover {
                                     background: url('../images/icons/remove-member-active.png') no-repeat;
+                                    background-size: 22px 20px;
+                                    @include screen(small){
+                                        background-size: 100% 100%;
+                                    }
                                 }
                             }
                         }

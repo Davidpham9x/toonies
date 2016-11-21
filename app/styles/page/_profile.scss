@@ -205,17 +205,34 @@
             }
         }
         .upload {
-            width: 68%;
-            @media (max-width: 767px) {
-                display: none;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: left;
+            @include screen( medium) {
+                margin-bottom: 0;
+                width: 68%;
             }
+
             h3 {
                 font-size: 17px;
+                @include respond-to( mobile) {
+                    text-align: center;
+                }
             }
             p {
                 font-size: 12px;
                 margin: 0;
                 font-family: $font-iCPL;
+            }
+            .group__info {
+                @include respond-to(mobile){
+                    border-bottom: none;
+                    li {
+                        width: 100%;
+                        text-align: left;
+                        border-left: none;
+                    }
+                }
             }
         }
         .box-info,
