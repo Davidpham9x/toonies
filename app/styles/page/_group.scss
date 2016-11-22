@@ -45,7 +45,7 @@
                 @include opacity(1);
             }
         }
-        button {
+        button,a {
             border: none;
             background: none;
             background: url('../images/profile/num-bg.png') no-repeat;
@@ -55,7 +55,7 @@
             height: 43px;
             display: block;
             cursor: pointer;
-            line-height: 23px;
+            line-height: 43px;
 
             color: #fff;
             font-size: 12px;

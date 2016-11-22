@@ -266,8 +266,17 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             toonies.Global.initExpandCollapsePlayer();
             toonies.Global.initShowHideInfoUser();
+            // toonies.Global.initConfirmFull();
         },
 
+        initConfirmFull: function() {
+            $.magnificPopup.open({
+              items: {
+                src: '#modal--confirm-full',
+                type: 'inline'
+              }
+            });
+        },
         initFormElements: function() {
             $('input, textarea').placeholder();
 
@@ -747,7 +756,12 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
             });
-
+            // $.magnificPopup.open({
+            //   items: {
+            //     src: '#modal--scan-waiting',
+            //     type: 'inline'
+            //   }
+            // });
             $('.modal--intro').find('.close').off('click').on('click', function(e) {
                 e.preventDefault();
 
