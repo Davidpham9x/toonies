@@ -277,6 +277,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
               }
             });
         },
+
         initFormElements: function() {
             $('input, textarea').placeholder();
 

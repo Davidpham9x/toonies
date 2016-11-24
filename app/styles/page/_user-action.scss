@@ -388,6 +388,13 @@
             margin-top: 20px;
             text-align: center;
 
+            .g-recaptcha {
+                @include transform ( scale(0.85) );
+                transform-origin: 0 0;
+                @include screen ( xs ) {
+                    transform: none;
+                }
+            }
             .g-recaptcha > div:first-child {
                 margin: 0 auto;
             }

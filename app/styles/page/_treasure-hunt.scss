@@ -862,9 +862,9 @@
 			}
 		}
 		.coin {
-			margin-top: 10px;
-			position: relative;
+			margin: 10px 0;
 			padding: 0 20px;
+			position: relative;
 			@include screen (medium) {
 				padding: 0;
 				.slider {
@@ -924,7 +924,7 @@
 			bottom: 50%;
 			position: absolute;
             @include screen(medium){
-				bottom: 12px;
+				bottom: 20px;
             }
 			&.slick-prev {
 				left: -30px;
@@ -1025,11 +1025,11 @@
 		}
 	}
 	.player__info {
-		overflow: hidden;
 		@media (max-width: 999px) {
 		    display: inline-block;
 		    min-width: 320px;
 		}
+
 		.avatar {
             background: url(../images/global/avatar.png) center top no-repeat;
             background-size: 100%;
@@ -1050,6 +1050,15 @@
                 max-width: 85%;
                 position: absolute;
                 @include border-radius(50%);
+            }
+            .leader {
+            	width: 66px;
+            	height: 38px;
+            	background: url('../images/treasure_hunt/leader.png') no-repeat;
+            	text-indent: -9999px;
+            	margin-left: 6px;
+            	@include ab ( n, 50%, -10px, n );
+            	@include transform ( translateX(-50%) );
             }
         }
 		.info {
@@ -1152,8 +1161,9 @@
 			height: 135px;
 			float: left;
 			display: table;
-			text-align: center;
 			padding: 0 15px;
+			text-align: center;
+			@include opacity(0.5);
 			@include screen (medium) {
 				padding: 0 20px;
 			}
@@ -1171,6 +1181,9 @@
 					font-size: 12px;
 					line-height: normal;
 					text-transform: uppercase;
+				}
+				&.active {
+					opacity: 1;
 				}
 			}
 			&.group__create {
@@ -1215,6 +1228,9 @@
 						margin-top: -15px;
 					}
 				}
+			}
+			&.active {
+				opacity: 1;
 			}
 		}
 	}

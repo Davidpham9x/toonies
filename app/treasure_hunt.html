@@ -275,9 +275,10 @@
         <a href="" title="" class="toogle"></a>
         <div class="outer">
         	<div class="player__inner">
-        		<div class="player__info">
+        		<div class="player__info clearfix">
         			<div class="avatar">
         				<img src="images/global/img-ava.jpg" alt="">
+                        <span class="leader">Trưởng nhóm</span><!-- Chỉ hiển thị khi user đó là Trưởng Nhóm -->
         			</div>
         			<div class="info">
                         <div class="inner">
@@ -291,23 +292,23 @@
         			</div>
         		</div>
                 <div class="group group--active clearfix"><!-- group--inactive: Dùng để chưa có điều kiện để tạo nhóm và gia nhập nhóm -->
-                    <div class="group__content group__create">
+                    <div class="group__content active group__create">
                         <div class="table-cell">
                             <!-- Trường hợp không đủ điều kiện tạo nhóm và gia nhập nhóm  -->
                             <a href="javascript:void(0)" title="Tạo nhóm thợ săn của bạn" class="tooltip-group" data-description="Hãy săn thưởng thật nhiều và tích đủ số tiền thưởng là <strong>50,000,000</strong> toonies coin để khám phá tính năng hội nhóm này nhé!">
+                            <span class="hat active"></span>
+                            <span class="title">Tạo nhóm thợ săn<br /> của bạn</span>
                             <!-- Trường hợp đã đủ điều kiện tạo nhóm và gia nhập nhóm  -->
-                            <!-- <a href="" title="Tạo nhóm thợ săn của bạn"> -->
-                                <span class="hat"></span>
-                                <!-- <img src="images/treasure_hunt/hat.png" alt=""> -->
-                                <span class="title">Tạo nhóm thợ săn<br /> của bạn</span>
+                            <!-- <a href="" title="Tạo nhóm thợ săn của bạn">
+                                <span class="flag active"></span>
+                                <span class="title">Đến trang nhóm thợ săn<br /> của bạn</span> -->
                             </a>
                         </div>
                     </div>
                     <div class="group__content group__join">
                         <div class="table-cell">
                             <a href="" title="Gia nhập nhóm thợ săn">
-                                <span class="map"></span>
-                                <!-- <img src="images/treasure_hunt/map.png" alt=""> -->
+                                <span class="map active"></span>
                                 <span class="title">Gia nhập nhóm<br /> thợ săn</span>
                             </a>
                         </div>

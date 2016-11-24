@@ -1,7 +1,26 @@
 .page--group {
     .paging {
-        margin-top: 10px;
+        margin: 10px 0;
         text-align: center;
+        position: relative;
+
+        .arrow {
+            top: 50%;
+            position: absolute;
+            @include transform ( translateY(-50%) );
+            &.arrow--left {
+                left: 10px;
+                width: 9px;
+                height: 18px;
+                background: url('../images/profile/left.png') no-repeat;
+            }
+            &.arrow--right {
+                right: 10px;
+                width: 9px;
+                height: 18px;
+                background: url('../images/profile/right.png') no-repeat;
+            }
+        }
     }
     .slick-arrow {
         border: none;
@@ -45,7 +64,7 @@
                 @include opacity(1);
             }
         }
-        button,a {
+        button, a, .empty {
             border: none;
             background: none;
             background: url('../images/profile/num-bg.png') no-repeat;
