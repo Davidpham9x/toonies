@@ -37,7 +37,7 @@
 		.tagline {
 			opacity: 0;
 			width: 100%;
-			max-width: 393px;
+			max-width: 490px;
 			margin: 0 auto;
 			@include transform ( scale(0) );
 			@include transition ( all .3s linear );
@@ -161,7 +161,7 @@
 		@include ab ( n, 50%, 12%, n );
 		opacity: 0;
 		width: 100%;
-		max-width: 347px;
+		max-width: 319px;
 		@include transform ( scale(0.5) );
 		@include transition ( all .5s ease-in-out );
 		&.animate {
