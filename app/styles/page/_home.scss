@@ -158,7 +158,7 @@
 	/** Toonies Snack **/
 	.toonies-snack {
 		z-index: 3;
-		@include ab ( n, 50%, 12%, n );
+		@include ab ( n, -10%, 12%, n );
 		opacity: 0;
 		width: 100%;
 		max-width: 319px;
@@ -166,18 +166,33 @@
 		@include transition ( all .5s ease-in-out );
 		&.animate {
 			opacity: 1;
-			@include transform ( scale(1) translateX(-50%) );
+			@include transform ( scale(1) );
 			@include screen ( medium ) {
-				left: 0;
+				left: 5%;
 				@include transform (scale(1));
 			}
 		}
 		@include screen ( medium ) {
 			z-index: 0;
-			bottom: -5%;
+			bottom: 0;
 		}
 		@include screen ( hd ) {
 			left: 5%;
+		}
+	}
+	.toonies-snack--right {
+		max-width: 215px;
+		left: auto;
+		right: 0%;
+		&.animate {
+			@include screen ( medium ) {
+				left: auto;
+				right: 5%;
+			}
+		}
+		@include screen ( hd ) {
+			left: auto;
+			right: 5%;
 		}
 	}
 
