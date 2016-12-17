@@ -61,14 +61,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initSliderCoinsProfile();
             this.initHandleWebsiteResize();
 
-            /*$(document.body).click(function (e) {
-                console.log(e.target);
-                alert(e);
-            });*/
-
-            /*var scene = document.getElementById('scene');
-            var parallax = new Parallax(scene);*/
-
             $('.list-members').mCustomScrollbar({
                 theme: "rounded-dots",
                 scrollInertia: 400
@@ -76,6 +68,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             if ( $('.page--home').length ) {
                 toonies.Global.initModalYoutube();
+                /*toonies.Global.initModalPrizes();*/
             }
 
             if ( $('.page--group').length ) {
@@ -231,30 +224,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 toonies.Global.initDragBackgroundTreasure();
             }
 
-            /*$(document).on('memory_game_start', resultHandlerStartGame);
-            // newMessage event handler
-            function resultHandlerStartGame(e) {
-                alert('play');
-            }
-
-            $(document).on('memory_game_end', resultHandlerEndGame);
-            // newMessage event handler
-            function resultHandlerEndGame(e) {
-                alert('end');
-            }
-
-            $(document).on('memory_game_cancel_replay_game', resultHandlerReplayGame);
-            // newMessage event handler
-            function resultHandlerReplayGame(e) {
-                alert('replay');
-            }
-
-            $(document).on('memory_game_cancel_new_game', resultHandlerNewGame);
-            // newMessage event handler
-            function resultHandlerNewGame(e) {
-                alert('new game');
-            }*/
-
             if ( $('.star-1').length && $('.star-2').length && $('.star-3').length && $('.star-4').length ) {
                 setInterval(function () {
                     $('.star-1').fadeOut(150).delay(2000).fadeIn(300).fadeOut(150).delay(1254);
@@ -266,7 +235,6 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             toonies.Global.initExpandCollapsePlayer();
             toonies.Global.initShowHideInfoUser();
-            // toonies.Global.initConfirmFull();
         },
 
         initConfirmFull: function() {
@@ -757,12 +725,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
             });
-            // $.magnificPopup.open({
-            //   items: {
-            //     src: '#modal--scan-waiting',
-            //     type: 'inline'
-            //   }
-            // });
+
             $('.modal--intro').find('.close').off('click').on('click', function(e) {
                 e.preventDefault();
 
@@ -954,6 +917,46 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                     }
                 },
                 midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+        },
+
+        initModalPrizes: function() {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--prizes'
+                },
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.mainClass = 'mfp-move-from-top';
+                    },
+                    open: function () {
+                        var tabs = $('#modal--prizes').find('.tabs'),
+                            menuTabs = tabs.find('li'),
+                            tabsContent = tabs.find('.tabs__content');
+
+                        menuTabs.each(function ( idx, elm ) {
+                            var _this = $(this);
+                                _this.off('click').on('click', function (e) {
+                                    e.preventDefault();
+
+                                    menuTabs.removeClass('active');
+                                    _this.addClass('active');
+
+                                    tabsContent.addClass('hidden');
+                                    tabsContent.eq(idx).removeClass('hidden');
+                                });
+                        });
+                    }
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('#modal--prizes').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                toonies.Global.initCloseAllModal();
             });
         },
 

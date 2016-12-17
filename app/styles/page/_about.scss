@@ -178,6 +178,15 @@
             .prize {
                 background: url(../images/about/tab-1.png) no-repeat;
                 background-size: 100%;
+                position: relative;
+                &:before {
+                    content: '';
+                    background: url('../images/header/new.png') no-repeat;
+                    width: 61px;
+                    height: 49px;
+                    @include ab ( -20px, -20px, n, n );
+                    @include transform ( rotate(-20deg) );
+                }
             }
             .tnc {
                 background: url(../images/about/tab-2.png) no-repeat;
