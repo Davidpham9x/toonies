@@ -61,6 +61,12 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             this.initSliderCoinsProfile();
             this.initHandleWebsiteResize();
 
+            if ( $('#prizes-gold').length ) {
+                $('#prizes-gold').find('.close').click(function () {
+                    $('#prizes-gold').hide();
+                });
+            }
+
             $('.list-members').mCustomScrollbar({
                 theme: "rounded-dots",
                 scrollInertia: 400
@@ -84,7 +90,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             }
 
             if ($('.page--scan').length) {
-                if ( isSafari || isOpera || isMobile.isiOS() || isMobile.isBlackBerry() || isMobile.isOpera() ) {
+                if ( isSafari || isOpera ) {
                     toonies.Global.initModalAlert();
                 } else {
                     toonies.Global.initCameraScan();
