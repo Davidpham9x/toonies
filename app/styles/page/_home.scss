@@ -198,10 +198,13 @@
 		}
 	}
 	.toonies-snack-mobile {
-		@include ab ( n, 50%, 17%, n );
-		@include transform ( translateX(-50%) );
 		&.animate {
 			@include transform ( translateX(-50%) );
+		}
+		@include ab ( n, 50%, 17%, n );
+		/* @include transform ( translateX(-50%) ); */
+		@include screen ( medium ) {
+			display: none;
 		}
 	}
 
@@ -276,6 +279,8 @@
 				width: 100%;
 				height: 100%;
 				padding: 0 10px;
+				z-index: 2;
+				position: relative;
 
 				.embed-container {
 					padding: 0;

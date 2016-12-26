@@ -26,10 +26,14 @@
     }
     .content-leaderboard--new {
         .wrap-content {
-            background: url(../images/leader-board/bg_new.png) no-repeat;
             width: 832px;
+            min-height: 1101px;
+            padding: 50px 5% 45px;
+            background: url(../images/leader-board/bg_new.png) no-repeat;
         }
         .wrap-list {
+            margin: 45px 0;
+
             .col {
                 width: 100%;
                 float: none;
@@ -37,21 +41,71 @@
                 .wrap-avatar {
                     width: 20%;
                     float: left;
+                    &.wrap-avatar-1 {
+                        .inner {
+                            width: 263px;
+                            height: 261px;
+                            background: url('../images/leader-board/circle-1.png') no-repeat;
+                        }
+                    }
+                    &.wrap-avatar-2 {
+                        .inner {
+                            width: 263px;
+                            height: 261px;
+                            background: url('../images/leader-board/circle-2.png') no-repeat;
+                        }
+                    }
+                    &.wrap-avatar-3 {
+                        .inner {
+                            width: 263px;
+                            height: 261px;
+                            background: url('../images/leader-board/circle-3.png') no-repeat;
+                        }
+                    }
+
+                    img {
+                        top: 55px;
+                        left: -20px;
+                        position: relative;
+                        @include border-radius ( 50% );
+                    }
                 }
                 .info {
                     width: 80%;
                     float: left;
+                    padding-left: 80px;
 
+                    p {
+                        display: block;
+                        text-align: left;
+                        position: relative;
+                        &:first-child {
+                            margin-top: 0;
+                        }
+                    }
+                    .coin {
+                        img, span {
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+                        img {
+                            max-width: 30px;
+                        }
+                    }
                     .moments {
                         ul {
-                            margin: 0 -5px;
+                            margin: 0;
                             padding: 0;
+                            text-align: left;
                             list-style: none;
 
                             li {
-                                display: inline-block;
-                                vertical-align: middle;
+                                width: 25%;
+                                float: left;
                                 padding: 0 5px;
+                                &:first-child {
+                                    padding-left: 0;
+                                }
 
                                 .inner {
                                     position: relative;
