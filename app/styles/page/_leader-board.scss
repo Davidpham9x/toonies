@@ -125,11 +125,25 @@
                         }
                         span {
                             margin-left: 5px;
+                            color: #4e301c;
+                            font-size: 20px;
+                            font-family: $font-iCPB;
                         }
                     }
                     .coin {
                         img {
                             max-width: 30px;
+                        }
+                    }
+                    .money, .coin {
+                        span {
+                            font-size: 13px;
+                            &:last-child {
+                                color: #ffd07d;
+                                font-size: 22px;
+                                -webkit-text-stroke: 1px #77472a;
+                                text-shadow: 3px 3px 0 #77472a, -1px -1px 0 #77472a, 1px -1px 0 #77472a, -1px 1px 0 #77472a, 1px 1px 0 #77472a;
+                            }
                         }
                     }
                     .moments {

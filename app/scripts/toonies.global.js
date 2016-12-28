@@ -74,7 +74,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             if ( $('.page--home').length ) {
                 toonies.Global.initModalYoutube();
-                toonies.Global.initModalUpdate();
+                /*toonies.Global.initModalUpdate();*/
                 /*toonies.Global.initModalPrizes();*/
             }
 

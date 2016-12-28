@@ -1108,7 +1108,7 @@
                     background: url('../images/buttons/button-yellow--register.png') no-repeat;
                     width: 302px;
                     height: 77px;
-                    &:hover { 
+                    &:hover {
                         background: url('../images/buttons/button-grey--register.png') no-repeat;
                     }
                 }
@@ -1227,7 +1227,7 @@
         z-index: 3;
         position: relative;
 
-        .inner {
+        >.inner {
             text-align: center;
             padding: 30px 75px;
             text-transform: uppercase;
@@ -1343,11 +1343,136 @@
     }
 
     >.outer {
+        padding-bottom: 50px;
+        >.inner {
+            padding: 30px;
+            @include screen ( medium ) {
+                padding: 30px 75px;
+            }
+        }
         .heading {
             height: 72px;
             max-width: 240px;
             background: url('../images/modal/heading-modal-update.png') center center no-repeat;
             background-size: 100% 100%;
+        }
+        hr {
+            border-top: 1px solid rgba( 78, 48, 28, 0.1 );
+        }
+        .user {
+            .wrap-avatar {
+                    @include screen ( medium ) {
+                        width: 32%;
+                        float: left;
+                    }
+
+                    .inner {
+                        width: 100%;
+                        max-width: 195px;
+                        margin: 0 auto;
+                        height: 195px;
+                        position: relative;
+                        background: url('../images/leader-board/circle-1.png') center center no-repeat;
+
+                        .score {
+                            color: #ffd07d;
+                            font-size: 25px;
+                            font-family: $font-iCPB;
+                            -webkit-text-stroke: 1px #77472a;
+                            text-shadow: 3px 3px 0 #77472a, -1px -1px 0 #77472a, 1px -1px 0 #77472a, -1px 1px 0 #77472a, 1px 1px 0 #77472a;
+                            @include ab ( n, 50%, 0, n );
+                            @include transform ( translateX(-50%) );
+                        }
+                    }
+                    img {
+                        top: 25px;
+                        left: 0;
+                        position: relative;
+                        max-width: 145px;
+                        @include border-radius ( 50% );
+                    }
+                }
+                .info {
+                    margin-top: 20px;
+                    @include screen ( medium ) {
+                        width: 67%;
+                        float: left;
+                        padding-left: 20px;
+                    }
+
+                    p {
+                        display: block;
+                        text-align: left;
+                        position: relative;
+                        margin-top: 1em;
+                        &:first-child {
+                            margin-top: 0;
+                        }
+
+                        img, span {
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+                        span {
+                            color: #4e301c;
+                            font-size: 20px;
+                            font-family: $font-iCPB;
+                            margin-left: 5px;
+
+                            text-transform: none;
+                        }
+                    }
+                    .coin {
+                        img {
+                            max-width: 30px;
+                        }
+                    }
+                    .name {
+                        span {
+                            text-transform: uppercase;
+                        }
+                    }
+                    .money, .coin {
+                        span {
+                            &:last-child {
+                                color: #ffd07d;
+                                -webkit-text-stroke: 1px #77472a;
+                                text-shadow: 3px 3px 0 #77472a, -1px -1px 0 #77472a, 1px -1px 0 #77472a, -1px 1px 0 #77472a, 1px 1px 0 #77472a;
+                            }
+                        }
+                    }
+                }
+        }
+        .prizes__update {
+            margin-top: 30px;
+
+            .guide, .gift {
+                cursor: pointer;
+                text-align: center;
+                @include screen ( medium ) {
+                    width: 45%;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                &:hover {
+                    span {
+                        color: #ffd234;
+                        -webkit-text-stroke: 1px #4e301c;
+                        text-shadow: 3px 3px 0 #4e301c, -1px -1px 0 #4e301c, 1px -1px 0 #4e301c, -1px 1px 0 #4e301c, 1px 1px 0 #4e301c;
+                    }
+                }
+
+                .img, span {
+                    display: block;
+                }
+                span {
+                    margin-top: 10px;
+                    font-family: $font-iCPB;
+                    color: #c4ad8a;
+                    -webkit-text-stroke: 1px #4e301c;
+                    text-shadow: 3px 3px 0 #4e301c, -1px -1px 0 #4e301c, 1px -1px 0 #4e301c, -1px 1px 0 #4e301c, 1px 1px 0 #4e301c;
+                }
+            }
         }
     }
 }
