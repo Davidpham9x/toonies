@@ -1303,6 +1303,55 @@
     }
 }
 
+.modal--update {
+    @extend .modal--prizes;
+    &:before {
+        content: '';
+        width: 265px;
+        height: 406px;
+        background: url('../images/modal/snack.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 25%, 10%, n, n );
+        @include transition ( all .5s ease-in-out );
+        display: none;
+        @include screen ( medium ) {
+            display: block;
+        }
+    }
+    &:after {
+        content: '';
+        width: 195px;
+        height: 686px;
+        background: url('../images/modal/characters--sanji.png') no-repeat;
+
+        z-index: 0;
+        @include ab ( 20%, n, n, 10% );
+        @include transition ( all .5s ease-in-out );
+        display: none;
+        @include screen ( medium ) {
+            display: block;
+        }
+    }
+    &.animate {
+        &:before {
+            left: -20%;
+        }
+        &:after {
+            right: -15%;
+        }
+    }
+
+    >.outer {
+        .heading {
+            height: 72px;
+            max-width: 240px;
+            background: url('../images/modal/heading-modal-update.png') center center no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+}
+
 @include keyframes(spin) {
     0% {
         @include transform (rotate(0));

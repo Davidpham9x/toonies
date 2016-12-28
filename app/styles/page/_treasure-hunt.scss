@@ -2,7 +2,7 @@
 	width: 100%;
 	height: 100%;
 	min-height: 1822px;
-	background: url( '../images/treasure_hunt/main-background-mobile.jpg' ) center center no-repeat;
+	background: url( '../images/treasure_hunt/main-background-mobile-gold.jpg' ) center center no-repeat;
 	background-size: 100% 100%;
 	overflow: hidden;
 	@include screen ( ipad ) {
@@ -32,7 +32,7 @@
     	text-indent: -9999px;
     	width: 204px;
     	height: 51px;
-    	background: url('../images/treasure_hunt/heading-mobile.png') no-repeat;
+    	background: url('../images/treasure_hunt/heading-mobile-gold.png') no-repeat;
     	@include screen ( ipad ) {
     		display: none;
     	}
@@ -341,8 +341,8 @@
 				left: 0;
 
 				.flag {
-				    top: 45%;
-				    left: 45%;
+				    bottom: 10%;
+				    left: 60%;
 				}
 				.coin {
 					&.coin-1 {
@@ -1240,7 +1240,12 @@
 
 				width: 100%;
 				display: block;
-				margin-bottom: 15px;
+				&.gold {
+					color: #ffd07d;
+					font-size: 15px;
+					-webkit-text-stroke: 1px #77472a;
+					text-shadow: 3px 3px 0 #77472a, -1px -1px 0 #77472a, 1px -1px 0 #77472a, -1px 1px 0 #77472a, 1px 1px 0 #77472a;
+				}
 			}
 			.pager {
 				.next, .prev {
@@ -1343,7 +1348,7 @@
 			    height: 22px;
 			    display: block;
 			    cursor: pointer;
-			    line-height: 40px;
+			    line-height: 22px;
 	            color: #fff;
 	            font-size: 11px;
 	            font-family: $font-iCPB;

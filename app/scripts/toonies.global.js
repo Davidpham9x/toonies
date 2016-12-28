@@ -74,6 +74,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
             if ( $('.page--home').length ) {
                 toonies.Global.initModalYoutube();
+                toonies.Global.initModalUpdate();
                 /*toonies.Global.initModalPrizes();*/
             }
 
@@ -960,6 +961,29 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
             });
 
             $('#modal--prizes').find('.close').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                toonies.Global.initCloseAllModal();
+            });
+        },
+
+        initModalUpdate: function() {
+            $.magnificPopup.open({
+                items: {
+                    src: '#modal--update'
+                },
+                type: 'inline',
+                removalDelay: 500, // Delay removal by X to allow out-animation
+                callbacks: {
+                    beforeOpen: function() {
+                        this.st.mainClass = 'mfp-move-from-top';
+                    }/*,
+                    open: function () {}*/
+                },
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+
+            $('#modal--update').find('.close').off('click').on('click', function(e) {
                 e.preventDefault();
 
                 toonies.Global.initCloseAllModal();
