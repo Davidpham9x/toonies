@@ -78,6 +78,10 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 /*toonies.Global.initModalPrizes();*/
             }
 
+            if ( $('.content-leaderboard--hunter').length ) {
+                toonies.Global.initsliderTopTwenty();
+            }
+
             if ( $('.page--group').length ) {
                 toonies.Global.initModalConfirm();
             }
@@ -104,7 +108,7 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 toonies.Global.initModalIntroGameCountervailing();
             }
 
-            if ($('.page--about,.page--leaderboard').length) {
+            if ( $('.page--about,.page--leaderboard').length && !$('.page--leaderboard').find('.content-leaderboard--hunter').length ) {
                 toonies.Global.initSlider();
             }
 
@@ -250,6 +254,37 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
                 src: '#modal--confirm-full',
                 type: 'inline'
               }
+            });
+        },
+
+        initsliderTopTwenty: function () {
+            var slider = $('#slider-top-twenty');
+
+            slider.slick({
+                dots: false,
+                fade: false,
+                vertical: true,
+                verticalSwiping: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: false,
+                lazyLoad: 'ondemand',
+                prevArrow: '<button type="button" class="slick-prev"><span class="icon"></span><span>Trở lại</span></button>',
+                nextArrow: '<button type="button" class="slick-next"><span>Xem tiếp</span><span class="icon"></span></button>',
+                responsive: [{
+                    breakpoint: 767,
+                    settings: {
+                        vertical: false,
+                        verticalSwiping: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }]
+            });
+
+            // On after slide change
+            slider.on('afterChange', function(event, slick, currentSlide, nextSlide) {
+                $('.counter').text(  (currentSlide+1) + '/20' );
             });
         },
 
