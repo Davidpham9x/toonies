@@ -58,7 +58,6 @@
                         margin-top: 0;
                     }
                 }
-
                 .wrap-avatar {
                     @include screen ( medium ) {
                         width: 26%;
@@ -79,7 +78,6 @@
                             background: url('../images/leader-board/circle-3.png') center center no-repeat;
                         }
                     }
-
                     .inner {
                         width: 100%;
                         max-width: 195px;
@@ -330,6 +328,130 @@
                         .inner {
                             .ranking {
                                 bottom: -10px;
+                            }
+                            &:hover .model--info {
+                                display:block;
+                            }
+                            .model--info {
+                                position: absolute;
+                                width: 105%;
+                                bottom: 20px;
+                                left: -5px;
+                                background: url('../images/leader-board/bg-info.png') top center no-repeat;
+                                background-size: 100% 100%;
+                                padding: 10px 0 30px;
+                                z-index: 10;
+                                display: none;
+                                @include screen( medium){
+                                    width: 105%;
+                                    bottom: -155px;
+                                    left: -5px;
+                                }
+                                .show {
+                                    display: block !important;
+                                    @include screen( medium){
+                                        display: none;
+                                    }
+                                }
+                                .name {
+                                    position: relative;
+                                    &:after {
+                                        @include screen( medium){
+                                            top: -22px;
+                                            left: 46%;
+                                            content: '';
+                                            position: absolute;
+                                            border-style: solid;
+                                            border-width: 0 9px 20px 9px;
+                                            border-color: transparent transparent #d8b785 transparent;
+                                        }
+                                    }
+                                }
+                                .title {
+                                    font-weight: lighter;
+                                    img {
+                                        top: auto !important;
+                                        left: auto !important;
+                                    }
+                                    img, span {
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        font-size: 11px;
+                                        font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
+                                    }
+                                }
+                                p {
+                                    display: block;
+                                    text-align: center;
+                                    position: relative;
+                                    margin-top: 0;
+                                    padding-top: 0;
+                                    &:first-child {
+                                        margin-top: 0;
+                                    }
+
+                                    img, span {
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                    }
+                                    span {
+                                        margin-left: 5px;
+                                        color: #4e301c;
+                                        font-size: 12px;
+                                        font-family: $font-iCPB;
+                                    }
+                                }
+                                .coin {
+                                    img {
+                                        max-width: 30px;
+                                    }
+                                }
+                                .money, .coin {
+                                    span {
+                                        font-size: 12px;
+                                        &:last-child {
+                                            color: #9f521e;
+                                            font-size: 12px;
+                                            -webkit-text-stroke: white;
+                                            text-shadow: none;
+                                        }
+                                    }
+                                }
+                                .moments {
+                                    margin-top: 1em;
+
+                                    ul {
+                                        margin: 0;
+                                        padding: 0;
+                                        text-align: left;
+                                        list-style: none;
+
+                                        li {
+                                            width: 25%;
+                                            float: left;
+                                            padding: 0 5px;
+                                            &:first-child {
+                                                padding-left: 0;
+                                            }
+
+                                            .inner {
+                                                position: relative;
+                                                border: 3px solid #b57c0b;
+                                                &:before {
+                                                    content: '';
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    background-color: rgba( 0, 0, 0, 0.7 );
+                                                    @include ab ( 0, 0, n, n );
+                                                }
+
+                                                img {
+                                                    width: 100%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -740,6 +862,20 @@
             text-align: center;
         }
     }
+    .block-top {
+        .field  {
+            padding: 40px 10px 0;
+            .select-wrapper{
+                background: url(../images/leader-board/tab-mb.png) no-repeat;
+                background-size: 100%;
+                span {
+                    top: 35px;
+                    left: 0px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
     .tab {
         @media (max-width: 767px) {
             width: 215px;
@@ -749,15 +885,15 @@
             list-style: none;
             display: inline-block;
             vertical-align: top;
-            margin: 0 10px;
+            margin: 0 -10px;
             a {
                 font-size: 0;
                 width: 214px;
                 display: block;
                 min-height: 56px;
+                background-size: 100%;
                 &.month {
                     background: url(../images/leader-board/tab-month.png) no-repeat;
-                    background-size: 100%;
                 }
                 &.week {
                     background: url(../images/leader-board/tab-week.png) no-repeat;
@@ -774,6 +910,14 @@
                     }
                     &.part-hunter {
                         background: url(../images/leader-board/tab-hunter.png) no-repeat;
+                        background-size: 100%;
+                    }
+                    &.part-session-1 {
+                        background: url(../images/leader-board/tab-session-1.png) no-repeat;
+                        background-size: 100%;
+                    }
+                    &.part-session-2 {
+                        background: url(../images/leader-board/tab-session-2.png) no-repeat;
                         background-size: 100%;
                     }
                 }
@@ -797,6 +941,14 @@
                         }
                         &.part-hunter {
                             background: url(../images/leader-board/tab-hunter-active.png) no-repeat;
+                            background-size: 100%;
+                        }
+                        &.part-session-1 {
+                            background: url(../images/leader-board/tab-session-1-on.png) no-repeat;
+                            background-size: 100%;
+                        }
+                        &.part-session-2 {
+                            background: url(../images/leader-board/tab-session-2-on.png) no-repeat;
                             background-size: 100%;
                         }
                     }

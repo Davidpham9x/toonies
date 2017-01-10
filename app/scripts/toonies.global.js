@@ -259,7 +259,19 @@ var IE = (!!window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1
 
         initsliderTopTwenty: function () {
             var slider = $('#slider-top-twenty');
-
+            
+            // $('.wrap-avatar .inner').on('click',function(){
+            //     $(this).find('.model--info').toggleClass('show');
+            // })
+            // $(document).click(function(event) {
+            //     if (!$(event.target).closest('.wrap-avatar .inner').length &&
+            //         !$(event.target).is('.wrap-avatar .inner')) {
+            //         if ($('.model--info').is(":visible")) {
+            //             $('.model--info').removeClass('show');
+            //             $('.wrap-avatar .inner').removeClass('active');
+            //         }
+            //     }
+            // });
             slider.slick({
                 dots: false,
                 fade: false,
