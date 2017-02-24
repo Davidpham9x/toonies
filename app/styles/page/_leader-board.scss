@@ -219,6 +219,9 @@
                 padding: 0;
                 @include transform ( translateY(-50%) );
             }
+            select {
+                text-transform: uppercase;
+            }
         }
         .wrap-list {
             margin: 15px 0;
